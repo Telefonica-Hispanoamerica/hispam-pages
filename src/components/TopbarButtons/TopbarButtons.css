@@ -1,0 +1,16 @@
+.buttonOptions {
+    outline: none !important;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #111827;
+}
+
+.buttonOptions:hover {
+    border-color: transparent;
+}
+
+.buttonOptions:disabled {
+    opacity: .5;
+}
