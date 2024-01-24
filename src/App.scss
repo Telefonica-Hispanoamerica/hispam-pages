@@ -43,11 +43,12 @@
 
 
 .layout-editor-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
 }
 
-.gjs-editor-column {
-  flex-direction: column;
-  display: flex;
-  flex-grow: 1;
-}
+// .gjs-editor-column {
+//   flex-direction: column;
+//   display: flex;
+//   flex-grow: 1;
+// }

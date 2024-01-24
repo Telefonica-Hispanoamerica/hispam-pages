@@ -1,6 +1,15 @@
-import './LeftSidebar.css'
+import './LeftSidebar.scss'
 import { Collapse } from 'antd'
 import { CaretUpOutlined, SwitcherOutlined, CopyOutlined } from '@ant-design/icons';
+import CustomBlockManager from '../CustomBlockManager/index';
+import {
+    BlocksProvider,
+    LayersProvider,
+    PagesProvider,
+    SelectorsProvider,
+    StylesProvider,
+    TraitsProvider,
+} from '@grapesjs/react';
 
 function LeftSidebar() {
 
@@ -30,12 +39,33 @@ function LeftSidebar() {
                     <CaretUpOutlined style={{ }} rotate={isActive ? 180 : 90} />
                 )}
                 items={[{ key: '2', label:(
-                <span>
-                     <SwitcherOutlined style={{ marginRight: '8px', fontSize: '16px', color: '#111827' }} />
-                    Capas
-                </span>),
-                children: <div><h3>Layout content</h3></div>
-            }]}
+                    <span>
+                        <SwitcherOutlined style={{ marginRight: '8px', fontSize: '16px', color: '#111827' }} />
+                        Capas
+                    </span>),
+                    children: <div><h3>Layout content</h3></div>                    
+                }]}
+            >
+            </Collapse>
+            <Collapse
+                className='collapse-item'
+                accordion
+                expandIconPosition="right"
+                expandIcon={({ isActive }) => (
+                    <CaretUpOutlined style={{ }} rotate={isActive ? 180 : 90} />
+                )}
+                items={[{ 
+                    key: '3', 
+                    label:(
+                    <span>
+                        <SwitcherOutlined style={{ marginRight: '8px', fontSize: '16px', color: '#111827' }} />
+                        Bloques
+                    </span>),
+                    children: 
+                    <BlocksProvider>
+                        {(props) => <CustomBlockManager {...props} />}
+                    </BlocksProvider>,
+                }]}
             >
             </Collapse>
         </div>

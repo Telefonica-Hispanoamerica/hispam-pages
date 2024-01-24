@@ -1,0 +1,60 @@
+.gjs-custom-selector-manager {
+    .items {
+        border-bottom: 1px solid #d1d5db;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        h5 {
+            margin: 0;
+        }
+        .MuiFormControl-root {
+            margin-left: auto;
+        }
+    }
+    .input-class {
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 6px;
+        display: flex;
+        flex-direction: row;
+        .btn-add {
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+        }
+        .tag-box {
+            background-color: #019DF4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin-right: 4px;
+            div {
+                color: white;
+                padding: 0 0 0 6px;
+                font-size: 14px;
+                
+            }
+            button {
+                background-color: transparent;
+                color: white;
+                padding: 4px 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .selected {   
+        display: flex;     
+        p {
+            text-align: center;
+            font-size: 14px;
+            .opacity-70 {
+                opacity: .7;
+            }
+        }
+    }
+}
