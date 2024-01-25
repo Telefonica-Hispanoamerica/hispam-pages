@@ -1,0 +1,10 @@
+.gjs-custom-style-manager {
+    text-align: left;
+    border: 1px solid #d1d5db;
+    .MuiPaper-root {
+        box-shadow: none;
+        .MuiButtonBase-root {
+            //border: 1px solid #d1d5db;
+        }
+    }
+}

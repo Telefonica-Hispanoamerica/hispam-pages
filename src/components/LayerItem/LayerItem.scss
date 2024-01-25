@@ -1,0 +1,35 @@
+.layer-item {
+    .group {
+        .box-layer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 4px 16px;
+            border: 1px solid #fff;
+            &.bg-sky-700 {
+                border: 1px solid #d1d5db;
+            }
+            &.bg-sky-500 {
+                background-color: rgba($color: #d1d5db, $alpha: .2);
+            }
+            
+            .cursor-pointer {
+                display: flex;
+                margin-right: 8px;
+            }
+            .truncate {
+
+            }
+            .eye {
+                display: flex;
+                margin-left: auto;
+                &.opacity-0 {
+                    opacity: 0;
+                }
+                &.opacity-100 {
+                    opacity: 10;
+                }
+            }
+        }
+    }
+}

@@ -60,7 +60,8 @@
             }
         }
     }
-    .tabs-content {        
+    .tabs-content {
+        overflow-y: auto;
         .MuiTabPanel-root {
             padding: 16px;
         }

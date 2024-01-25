@@ -1,7 +1,9 @@
 import './LeftSidebar.scss'
 import { Collapse } from 'antd'
 import { CaretUpOutlined, SwitcherOutlined, CopyOutlined } from '@ant-design/icons';
-import CustomBlockManager from '../CustomBlockManager/index';
+import CustomBlockManager from '../CustomBlockManager';
+import CustomLayerManager from '../CustomLayerManager';
+import CustomPageManager from '../CustomPageManager';
 import {
     BlocksProvider,
     LayersProvider,
@@ -27,7 +29,10 @@ function LeftSidebar() {
                      <CopyOutlined style={{ marginRight: '8px', fontSize: '16px', color: '#111827' }} />
                     Paginas
                 </span>),
-                children: <div><h3>Pages content</h3></div>
+                children: 
+                <PagesProvider>
+                    {(props) => <CustomPageManager {...props} />}
+                </PagesProvider>
             }]}
             >
             </Collapse>
@@ -43,7 +48,10 @@ function LeftSidebar() {
                         <SwitcherOutlined style={{ marginRight: '8px', fontSize: '16px', color: '#111827' }} />
                         Capas
                     </span>),
-                    children: <div><h3>Layout content</h3></div>                    
+                    children: 
+                    <LayersProvider>
+                        {(props) => <CustomLayerManager {...props} />}
+                    </LayersProvider>               
                 }]}
             >
             </Collapse>

@@ -22,7 +22,7 @@ export default function CustomStyleManager({
     sectors,
 }: Omit<StylesResultProps, 'Container'>) {
     return (
-        <div className="gjs-custom-style-manager text-left">
+        <div className="gjs-custom-style-manager">
         {sectors.map((sector) => (
             <Accordion key={sector.getId()} disableGutters>
                 <AccordionSummary

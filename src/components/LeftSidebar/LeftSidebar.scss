@@ -8,7 +8,14 @@
     background-color: transparent;
     border: none;
     border-radius: 0 !important;
-
+    .ant-collapse-item {
+        background-color: rgba($color: #d1d5db, $alpha: .2);
+        .ant-collapse-content{
+            .ant-collapse-content-box {
+                padding: 0;
+            }
+        }
+    }    
 }
 
 .collapse-item .ant-collapse-item {

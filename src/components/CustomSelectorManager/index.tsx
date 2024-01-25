@@ -90,7 +90,7 @@ export default function CustomSelectorManager({
                         <Icon size={0.7} path={mdiPlus} />
                     </button>
                 ) : (
-                <div className="opacity-70">Select a component</div>
+                <div className="select-to-component">Select a component</div>
                 )}
                     {selectors.map((selector) => (
                         <div
