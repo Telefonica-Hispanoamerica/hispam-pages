@@ -17,6 +17,7 @@
     "@grapesjs/react": "^1.0.0",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
+    "@mui/icons-material": "^5.15.6",
     "@mui/lab": "^5.0.0-alpha.162",
     "@mui/material": "^5.15.6",
     "antd": "^5.9.4",

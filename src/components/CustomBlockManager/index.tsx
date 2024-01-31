@@ -9,9 +9,8 @@
 // export default CustomBlockManager;
 
 import { BlocksResultProps } from '@grapesjs/react';
-import { MAIN_BORDER_COLOR, cx, palette } from '../common';
+import { MAIN_BORDER_COLOR, cx } from '../common';
 import "./CustomBlockManager.scss";
-import { Col, Row } from 'antd';
 
 export type CustomBlockManagerProps = Pick<
     BlocksResultProps,
@@ -28,7 +27,6 @@ export default function CustomBlockManager({
   return (
     <div className="gjs-custom-block-manager text-left">
         {Array.from(mapCategoryBlocks).map(([category, blocks]) => (
-            // console.log("BLOCKS", [category, blocks])
             <div key={category}>
                 <div className={cx('py-2 px-4 border-y', MAIN_BORDER_COLOR)}>
                     {category}
