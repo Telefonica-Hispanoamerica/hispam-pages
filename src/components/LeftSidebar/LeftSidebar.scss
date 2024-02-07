@@ -1,6 +1,19 @@
 .left-sidebar-column {
     border-right: 1px solid #d1d5db;
     background-color: #FFFFFF;
+    .MuiPaper-root {
+        .MuiCollapse-root {
+            .MuiCollapse-wrapper {
+                .MuiCollapse-wrapperInner {
+                    .MuiAccordion-region {
+                        .MuiAccordionDetails-root {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .collapse-item {

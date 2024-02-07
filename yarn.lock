@@ -1832,6 +1832,28 @@ graceful-fs@^4.1.2, graceful-fs@^4.2.4, graceful-fs@^4.2.9:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
+grapesjs-ga@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/grapesjs-ga/-/grapesjs-ga-1.0.2.tgz"
+  integrity sha512-kE2S7FmYMattm5agQsZd6BdtPmn2M6GhaDapP6jqxaFtdOOSQPDXdW6v186tStzuarwg3i+UIjW38rh2XGSZEw==
+
+grapesjs-mjml@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/grapesjs-mjml/-/grapesjs-mjml-1.0.5.tgz"
+  integrity sha512-w2WsIAtK9nfy52PJP6gv+gbuvbXm8CgOCVhdmTqlUTB4lQDvO30fTTWfORKPqK/p2UtKl0NYcC4C0sk+TEl/ag==
+  dependencies:
+    mjml-browser "^4.13.0"
+
+grapesjs-preset-newsletter@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/grapesjs-preset-newsletter/-/grapesjs-preset-newsletter-1.0.2.tgz"
+  integrity sha512-z8KJ1ZrTXfASSJZ/tHOcnpcWu4AMr2F/ZfQit+QjimNi3UGowwl7+Yjefuh3R7lbDTrXMMaxhCannCaJo/kPJw==
+
+grapesjs-preset-webpage@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/grapesjs-preset-webpage/-/grapesjs-preset-webpage-1.0.3.tgz"
+  integrity sha512-C0VOKLAdhv0j1f81c6F2uk3JpJvxgXl5DeHUtDa5qGf/HZzaCmQxsvd8Re3Oh5Cah4uUCqoi9uB5FYx3hLND2w==
+
 grapesjs@^0.21.7:
   version "0.21.7"
   resolved "https://registry.npmjs.org/grapesjs/-/grapesjs-0.21.7.tgz"
@@ -2051,6 +2073,11 @@ lodash.merge@^4.6.2:
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
@@ -2108,6 +2135,11 @@ minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
   dependencies:
     brace-expansion "^1.1.7"
+
+mjml-browser@^4.13.0:
+  version "4.15.3"
+  resolved "https://registry.npmjs.org/mjml-browser/-/mjml-browser-4.15.3.tgz"
+  integrity sha512-HS3YFo6mfle+TLnaRzUbDa9COwkm860lAuHXD5e7qxi90AVhGdAnG1KAVrriEfQSuYcAZbhZjZtp6GhvXi6XcA==
 
 "moment@>= 2.x":
   version "2.29.4"

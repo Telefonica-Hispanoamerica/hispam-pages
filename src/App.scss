@@ -64,3 +64,26 @@ body {
 .gjs-editor-cont {
 	background-color: #f7f7f7;
 }
+//Modal export-template
+.gjs-mdl-dialog {
+	.gjs-mdl-content {
+		text-align: left;
+			.gjs-btn-prim {
+				background-color: #019DF4;
+				border-radius: 60px;						
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: 'Telefonica-Regular', sans-serif;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 20px;
+				color: #fff;
+				margin: 8px 0;
+				padding: 6px 12px 5px 12px;
+				border: 0;
+				min-width: 132px;
+			}
+		
+	}
+}

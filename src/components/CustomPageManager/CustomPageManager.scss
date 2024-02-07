@@ -1,0 +1,56 @@
+.gjs-custom-page-manager {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    user-select: auto;
+    width: auto;
+    height: 200px;
+    box-sizing: border-box;
+    .plus {
+        background-color: transparent;
+        font-size: 32px;
+        padding: 0;
+        cursor: pointer;
+        width: 36px;
+    }
+    .page-content {
+        width: 100%;        
+        font-size: .875rem;
+        line-height: 1.25rem;
+        &:hover {
+            background-color: rgba($color: #000000, $alpha: .1);
+        }
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: .5rem .5rem .5rem 1rem;                  
+            p {
+                margin: 0;
+            }
+            .MuiButtonBase-root {
+                padding: 0;
+                margin-left: auto;
+                &:hover {
+                    background-color: transparent;
+                }
+                &:focus {
+                    outline: none;
+                }
+                .MuiSvgIcon-root {
+                    width: .875em;
+                    height: .875em;
+                }
+            }
+        }        
+    }
+}
+
+.MuiPaper-root {
+    .MuiList-root {
+        padding: 0;
+        .MuiButtonBase-root {
+            font-size: .875rem;
+        }
+    }
+}
