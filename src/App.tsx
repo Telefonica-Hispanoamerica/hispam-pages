@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import grapesjs, { Editor, EditorConfig } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
@@ -8,7 +9,39 @@ import "./fonts/fonts.scss";
 import Card from "./components/CustomBlocksTelefonica/Card";
 import CardProduct from "./components/CustomBlocksTelefonica/CardProduct";
 
+///Google ANalytics
+import ReactGA from 'react-ga';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import GoogleAnalyticsApp from "./GoogleAnalyticsApp"
+// import AnalyticsPage from "./AnalyticsPage";
+// import InitializeGoogleAnalytics from "./Analytics"
+
+
+
 function App() {
+	// const [ clientId, setClientId  ] = useState("762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com")
+	const clientId = "762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com"	
+
+	ReactGA.initialize(
+		'G-15VGFXN76Q',
+		// { debug: true }
+	);
+	
+	// ReactGA.pageview(window.location.pathname + window.location.search);
+
+	ReactGA.event({
+		category: 'Button',
+		action: 'Click',
+		label: 'Contact Us'
+	});
+
+	//this line for react-ga, in react-ga4 not needed
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname + window.location.search);
+	}, []);
+
+	console.log("REACTGA", ReactGA)
+
 	const onEditor = (editor: Editor) => {
 		console.log('Editor loaded', { editor });
 	};
@@ -37,7 +70,7 @@ function App() {
 		},
 		pluginsOpts: {
 			"grapesjs-plugin-toolbox": {
-			  	panels: true
+				panels: true
 			},
 			"grapesjs-ga": {
 				/* Test here your options  */
@@ -55,7 +88,11 @@ function App() {
 		}
 	};
 
-	return (
+	// Google Analytics	
+	
+
+	return (	
+		<div>	
 		<GjsEditor
 			grapesjs={grapesjs}
 			grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
@@ -69,8 +106,8 @@ function App() {
 					src: 'https://unpkg.com/grapesjs-ga',
 				},
 				{
-				  id: 'gjs-blocks-basic',
-				  src: 'https://unpkg.com/grapesjs-blocks-basic',
+					id: 'gjs-blocks-basic',
+					src: 'https://unpkg.com/grapesjs-blocks-basic',
 				},
 				{
 					id: 'grapesjs-indexeddb',
@@ -123,6 +160,13 @@ function App() {
 				<RightSidebar></RightSidebar>
 			</div>
 		</GjsEditor>
+			{/* <InitializeGoogleAnalytics /> */}
+			{/* <GoogleAnalyticsApp /> */}
+			<GoogleOAuthProvider clientId={ clientId }>
+				<GoogleAnalyticsApp />
+			</GoogleOAuthProvider>
+			{/* <AnalyticsPage /> */}
+		</div>		
 	)
 }
 

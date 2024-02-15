@@ -5,6 +5,9 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["gapi", "gapi.auth2"], //NEW
+    // "jsx": "react", // Para archivos JSX
+    "allowJs": true, // Para archivos JS NEW
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,6 +23,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  // "include": ["src"],
+  "include": ["./src/**/*.ts?", "src/GoogleAnalyticsApp.jsx", "src/AnalyticsPage.jsx"], // NEW
   "references": [{ "path": "./tsconfig.node.json" }]
 }
