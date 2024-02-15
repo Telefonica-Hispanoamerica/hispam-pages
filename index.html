@@ -39,9 +39,19 @@
 </script>
 
 <script>
+  debugger
 gapi.analytics.ready(function() {
 
   // Step 3: Authorize the user.
+
+  gapi.analytics.createComponent('MyComponent', {
+    foo: function(){
+      alert('FOO')
+    },
+    bar: function(){
+      alert('bar')
+    }
+  })
 
   var CLIENT_ID = '762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com';
 
@@ -89,18 +99,5 @@ gapi.analytics.ready(function() {
 });
 </script>
 	</body>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hispam Pages.</title>
-    <!-- <script src="https://unpkg.com/grapesjs-component-countdown"></script>
-    <script src="https://unpkg.com/grapesjs-plugin-forms"></script>
-    <script src="https://unpkg.com/grapesjs"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.12.17/css/grapes.min.css"></script> -->
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  
 </html>
