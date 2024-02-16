@@ -19,6 +19,20 @@ import GoogleAnalyticsApp from "./GoogleAnalyticsApp"
 
 
 function App() {
+
+	useEffect(() => {
+		function start() {
+			gapi.client.init({
+				clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
+				scope: 'email',
+			});
+		}
+	
+		gapi.load('client:auth2', start);
+		console.log("gapi", gapi)
+	}, []);
+
+	
 	// const [ clientId, setClientId  ] = useState("762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com")
 	const clientId = "762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com"	
 
