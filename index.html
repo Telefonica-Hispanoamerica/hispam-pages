@@ -16,10 +16,26 @@
 		<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
 		<meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
       	<script src="https://apis.google.com/js/client:platform.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="762464612635-dmp5i555cvn8rcenf3v32d5cf6kg5ou5.apps.googleusercontent.com">
   	</head>
 	<body>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
 		<div id="root"></div>
 		<script type="module" src="/src/main.tsx"></script>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <script>
+      function onSignIn(googleUser) {        
+        debugger;
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+    </script>
 		
 		<!-- Step 1: Create the containing elements. -->
 
