@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     // "types": ["gapi"],
     // "jsx": "react", // Para archivos JSX
-    "allowJs": true, // Para archivos JS
+    //"allowJs": true, // Para archivos JS
 
     /* Bundler mode */
     "moduleResolution": "bundler",

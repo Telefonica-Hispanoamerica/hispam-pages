@@ -1,61 +1,81 @@
+import { useEffect } from 'react';
 import { Editor } from 'grapesjs';
+import ReactDOMServer from 'react-dom/server';
+import { 
+	ThemeContextProvider, 
+	DataCard, 
+	Tag, 
+	Circle, 
+	IconMobileDeviceRegular, 
+	ButtonLink, 
+	skinVars, 
+	getMovistarSkin, 
+	ButtonPrimary,
+	ResponsiveLayout,
+	Stack,
+	Inline
+} from '@uxhispam/kenos';
 
-function Card(editor: Editor) {
-	editor.Blocks.add('card', {
-		id: 'card',
-		label: 'Card',
+const kenosTheme = {
+	skin: getMovistarSkin(),
+	i18n: { locale: 'es-ES', phoneNumberFormattingRegionCode: 'ES' },
+};
+  
+// Separate layout effect logic
+function useLayoutEffectExample() {
+	useEffect(() => {
+		// Your layout effect code here
+		// This will run synchronously after all DOM mutations
+		// and before the browser has a chance to paint.
+		// console.log('Layout effect executed');
+	
+		return () => {
+			// Cleanup code (if needed)
+			// console.log('Layout effect cleanup');
+		};
+	}, []); // Empty dependency array means it runs once after the initial render
+}
+  
+const MyComponent = () => {
+	useLayoutEffectExample();
+  
+	return (
+		<ThemeContextProvider theme={kenosTheme}>
+			<ResponsiveLayout>
+				<Stack space={8}>
+					<DataCard  
+						headline={<Tag type="promo">Headline</Tag>}
+						pretitle='Pretitle'
+						title='Title'
+						subtitle='Subtitle'
+						description='Description'
+						button={<ButtonPrimary href="https://google.com" small>Action</ButtonPrimary>}
+						icon={
+							<Circle size={40} backgroundColor={skinVars.colors.brandLow}>
+								<IconMobileDeviceRegular color={skinVars.colors.brand} />
+							</Circle>
+						}
+						buttonLink={<ButtonLink href="https://google.com">Link</ButtonLink>}
+						dataAttributes={{testid: 'data-card'}}
+					/>
+				</Stack>
+			</ResponsiveLayout>		  
+		</ThemeContextProvider>
+	);
+};
+
+function DataCardKenos(editor: any) {
+	const htmlString = ReactDOMServer.renderToString(<MyComponent />);
+
+	editor.Blocks.add('dataCard', {
+		id: 'dataCard',
+		label: 'Data Card',
 		activate: true,
-		content: `
-			<div data-gjs-type="card" class="box-card">
-				<h3>Item title</h3>
-				<p>Paragraph</p>
-				<img src="">
-				<button>
-					Primary small
-				</button>
-			</div>
-			<style>
-				.box-card {						
-					background-color: #019DF4;
-					padding: 24px;
-					border-radius: 8px;
-				}
-				.box-card h3 {
-					font-family: 'Telefonica-Regular', sans-serif;
-					font-size: 20px;
-					line-height: 28px;
-					color: #fff;
-					margin: 0 0 8px;
-					font-weight: normal;
-				}
-				.box-card p {
-					font-family: 'Telefonica-Regular', sans-serif;
-					font-size: 16px;
-					line-height: 24px;
-					color: #fff;
-					margin: 0;
-				}
-				.box-card button {
-					background-color: #fff;
-					border-radius: 60px;						
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					font-family: 'Telefonica-Bold', sans-serif;
-					font-weight: 600;
-					font-size: 14px;
-					line-height: 20px;
-					color: #019DF4;
-					margin: 16px 0 0;
-					padding: 6px 12px 5px 12px;
-					border: 0;
-				}
-			</style>
-			`,
-		category: 'Telefónica',
+		content: htmlString,
+		category: 'Cards',
 		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
-		attributes: { class: 'custom-block' }
+		attributes: { class: 'custom-block' },
 	});
 }
   
-export default Card;
+export default DataCardKenos;

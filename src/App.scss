@@ -55,10 +55,11 @@ body {
 }
 
 .gjs-row {
-    display: flex;
-    grid-gap: 16px;
+    // display: flex;
+    // grid-gap: 16px;
     .gjs-cell {
         width: 100%;
+		height: initial;
     }
 }
 .gjs-editor-cont {
@@ -87,3 +88,20 @@ body {
 		
 	}
 }
+
+#gjs {
+	border: 3px solid #444;
+  }
+  
+  /* Reset some default styling */
+  .gjs-cv-canvas {
+	top: 0;
+	width: 100%;
+	height: 100%;
+  }
+
+  .gjs-block {
+	width: auto;
+	height: auto;
+	min-height: auto;
+  }
