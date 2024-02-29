@@ -50,7 +50,7 @@ function LeftSidebar() {
                     aria-controls="panel2-content"
                     id="panel2-header"
                 >
-                Bloques
+                Componentes
                 </AccordionSummary>
                 <AccordionDetails>
                     <BlocksProvider>

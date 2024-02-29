@@ -1,30 +1,19 @@
-.logo-image {
-    width: 100px; /* Cambia el tamaño según tus necesidades */
-    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
-}
-
 .top-sidebar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #d1d5db;
-  background-color: #FFFFFF;
-}
-
-.device-select-topbar {
-  margin-left: 1.2em;
-}
-
-.device-select-topbar .ant-select .ant-select-selector {
-  background-color: transparent;
-  border-color: #d1d5db;
-  color: #111827;
-}
-
-.ant-select.ant-select-open .ant-select-selection-item {
-  color: #111827;
-}
-
-.device-select-topbar .ant-select .ant-select-arrow {
-  color: #111827;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	border-bottom: 1px solid #d1d5db;
+	background-color: #FFFFFF;
+	div {
+		text-align: center;
+		.MuiInputBase-root {
+			margin-bottom: 8px;
+			.MuiSelect-select {
+				padding: 8px 34px 8px 14px;
+			}
+		}
+		.logo-image {
+			height: 28px; /* Ajusta la altura automáticamente para mantener la proporción */
+		}
+	}
 }

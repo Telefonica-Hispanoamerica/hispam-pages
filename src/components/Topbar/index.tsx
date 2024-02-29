@@ -1,5 +1,6 @@
 import { DevicesProvider, WithEditor } from '@grapesjs/react'
-import { Select } from 'antd'
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import TopbarButtons from '../TopbarButtons'
 import LogoUxHispam from '../../assets/logo-uxhispam.svg'
 import './topbar.scss'
@@ -8,23 +9,32 @@ import './topbar.scss'
 function Topbar() {
 	return (
 		<div className="top-sidebar">
-			<DevicesProvider>
-				{({ selected, select, devices }) => (
-					<div className="device-select-topbar">
-						<Select value={selected} onChange={(value) => select(value)} style={{ width: 150 }}>
+			<div>
+				<DevicesProvider>
+					{({ selected, select, devices }) => (
+						<Select
+							labelId="demo-select-small-label"
+							id="demo-select-small"
+							value={selected}
+							label="Age"
+							onChange={(value: any) => select(value)}
+							sx={{ m: 1, minWidth: 150 }}
+						>
 							{devices.map((device) => (
-							<Select.Option value={device.id} key={device.id}>
-								{device.getName()}
-							</Select.Option>
+								<MenuItem value={device.id} key={device.id}>{device.getName()}</MenuItem>
 							))}
 						</Select>
-					</div>
-				)}
-			</DevicesProvider>
-			<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image"/>
-			<WithEditor>
-				<TopbarButtons></TopbarButtons>
-			</WithEditor>
+					)}
+				</DevicesProvider>
+			</div>
+			<div>
+				<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image"/>
+			</div>
+			<div>
+				<WithEditor>
+					<TopbarButtons></TopbarButtons>
+				</WithEditor>
+			</div>
 		</div>
 	)
 }

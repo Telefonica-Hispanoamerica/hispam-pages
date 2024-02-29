@@ -69,8 +69,6 @@ function TopbarButtons () {
             editor.off(updateEvent, updateCounter)
         }
     }, []);
-    console.log("cmdButtons", cmdButtons);
-    console.log("cmdButtons 2", Commands)
 
     return (
         <div>
