@@ -1,11 +1,3 @@
-// function CustomLayerManager() {
-//     return (
-//         <></>
-//     )
-// }
-
-// export default CustomLayerManager
-
 import { LayersResultProps, useEditor } from '@grapesjs/react';
 import type { Component, Editor } from 'grapesjs';
 import { useRef, useState } from 'react';

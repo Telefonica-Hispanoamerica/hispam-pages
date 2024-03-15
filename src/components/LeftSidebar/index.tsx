@@ -13,7 +13,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 function LeftSidebar() {
-
     return (
         <div className="left-sidebar-column">
             <Accordion>

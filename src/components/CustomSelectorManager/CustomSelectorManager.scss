@@ -18,6 +18,7 @@
         padding: 6px;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         .btn-add {
             padding: 6px;
             display: flex;
@@ -33,17 +34,17 @@
             border-radius: 8px;
             display: flex;
             align-items: center;
-            margin-right: 4px;
+            margin: 2px;
             div {
                 color: white;
                 padding: 0 0 0 6px;
-                font-size: 14px;
+                font-size: 10px;
                 
             }
             button {
                 background-color: transparent;
                 color: white;
-                padding: 4px 6px;
+                padding: 2px 6px;
                 display: flex;
                 align-items: center;
                 justify-content: center;

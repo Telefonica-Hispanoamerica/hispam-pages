@@ -24,6 +24,7 @@
     "@types/gapi": "^0.0.47",
     "@uxhispam/kenos": "file:uxhispam-kenos-1.0.0.tgz",
     "axios": "^1.6.7",
+    "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "gapi-script": "^1.2.0",
     "google-auth-library": "^9.6.3",
@@ -33,6 +34,7 @@
     "grapesjs-mjml": "^1.0.5",
     "grapesjs-preset-newsletter": "^1.0.2",
     "grapesjs-preset-webpage": "^1.0.3",
+    "jszip": "^3.10.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -44,6 +46,7 @@
     "vite-plugin-sass": "^0.1.0"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

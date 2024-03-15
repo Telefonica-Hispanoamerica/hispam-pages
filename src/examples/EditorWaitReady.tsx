@@ -13,6 +13,8 @@ const plugins = [
 ];
 
 export default function EditorWaitReady(props: Partial<EditorProps>) {
+
+  console.log("PARTIAL", props)
     return (
         <GrapesJsEditor
           className="gjs-editor-wait-ready"

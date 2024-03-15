@@ -6,13 +6,20 @@
 
 // export default CustomPageManager
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+
+type PropsLandingPage = {
+	id: number,
+	name: string,
+	styles: string,
+	component: string,
+}
 
 export default function CustomPageManager({
     pages,
@@ -21,6 +28,7 @@ export default function CustomPageManager({
     select,
     remove,
 }: PagesResultProps) {
+
     const addNewPage = () => {
         const nextIndex = pages.length + 1;
         add({
@@ -31,6 +39,7 @@ export default function CustomPageManager({
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -38,17 +47,17 @@ export default function CustomPageManager({
         setAnchorEl(null);
     };
 
-
     return (
         <div className="gjs-custom-page-manager">
             <div className="plus" onClick={addNewPage}>
                 +
             </div>
+            
             {pages.map((page, index) => (
                 <div
                     key={page.getId()}
                     className="page-content"
-                >
+                >                    
                     <div onClick={() => select(page)}>
                         <p>{page.getName() || 'Untitled page'}</p>
                         <IconButton

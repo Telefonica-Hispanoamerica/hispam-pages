@@ -29,10 +29,22 @@ function TopbarButtons () {
 		// 	id: 'core:open-code',
 		// 	iconPath: <CodeOutlined />
         // },
+        // {
+		// 	id: 'export-template',
+		// 	iconPath: <CodeOutlined />
+        // },
         {
-			id: 'export-template',
+			id: 'export',
 			iconPath: <CodeOutlined />
         },
+        // {
+		// 	id: 'gjs-export-zip',
+		// 	iconPath: <CodeOutlined />
+        // },
+        //  {
+		// 	id: 'gjs-export-zip',
+		// 	iconPath: <CodeOutlined />
+        // },
         {
 			id: 'core:component-delete',
 			iconPath: <DeleteOutlined />

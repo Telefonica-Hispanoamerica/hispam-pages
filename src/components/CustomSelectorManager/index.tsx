@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useRef, useState, useEffect} from 'react';
 import { SelectorsResultProps } from '@grapesjs/react';
 import { mdiClose, mdiPlus } from '@mdi/js';
 import Icon from '@mdi/react';
@@ -22,7 +22,7 @@ export default function CustomSelectorManager({
         addSelector({ name: `new-${next}`, label: `New ${next}` });
     };
 
-    const targetStr = targets.join(', ');
+    const targetStr = targets.join(', ');    
 
     return (
         <div className="gjs-custom-selector-manager">

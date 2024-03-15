@@ -3,6 +3,10 @@ body {
 	font-size: 16px;
 	line-height: 24px;
 	background-color: #f7f7f7;
+	height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 #root {
@@ -50,7 +54,7 @@ body {
 
 .layout-editor-wrapper {
   	display: grid;
-  	grid-template-columns: 15% 70% 15%;
+  	grid-template-columns: 12% 76% 12%;
 }
 
 .gjs-row {
