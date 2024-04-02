@@ -1,17 +1,18 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-  	font-family: 'Telefonica-Regular', sans-serif;
+  	//font-family: 'Telefonica-Regular', sans-serif;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 	font-size: 16px;
 	line-height: 24px;
 	background-color: #f7f7f7;
-	height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 #root {
-	margin: 0;
-	padding: 0;
 	width: 100%;
 }
 
@@ -54,7 +55,10 @@ body {
 
 .layout-editor-wrapper {
   	display: grid;
-  	grid-template-columns: 12% 76% 12%;
+	  grid-template-columns: 16% 68% 16%;
+	@media(min-width: 1720px) {
+		grid-template-columns: 15% 70% 15%;
+	}
 }
 
 .gjs-row {
@@ -67,6 +71,7 @@ body {
 }
 .gjs-editor-cont {
 	background-color: #f7f7f7;
+	height: 90%!important;
 }
 //Modal export-template
 .gjs-mdl-dialog {
@@ -108,3 +113,7 @@ body {
 	height: auto;
 	min-height: auto;
   }
+
+[data-gjs-type="wrapper"] {
+	min-height: initial!important;
+}

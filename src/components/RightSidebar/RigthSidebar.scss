@@ -5,12 +5,18 @@
     .tabs-buttons {
         .MuiBox-root {
             .MuiTabs-root {
+                min-height: 46px;
                 .MuiTabs-scroller {
+                    height: 46px;
                     .MuiTabs-flexContainer {
                         display: grid;
                         grid-template-columns: repeat(2, 50%);
+                        min-height: initial;
                         .MuiButtonBase-root {
                             text-transform: none;
+                            min-height: 46px;
+                            font-size: 14px;
+                            font-weight: 400;
                             &:focus {
                                 outline: none;
                             }

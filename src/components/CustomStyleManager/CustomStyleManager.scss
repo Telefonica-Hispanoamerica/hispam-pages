@@ -5,6 +5,9 @@
         box-shadow: none;
         .MuiButtonBase-root {
             //border: 1px solid #d1d5db;
+            .MuiAccordionSummary-content {
+                margin: 2px 0;
+            }
         }
     }
 }

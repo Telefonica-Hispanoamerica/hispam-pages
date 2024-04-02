@@ -12,7 +12,7 @@ const root = createRoot(div);
 flushSync(() => {
 	root.render(
 		<ThemeContextProvider theme={kenosTheme}>
-			<ButtonPrimary href="/">Primary</ButtonPrimary>
+			<ButtonPrimary rounded small href="/">Primary</ButtonPrimary>
 		</ThemeContextProvider>
 	);
 });

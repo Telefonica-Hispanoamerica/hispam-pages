@@ -32,12 +32,12 @@ function RightSidebar() {
 						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 							<Tabs value={value} onChange={handleChange} aria-label="icon label tabs example">
 								<Tab 
-									icon={<HighlightOutlined className="icon" style={{color: '#111827'}}/>} 
+									
 									label="Estilos"
 									value="1"
 								/>
 								<Tab 
-									icon={<ToolOutlined className="icon" style={{color: '#111827'}}/>} 
+									
 									label="Propiedades" 
 									value="2"
 								/>

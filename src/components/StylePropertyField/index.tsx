@@ -79,20 +79,37 @@ export default function StylePropertyField({
 
   	switch (type) {
     	case 'radio':
-      	{
-        	const radioProp = prop as PropertyRadio;
-			inputToRender = (
-				<RadioGroup value={value} onChange={onChange} row>
+      	// {
+        // 	const radioProp = prop as PropertyRadio;
+		// 	inputToRender = (
+		// 		<RadioGroup value={value} onChange={onChange} row>
+		// 			{radioProp.getOptions().map((option) => (
+		// 				<FormControlLabel
+		// 					key={radioProp.getOptionId(option)}
+		// 					value={radioProp.getOptionId(option)}
+		// 					label={radioProp.getOptionLabel(option)}
+		// 					control={<Radio size="small" />}
+		// 				/>
+		// 			))}
+		// 		</RadioGroup>
+		// 	);
+      	// }
+		{
+        	const radioProp = prop as PropertySelect;
+        	inputToRender = (
+				<FormControl fullWidth size="small">
+					<Select value={value} onChange={onChange}>
 					{radioProp.getOptions().map((option) => (
-						<FormControlLabel
+						<MenuItem
 							key={radioProp.getOptionId(option)}
 							value={radioProp.getOptionId(option)}
-							label={radioProp.getOptionLabel(option)}
-							control={<Radio size="small" />}
-						/>
+						>
+							{radioProp.getOptionLabel(option)}
+						</MenuItem>
 					))}
-				</RadioGroup>
-			);
+					</Select>
+				</FormControl>
+        	);
       	}
       	break;
     	case 'select':

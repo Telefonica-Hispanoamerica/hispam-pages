@@ -1,0 +1,21 @@
+.MuiCollapse-wrapper {
+    .MuiCollapse-wrapperInner {
+        #panel2-content {
+            .MuiAccordionDetails-root {
+                padding: 0!important;
+                .gjs-custom-layer-manager {
+                    .layer-item {
+                        .group {
+                            .box-layer {
+                                padding: 4px 8px 4px 0;
+                                .truncate {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}

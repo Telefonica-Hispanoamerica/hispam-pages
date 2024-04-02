@@ -4,12 +4,17 @@
 	align-items: center;
 	border-bottom: 1px solid #d1d5db;
 	background-color: #FFFFFF;
+	height: 46px;
 	div {
-		text-align: center;
+		//text-align: center;
+		&:nth-child(2) {
+			text-align: center;
+		}
 		.MuiInputBase-root {
 			margin-bottom: 8px;
 			.MuiSelect-select {
-				padding: 8px 34px 8px 14px;
+				font-size: 13px;
+				padding: 2px 20px 2px 8px;
 			}
 		}
 		.logo-image {

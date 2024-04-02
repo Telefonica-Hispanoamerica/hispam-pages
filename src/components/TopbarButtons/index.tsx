@@ -29,14 +29,14 @@ function TopbarButtons () {
 		// 	id: 'core:open-code',
 		// 	iconPath: <CodeOutlined />
         // },
-        // {
-		// 	id: 'export-template',
-		// 	iconPath: <CodeOutlined />
-        // },
         {
-			id: 'export',
+			id: 'export-template',
 			iconPath: <CodeOutlined />
         },
+        // {
+		// 	id: 'export',
+		// 	iconPath: <CodeOutlined />
+        // },
         // {
 		// 	id: 'gjs-export-zip',
 		// 	iconPath: <CodeOutlined />

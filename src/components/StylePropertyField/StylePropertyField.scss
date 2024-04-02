@@ -1,47 +1,70 @@
-.styles-content {
-    margin: 8px 0; 
-    text-align: left;
-    background-color: rgba($color: #d1d5db, $alpha: .2);
-    &.w-full {
-        display: flex;
-        flex-direction: column;
-    }
-    &.w-half {
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-    }
-    .head-subproperties {
-        background-color: #d1d5db;
-        padding: 2px 8px;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        .class-delete {
-            background-color: transparent;
-            padding: 4px 8px;
-            &:hover {
-                border-color: transparent;
-            }
-            &:focus {
-                outline: none;
-            }
-            svg {
-                width: 16px!important;
-                height: 16px!important;
+.MuiAccordionDetails-root {
+    padding: 0 12px 16px!important;
+    .styles-content {
+        margin: 8px 0; 
+        text-align: left;
+        //background-color: rgba($color: #d1d5db, $alpha: .2);
+        &.w-full {
+            display: flex;
+            flex-direction: column;        
+        }
+        &.w-half {
+            // display: grid;
+            // grid-template-columns: repeat(2, 50%);
+            display: flex;
+            flex-direction: column;
+        }
+        .head-subproperties {
+            //background-color: #d1d5db;
+            // padding: 2px 8px;
+            padding: 2px 0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            color:#019DF4;
+            border-bottom: 1px solid #d1d5db;
+            .class-delete {
+                background-color: transparent;
+                padding: 4px 8px;
+                &:hover {
+                    border-color: transparent;
+                }
+                &:focus {
+                    outline: none;
+                }
+                svg {
+                    width: 16px!important;
+                    height: 16px!important;
+                }
             }
         }
-    }
-    .MuiFormGroup-root {
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-        padding: 8px 16px;
-    }
-    .MuiFormControl-root {
-        .MuiInputBase-root {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            input {
-                padding: 4px 14px;
+        .MuiFormGroup-root {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            padding: 8px 16px;
+            background-color: rgba($color: #d1d5db, $alpha: .2);
+        }
+        .MuiFormControl-root {
+            .MuiInputBase-root {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                input {
+                    padding: 2px 14px;
+                    font-size: 13px;
+                }
+                .MuiSelect-select {
+                    padding: 2px 14px;
+                    font-size: 13px;
+                }
+            }
+            .MuiInputBase-colorPrimary {
+                padding: 2px 0;
+                .MuiInputAdornment-root {
+                    input {
+                        block-size: 25px;
+                        padding: 2px 4px;
+                    }
+                }
             }
         }
     }

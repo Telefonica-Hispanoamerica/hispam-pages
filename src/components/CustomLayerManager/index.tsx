@@ -3,6 +3,7 @@ import type { Component, Editor } from 'grapesjs';
 import { useRef, useState } from 'react';
 import { cx } from '../common';
 import LayerItem from '../LayerItem';
+import './CustomLayerManager.scss'
 
 type DragRect = {
     y: number;

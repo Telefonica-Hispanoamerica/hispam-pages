@@ -10,6 +10,12 @@
         }
         .MuiFormControl-root {
             margin-left: auto;
+            .MuiInputBase-root {
+                .MuiSelect-select {
+                    padding: 4px 32px 4px 11px;
+                    font-size: 13px;
+                }
+            }
         }
     }
     .input-class {
