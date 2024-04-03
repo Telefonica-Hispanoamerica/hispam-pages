@@ -50,6 +50,7 @@ import Columns6Kenos from './components/CustomBlocksTelefonica/Columns/Columns6'
 import H1 from './components/CustomBlocksTelefonica/Text/H1';
 import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
+import MediaCardTelefonica from './components/CustomBlocksTelefonica/Cards/MediaCardTelefonica';
 
 declare var google: { 
 	accounts: {
@@ -424,6 +425,7 @@ function App() {
 						DisplayMediaCardGroupKenos,
 						HighlightedCardKenos,
 						MediaCardKenos,
+						MediaCardTelefonica,
 						SnapCardKenos,
 						AvatarKenos,
 						BadgeKenos,
