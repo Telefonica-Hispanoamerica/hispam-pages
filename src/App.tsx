@@ -52,6 +52,7 @@ import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
 import MediaCardTelefonica from './components/CustomBlocksTelefonica/Cards/MediaCardTelefonica';
 import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica';
+import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
 
@@ -428,8 +429,9 @@ function App() {
 						DisplayMediaCardGroupKenos,
 						HighlightedCardKenos,
 						MediaCardKenos,
-						MediaCardTelefonica,
+						MediaCardTelefonica,						
 						PlanCardTelefonica,
+						PlanCardFeatTelefonica,
 						SnapCardKenos,
 						AvatarKenos,
 						BadgeKenos,

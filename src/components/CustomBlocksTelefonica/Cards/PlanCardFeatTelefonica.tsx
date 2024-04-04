@@ -1,23 +1,42 @@
 const div = `
 	<style>	
-		.card {
+		.card-feat {
 			background-color: #fff;
 			border-radius: 16px;
 			position: relative;
-			border: 1px solid #dddddd;
+			border: 1px solid #019BEF;
 			overflow: hidden;
 			width: 100%;
 			padding-bottom: 16px;
-			margin-top: 16px
+			margin-top: 0;
 		}
 		@media (max-width: 768px) {
-			.card {
+			.card-feat {
 				padding: 24px 0;
 				margin-bottom: 24px;
 			}
-		}		
-
-		.card .header-plan {
+		}
+		.card-feat .feat-tag {
+			background-color: #019BEF;
+			border-radius: 16px 16px 0px 0px;
+			display: flex;
+			padding: 4px 16px;
+			justify-content: center;
+			align-items: center;
+		}
+		.card-feat .feat-tag .icon-tag {
+			fill: #FFF;
+			margin-right: 4px;
+			display: flex;
+		}
+		.card-feat .feat-tag .txt-tag {
+			color: #FFF;
+			text-align: center;
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 20px;
+		}
+		.card-feat .header-plan {
 			background-color: #0B2739;
 			padding: 16px 16px 32px;
 			color: #fff;
@@ -26,7 +45,7 @@ const div = `
 			position: relative;
 		}
 
-		.card .header-plan .tag {
+		.card-feat .header-plan .tag {
 			background-color: #e63780;
 			padding: 4px 16px;
 			color: #fff;
@@ -41,75 +60,75 @@ const div = `
 			text-align: center;
 		}
 		@media (max-width: 768px) {
-			.card .header-plan .tag {
+			.card-feat .header-plan .tag {
 				width: 100%;
 				border-radius: 12px 12px 0 0;
 			}
 		}
 
-		.card .header-plan .plan-name {
+		.card-feat .header-plan .plan-name {
 			font-size: 14px;
 			line-height: 20px;
 			color: #fff;
 			margin: 0;
 			text-align: center;
 		}
-		.card .header-plan .capacity {
+		.card-feat .header-plan .capacity {
 			font-size: 32px;
 			line-height: 40px;
 			color: #fff;
 			margin: 0;
 			text-align: center;
 		}
-		.card .header-plan .offer-description {
+		.card-feat .header-plan .offer-description {
 			font-size: 14px;
 			line-height: 20px;
 			color: #fff;
 			margin: 0;
 			text-align: center;
 		}
-		.card .header-plan .offer-description span {
+		.card-feat .header-plan .offer-description span {
 			font-weight: 600;
 		}
-		.card .price-table {
+		.card-feat .price-table {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			padding: 32px 16px 16px;
 		}
 		@media (max-width: 768px) {
-			.card .price-table {
+			.card-feat .price-table {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
 			}
 		}
-		.card .price-table .offer-description-price {
+		.card-feat .price-table .offer-description-price {
 			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
 		}
-		.card .price-table .price {
+		.card-feat .price-table .price {
 			font-size: 32px;
 			line-height:40px;
 			color: #313235;
 		}
-		.card .price-table .price span{
+		.card-feat .price-table .price span{
 			font-size: 22px;
 			line-height: 30px;
 			color: #313235;
 		}
-		.card .price-table .offer-per-month{
+		.card-feat .price-table .offer-per-month{
 			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
 		}
-		.card .price-table .offer-per-month span{
+		.card-feat .price-table .offer-per-month span{
 			font-weight: 600;
 		}
-		.card .btn-main-content {
+		.card-feat .btn-main-content {
 			padding: 0 16px;
 		}
-		.card .btn-main-content .btn-primary {
+		.card-feat .btn-main-content .btn-primary {
 			width: 100%;
 			font-size: 18px;
 			font-weight: 600;
@@ -124,11 +143,11 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		@media (max-width: 768px) {
-			.card .btn-main-content .btn-primary {
+			.card-feat .btn-main-content .btn-primary {
 				margin: 16px auto 8px;
 			}
 		}
-		.card .btn-main-content .btn-second {
+		.card-feat .btn-main-content .btn-second {
 			width: 100%;
 			font-size: 18px;
 			font-weight: 600;
@@ -143,11 +162,11 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		@media (max-width: 768px) {
-			.card .btn-main-content .btn-second {
+			.card-feat .btn-main-content .btn-second {
 				margin: 8px auto;
 			}
 		}
-		.card .switch-options {
+		.card-feat .switch-options {
 			display: flex;
 			padding: 16px 8px;
 			flex-direction: row;
@@ -158,19 +177,19 @@ const div = `
 			align-items: center;
 			justify-content: space-between;	
 		}
-		.card .switch-options .icon-circle {
+		.card-feat .switch-options .icon-circle {
 			width: 40px;
 			height: 40px;
 			border-radius: 1000px;
 			background: url(<path-to-image>) lightgray 50% / cover no-repeat;
 		}
-		.card .switch-options .streaming {
+		.card-feat .switch-options .streaming {
 			width: 60%;
 			display: flex;
 			flex-direction: column;
 			margin-left: 8px;
 		}
-		.card .switch-options .streaming .add-streaming {
+		.card-feat .switch-options .streaming .add-streaming {
 			align-self: stretch;
 			color: #313235;
 			font-size: 16px;
@@ -178,26 +197,26 @@ const div = `
 			font-weight: 400;
 			line-height: 24px;
 		}
-		.card .switch-options .streaming .description {
+		.card-feat .switch-options .streaming .description {
 			color: #737578;
 			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
 		}
-		.card .switch-options .switch {
+		.card-feat .switch-options .switch {
 			position: relative;
 			display: inline-block;
 			width: 64px;
 			height: 34px;
 		}
 		  
-		.card .switch-options .switch input { 
+		.card-feat .switch-options .switch input { 
 			opacity: 0;
 			width: 0;
 			height: 0;
 		}
-		.card .switch-options .slider {
+		.card-feat .switch-options .slider {
 			position: absolute;
 			cursor: pointer;
 			top: 0;
@@ -209,7 +228,7 @@ const div = `
 			transition: .4s;
 		}
 		  
-		.card .switch-options .slider:before {
+		.card-feat .switch-options .slider:before {
 			position: absolute;
 			content: "";
 			height: 26px;
@@ -221,30 +240,30 @@ const div = `
 			transition: .4s;
 		}
 
-		.card .switch-options input:checked + .slider {
+		.card-feat .switch-options input:checked + .slider {
 			background-color: #2196F3;
 		}
 		  
-		.card .switch-options input:focus + .slider {
+		.card-feat .switch-options input:focus + .slider {
 			box-shadow: 0 0 1px #2196F3;
 		}
 		  
-		.card .switch-options input:checked + .slider:before {
+		.card-feat .switch-options input:checked + .slider:before {
 			-webkit-transform: translateX(26px);
 			-ms-transform: translateX(26px);
 			transform: translateX(26px);
 		}
 		  
 		/* Rounded sliders */
-		.card .switch-options .slider.round {
+		.card-feat .switch-options .slider.round {
 			border-radius: 34px;
 		}
 		  
-		.card .switch-options .slider.round:before {
+		.card-feat .switch-options .slider.round:before {
 			border-radius: 50%;
 		}
 
-		.card .long-offer-row {
+		.card-feat .long-offer-row {
 			display: flex;
 			height: 40px;
 			padding: 4px 8px 4px 16px;
@@ -254,11 +273,11 @@ const div = `
 			background: #F6F6F6;
 			margin: 0 16px 16px;
 		}
-		.card .long-offer-row .icon {
+		.card-feat .long-offer-row .icon {
 			width: 24px;
 			height: 24px;
 		}
-		.card .long-offer-row .txt {
+		.card-feat .long-offer-row .txt {
 			flex: 1 0 0;
 			color: #737578;
 			font-size: 14px;
@@ -266,11 +285,11 @@ const div = `
 			font-weight: 400;
 			line-height: 20px;
 		}
-		.card .long-offer-list .icon {
+		.card-feat .long-offer-list .icon {
 			width: 24px;
 			height: 24px;
 		}
-		.card .long-offer-list {
+		.card-feat .long-offer-list {
 			display: flex;
 			padding-top: 16px;
 			padding-bottom: 16px;
@@ -281,28 +300,28 @@ const div = `
 			border-top: 1px solid #EEE;
 			border-bottom: 1px solid #EEE;		
 		}
-		.card .long-offer-list:last-child {
+		.card-feat .long-offer-list:last-child {
 			border-bottom: none;
 		}
-		.card .long-offer-list .content {
+		.card-feat .long-offer-list .content {
 			display: flex;
 			flex-direction: column;
 			justify-content: start;
 			align-items: start;
 		}
-		.card .long-offer-list .content .title{
+		.card-feat .long-offer-list .content .title{
 			color: #313235;
 			font-size: 14px;
 			font-weight: 700;
 			line-height: 20px;
 		}
-		.card .long-offer-list .content .description{
+		.card-feat .long-offer-list .content .description{
 			color: #737578;
 			font-size: 14px;
 			font-weight: 400;
 			line-height: 20px;
 		}
-		.card .long-offer-list .content .link{
+		.card-feat .long-offer-list .content .link{
 			color: #019BEF;
 			text-align: center;
 			font-size: 14px;
@@ -311,7 +330,15 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 	</style>
-	<div class='card'>		
+	<div class='card-feat'>
+		<div class='feat-tag'>
+			<div class='icon-tag'>
+				<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M12.2913 7.34864C12.4314 7.38412 12.5416 7.49243 12.5808 7.63435C12.62 7.77628 12.5808 7.9294 12.4799 8.03398L6.28947 14.4467C6.21104 14.5251 6.1102 14.5662 6.00749 14.5662C5.9328 14.5662 5.8581 14.5438 5.79088 14.499C5.63215 14.3944 5.56865 14.189 5.63775 14.0078L7.43793 9.30755L4.69657 8.62968C4.55838 8.59607 4.44821 8.48776 4.40899 8.3477C4.36978 8.20765 4.40526 8.05452 4.50423 7.94994L10.4482 1.569C10.5808 1.42708 10.7899 1.4028 10.9505 1.50925C11.1111 1.61569 11.1746 1.82484 11.1037 2.00598L9.2904 6.60914L12.2913 7.34864ZM8.34549 9.16936L7.08312 12.4653L11.4193 7.97235L8.65548 7.29075C8.54344 7.26274 8.4482 7.18617 8.39591 7.07973C8.34363 6.97516 8.33802 6.85004 8.38097 6.73986L9.59106 3.66984L5.55745 8.00037L8.06912 8.62221C8.18116 8.65022 8.2764 8.72679 8.32869 8.83136C8.38097 8.93594 8.38658 9.05919 8.34549 9.16936Z" fill="white"/>
+				</svg>
+			</div>
+			<div class='txt-tag'>Featured tag</div>
+		</div>
 		<div class='header-plan'>
 			<span class='plan-name'>Plan name</span>
 			<span class='capacity'>12 GB</span>
@@ -383,10 +410,10 @@ const div = `
     </div>
 	`
 
-function PlanCardTelefonica(editor: any) {		
-	editor.Blocks.add('planCardTelefonica', {
-		id: 'planCardTelefonica',
-		label: 'Plan Card Telefónica',
+function PlanCardFeatTelefonica(editor: any) {		
+	editor.Blocks.add('planCardFeatTelefonica', {
+		id: 'planCardFeatTelefonica',
+		label: 'Plan Card Feat Telefónica',
 		activate: true,
 		content: div,
 		category: 'Cards',
@@ -396,4 +423,4 @@ function PlanCardTelefonica(editor: any) {
 	
 }
   
-export default PlanCardTelefonica;
+export default PlanCardFeatTelefonica;
