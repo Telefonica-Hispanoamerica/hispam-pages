@@ -51,6 +51,9 @@ import H1 from './components/CustomBlocksTelefonica/Text/H1';
 import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
 import MediaCardTelefonica from './components/CustomBlocksTelefonica/Cards/MediaCardTelefonica';
+import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica';
+import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
+import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
 
 declare var google: { 
 	accounts: {
@@ -426,6 +429,7 @@ function App() {
 						HighlightedCardKenos,
 						MediaCardKenos,
 						MediaCardTelefonica,
+						PlanCardTelefonica,
 						SnapCardKenos,
 						AvatarKenos,
 						BadgeKenos,
@@ -448,6 +452,8 @@ function App() {
 						H1,
 						H2,
 						paragraphKenos,
+						OrderedListKenos,
+						NumberListKenos,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',

@@ -84,7 +84,6 @@ const div = `
 		.media-card .box-content .buttons .link-buttom {
 			color: #00A9E0;
 			box-sizing: border-box;
-			min-width: 104px;
 			padding: 4.5px 10.5px;
 			display: flex;
 			align-items: center;
