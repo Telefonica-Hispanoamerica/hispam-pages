@@ -1,6 +1,10 @@
 .left-sidebar-column {
     border-right: 1px solid #d1d5db;
     background-color: #FFFFFF;
+    //height: 100vh;
+    .css-1c35hjw-MuiPaper-root-MuiAccordion-root {
+        box-shadow: none;
+    }
     .MuiPaper-root {
         //height: 46px;
         .MuiButtonBase-root {
@@ -17,6 +21,7 @@
                     .MuiAccordion-region {
                         .MuiAccordionDetails-root {
                             padding: 0;
+                            box-shadow: none;
                         }
                     }
                 }

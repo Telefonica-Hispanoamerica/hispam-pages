@@ -56,6 +56,7 @@ body {
 .layout-editor-wrapper {
   	display: grid;
 	  grid-template-columns: 16% 68% 16%;
+	  height: 100%;
 	@media(min-width: 1720px) {
 		grid-template-columns: 15% 70% 15%;
 	}
@@ -71,7 +72,7 @@ body {
 }
 .gjs-editor-cont {
 	background-color: #f7f7f7;
-	height: 90%!important;
+	height: 94%!important;
 }
 //Modal export-template
 .gjs-mdl-dialog {
@@ -114,6 +115,10 @@ body {
 	min-height: auto;
   }
 
-[data-gjs-type="wrapper"] {
-	min-height: initial!important;
+// [data-gjs-type="wrapper"] {
+// 	min-height: initial!important;
+// }
+
+.gjs-editor-column {
+	//height: 100vh;
 }

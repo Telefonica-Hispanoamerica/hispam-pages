@@ -1,13 +1,13 @@
 .right-column {
     border-left: 1px solid #d1d5db;
     background-color: #FFFFFF;
-    
+    //height: 100vh;
     .tabs-buttons {
         .MuiBox-root {
             .MuiTabs-root {
                 min-height: 46px;
                 .MuiTabs-scroller {
-                    height: 46px;
+                    //height: 46px;
                     .MuiTabs-flexContainer {
                         display: grid;
                         grid-template-columns: repeat(2, 50%);
@@ -27,13 +27,13 @@
         }
     }
     .tabs-content {
+        overflow-x: hidden;
+        overflow-y: scroll;
         // overflow-y: auto;
         // height: 100vh;
         .MuiTabPanel-root {
             padding: 16px 8px;
-            max-width: 100%;
-            overflow-x: hidden;
-            overflow-y: scroll;
+            max-width: 100%;            
         }
     }
 }

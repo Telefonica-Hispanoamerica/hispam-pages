@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import grapesjs, { Editor, EditorConfig, Plugin, PluginOptions } from 'grapesjs';
+import { useState, useEffect, useContext, useRef, useCallback } from 'react'
+import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
@@ -55,27 +55,28 @@ import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCa
 import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
+import PageIdContext from './hooks/PageContext';
 
-declare var google: { 
+declare var google: {
 	accounts: {
-		oauth2: any; 
+		oauth2: any;
 		id: {
-			prompt(): unknown; 
+			prompt(): unknown;
 			initialize: (
-				arg0: { 
-					client_id: string; 
-					callback: (response: any) => void; 
+				arg0: {
+					client_id: string;
+					callback: (response: any) => void;
 				}
-			) => void; 
+			) => void;
 			renderButton: (
-				arg0: HTMLElement, 
-				arg1: { 
-					theme: string; 
+				arg0: HTMLElement,
+				arg1: {
+					theme: string;
 					size: string;
 				}
-			) => void; 
-		}; 
-	}; 
+			) => void;
+		};
+	};
 };
 
 type PropsLandingPage = {
@@ -96,10 +97,20 @@ function App() {
 
 	const [ landingPage, setLandingPage ] = useState<any>([newPage]);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	
+
+	const { pageId } = useContext<any>(PageIdContext);
+
+	const [ onEditorUpdate, setOnEditorUpdate] = useState<any>(null);
+
+	const [currentPageId, setCurrentPageId] = useState<number | null>(null);
+
+	// useEffect(() => {
+	// 	setCurrentPageId(pageId);
+
+	// }, [pageId]);
+
 
 	useEffect(() => {
-					
 		async function fetchMyAPI() {
 			try {
 				const response = await fetch('http://localhost:3000/get-html');
@@ -107,7 +118,9 @@ function App() {
 					throw new Error('Network response was not ok');
 				}
 				const jsonData = await response.json();
-				landingPage.push(...jsonData)
+				// setLandingPage((prevState:any) => [...prevState, ...jsonData]);
+				const updatedData = [...landingPage, ...jsonData];
+            	setLandingPage(updatedData);
 				landingPage.length >= 0 ? setIsOpen(true) : setIsOpen(false)
 			} catch (error) {
 				console.error('Error al obtener el HTML desde el backend', error);
@@ -117,11 +130,17 @@ function App() {
 
 		fetchMyAPI()
 
-	}, []);	
+	}, []);
 
-	const onEditor = (editor: Editor, opts = {}) => {
+	const handleSetPagetoSave = () => {
+		
+	}
 
-		console.log("editor", editor.BlockManager.blocks.models)
+	const onEditor = (editor: Editor, opts = {} ) => {
+
+		let currentPageId = 0;
+
+		console.log("LANDING PAGE ARRAY", landingPage)
 
 		const pfx = editor.getConfig('stylePrefix');
 		const commandName = 'export-template';
@@ -152,10 +171,15 @@ function App() {
 			  ...opts,
 		};
 
-		console.log('CONFIG', config)
+		editor.on('page:select', (page: any) => { 
+			console.log("SELECT PAGE", page);
+			//setCurrentPageId(page.id);
+			currentPageId = page.id
+		});
 
 		editor.Commands.add(commandName, {
-			run(editor, s, opts: PluginOptions = {}) {
+
+			run(editor: PluginOptions = {}) {
 				editor.Modal.open({
 					title: 'Modal example',
 					content: ``,
@@ -170,7 +194,7 @@ function App() {
 							<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 							<link rel="stylesheet" href="css/style.css">
 							<link rel="stylesheet" href="css/kenos.css">
-							<style>							
+							<style>
 								@font-face {
 									font-family: "Telefonica-Regular";
 									src: url("https://www.movistar.com.co/assets/fonts_movistar/Telefonica-Regular.woff2") format("woff2"), url("../fonts/Telefonica-Fonts/Regular/TelefonicaWeb-Regular.woff") format("woff");
@@ -192,7 +216,7 @@ function App() {
 									width: 100%;
 									border-spacing: 8px;
 								}
-						
+
 								@media (max-width: 768px) {
 									.gjs-row-kenos {
 										width: 100%;
@@ -204,14 +228,14 @@ function App() {
 										height: 100%;
 										margin: 0 0 16px;
 									}
-								}	
-								
+								}
+
 								.gjs-cell-kenos {
 									width: 8%;
 									display: table-cell;
 									height: 75px;
 								}
-							</style>						
+							</style>
 						</head>
 						${editor.getHtml()}
 					</html>`,
@@ -221,47 +245,56 @@ function App() {
 					const btnExp = document.createElement('button');
 					btnExp.innerHTML = config.btnLabel!;
 					btnExp.className = `${pfx}btn-prim`;
-					btnExp.type = 'button';
-			
+					btnExp.type = 'button';					
+
 					editor.on('run:export-template', () => {
 						const el = editor.Modal.getContentEl();
 						el?.appendChild(btnExp);
+
 						btnExp.onclick = () => {
-							const nextIndex = landingPage.length + 1;
-							saveHTML(
-								nextIndex,
-								{
-									id: nextIndex,
-									name: `Page ${nextIndex}`,
-									styles: exportData.css,
-									component: exportData.html
-								}								
-							);
-							editor.Modal.close();
+							console.log("PAGE======", currentPageId)
+							const getExistingPage = landingPage.filter((page: any) => page.id == currentPageId);
+							console.log("getExistingPage======", getExistingPage)
+							if(getExistingPage > 0){
+								console.log("Reemplazar")
+							} else {
+								const nextIndex = landingPage.length + 1;
+								saveHTML(
+									nextIndex,
+									{
+										id: nextIndex,
+										name: `Page ${nextIndex}`,
+										styles: exportData.css,
+										component: exportData.html
+									}
+								);
+								editor.Modal.close();
+							}
 							
+
 							//====== Download zip file ======
 
-							const zip = new JSZip();
-							const carpetaRaiz:any = zip.folder('mi_proyecto');
+							// const zip = new JSZip();
+							// const carpetaRaiz:any = zip.folder('mi_proyecto');
 
-							carpetaRaiz.file('index.html', exportData.html);
-							carpetaRaiz.folder('css').file('style.css', exportData.css);
-							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
+							// carpetaRaiz.file('index.html', exportData.html);
+							// carpetaRaiz.folder('css').file('style.css', exportData.css);
+							// carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+							// carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
-							zip.generateAsync({ type: 'blob' }).then((blob) => {
-								const url = URL.createObjectURL(blob);
-								const link = document.createElement('a');
-								link.href = url;
-								link.download = 'mi_proyecto.zip';
-								document.body.appendChild(link);
-								link.click();
-								document.body.removeChild(link);
-							});
-						}						
+							// zip.generateAsync({ type: 'blob' }).then((blob) => {
+							// 	const url = URL.createObjectURL(blob);
+							// 	const link = document.createElement('a');
+							// 	link.href = url;
+							// 	link.download = 'mi_proyecto.zip';
+							// 	document.body.appendChild(link);
+							// 	link.click();
+							// 	document.body.removeChild(link);
+							// });
+						}
 					});
 				}
-				
+
 				//===============================
 
 				// const zip = new JSZip();
@@ -288,11 +321,11 @@ function App() {
 				// 	  config.isBinary(content, name) :
 				// 	  !(ext && ['html', 'css'].indexOf(ext) >= 0) &&
 				// 	  !/^[\x00-\x7F]*$/.test(content);
-			  
+
 				// 	if (isBinary) {
 				// 	  opts.binary = true;
 				// 	}
-			  
+
 				// 	editor.log('Create file', { ns: 'plugin-export',
 				// 	  // @ts-ignore
 				// 	  name, content, opts
@@ -302,13 +335,13 @@ function App() {
 
 				//   async createDirectory(zip: JSZip, root: PluginOptions["root"]) {
 				// 	root = typeof root === 'function' ? await root(editor) : root;
-			  
+
 				// 	for (const name in root) {
 				// 	  if (root.hasOwnProperty(name)) {
 				// 		let content = root[name];
 				// 		content = typeof content === 'function' ? await content(editor) : content;
 				// 		const typeOf = typeof content;
-			  
+
 				// 		if (typeOf === 'string') {
 				// 		  this.createFile(zip, name, content as string);
 				// 		} else if (typeOf === 'object') {
@@ -324,21 +357,20 @@ function App() {
 				editor.Modal.close();
 			},
 		});
-
-
 	};
 
 	const saveHTML = async (id: number, html: any) => {
-		const index = landingPage.findIndex((objeto: PropsLandingPage) => objeto.id === id);
-		console.log('IDDDDD', index)
-		// Verificar si se encontró el objeto
-		if (index !== -1) {
-			// Reemplazar el objeto en la posición encontrada
-			landingPage[index] = html;
-			console.log(`Objeto con ID ${id} reemplazado exitosamente.`);
-		} else {
-			console.log(`No se encontró ningún objeto con ID ${id}.`);
-		}
+		console.log("HTML", html)
+		// const index = landingPage.findIndex((objeto: PropsLandingPage) => objeto.id === id);
+		// console.log('IDDDDD', index)
+		// // Verificar si se encontró el objeto
+		// if (index !== -1) {
+		// 	// Reemplazar el objeto en la posición encontrada
+		// 	landingPage[index] = html;
+		// 	console.log(`Objeto con ID ${id} reemplazado exitosamente.`);
+		// } else {
+		// 	console.log(`No se encontró ningún objeto con ID ${id}.`);
+		// }
 		try {
 			const response = await fetch('http://localhost:3000/save-html', {
 				method: 'POST',
@@ -354,16 +386,16 @@ function App() {
 			}
 		} catch (error) {
 		  	console.error('Error al guardar el HTML en el backend', error);
-		}		
+		}
 	};
 
 	const gjsOptions: EditorConfig = {
 
 		height: '100%',
-		undoManager: { 
-			trackSelection: false 
+		undoManager: {
+			trackSelection: false
 		},
-		selectorManager: { 
+		selectorManager: {
 			componentFirst: true,
 		},
 		modal: { custom: true },
@@ -372,12 +404,12 @@ function App() {
 			styles: [
 				'/node_modules/@uxhispam/kenos/css/kenos.css',
 				'/node_modules/@uxhispam/kenos/css/reset.css',
-				// '/node_modules/@uxhispam/kenos/css/roboto.css',	
+				// '/node_modules/@uxhispam/kenos/css/roboto.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
 			scripts: []
-		},	
-		projectData: {			
+		},
+		projectData: {
 			assets: [
 				'https://via.placeholder.com/350x250/78c5d6/fff',
 				'https://via.placeholder.com/350x250/459ba8/fff',
@@ -386,7 +418,7 @@ function App() {
 				'https://via.placeholder.com/350x250/f28c33/fff',
 			],
 			pages: [
-				...landingPage	
+				...landingPage
 			],
 		},
 		pluginsOpts: {
@@ -405,10 +437,8 @@ function App() {
 			// }
 		}
 	};
-	console.log('gjsOptions', gjsOptions)
 
 	return (
-		
 			<div>
 				{/*<GoogleOuthAnalytics />*/}
 				{ isOpen && <GjsEditor
@@ -429,7 +459,7 @@ function App() {
 						DisplayMediaCardGroupKenos,
 						HighlightedCardKenos,
 						MediaCardKenos,
-						MediaCardTelefonica,						
+						MediaCardTelefonica,
 						PlanCardTelefonica,
 						PlanCardFeatTelefonica,
 						SnapCardKenos,
@@ -479,21 +509,23 @@ function App() {
 						{
 							id: 'grapesjs-plugin-ckeditor',
 							src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
-						}	
+						}
 					]}
 				>
-					<div className={'layout-editor-wrapper'}>					
+					<div className={'layout-editor-wrapper'}>
 						<LeftSidebar></LeftSidebar>
 
 						<div className={'gjs-editor-column'}>
 							<Topbar></Topbar>
+							<button onClick={handleSetPagetoSave}>Save</button>
 							<Canvas />
 						</div>
 						<RightSidebar></RightSidebar>
-								
+
 					</div>
 				</GjsEditor>}
-		</div>		
+			</div>
+
 	)
 }
 
