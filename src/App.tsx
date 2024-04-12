@@ -37,7 +37,7 @@ import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
 //===============
 import JSZip from 'jszip';
-import cssKenos from '@uxhispam/kenos/css/kenos.css'
+import cssKenos from '@uxhispam/kenos/css/kenos.css?inline'
 import cssRoboto from '@uxhispam/kenos/css/roboto.css'
 import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
 import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/MediaCard';
@@ -118,9 +118,10 @@ function App() {
 					throw new Error('Network response was not ok');
 				}
 				const jsonData = await response.json();
-				// setLandingPage((prevState:any) => [...prevState, ...jsonData]);
+				setLandingPage((prevState:any) => [...prevState, ...jsonData]);
 				const updatedData = [...landingPage, ...jsonData];
             	setLandingPage(updatedData);
+				// landingPage.push(...jsonData)
 				landingPage.length >= 0 ? setIsOpen(true) : setIsOpen(false)
 			} catch (error) {
 				console.error('Error al obtener el HTML desde el backend', error);
@@ -133,17 +134,18 @@ function App() {
 	}, []);
 
 	const handleSetPagetoSave = () => {
-		
+
 	}
 
 	const onEditor = (editor: Editor, opts = {} ) => {
 
 		let currentPageId = 0;
+		let currentPageName = '';
 
 		console.log("LANDING PAGE ARRAY", landingPage)
 
 		const pfx = editor.getConfig('stylePrefix');
-		const commandName = 'export-template';
+		const commandName = 'save-export';
 
 		const config: PluginOptions = {
 			addExportBtn: true,
@@ -171,10 +173,10 @@ function App() {
 			  ...opts,
 		};
 
-		editor.on('page:select', (page: any) => { 
-			console.log("SELECT PAGE", page);
-			//setCurrentPageId(page.id);
-			currentPageId = page.id
+		editor.on('page:select', (page: any) => {
+			console.log('PAGE', page)
+			currentPageId = page._previousAttributes.id;
+			currentPageName = page._previousAttributes.name;
 		});
 
 		editor.Commands.add(commandName, {
@@ -242,21 +244,39 @@ function App() {
 					css: editor.getCss()
 				}
 				if (config.addExportBtn) {
-					const btnExp = document.createElement('button');
-					btnExp.innerHTML = config.btnLabel!;
-					btnExp.className = `${pfx}btn-prim`;
-					btnExp.type = 'button';					
 
-					editor.on('run:export-template', () => {
+					const existingButtons = document.querySelectorAll(`${pfx}btn-prim`);
+					console.log("existingButtons", existingButtons)
+					existingButtons.forEach(button => button.remove());
+
+					const btnExp = document.createElement('button');
+					btnExp.innerHTML = `Save HTML ` + currentPageName;
+					btnExp.className = `${pfx}btn-prim`;
+					btnExp.type = 'button';
+
+					const btnExpExport = document.createElement('button');
+					btnExpExport.innerHTML = `Export HTML ` + currentPageName;
+					btnExpExport.className = `${pfx}btn-prim`;
+					btnExpExport.type = 'button';					
+
+					editor.on('run:save-export', () => {
 						const el = editor.Modal.getContentEl();
 						el?.appendChild(btnExp);
 
 						btnExp.onclick = () => {
-							console.log("PAGE======", currentPageId)
 							const getExistingPage = landingPage.filter((page: any) => page.id == currentPageId);
-							console.log("getExistingPage======", getExistingPage)
-							if(getExistingPage > 0){
-								console.log("Reemplazar")
+							if(getExistingPage[0].id > 0){
+								saveHTML(
+									getExistingPage[0].id,
+									{
+										...getExistingPage[0],
+										// styles: exportData.css,
+										// component: exportData.html
+										styles: editor.getCss(),
+										component: editor.getHtml()
+									}
+								);
+								editor.Modal.close();
 							} else {
 								const nextIndex = landingPage.length + 1;
 								saveHTML(
@@ -264,94 +284,39 @@ function App() {
 									{
 										id: nextIndex,
 										name: `Page ${nextIndex}`,
-										styles: exportData.css,
-										component: exportData.html
+										// styles: exportData.css,
+										// component: exportData.html
+										styles: editor.getCss(),
+										component: editor.getHtml()
 									}
 								);
 								editor.Modal.close();
 							}
-							
+						}
 
-							//====== Download zip file ======
+						el?.appendChild(btnExpExport);
+						btnExpExport.onclick = () => {
+							const zip = new JSZip();
+							const carpetaRaiz:any = zip.folder('mi_proyecto');
 
-							// const zip = new JSZip();
-							// const carpetaRaiz:any = zip.folder('mi_proyecto');
+							carpetaRaiz.file('index.html', exportData.html);
+							carpetaRaiz.folder('css').file('style.css', exportData.css);
+							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
-							// carpetaRaiz.file('index.html', exportData.html);
-							// carpetaRaiz.folder('css').file('style.css', exportData.css);
-							// carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-							// carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
-
-							// zip.generateAsync({ type: 'blob' }).then((blob) => {
-							// 	const url = URL.createObjectURL(blob);
-							// 	const link = document.createElement('a');
-							// 	link.href = url;
-							// 	link.download = 'mi_proyecto.zip';
-							// 	document.body.appendChild(link);
-							// 	link.click();
-							// 	document.body.removeChild(link);
-							// });
+							zip.generateAsync({ type: 'blob' }).then((blob) => {
+								const url = URL.createObjectURL(blob);
+								const link = document.createElement('a');
+								link.href = url;
+								link.download = `page_${currentPageId}.zip`;
+								document.body.appendChild(link);
+								link.click();
+								document.body.removeChild(link);
+							});
 						}
 					});
 				}
 
-				//===============================
-
-				// const zip = new JSZip();
-				// const onError = opts.onError || config.onError;
-				// const root = opts.root || config.root;
-
-				// this.createDirectory(zip, root)
-				// 	.then(async () => {
-				// 	const content = await zip.generateAsync({ type: 'blob' });
-				// 	const filenameFn = opts.filename || config.filename;
-				// 	const done = opts.done || config.done;
-				// 	const filenamePfx = opts.filenamePfx || config.filenamePfx;
-				// 	const filename = filenameFn ? filenameFn(editor) : `${filenamePfx}_${Date.now()}.zip`;
-				// 	FileSaver.saveAs(content, filename);
-				// 	done?.();
-				// 	})
-				// 	.catch(onError);
-				// },
-
-				// createFile(zip: JSZip, name: string, content: string) {
-				// 	const opts: JSZip.JSZipFileOptions = {};
-				// 	const ext = name.split('.')[1];
-				// 	const isBinary = config.isBinary ?
-				// 	  config.isBinary(content, name) :
-				// 	  !(ext && ['html', 'css'].indexOf(ext) >= 0) &&
-				// 	  !/^[\x00-\x7F]*$/.test(content);
-
-				// 	if (isBinary) {
-				// 	  opts.binary = true;
-				// 	}
-
-				// 	editor.log('Create file', { ns: 'plugin-export',
-				// 	  // @ts-ignore
-				// 	  name, content, opts
-				// 	});
-				// 	zip.file(name, content, opts);
-				//   },
-
-				//   async createDirectory(zip: JSZip, root: PluginOptions["root"]) {
-				// 	root = typeof root === 'function' ? await root(editor) : root;
-
-				// 	for (const name in root) {
-				// 	  if (root.hasOwnProperty(name)) {
-				// 		let content = root[name];
-				// 		content = typeof content === 'function' ? await content(editor) : content;
-				// 		const typeOf = typeof content;
-
-				// 		if (typeOf === 'string') {
-				// 		  this.createFile(zip, name, content as string);
-				// 		} else if (typeOf === 'object') {
-				// 		  const dirRoot = zip.folder(name)!;
-				// 		  await this.createDirectory(dirRoot, content as RootType);
-				// 		}
-				// 	  }
-				// 	}
-				//   },
-				// });
 			},
 			stop(editor) {
 				editor.Modal.close();
@@ -360,17 +325,8 @@ function App() {
 	};
 
 	const saveHTML = async (id: number, html: any) => {
-		console.log("HTML", html)
-		// const index = landingPage.findIndex((objeto: PropsLandingPage) => objeto.id === id);
-		// console.log('IDDDDD', index)
-		// // Verificar si se encontró el objeto
-		// if (index !== -1) {
-		// 	// Reemplazar el objeto en la posición encontrada
-		// 	landingPage[index] = html;
-		// 	console.log(`Objeto con ID ${id} reemplazado exitosamente.`);
-		// } else {
-		// 	console.log(`No se encontró ningún objeto con ID ${id}.`);
-		// }
+		console.log("HTML", [id, html])
+
 		try {
 			const response = await fetch('http://localhost:3000/save-html', {
 				method: 'POST',
@@ -517,7 +473,6 @@ function App() {
 
 						<div className={'gjs-editor-column'}>
 							<Topbar></Topbar>
-							<button onClick={handleSetPagetoSave}>Save</button>
 							<Canvas />
 						</div>
 						<RightSidebar></RightSidebar>
