@@ -25,6 +25,7 @@
     "@react-oauth/google": "^0.12.1",
     "@types/gapi": "^0.0.47",
     "@uxhispam/kenos": "file:uxhispam-kenos-1.0.0.tgz",
+    "and": "^0.0.3",
     "axios": "^1.6.7",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
