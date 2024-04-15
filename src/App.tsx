@@ -370,8 +370,8 @@ function App() {
 		fromElement: true,
 		canvas: {
 			styles: [
-				'/css-kenos/kenos.css',
-				'/css-kenos/reset.css',	
+				'/hispam-pages/css-kenos/kenos.css',
+				'/hispam-pages/css-kenos/reset.css',	
 				// '/node_modules/@uxhispam/kenos/css/roboto.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
