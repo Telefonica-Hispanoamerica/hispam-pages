@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
-import { useState } from 'react';
 
 import { 
 	ThemeContextProvider, 

@@ -1,8 +1,8 @@
 
-type PropsHtml = {
-    html: string,
-    css: string
-}
+// type PropsHtml = {
+//     html: string,
+//     css: string
+// }
 
 export default async function SaveHtml(htmlString:any) {
     console.log('HTML FUNCTION', htmlString)

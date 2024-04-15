@@ -8,7 +8,7 @@ import CustomSelectorManager from "../CustomSelectorManager";
 import CustomStyleManager from "../CustomStyleManager";
 import CustomTraitManager from "../CustomTraitManager";
 import "./RigthSidebar.scss";
-import { HighlightOutlined, ToolOutlined } from '@ant-design/icons';
+// import { HighlightOutlined, ToolOutlined } from '@ant-design/icons';
 //
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -21,6 +21,7 @@ function RightSidebar() {
 	const [value, setValue] = useState('1');
 
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+		console.log("EVENT", event)
 		setValue(newValue);
 	};
 

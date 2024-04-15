@@ -7,21 +7,23 @@ import './topbar.scss'
 
 
 function Topbar() {
+
 	return (
 		<div className="top-sidebar">
 			<div>
 				<DevicesProvider>
 					{({ selected, select, devices }) => (
-						<Select
+						<Select 
+							value={selected} 
+							onChange={(ev) => select(ev.target.value)}
 							labelId="demo-select-small-label"
 							id="demo-select-small"
-							value={selected}
-							label="Age"
-							onChange={(value: any) => select(value)}
 							sx={{ m: 1, minWidth: 150 }}
 						>
 							{devices.map((device) => (
-								<MenuItem value={device.id} key={device.id}>{device.getName()}</MenuItem>
+								<MenuItem value={device.id} key={device.id}>
+								{device.getName()}
+								</MenuItem>
 							))}
 						</Select>
 					)}

@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react'
 import { StylesResultProps } from '@grapesjs/react';
 import { mdiMenuDown } from '@mdi/js';
 import Icon from '@mdi/react';
@@ -15,7 +14,7 @@ export default function CustomStyleManager({
     sectors,
 }: Omit<StylesResultProps, 'Container'>) {
 
-    const [content, setContent] = useState(''); // Contenido del div
+    // const [content, setContent] = useState(''); // Contenido del div
     // const [height, setHeight] = useState(100); // Altura inicial del div
 
     // useEffect(() => {

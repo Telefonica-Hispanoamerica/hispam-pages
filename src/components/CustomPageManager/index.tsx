@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -7,22 +7,31 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import PageIdContext from "../../hooks/PageContext";
 
-type PropsLandingPage = {
-	id: number,
-	name: string,
-	styles: string,
-	component: string,
-}
+// type PropsLandingPage = {
+// 	id: number,
+// 	name: string,
+// 	styles: string,
+// 	component: string,
+// }
 
 export default function CustomPageManager({
     pages,
-    selected,
+    // selected,
     add,
     select,
     remove,
 }: PagesResultProps) {
 
-    const { setPageId } = useContext<any>(PageIdContext)
+    const { setPageId } = useContext<any>(PageIdContext);
+    const [
+        editableContent, 
+        // setEditableContent
+    ] = useState<string>('');
+    const [selectedId, setSelectedId] = useState<string | null>(null);
+
+    const handleFocus = (id: string) => {
+        setSelectedId(id);
+    };
 
     const addNewPage = () => {
         const nextIndex = pages.length + 1;
@@ -47,6 +56,17 @@ export default function CustomPageManager({
         select(page)
     }
 
+
+    // const handleContentChange = (event: React.ChangeEvent<HTMLElement>) => {
+    //     setEditableContent(event.target.innerText);
+    // };
+
+    const handleRename = (page: any) => {
+        console.log('PAGE NAME', page)
+        page.setName(editableContent);
+        handleClose();
+    };
+
     return (
         <div className="gjs-custom-page-manager">
             <div className="plus" onClick={addNewPage}>
@@ -56,9 +76,14 @@ export default function CustomPageManager({
             {pages.map((page) => (
                 <div
                     key={page.getId()}
-                    className="page-content"
+                    className={`page-content ${selectedId === page.getId() ? 'selected' : 'not-selected'}`}
+                    onClick={() => handleFocus(page.getId())}
+                    id={`page-content_${page.getId()}`}
                 >                    
                     <div onClick={() => getPageId(page)}>
+                        {/* <p contentEditable
+                            onBlur={handleContentChange}
+                            suppressContentEditableWarning={true} onFocus={() => handleRename(page)}>{page.getName() || 'Untitled page'}</p> */}
                         <p>{page.getName() || 'Untitled page'}</p>
                         <IconButton
                             aria-label="more"
@@ -74,12 +99,11 @@ export default function CustomPageManager({
                             id="basic-menu"
                             anchorEl={anchorEl}
                             open={open}
-                            onClose={handleClose}
                             MenuListProps={{
                             'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem onClick={handleClose}>Rename</MenuItem>
+                            <MenuItem onClick={() => handleRename(page)}>Rename</MenuItem>
                             <MenuItem onClick={handleClose}>Duplicate</MenuItem>
                             <MenuItem onClick={() => remove(page)}>Delete</MenuItem>
                         </Menu>

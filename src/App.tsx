@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
@@ -38,8 +38,8 @@ import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 //===============
 import JSZip from 'jszip';
 import cssKenos from '@uxhispam/kenos/css/kenos.css?inline'
-import cssRoboto from '@uxhispam/kenos/css/roboto.css'
-import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
+// import cssRoboto from '@uxhispam/kenos/css/roboto.css'
+// import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
 import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/MediaCard';
 import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
 import Columns1Kenos from './components/CustomBlocksTelefonica/Columns/Columns1';
@@ -55,7 +55,7 @@ import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCa
 import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
-import PageIdContext from './hooks/PageContext';
+// import PageIdContext from './hooks/PageContext';
 
 declare var google: {
 	accounts: {
@@ -79,12 +79,12 @@ declare var google: {
 	};
 };
 
-type PropsLandingPage = {
-	id?: number,
-	name?: string,
-	styles?: string,
-	component?: string,
-}
+// type PropsLandingPage = {
+// 	id?: number,
+// 	name?: string,
+// 	styles?: string,
+// 	component?: string,
+// }
 
 
 function App() {
@@ -98,11 +98,11 @@ function App() {
 	const [ landingPage, setLandingPage ] = useState<any>([newPage]);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
-	const { pageId } = useContext<any>(PageIdContext);
+	// const { pageId } = useContext<any>(PageIdContext);
 
-	const [ onEditorUpdate, setOnEditorUpdate] = useState<any>(null);
+	// const [ onEditorUpdate, setOnEditorUpdate] = useState<any>(null);
 
-	const [currentPageId, setCurrentPageId] = useState<number | null>(null);
+	// const [currentPageId, setCurrentPageId] = useState<number | null>(null);
 
 	// useEffect(() => {
 	// 	setCurrentPageId(pageId);
@@ -132,10 +132,6 @@ function App() {
 		fetchMyAPI()
 
 	}, []);
-
-	const handleSetPagetoSave = () => {
-
-	}
 
 	const onEditor = (editor: Editor, opts = {} ) => {
 
@@ -176,7 +172,8 @@ function App() {
 		editor.on('page:select', (page: any) => {
 			console.log('PAGE', page)
 			currentPageId = page._previousAttributes.id;
-			currentPageName = page._previousAttributes.name;
+			console.log('currentPageId', currentPageId)
+			currentPageName = page.attributes.name;
 		});
 
 		editor.Commands.add(commandName, {
@@ -264,12 +261,16 @@ function App() {
 						el?.appendChild(btnExp);
 
 						btnExp.onclick = () => {
+							console.log('currentPageId 2', currentPageId)
 							const getExistingPage = landingPage.filter((page: any) => page.id == currentPageId);
 							if(getExistingPage[0].id > 0){
-								saveHTML(
+								console.log('getExistingPage', getExistingPage)
+								console.log('currentPageName', currentPageName)
+								saveHTML(									
 									getExistingPage[0].id,
 									{
-										...getExistingPage[0],
+										...getExistingPage[0],										
+										name: currentPageName,
 										// styles: exportData.css,
 										// component: exportData.html
 										styles: editor.getCss(),
@@ -358,8 +359,8 @@ function App() {
 		fromElement: true,
 		canvas: {
 			styles: [
-				'/node_modules/@uxhispam/kenos/css/kenos.css',
-				'/node_modules/@uxhispam/kenos/css/reset.css',
+				'/css-kenos/kenos.css',
+				'/css-kenos/reset.css',	
 				// '/node_modules/@uxhispam/kenos/css/roboto.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
@@ -378,9 +379,9 @@ function App() {
 			],
 		},
 		pluginsOpts: {
-			// "grapesjs-plugin-toolbox": {
-			// 	panels: true
-			// },
+			"grapesjs-plugin-toolbox": {
+				panels: true
+			},
 			// "grapesjs-ga": {
 			// 	/* Test here your options  */
 			// },

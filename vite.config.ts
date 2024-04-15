@@ -15,5 +15,10 @@ export default defineConfig({
 				implementation: sass
 			}
 		}
-	}
+	},
+	optimizeDeps: {
+		include: [
+		  'hispam-pages/**/*.css', // Patrón para incluir todos los archivos CSS del paquete
+		],
+	},
 })

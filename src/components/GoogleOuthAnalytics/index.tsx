@@ -52,6 +52,7 @@ const GoogleOuthAnalytics = () => {
 	}
 
 	function handleSignOut(event:any) {
+		console.log("EVENT", event)
 		setUser({name: "", picture: ""});
 		(document.getElementById("signDiv") as HTMLElement).hidden = false;
 	}

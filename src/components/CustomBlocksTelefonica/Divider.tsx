@@ -5,13 +5,9 @@ import {
 	ThemeContextProvider,
 	Divider,
 	useIsInverseVariant,
-	Avatar,
 	skinVars, 
 	getMovistarSkin, 
-	ThemeVariant,
-	IconStarFilled,
-	IconFireRegular,
-	IconBrainRegular,
+	ThemeVariant
 } from '@uxhispam/kenos';
 
 

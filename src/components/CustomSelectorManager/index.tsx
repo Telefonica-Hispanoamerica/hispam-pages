@@ -1,11 +1,9 @@
-import {useRef, useState, useEffect} from 'react';
 import { SelectorsResultProps } from '@grapesjs/react';
 import { mdiClose, mdiPlus } from '@mdi/js';
 import Icon from '@mdi/react';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { MAIN_BORDER_COLOR, cx } from '../common';
 import './CustomSelectorManager.scss'
 
 export default function CustomSelectorManager({

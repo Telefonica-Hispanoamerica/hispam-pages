@@ -1,5 +1,5 @@
 import { Editor, PluginOptions } from 'grapesjs';
-import SaveHtml from './SaveHtml'
+// import SaveHtml from './SaveHtml'
 
 function ExportCode(props:any) {
     const [ editor, opts ] = props
@@ -33,7 +33,7 @@ function ExportCode(props:any) {
     };		
 
     editor?.Commands.add(commandName, {
-        run(editor:any, s:any, opts: PluginOptions = {}) {
+        run(editor:any) {
             editor.Modal.open({
                 title: 'Modal example',
                 content: `
@@ -44,18 +44,18 @@ function ExportCode(props:any) {
                 `,
             });
 
-            const exportData = {
-                //html: editor.getHtml(),
-                html: `<!doctype html>
-                <html lang="en">
-                    <head>
-                    <meta charset="utf-8">
-                    <link rel="stylesheet" href="./css/style.css">
-                    </head>
-                    <body>${editor.getHtml()}</body>
-                </html>`,
-                css: editor.getCss()
-            }
+            // const exportData = {
+            //     //html: editor.getHtml(),
+            //     html: `<!doctype html>
+            //     <html lang="en">
+            //         <head>
+            //         <meta charset="utf-8">
+            //         <link rel="stylesheet" href="./css/style.css">
+            //         </head>
+            //         <body>${editor.getHtml()}</body>
+            //     </html>`,
+            //     css: editor.getCss()
+            // }
 
             if (config.addExportBtn) {
                 const btnExp = document.createElement('button');

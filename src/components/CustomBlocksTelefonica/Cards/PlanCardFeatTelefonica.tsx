@@ -35,6 +35,7 @@ const div = `
 			font-size: 14px;
 			font-weight: 600;
 			line-height: 20px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .header-plan {
 			background-color: #0B2739;
@@ -58,6 +59,7 @@ const div = `
 			right: 50%;
 			min-width: 42%;
 			text-align: center;
+			-webkit-user-modify: read-write;
 		}
 		@media (max-width: 768px) {
 			.card-feat .header-plan .tag {
@@ -72,6 +74,7 @@ const div = `
 			color: #fff;
 			margin: 0;
 			text-align: center;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .header-plan .capacity {
 			font-size: 32px;
@@ -79,6 +82,7 @@ const div = `
 			color: #fff;
 			margin: 0;
 			text-align: center;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .header-plan .offer-description {
 			font-size: 14px;
@@ -86,6 +90,7 @@ const div = `
 			color: #fff;
 			margin: 0;
 			text-align: center;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .header-plan .offer-description span {
 			font-weight: 600;
@@ -106,21 +111,25 @@ const div = `
 			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .price {
 			font-size: 32px;
 			line-height:40px;
 			color: #313235;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .price span{
 			font-size: 22px;
 			line-height: 30px;
 			color: #313235;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .offer-per-month{
 			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .offer-per-month span{
 			font-weight: 600;
@@ -188,6 +197,7 @@ const div = `
 			display: flex;
 			flex-direction: column;
 			margin-left: 8px;
+
 		}
 		.card-feat .switch-options .streaming .add-streaming {
 			align-self: stretch;
@@ -196,6 +206,7 @@ const div = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 24px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .switch-options .streaming .description {
 			color: #737578;
@@ -203,6 +214,7 @@ const div = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .switch-options .switch {
 			position: relative;
@@ -284,6 +296,7 @@ const div = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .long-offer-list .icon {
 			width: 24px;
@@ -314,12 +327,14 @@ const div = `
 			font-size: 14px;
 			font-weight: 700;
 			line-height: 20px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .long-offer-list .content .description{
 			color: #737578;
 			font-size: 14px;
 			font-weight: 400;
 			line-height: 20px;
+			-webkit-user-modify: read-write;
 		}
 		.card-feat .long-offer-list .content .link{
 			color: #019BEF;

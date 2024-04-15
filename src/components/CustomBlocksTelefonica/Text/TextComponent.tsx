@@ -3,7 +3,7 @@ import { flushSync } from 'react-dom';
 
 import { 
 	ThemeContextProvider, 
-	Text10, Text9, Text8, Text7, Text6, Text5, Text4, Text3, Text2, Text1, Stack, Title1,
+	Text10, Text9, Text8, Text7, Text6, Text5, Text4, Text3, Text2, Text1, Stack,
 	getMovistarSkin,
 } from '@uxhispam/kenos';
 
