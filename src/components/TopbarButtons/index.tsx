@@ -1,7 +1,8 @@
 import { useEditor } from '@grapesjs/react'
 import { useEffect, useState } from 'react'
-import { UndoOutlined, RedoOutlined,ExpandOutlined, CodeOutlined, LayoutOutlined, DeleteOutlined } from '@ant-design/icons'
+// import { UndoOutlined, RedoOutlined,ExpandOutlined, CodeOutlined, LayoutOutlined, DeleteOutlined } from '@ant-design/icons'
 import './TopbarButtons.scss'
+import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
 
 interface CommandButton {
     id: string
@@ -18,11 +19,11 @@ function TopbarButtons () {
     const cmdButtons: CommandButton[] = [
         {
 			id: 'core:component-outline',
-			iconPath: <LayoutOutlined />
+			iconPath: <AccessAlarm />
         },
         {
 			id: 'core:fullscreen',
-			iconPath: <ExpandOutlined />,
+			iconPath: <AccessAlarm />,
 			options: { target: '#root' }
         },
         // {
@@ -35,7 +36,7 @@ function TopbarButtons () {
         // },
         {
 			id: 'save-export',
-			iconPath: <CodeOutlined />
+			iconPath: <AccessAlarm />
         },
         // {
 		// 	id: 'export',
@@ -51,16 +52,16 @@ function TopbarButtons () {
         // },
         {
 			id: 'core:component-delete',
-			iconPath: <DeleteOutlined />
+			iconPath: <AccessAlarm />
         },
         {
 			id: 'core:undo',
-			iconPath: <UndoOutlined />,
+			iconPath: <AccessAlarm />,
 			disabled: () => !UndoManager.hasUndo()
         },
         {
 			id: 'core:redo',
-			iconPath: <RedoOutlined />,
+			iconPath: <AccessAlarm />,
 			disabled: () => !UndoManager.hasRedo()
         },
     ];
