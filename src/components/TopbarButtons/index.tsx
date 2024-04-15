@@ -2,7 +2,7 @@ import { useEditor } from '@grapesjs/react'
 import { useEffect, useState } from 'react'
 // import { UndoOutlined, RedoOutlined,ExpandOutlined, CodeOutlined, LayoutOutlined, DeleteOutlined } from '@ant-design/icons'
 import './TopbarButtons.scss'
-import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+import { AccessAlarm } from '@mui/icons-material';
 
 interface CommandButton {
     id: string
