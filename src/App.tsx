@@ -181,6 +181,17 @@ function App() {
 			run(editor: PluginOptions = {}) {
 				editor.Modal.open({
 					title: 'Modal example',
+				// 	content: `<pre id="css-to-parse">
+				// 	.simple-class {
+				// 	  background-image:url("https://image1.png"), url("https://image2.jpg");
+				// 	  background-attachment: fixed, scroll;
+				// 	  background-position:left top, center center;
+				// 	  background-repeat:repeat-y, no-repeat;
+				// 	  background-size: contain, cover;
+				// 	  box-shadow: 0 0 5px #9d7aa5, 0 0 10px #e6c3ee;
+				// 	  border: 2px solid #FF0000;
+				// 	}
+				//   </pre>`,
 					content: ``,
 				});
 
