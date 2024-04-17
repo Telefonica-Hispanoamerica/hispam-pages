@@ -62,7 +62,7 @@ const div = `
 		}
 		
 		.card-collapse .card-header {
-			font-family: 'Roboto-Medium';
+			font-family: 'Roboto';
 			transform: translateY(0);
 			font-size: 1rem;
 			color: #019BEF;
@@ -145,7 +145,7 @@ const div = `
 			margin: 0 auto;
 		}
 		.card .header-plan .plan-name {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
 			color: #fff;
@@ -168,7 +168,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .header-plan .offer-description {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
 			color: #fff;
@@ -177,7 +177,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .header-plan .offer-description span {
-			font-family: 'Roboto-Bold';
+			font-weight: 700;
 		}
 		.card .price-table {
 			display: flex;
@@ -186,7 +186,7 @@ const div = `
 			padding: 2rem 1rem 8px;
 		}
 		.card .price-table .offer-description-price {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
 			color: #737578;
@@ -208,20 +208,20 @@ const div = `
 			color: #737578;
 		}
 		.card .price-table .offer-per-month p{
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
 			color: #737578;
 			-webkit-user-modify: read-write;
 		}
 		.card .price-table .offer-per-month span{
-			font-family: 'Roboto-Bold';
+			font-weight: 700;
 		}
 		.card .btn-main-content {
 			padding: 0 1rem;
 		}
 		.card .btn-main-content .btn-primary {
-			font-family: 'Roboto-Medium';
+			font-family: 'Roboto';
 			font-size: 1.125rem;
 			font-weight: 600;
 			padding: 1rem 12px;
@@ -236,7 +236,7 @@ const div = `
 			text-align: center;
 		}
 		.card .btn-main-content .btn-second {
-			font-family: 'Roboto-Medium';
+			font-family: 'Roboto';
 			font-size: 1.125rem;
 			font-weight: 600;
 			padding: 1rem 12px;
@@ -274,7 +274,7 @@ const div = `
 			margin-left: 8px;
 		}
 		.card .switch-options .streaming .add-streaming {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			align-self: stretch;
 			color: #313235;
 			font-size: 1rem;
@@ -284,7 +284,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .switch-options .streaming .description {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			color: #737578;
 			font-size: 0.875rem;
 			font-style: normal;
@@ -368,7 +368,7 @@ const div = `
 			height: 24px;
 		}		
 		.card .long-offer-row .txt {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
 			font-size: 0.875rem;
@@ -391,7 +391,7 @@ const div = `
 			height: 24px;
 		}
 		.card .long-offer-row-streaming .txt {
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
 			font-size: 0.875rem;
@@ -424,7 +424,7 @@ const div = `
 			align-items: start;
 		}
 		.card .long-offer-list .content .title{
-			font-family: 'Roboto-Bold';
+			font-family: 'Roboto';
 			color: #313235;
 			font-size: 0.875rem;
 			font-weight: 700;
@@ -432,7 +432,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .long-offer-list .content .description{
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			color: #737578;
 			font-size: 0.875rem;
 			font-weight: 400;
@@ -440,7 +440,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .long-offer-list .content .link{
-			font-family: 'Roboto-Regular';
+			font-family: 'Roboto';
 			color: #019BEF;
 			text-align: center;
 			font-size: 0.875rem;
