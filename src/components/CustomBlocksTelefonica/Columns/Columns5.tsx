@@ -19,6 +19,7 @@ const div = `
 				display: block;
 				height: 100%;
 				margin: 0 0 16px;
+				vertical-align: top;
 			}
 		}	
 		
@@ -26,6 +27,7 @@ const div = `
 			width: 8%;
 			display: table-cell;
 			height: 75px;
+			vertical-align: top;
 		}
 	</style>
 	<div class='gjs-row-kenos'>

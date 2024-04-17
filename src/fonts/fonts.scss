@@ -33,3 +33,53 @@
     font-style: normal;
     font-display: swap;
 }
+
+/* Roboto */
+
+@font-face {
+    font-family: 'Roboto-thin';
+    src: url('./Roboto/Roboto-Thin.ttf') format('truetype'),
+         url('./Roboto/Roboto-Thin.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-light';
+    src: url('./Roboto/Roboto-Light.ttf') format('truetype'),
+         url('./Roboto/Roboto-Light.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('./Roboto/Roboto-Regular.ttf') format('truetype'),
+         url('./Roboto/Roboto-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('./Roboto/Roboto-Medium.ttf') format('truetype'),
+         url('./Roboto/Roboto-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('./Roboto/Roboto-Bold.ttf') format('truetype'),
+         url('./Roboto/Roboto-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-Black';
+    src: url('./Roboto/Roboto-Black.ttf') format('truetype'),
+         url('./Roboto/Roboto-Black.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}

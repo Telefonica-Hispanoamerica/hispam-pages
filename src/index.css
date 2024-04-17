@@ -78,3 +78,7 @@ button:focus-visible {
   height: initial;
   }
 }
+
+strong {
+  font-weight: 600;
+}

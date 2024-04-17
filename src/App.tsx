@@ -55,6 +55,8 @@ import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCa
 import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
+import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
+import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -237,6 +239,7 @@ function App() {
 										display: block;
 										height: 100%;
 										margin: 0 0 16px;
+										vertical-align: top;
 									}
 								}
 
@@ -244,6 +247,7 @@ function App() {
 									width: 8%;
 									display: table-cell;
 									height: 75px;
+									vertical-align: top;
 								}
 							</style>
 						</head>
@@ -371,8 +375,8 @@ function App() {
 		canvas: {
 			styles: [
 				'/hispam-pages/css-kenos/kenos.css',
-				'/hispam-pages/css-kenos/reset.css',	
-				// '/node_modules/@uxhispam/kenos/css/roboto.css',
+				// '/hispam-pages/css-kenos/reset.css',	
+				'/hispam-pages/css-kenos/roboto.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
 			scripts: []
@@ -415,32 +419,34 @@ function App() {
 					onEditor={onEditor}
 					options={gjsOptions}
 					plugins={[
-						ButtonPrimaryKenos,
-						SubmitButtonsKenos,
-						DataCardKenos,
-						DangerButtonsKenos,
-						LinkButtonKenos,
-						SecondaryButtonKenos,
-						IconButtonKenos,
-						DisplayDataCardKenos,
-						DisplayMediaCardKenos,
-						DisplayMediaCardGroupKenos,
-						HighlightedCardKenos,
-						MediaCardKenos,
+						// ButtonPrimaryKenos,
+						// SubmitButtonsKenos,
+						// DataCardKenos,
+						// DangerButtonsKenos,
+						// LinkButtonKenos,
+						// SecondaryButtonKenos,
+						// IconButtonKenos,
+						// DisplayDataCardKenos,
+						// DisplayMediaCardKenos,
+						// DisplayMediaCardGroupKenos,
+						// HighlightedCardKenos,
+						// MediaCardKenos,
 						MediaCardTelefonica,
 						PlanCardTelefonica,
+						PlanCardTelefonica2,
+						PlanCardTelefonica3,
 						PlanCardFeatTelefonica,
-						SnapCardKenos,
-						AvatarKenos,
-						BadgeKenos,
-						BreadcrumbsKenos,
-						CalloutKenos,
-						CheckboxKenos,
-						ChipKenos,
-						DividerKenos,
-						HeaderKenos,
-						HeroComponentKenos,
-						HeroSlideshowKenos,
+						// SnapCardKenos,
+						// AvatarKenos,
+						// BadgeKenos,
+						// BreadcrumbsKenos,
+						// CalloutKenos,
+						// CheckboxKenos,
+						// ChipKenos,
+						// DividerKenos,
+						// HeaderKenos,
+						// HeroComponentKenos,
+						// HeroSlideshowKenos,
 						TextComponentKenos,
 						TextWrappingKenos,
 						Columns1Kenos,

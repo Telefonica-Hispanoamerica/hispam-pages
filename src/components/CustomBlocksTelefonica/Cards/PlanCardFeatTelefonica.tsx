@@ -53,7 +53,7 @@ const div = `
 			font-size: 14px;
 			border-radius: 4px;
 			position: absolute;
-			bottom: -30px;
+			bottom: -22px;
 			transform: translate(-50%, -50%);
 			left: 50%;
 			right: 50%;
@@ -150,6 +150,7 @@ const div = `
 			margin: 0 auto 16px;
 			cursor: pointer;
 			-webkit-user-modify: read-write;
+			text-align:center;
 		}
 		@media (max-width: 768px) {
 			.card-feat .btn-main-content .btn-primary {
@@ -169,6 +170,7 @@ const div = `
 			margin: 0 auto 16px;
 			cursor: pointer;
 			-webkit-user-modify: read-write;
+			text-align:center;
 		}
 		@media (max-width: 768px) {
 			.card-feat .btn-main-content .btn-second {
@@ -371,8 +373,8 @@ const div = `
 			<div class='offer-per-month'><span>x12 month.</span> Offer description</div>
 		</div>
 		<div class='btn-main-content'>
-			<button class='btn-primary'>Primary button</button>
-			<button class='btn-second'>Secondary button</button>
+			<a class='btn-primary'>Primary button</a>
+			<a class='btn-second'>Secondary button</a>
 		</div>
 		<div class='switch-options'>
 			<img class='icon-circle' />
