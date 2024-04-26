@@ -61,6 +61,11 @@ import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTL
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroTLPG';
 import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark4Col';
+import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDarkLeft4Col';
+import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionIconDark4Col';
+import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionIconDarkLeft4Col';
+import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionNoImageDark4Col';
+import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionNoImageDarkLeft4Col';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -440,6 +445,11 @@ function App() {
 						CardHeroTLPG,
 						ValuePrepositionImageDark,
 						ValuePrepositionImageDark4Col,
+						ValuePrepositionImageDarkLeft4Col,
+						ValuePrepositionIconDark4Col,
+						ValuePrepositionIconDarkLeft4Col,
+						ValuePrepositionNoImageDark4Col,
+						ValuePrepositionNoImageDarkLeft4Col,
 						PlanCardTelefonica,
 						PlanCardTelefonica2,
 						PlanCardTelefonica3,
