@@ -13,7 +13,8 @@ const div = `
 		@media (max-width: 768px) {
 			.card {
 				padding: 24px 0;
-				margin-bottom: 24px;
+				margin: 0 auto 24px;
+				width: initial;
 			}
 		}		
 

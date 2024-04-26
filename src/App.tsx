@@ -57,6 +57,10 @@ import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedLi
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
 import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
 import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
+import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTLPG';
+import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroTLPG';
+import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark';
+import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark4Col';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -377,6 +381,7 @@ function App() {
 				'/hispam-pages/css-kenos/kenos.css',
 				// '/hispam-pages/css-kenos/reset.css',	
 				'/hispam-pages/css-kenos/roboto.css',
+				'/hispam-pages/fonts/roboto.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
 			scripts: []
@@ -431,7 +436,10 @@ function App() {
 						// DisplayMediaCardGroupKenos,
 						// HighlightedCardKenos,
 						// MediaCardKenos,
-						MediaCardTelefonica,
+						MediaCardTLPG,
+						CardHeroTLPG,
+						ValuePrepositionImageDark,
+						ValuePrepositionImageDark4Col,
 						PlanCardTelefonica,
 						PlanCardTelefonica2,
 						PlanCardTelefonica3,
