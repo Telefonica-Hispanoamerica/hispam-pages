@@ -59,13 +59,23 @@ import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanC
 import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTLPG';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroTLPG';
-import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark';
-import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDark4Col';
-import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionImageDarkLeft4Col';
-import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionIconDark4Col';
-import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionIconDarkLeft4Col';
-import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionNoImageDark4Col';
-import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionNoImageDarkLeft4Col';
+import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark';
+import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
+import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft4Col';
+import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDark4Col';
+import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeft4Col';
+import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDark4Col';
+import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDarkLeft4Col';
+import ValuePrepositionIconLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLight4Col';
+import ValuePrepositionIconLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeft4Col';
+import ValuePrepositionImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageLight4Col';
+import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft4Col';
+import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
+import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft4Col';
+import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider';
+import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider2ColContent';
+import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
+import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -386,7 +396,7 @@ function App() {
 				'/hispam-pages/css-kenos/kenos.css',
 				// '/hispam-pages/css-kenos/reset.css',	
 				'/hispam-pages/css-kenos/roboto.css',
-				'/hispam-pages/fonts/roboto.css',
+				'/hispam-pages/fonts/fonts.scss',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
 			scripts: []
@@ -450,6 +460,16 @@ function App() {
 						ValuePrepositionIconDarkLeft4Col,
 						ValuePrepositionNoImageDark4Col,
 						ValuePrepositionNoImageDarkLeft4Col,
+						ValuePrepositionIconDarkLeftDivider,
+						ValuePrepositionIconDarkLeftDivider2ColContent,
+						ValuePrepositionIconLight4Col,
+						ValuePrepositionIconLightLeft4Col,
+						ValuePrepositionImageLight4Col,
+						ValuePrepositionImageLightLeft4Col,
+						ValuePrepositionNoImageLight4Col,
+						ValuePrepositionNoImageLightLeft4Col,
+						ValuePrepositionIconLightLeftDivider,
+						ValuePrepositionIconLightLeftDivider2ColContent,
 						PlanCardTelefonica,
 						PlanCardTelefonica2,
 						PlanCardTelefonica3,

@@ -11,7 +11,7 @@ export default function CustomBlockManager({
     dragStart,
     dragStop,
 }: CustomBlockManagerProps) {
-
+    console.log('mapCategoryBlocks', mapCategoryBlocks)
     return (
         <div className="gjs-custom-block-manager text-left">
             {Array.from(mapCategoryBlocks).map(([category, blocks]) => (
@@ -24,7 +24,8 @@ export default function CustomBlockManager({
                             <div
                                 key={block.getId()}
                                 draggable
-                                className='box-block'
+                                // className='box-block'
+                                className={category == "Value Prepositions Dark" ? 'box-block dark' : 'box-block'}
                                 onDragStart={(ev) => dragStart(block, ev.nativeEvent)}
                                 onDragEnd={() => dragStop(false)}
                             >
@@ -33,7 +34,7 @@ export default function CustomBlockManager({
                                     dangerouslySetInnerHTML={{ __html: block.getMedia()! }}
                                 />
                                 <div
-                                    className="text-size"
+                                    className={category == "Value Prepositions Dark" ? 'text-size dark' : 'text-size'}
                                     title={block.getLabel()}
                                 >
                                     {block.getLabel()}

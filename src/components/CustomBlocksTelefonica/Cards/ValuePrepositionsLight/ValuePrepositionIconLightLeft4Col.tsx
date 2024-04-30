@@ -3,35 +3,68 @@ const div = `
 	p {
 		margin: 0;
 	}
-	.title-section {
+	.pretitle-vp-light {
+		font-family: Roboto;
+		font-weight: 400;
+		font-size: 1.25rem;
+		line-height: 28px;
+		color: #313235;
+		margin: 0 auto 8px;
+    	text-align: center;
+	}
+	@media (max-width: 767px) {
+		.pretitle-vp-light {
+			font-size: 1rem;
+			line-height: 24px;
+		}
+	}
+	.title-section-vp-light {
+		font-family: 'Telefonica-Regular';
 		font-size: 2.5rem;
 		line-height: 48px;
-		color: #fff;
-		margin: 0 auto 64px;
+		color: #313235;
+		margin: 0 auto 16px;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
-		.title-section {
-			margin: 0 auto 24px;
-			font-size: 1.75 rem;
+		.title-section-vp-light {
+			margin: 0 auto 16px;
+			font-size: 1.75rem;
 			line-height: 36px;
 		}
 	}
-	.card-vp-img {
+	.description-vp-light {
+		font-family: Roboto;
+		font-weight: 400;
+		font-size: 1.125rem;
+		line-height: 24px;
+		color: #737578;
+		margin: 0 auto;
+    	text-align: center;
+	}
+	@media (max-width: 767px) {
+		.description-vp-light {
+			font-size: 1rem;
+			line-height: 24px;
+			margin-bottom: 32px;
+		}
+	}
+	.card-vp-img-left-light {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-direction: row;
+		align-items: start;
 		/* max-width: 288px; */
 		width: 100%;
-		text-align: center;
-		margin: 0 auto;
+		text-align: left;
+		margin: 64px auto 0;
+		grid-gap: 24px;
 	}	
 	@media (max-width: 767px) {
-		.card-vp-img {
+		.card-vp-img-left-light {
 			margin: 0 auto 24px;
 		}
 	}	
-	.card-vp-img .box-img {
+	.card-vp-img-left-light .box-img {
 		width: 48px;
 		height: 48px;
 		/*overflow: hidden;*/
@@ -41,65 +74,67 @@ const div = `
 		-ms-border-radius: 8px;
 		-o-border-radius: 8px;
 		margin-bottom: 24px;
-		display: flex;
+		/*display: flex;
 		justify-content: center;
-		align-items: center;	
+		align-items: center;	*/
 	}
-	.card-vp-img .box-img img {
+	.card-vp-img-left-light .box-img img {
 		object-fit: contain;
     	border-radius: inherit;	
 	}
+	.card-vp-img-left-light .box-content {
+		text-align: left
+	}
 	
-	.card-vp-img .title {
+	.card-vp-img-left-light .title {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.25rem;
 		line-height: 28px;
-		color: #fff;
+		color: #313235;
 	}
 	@media (max-width: 767px) {
-		.card-vp-img .title {
+		.card-vp-img-left-light .title {
 			font-size: 1.125rem;
 			line-height: 24px;
 		}
 	}
-	.card-vp-img .description {
+	.card-vp-img-left-light .description {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #fff;
+		color: #313235;
 		margin-top: 8px;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
-		display: block;
 	}
 	@media (max-width: 767px) {
-		.card-vp-img .description {
+		.card-vp-img-left-light .description {
 			font-size: 0.875rem;
 			line-height: 20px;
 		}
 	}
-	.card-vp-img .text-link {
+	.card-vp-img-left-light .text-link {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #fff;
+		color: #019BEF;
 		margin: 24px auto 0;
 		-webkit-user-modify: read-write;
-		
+		display: block;
 	}
 	@media (max-width: 767px) {
-		.card-vp-img .text-link {
+		.card-vp-img-left-light .text-link {
 			font-size: 0.875rem;
 			line-height: 20px;
 		}
 	}
-	.bg-dark {
-		background-color: #0B2739
+	.bg-light {
+		background-color: #fff
 	}
 	.ptb-80 {
 		padding: 80px 0;
@@ -140,64 +175,62 @@ const div = `
 		vertical-align: top;
 	}
 	</style>
-	<section class='bg-dark ptb-80'>
-		<h2 class="title-section">Title section</h2>
+	<section class='bg-light ptb-80'>
+		<p class="pretitle-vp-light">Pretitle</p>
+		<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
+		<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
 		<div class='gjs-row-kenos'>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img">					
+				<div class="card-vp-img-left-light">					
 					<div class="box-img">
 						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNiA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4zNzQgMTguMDQ1OUMyNC43OTQxIDE4LjE1MjMgMjUuMTI0NyAxOC40NzczIDI1LjI0MjMgMTguOTAzQzI1LjM2IDE5LjMyODggMjUuMjQyMyAxOS43ODgyIDI0LjkzOTggMjAuMTAxOUw2LjM2ODM5IDM5LjM0QzYuMTMzMSAzOS41NzUzIDUuODMwNTggMzkuNjk4NSA1LjUyMjQ1IDM5LjY5ODVDNS4yOTgzNyAzOS42OTg1IDUuMDc0MjggMzkuNjMxMyA0Ljg3MjYgMzkuNDk2OEM0LjM5NjQxIDM5LjE4MzEgNC4yMDU5MyAzOC41NjY5IDQuNDEzMjEgMzguMDIzNEw5LjgxMzc3IDIzLjkyMjZMMS41ODk2OSAyMS44ODlDMS4xNzUxMiAyMS43ODgyIDAuODQ0NTkgMjEuNDYzMiAwLjcyNjk0MyAyMS4wNDMxQzAuNjA5Mjk2IDIwLjYyMjkgMC43MTU3MzggMjAuMTYzNSAxLjAxMjY2IDE5Ljg0OThMMTguODQ0NiAwLjcwNjk3NkMxOS4yNDIzIDAuMjgxMjA2IDE5Ljg2OTggMC4yMDgzNzcgMjAuMzUxNiAwLjUyNzcwNUMyMC44MzM0IDAuODQ3MDMyIDIxLjAyMzggMS40NzQ0OCAyMC44MTA5IDIuMDE3OUwxNS4zNzEyIDE1LjgyNzRMMjQuMzc0IDE4LjA0NTlaTTEyLjUzNjQgMjMuNTA4MUw4Ljc0OTM0IDMzLjM5NkwyMS43NTc3IDE5LjkxN0wxMy40NjY0IDE3Ljg3MjJDMTMuMTMwMyAxNy43ODgyIDEyLjg0NDYgMTcuNTU4NSAxMi42ODc3IDE3LjIzOTJDMTIuNTMwOCAxNi45MjU0IDEyLjUxNCAxNi41NTAxIDEyLjY0MjkgMTYuMjE5NkwxNi4yNzMxIDcuMDA5NDlMNC4xNzIzMiAyMC4wMDExTDExLjcwNzMgMjEuODY2NkMxMi4wNDM1IDIxLjk1MDYgMTIuMzI5MiAyMi4xODAzIDEyLjQ4NiAyMi40OTQxQzEyLjY0MjkgMjIuODA3OCAxMi42NTk3IDIzLjE3NzUgMTIuNTM2NCAyMy41MDgxWiIgZmlsbD0iIzAxOUJFRiIvPgo8L3N2Zz4K" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
+					</div>
+					<div class="box-content">
+						<div class="title roboto-regular">Block Title</div>
+						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
+						<a href="" class="text-link">Text Link</a>
+					</div>					
 				</div>
 			</div>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img">
+				<div class="card-vp-img-left-light">					
 					<div class="box-img">
 						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNiA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4zNzQgMTguMDQ1OUMyNC43OTQxIDE4LjE1MjMgMjUuMTI0NyAxOC40NzczIDI1LjI0MjMgMTguOTAzQzI1LjM2IDE5LjMyODggMjUuMjQyMyAxOS43ODgyIDI0LjkzOTggMjAuMTAxOUw2LjM2ODM5IDM5LjM0QzYuMTMzMSAzOS41NzUzIDUuODMwNTggMzkuNjk4NSA1LjUyMjQ1IDM5LjY5ODVDNS4yOTgzNyAzOS42OTg1IDUuMDc0MjggMzkuNjMxMyA0Ljg3MjYgMzkuNDk2OEM0LjM5NjQxIDM5LjE4MzEgNC4yMDU5MyAzOC41NjY5IDQuNDEzMjEgMzguMDIzNEw5LjgxMzc3IDIzLjkyMjZMMS41ODk2OSAyMS44ODlDMS4xNzUxMiAyMS43ODgyIDAuODQ0NTkgMjEuNDYzMiAwLjcyNjk0MyAyMS4wNDMxQzAuNjA5Mjk2IDIwLjYyMjkgMC43MTU3MzggMjAuMTYzNSAxLjAxMjY2IDE5Ljg0OThMMTguODQ0NiAwLjcwNjk3NkMxOS4yNDIzIDAuMjgxMjA2IDE5Ljg2OTggMC4yMDgzNzcgMjAuMzUxNiAwLjUyNzcwNUMyMC44MzM0IDAuODQ3MDMyIDIxLjAyMzggMS40NzQ0OCAyMC44MTA5IDIuMDE3OUwxNS4zNzEyIDE1LjgyNzRMMjQuMzc0IDE4LjA0NTlaTTEyLjUzNjQgMjMuNTA4MUw4Ljc0OTM0IDMzLjM5NkwyMS43NTc3IDE5LjkxN0wxMy40NjY0IDE3Ljg3MjJDMTMuMTMwMyAxNy43ODgyIDEyLjg0NDYgMTcuNTU4NSAxMi42ODc3IDE3LjIzOTJDMTIuNTMwOCAxNi45MjU0IDEyLjUxNCAxNi41NTAxIDEyLjY0MjkgMTYuMjE5NkwxNi4yNzMxIDcuMDA5NDlMNC4xNzIzMiAyMC4wMDExTDExLjcwNzMgMjEuODY2NkMxMi4wNDM1IDIxLjk1MDYgMTIuMzI5MiAyMi4xODAzIDEyLjQ4NiAyMi40OTQxQzEyLjY0MjkgMjIuODA3OCAxMi42NTk3IDIzLjE3NzUgMTIuNTM2NCAyMy41MDgxWiIgZmlsbD0iIzAxOUJFRiIvPgo8L3N2Zz4K" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
+					</div>
+					<div class="box-content">
+						<div class="title roboto-regular">Block Title</div>
+						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
+						<a href="" class="text-link">Text Link</a>
+					</div>					
 				</div>
 			</div>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img">
+				<div class="card-vp-img-left-light">					
 					<div class="box-img">
 						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNiA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4zNzQgMTguMDQ1OUMyNC43OTQxIDE4LjE1MjMgMjUuMTI0NyAxOC40NzczIDI1LjI0MjMgMTguOTAzQzI1LjM2IDE5LjMyODggMjUuMjQyMyAxOS43ODgyIDI0LjkzOTggMjAuMTAxOUw2LjM2ODM5IDM5LjM0QzYuMTMzMSAzOS41NzUzIDUuODMwNTggMzkuNjk4NSA1LjUyMjQ1IDM5LjY5ODVDNS4yOTgzNyAzOS42OTg1IDUuMDc0MjggMzkuNjMxMyA0Ljg3MjYgMzkuNDk2OEM0LjM5NjQxIDM5LjE4MzEgNC4yMDU5MyAzOC41NjY5IDQuNDEzMjEgMzguMDIzNEw5LjgxMzc3IDIzLjkyMjZMMS41ODk2OSAyMS44ODlDMS4xNzUxMiAyMS43ODgyIDAuODQ0NTkgMjEuNDYzMiAwLjcyNjk0MyAyMS4wNDMxQzAuNjA5Mjk2IDIwLjYyMjkgMC43MTU3MzggMjAuMTYzNSAxLjAxMjY2IDE5Ljg0OThMMTguODQ0NiAwLjcwNjk3NkMxOS4yNDIzIDAuMjgxMjA2IDE5Ljg2OTggMC4yMDgzNzcgMjAuMzUxNiAwLjUyNzcwNUMyMC44MzM0IDAuODQ3MDMyIDIxLjAyMzggMS40NzQ0OCAyMC44MTA5IDIuMDE3OUwxNS4zNzEyIDE1LjgyNzRMMjQuMzc0IDE4LjA0NTlaTTEyLjUzNjQgMjMuNTA4MUw4Ljc0OTM0IDMzLjM5NkwyMS43NTc3IDE5LjkxN0wxMy40NjY0IDE3Ljg3MjJDMTMuMTMwMyAxNy43ODgyIDEyLjg0NDYgMTcuNTU4NSAxMi42ODc3IDE3LjIzOTJDMTIuNTMwOCAxNi45MjU0IDEyLjUxNCAxNi41NTAxIDEyLjY0MjkgMTYuMjE5NkwxNi4yNzMxIDcuMDA5NDlMNC4xNzIzMiAyMC4wMDExTDExLjcwNzMgMjEuODY2NkMxMi4wNDM1IDIxLjk1MDYgMTIuMzI5MiAyMi4xODAzIDEyLjQ4NiAyMi40OTQxQzEyLjY0MjkgMjIuODA3OCAxMi42NTk3IDIzLjE3NzUgMTIuNTM2NCAyMy41MDgxWiIgZmlsbD0iIzAxOUJFRiIvPgo8L3N2Zz4K" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
-				</div>
-			</div>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img">
-					<div class="box-img">
-						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNiA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4zNzQgMTguMDQ1OUMyNC43OTQxIDE4LjE1MjMgMjUuMTI0NyAxOC40NzczIDI1LjI0MjMgMTguOTAzQzI1LjM2IDE5LjMyODggMjUuMjQyMyAxOS43ODgyIDI0LjkzOTggMjAuMTAxOUw2LjM2ODM5IDM5LjM0QzYuMTMzMSAzOS41NzUzIDUuODMwNTggMzkuNjk4NSA1LjUyMjQ1IDM5LjY5ODVDNS4yOTgzNyAzOS42OTg1IDUuMDc0MjggMzkuNjMxMyA0Ljg3MjYgMzkuNDk2OEM0LjM5NjQxIDM5LjE4MzEgNC4yMDU5MyAzOC41NjY5IDQuNDEzMjEgMzguMDIzNEw5LjgxMzc3IDIzLjkyMjZMMS41ODk2OSAyMS44ODlDMS4xNzUxMiAyMS43ODgyIDAuODQ0NTkgMjEuNDYzMiAwLjcyNjk0MyAyMS4wNDMxQzAuNjA5Mjk2IDIwLjYyMjkgMC43MTU3MzggMjAuMTYzNSAxLjAxMjY2IDE5Ljg0OThMMTguODQ0NiAwLjcwNjk3NkMxOS4yNDIzIDAuMjgxMjA2IDE5Ljg2OTggMC4yMDgzNzcgMjAuMzUxNiAwLjUyNzcwNUMyMC44MzM0IDAuODQ3MDMyIDIxLjAyMzggMS40NzQ0OCAyMC44MTA5IDIuMDE3OUwxNS4zNzEyIDE1LjgyNzRMMjQuMzc0IDE4LjA0NTlaTTEyLjUzNjQgMjMuNTA4MUw4Ljc0OTM0IDMzLjM5NkwyMS43NTc3IDE5LjkxN0wxMy40NjY0IDE3Ljg3MjJDMTMuMTMwMyAxNy43ODgyIDEyLjg0NDYgMTcuNTU4NSAxMi42ODc3IDE3LjIzOTJDMTIuNTMwOCAxNi45MjU0IDEyLjUxNCAxNi41NTAxIDEyLjY0MjkgMTYuMjE5NkwxNi4yNzMxIDcuMDA5NDlMNC4xNzIzMiAyMC4wMDExTDExLjcwNzMgMjEuODY2NkMxMi4wNDM1IDIxLjk1MDYgMTIuMzI5MiAyMi4xODAzIDEyLjQ4NiAyMi40OTQxQzEyLjY0MjkgMjIuODA3OCAxMi42NTk3IDIzLjE3NzUgMTIuNTM2NCAyMy41MDgxWiIgZmlsbD0iIzAxOUJFRiIvPgo8L3N2Zz4K" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
+					</div>
+					<div class="box-content">
+						<div class="title roboto-regular">Block Title</div>
+						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
+						<a href="" class="text-link">Text Link</a>
+					</div>					
 				</div>
 			</div>
 		</div>	
 	</section>	
 `
 
-function ValuePrepositionIconDark4Col(editor: any) {		
-	editor.Blocks.add('valuePrepositionIconDark4Col', {
-		id: 'valuePrepositionIconDark4Col',
-		label: 'With Icon Dark 4 Col',
+function ValuePrepositionIconLightLeft4Col(editor: any) {		
+	editor.Blocks.add('valuePrepositionIconLeftLight4Col', {
+		id: 'valuePrepositionIconLeftLight4Col',
+		label: 'With Icon Left Light 4 Col',
 		activate: true,
 		content: div,
-		category: 'Value Prepositions',
+		category: 'Value Prepositions Light',
 		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
 		attributes: { class: 'custom-block' },
 	});
 	
 }
   
-export default ValuePrepositionIconDark4Col;
+export default ValuePrepositionIconLightLeft4Col;

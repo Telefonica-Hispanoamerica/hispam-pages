@@ -3,18 +3,50 @@ const div = `
 	p {
 		margin: 0;
 	}
-	.title-section {
+	.pretitle-vp {
+		font-family: Roboto;
+		font-weight: 400;
+		font-size: 1.25rem;
+		line-height: 28px;
+		color: #fff;
+		margin: 0 auto 8px;
+    	text-align: center;
+	}
+	@media (max-width: 767px) {
+		.pretitle-vp {
+			font-size: 1rem;
+			line-height: 24px;
+		}
+	}
+	.title-section-vp {
+		font-family: 'Telefonica-Regular';
 		font-size: 2.5rem;
 		line-height: 48px;
 		color: #fff;
-		margin: 0 auto 64px;
+		margin: 0 auto 16px;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
-		.title-section {
-			margin: 0 auto 24px;
-			font-size: 1.75 rem;
+		.title-section-vp {
+			margin: 0 auto 16px;
+			font-size: 1.75rem;
 			line-height: 36px;
+		}
+	}
+	.description-vp {
+		font-family: Roboto;
+		font-weight: 400;
+		font-size: 1.125rem;
+		line-height: 24px;
+		color: #fff;
+		margin: 0 auto;
+    	text-align: center;
+	}
+	@media (max-width: 767px) {
+		.description-vp {
+			font-size: 1rem;
+			line-height: 24px;
+			margin-bottom: 32px;
 		}
 	}
 	.card-vp-no-img-left {
@@ -24,7 +56,7 @@ const div = `
 		/* max-width: 288px; */
 		width: 100%;
 		text-align: left;
-		margin: 0 auto;
+		margin: 64px auto 0;
 		grid-gap: 24px;
 	}	
 	@media (max-width: 767px) {
@@ -144,17 +176,10 @@ const div = `
 	}
 	</style>
 	<section class='bg-dark ptb-80'>
-		<h2 class="title-section">Title section</h2>
+		<p class="pretitle-vp">Pretitle</p>
+		<h2 class="title-section-vp">Value Proposition title goes here</h2>
+		<p class="description-vp">This sample description is being used as a placeholder for real text.</p>
 		<div class='gjs-row-kenos'>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-no-img-left">
-					<div class="box-content">
-						<div class="title roboto-regular">Block Title</div>
-						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-						<a href="" class="text-link">Text Link</a>
-					</div>					
-				</div>
-			</div>
 			<div class='gjs-cell-kenos'>
 				<div class="card-vp-no-img-left">
 					<div class="box-content">
@@ -192,7 +217,7 @@ function ValuePrepositionNoImageDarkLeft4Col(editor: any) {
 		label: 'With No Image Left Dark 4 Col',
 		activate: true,
 		content: div,
-		category: 'Value Prepositions',
+		category: 'Value Prepositions Dark',
 		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
 		attributes: { class: 'custom-block' },
 	});

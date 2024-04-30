@@ -29,6 +29,9 @@
             align-items: center;
             justify-content: center;
             padding: 6px 8px 0;
+            &.dark {
+                background-color: #0B2739;
+            }
             .image-size {
                 width: 18px;
                 //margin-right: 8px;
@@ -50,6 +53,9 @@
                 text-overflow: ellipsis;
                 max-width: 80%;            
                 text-align: center;
+                &.dark {
+                    color: #fff;
+                }
             }
         }
     }
