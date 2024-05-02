@@ -6,7 +6,7 @@ const div = `
 			padding: 8px;
 			display: table;
 			width: 100%;
-			border-spacing: 8px;
+			border-spacing: 16px;
 		}
 
 		@media (max-width: 768px) {

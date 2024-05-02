@@ -170,7 +170,7 @@ p {
 	padding: 8px;
 	display: table;
 	width: 100%;
-	border-spacing: 8px;
+	border-spacing: 16px;
 }
 
 @media (max-width: 768px) {
@@ -246,7 +246,7 @@ function ValuePrepositionIconDarkLeftDivider(editor: any) {
 
 	editor.Blocks.add('valuePrepositionIconLeftDarkDivider', {
 		id: 'valuePrepositionIconLeftDarkDivider',
-		label: 'With Icon Left Dark Divider',
+		label: 'Icono izquierda',
 		activate: true,
 		content: styles+div,
 		category: 'Value Prepositions Dark',

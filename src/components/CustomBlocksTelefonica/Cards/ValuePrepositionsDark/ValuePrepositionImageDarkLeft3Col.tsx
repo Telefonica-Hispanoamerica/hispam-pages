@@ -152,13 +152,14 @@ const div = `
 		padding: 8px;
 		display: table;
 		width: 100%;
-		border-spacing: 8px;
+		border-spacing: 16px;
 	}
 
 	@media (max-width: 768px) {
 		.gjs-row-kenos {
 			width: 100%;
 			padding: 0;
+			border-spacing: 8px;
 		}
 		.gjs-cell-kenos {
 			width: 100%;

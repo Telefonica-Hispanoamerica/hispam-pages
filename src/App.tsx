@@ -40,7 +40,7 @@ import JSZip from 'jszip';
 import cssKenos from '@uxhispam/kenos/css/kenos.css?inline'
 // import cssRoboto from '@uxhispam/kenos/css/roboto.css'
 // import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
-import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/MediaCard';
+import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
 import Columns1Kenos from './components/CustomBlocksTelefonica/Columns/Columns1';
 import Columns2Kenos from './components/CustomBlocksTelefonica/Columns/Columns2';
@@ -76,6 +76,10 @@ import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelef
 import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
+import iHeroImageComplete from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
+import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteSmall';
+import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
+import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -245,7 +249,7 @@ function App() {
 									padding: 8px;
 									display: table;
 									width: 100%;
-									border-spacing: 8px;
+									border-spacing: 16px;
 								}
 
 								@media (max-width: 768px) {
@@ -439,6 +443,10 @@ function App() {
 					onEditor={onEditor}
 					options={gjsOptions}
 					plugins={[
+						iHeroImageComplete,
+						iHeroImageCompleteSmall,
+						CardLight,
+						CardDark4Col,
 						// ButtonPrimaryKenos,
 						// SubmitButtonsKenos,
 						// DataCardKenos,
