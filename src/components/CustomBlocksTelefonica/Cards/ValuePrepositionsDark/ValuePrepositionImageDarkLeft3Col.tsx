@@ -1,49 +1,50 @@
+import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
 	p {
 		margin: 0;
 	}
-	.pretitle-vp-light {
+	.pretitle-vp {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.25rem;
 		line-height: 28px;
-		color: #313235;
+		color: #fff;
 		margin: 0 auto 8px;
     	text-align: center;
 	}
 	@media (max-width: 767px) {
-		.pretitle-vp-light {
+		.pretitle-vp {
 			font-size: 1rem;
 			line-height: 24px;
 		}
 	}
-	.title-section-vp-light {
+	.title-section-vp {
 		font-family: 'Telefonica-Regular';
 		font-size: 2.5rem;
 		line-height: 48px;
-		color: #313235;
+		color: #fff;
 		margin: 0 auto 16px;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
-		.title-section-vp-light {
+		.title-section-vp {
 			margin: 0 auto 16px;
 			font-size: 1.75rem;
 			line-height: 36px;
 		}
 	}
-	.description-vp-light {
+	.description-vp {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.125rem;
 		line-height: 24px;
-		color: #737578;
+		color: #fff;
 		margin: 0 auto;
     	text-align: center;
 	}
 	@media (max-width: 767px) {
-		.description-vp-light {
+		.description-vp {
 			font-size: 1rem;
 			line-height: 24px;
 			margin-bottom: 32px;
@@ -91,7 +92,7 @@ const div = `
 		font-weight: 400;
 		font-size: 1.25rem;
 		line-height: 28px;
-		color: #313235;
+		color: #fff;
 	}
 	@media (max-width: 767px) {
 		.card-vp-img-left .title {
@@ -104,7 +105,7 @@ const div = `
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #313235;
+		color: #fff;
 		margin-top: 8px;
 		overflow: hidden;
 		display: -webkit-box;
@@ -122,7 +123,7 @@ const div = `
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #019BEF;
+		color: #fff;
 		margin: 24px auto 0;
 		-webkit-user-modify: read-write;
 		display: block;
@@ -133,8 +134,8 @@ const div = `
 			line-height: 20px;
 		}
 	}
-	.bg-light {
-		background-color: #fff
+	.bg-dark {
+		background-color: #0B2739
 	}
 	.ptb-80 {
 		padding: 80px 0;
@@ -175,10 +176,10 @@ const div = `
 		vertical-align: top;
 	}
 	</style>
-	<section class='bg-light ptb-80'>
-		<p class="pretitle-vp-light">Pretitle</p>
-		<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
-		<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
+	<section class='bg-dark ptb-80'>
+		<p class="pretitle-vp">Pretitle</p>
+		<h2 class="title-section-vp">Value Proposition title goes here</h2>
+		<p class="description-vp">This sample description is being used as a placeholder for real text.</p>
 		<div class='gjs-row-kenos'>
 			<div class='gjs-cell-kenos'>
 				<div class="card-vp-img-left">					
@@ -220,17 +221,17 @@ const div = `
 	</section>	
 `
 
-function ValuePrepositionImageLightLeft4Col(editor: any) {		
-	editor.Blocks.add('valuePrepositionImageLeftLight4Col', {
-		id: 'valuePrepositionImageLeftLight4Col',
-		label: 'With Image Left Light 4 Col',
+function ValuePrepositionImageDarkLeft3Col(editor: any) {		
+	editor.Blocks.add('valuePrepositionImageLeftDark3Col', {
+		id: 'valuePrepositionImageLeftDark3Col',
+		label: 'Imagen izquierda',
 		activate: true,
 		content: div,
-		category: 'Value Prepositions Light',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		category: 'Value Prepositions Dark',
+		media: iconsSvg.headerTitleAnd3ColValueP,
 		attributes: { class: 'custom-block' },
 	});
 	
 }
   
-export default ValuePrepositionImageLightLeft4Col;
+export default ValuePrepositionImageDarkLeft3Col;

@@ -28,14 +28,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 6px 8px 0;
+            padding: 6px 8px;
             &.dark {
                 background-color: #0B2739;
             }
             .image-size {
-                width: 18px;
+               // width: 18px;
                 //margin-right: 8px;
+                //display: flex;
                 display: flex;
+                margin-bottom: 4px;
+                align-items: center;
                 svg {
                     path {
                         fill: #019DF4;
@@ -46,11 +49,12 @@
                 }
             }
             .text-size {
-                font-size: 11px;
+                font-size: 10px;
+                line-height: 14px;
                 color: #737578;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                //white-space: nowrap;
+                //overflow: hidden;
+                //text-overflow: ellipsis;
                 max-width: 80%;            
                 text-align: center;
                 &.dark {

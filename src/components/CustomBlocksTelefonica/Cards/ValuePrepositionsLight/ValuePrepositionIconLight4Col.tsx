@@ -1,3 +1,4 @@
+import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
 	p {
@@ -224,14 +225,31 @@ const div = `
 function ValuePrepositionIconLight4Col(editor: any) {		
 	editor.Blocks.add('valuePrepositionIconLight4Col', {
 		id: 'valuePrepositionIconLight4Col',
-		label: 'With Icon Light 4 Col',
+		label: 'Icono centrado',
 		activate: true,
 		content: div,
 		category: 'Value Prepositions Light',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		media: iconsSvg.headerTitleAnd4ColValueP,
 		attributes: { class: 'custom-block' },
 	});
 	
 }
-  
+
+/* 6 Col */
+/* <svg width="38" height="20" viewBox="0 0 34 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="6.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="12.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="18.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="24.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="31.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg>*/
+
+/* 5 Col */
+/* <svg width="34" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="6.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="12.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="18.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="24.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg> */
+
+/* 4 Col */
+/* <svg width="28" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="6.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="12.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="18.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg>*/
+
+/*3 col*/
+/* <svg width="22" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="6.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="12.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg>*/
+
+/*2 col*/
+/* <svg width="16" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect><rect x="6.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg> */
+
+/*1 col*/
+/* <svg width="10" height="20" viewBox="0 0 4 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg> */
 export default ValuePrepositionIconLight4Col;

@@ -1,55 +1,56 @@
+import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
 	p {
 		margin: 0;
 	}
-	.pretitle-vp-light {
+	.pretitle-vp {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.25rem;
 		line-height: 28px;
-		color: #313235;
+		color: #fff;
 		margin: 0 auto 8px;
     	text-align: center;
 	}
 	@media (max-width: 767px) {
-		.pretitle-vp-light {
+		.pretitle-vp {
 			font-size: 1rem;
 			line-height: 24px;
 		}
 	}
-	.title-section-vp-light {
+	.title-section-vp {
 		font-family: 'Telefonica-Regular';
 		font-size: 2.5rem;
 		line-height: 48px;
-		color: #313235;
+		color: #fff;
 		margin: 0 auto 16px;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
-		.title-section-vp-light {
+		.title-section-vp {
 			margin: 0 auto 16px;
 			font-size: 1.75rem;
 			line-height: 36px;
 		}
 	}
-	.description-vp-light {
+	.description-vp {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.125rem;
 		line-height: 24px;
-		color: #737578;
+		color: #fff;
 		margin: 0 auto;
     	text-align: center;
 	}
 	@media (max-width: 767px) {
-		.description-vp-light {
+		.description-vp {
 			font-size: 1rem;
 			line-height: 24px;
 			margin-bottom: 32px;
 		}
 	}
-	.card-vp-no-img-left-light {
+	.card-vp-no-img-left {
 		display: flex;
 		flex-direction: row;
 		align-items: start;
@@ -60,11 +61,11 @@ const div = `
 		grid-gap: 24px;
 	}	
 	@media (max-width: 767px) {
-		.card-vp-no-img-left-light {
+		.card-vp-no-img-left {
 			margin: 0 auto 24px;
 		}
 	}	
-	.card-vp-no-img-left-light .box-img {
+	.card-vp-no-img-left .box-img {
 		width: 96px;
 		height: 96px;
 		/*overflow: hidden;*/
@@ -78,33 +79,33 @@ const div = `
 		justify-content: center;
 		align-items: center;	
 	}
-	.card-vp-no-img-left-light .box-img img {
+	.card-vp-no-img-left .box-img img {
 		object-fit: contain;
     	border-radius: inherit;	
 	}
-	.card-vp-no-img-left-light .box-content {
+	.card-vp-no-img-left .box-content {
 		text-align: left
 	}
 	
-	.card-vp-no-img-left-light .title {
+	.card-vp-no-img-left .title {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1.25rem;
 		line-height: 28px;
-		color: #313235;
+		color: #fff;
 	}
 	@media (max-width: 767px) {
-		.card-vp-no-img-left-light .title {
+		.card-vp-no-img-left .title {
 			font-size: 1.125rem;
 			line-height: 24px;
 		}
 	}
-	.card-vp-no-img-left-light .description {
+	.card-vp-no-img-left .description {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #313235;
+		color: #fff;
 		margin-top: 8px;
 		overflow: hidden;
 		display: -webkit-box;
@@ -112,29 +113,29 @@ const div = `
 		-webkit-box-orient: vertical;
 	}
 	@media (max-width: 767px) {
-		.card-vp-no-img-left-light .description {
+		.card-vp-no-img-left .description {
 			font-size: 0.875rem;
 			line-height: 20px;
 		}
 	}
-	.card-vp-no-img-left-light .text-link {
+	.card-vp-no-img-left .text-link {
 		font-family: Roboto;
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 24px;
-		color: #019BEF;
+		color: #fff;
 		margin: 24px auto 0;
 		-webkit-user-modify: read-write;
 		display: block;
 	}
 	@media (max-width: 767px) {
-		.card-vp-no-img-left-light .text-link {
+		.card-vp-no-img-left .text-link {
 			font-size: 0.875rem;
 			line-height: 20px;
 		}
 	}
-	.bg-light {
-		background-color: #fff
+	.bg-dark {
+		background-color: #0B2739
 	}
 	.ptb-80 {
 		padding: 80px 0;
@@ -175,13 +176,13 @@ const div = `
 		vertical-align: top;
 	}
 	</style>
-	<section class='bg-light ptb-80'>
-		<p class="pretitle-vp-light">Pretitle</p>
-		<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
-		<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
+	<section class='bg-dark ptb-80'>
+		<p class="pretitle-vp">Pretitle</p>
+		<h2 class="title-section-vp">Value Proposition title goes here</h2>
+		<p class="description-vp">This sample description is being used as a placeholder for real text.</p>
 		<div class='gjs-row-kenos'>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-no-img-left-light">
+				<div class="card-vp-no-img-left">
 					<div class="box-content">
 						<div class="title roboto-regular">Block Title</div>
 						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
@@ -190,7 +191,7 @@ const div = `
 				</div>
 			</div>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-no-img-left-light">
+				<div class="card-vp-no-img-left">
 					<div class="box-content">
 						<div class="title roboto-regular">Block Title</div>
 						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
@@ -199,7 +200,7 @@ const div = `
 				</div>
 			</div>
 			<div class='gjs-cell-kenos'>
-				<div class="card-vp-no-img-left-light">
+				<div class="card-vp-no-img-left">
 					<div class="box-content">
 						<div class="title roboto-regular">Block Title</div>
 						<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
@@ -211,17 +212,17 @@ const div = `
 	</section>	
 `
 
-function ValuePrepositionNoImageLightLeft4Col(editor: any) {		
-	editor.Blocks.add('valuePrepositionNoImageLeftLight4Col', {
-		id: 'valuePrepositionNoImageLeftLight4Col',
-		label: 'With No Image Left Light 4 Col',
+function ValuePrepositionNoImageDarkLeft3Col(editor: any) {		
+	editor.Blocks.add('valuePrepositionNoImageLeftDark3Col', {
+		id: 'valuePrepositionNoImageLeftDark3Col',
+		label: 'Izquierda',
 		activate: true,
 		content: div,
-		category: 'Value Prepositions Light',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		category: 'Value Prepositions Dark',
+		media: iconsSvg.headerTitleAnd3ColValueP,
 		attributes: { class: 'custom-block' },
 	});
 	
 }
   
-export default ValuePrepositionNoImageLightLeft4Col;
+export default ValuePrepositionNoImageDarkLeft3Col;

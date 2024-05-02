@@ -1,3 +1,4 @@
+import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
 	p {
@@ -240,11 +241,11 @@ const div = `
 function ValuePrepositionIconLightLeftDivider(editor: any) {		
 	editor.Blocks.add('valuePrepositionIconLeftLightDivider', {
 		id: 'valuePrepositionIconLeftLightDivider',
-		label: 'With Icon Left Light Divider',
+		label: 'Icono izquierda',
 		activate: true,
 		content: div,
 		category: 'Value Prepositions Light',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		media: iconsSvg.header2ColAnd3ColValueP,
 		attributes: { class: 'custom-block' },
 	});
 	
