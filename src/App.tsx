@@ -37,7 +37,8 @@ import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
 //===============
 import JSZip from 'jszip';
-import cssKenos from '@uxhispam/kenos/css/kenos.css?inline'
+import cssKenos from '@uxhispam/kenos/css/kenos.css?inline';
+// import cssFonts from './hispam-pages/fonts/fonts.css?inline';
 // import cssRoboto from '@uxhispam/kenos/css/roboto.css'
 // import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
 import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
@@ -58,7 +59,7 @@ import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList
 import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
 import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTLPG';
-import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroTLPG';
+import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
 import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
 import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
@@ -80,6 +81,9 @@ import iHeroImageComplete from './components/CustomBlocksTelefonica/InternalHero
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteSmall';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
+import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBigCenter';
+import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHeroRightLight';
+import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
 // import PageIdContext from './hooks/PageContext';
 
 declare var google: {
@@ -186,6 +190,7 @@ function App() {
 						<meta charset="utf-8">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 						<link rel="stylesheet" href="css/kenos.css">
+						<link rel="stylesheet" href="fonts/fonts.css">
 					</head>
 					${editor.getHtml()}
 				</html>`,
@@ -228,51 +233,7 @@ function App() {
 							<meta charset="utf-8">
 							<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 							<link rel="stylesheet" href="css/style.css">
-							<link rel="stylesheet" href="css/kenos.css">
-							<style>
-								@font-face {
-									font-family: "Telefonica-Regular";
-									src: url("https://www.movistar.com.co/assets/fonts_movistar/Telefonica-Regular.woff2") format("woff2"), url("../fonts/Telefonica-Fonts/Regular/TelefonicaWeb-Regular.woff") format("woff");
-									font-weight: 400;
-									font-style: normal;
-									font-display: swap;
-								}
-								body {
-									font-family: "Telefonica-Regular", sans-serif;
-									font-size: 16px;
-									line-height: 24px;
-									margin: 0;
-								}
-								.gjs-row-kenos {
-									max-width: 1200px;
-									margin: 0 auto;
-									padding: 8px;
-									display: table;
-									width: 100%;
-									border-spacing: 16px;
-								}
-
-								@media (max-width: 768px) {
-									.gjs-row-kenos {
-										width: 100%;
-										padding: 0;
-									}
-									.gjs-cell-kenos {
-										width: 100%;
-										display: block;
-										height: 100%;
-										margin: 0 0 16px;
-										vertical-align: top;
-									}
-								}
-
-								.gjs-cell-kenos {
-									width: 8%;
-									display: table-cell;
-									height: 75px;
-									vertical-align: top;
-								}
-							</style>
+							<link rel="stylesheet" href="css/kenos.css">							
 						</head>
 						${editor.getHtml()}
 					</html>`,
@@ -341,6 +302,7 @@ function App() {
 							carpetaRaiz.file('index.html', exportData.html);
 							carpetaRaiz.folder('css').file('style.css', exportData.css);
 							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+							// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
 							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
 							zip.generateAsync({ type: 'blob' }).then((blob) => {
@@ -400,7 +362,7 @@ function App() {
 				'/hispam-pages/css-kenos/kenos.css',
 				// '/hispam-pages/css-kenos/reset.css',	
 				'/hispam-pages/css-kenos/roboto.css',
-				'/hispam-pages/fonts/fonts.scss',
+				'/hispam-pages/fonts/fonts.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
 			],
 			scripts: []
@@ -445,7 +407,10 @@ function App() {
 					plugins={[
 						iHeroImageComplete,
 						iHeroImageCompleteSmall,
+						ImageCompleteBigCenter,
 						CardLight,
+						CardHeroRightLight,
+						CardHeroSectionDark,
 						CardDark4Col,
 						// ButtonPrimaryKenos,
 						// SubmitButtonsKenos,
