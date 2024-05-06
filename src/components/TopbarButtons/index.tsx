@@ -2,7 +2,12 @@ import { useEditor } from '@grapesjs/react'
 import { useEffect, useState } from 'react'
 // import { UndoOutlined, RedoOutlined,ExpandOutlined, CodeOutlined, LayoutOutlined, DeleteOutlined } from '@ant-design/icons'
 import './TopbarButtons.scss'
-import { AccessAlarm } from '@mui/icons-material';
+import HighlightAltOutlinedIcon from '@mui/icons-material/HighlightAltOutlined';
+import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
+import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 
 interface CommandButton {
     id: string
@@ -19,11 +24,11 @@ function TopbarButtons () {
     const cmdButtons: CommandButton[] = [
         {
 			id: 'core:component-outline',
-			iconPath: <AccessAlarm />
+			iconPath: <HighlightAltOutlinedIcon />
         },
         {
 			id: 'core:fullscreen',
-			iconPath: <AccessAlarm />,
+			iconPath: <FullscreenOutlinedIcon />,
 			options: { target: '#root' }
         },
         // {
@@ -36,7 +41,7 @@ function TopbarButtons () {
         // },
         {
 			id: 'save-export',
-			iconPath: <AccessAlarm />
+			iconPath: <FileDownloadOutlinedIcon />
         },
         // {
 		// 	id: 'export',
@@ -52,16 +57,16 @@ function TopbarButtons () {
         // },
         {
 			id: 'core:component-delete',
-			iconPath: <AccessAlarm />
+			iconPath: <DeleteForeverOutlinedIcon />
         },
         {
 			id: 'core:undo',
-			iconPath: <AccessAlarm />,
+			iconPath: <UndoOutlinedIcon />,
 			disabled: () => !UndoManager.hasUndo()
         },
         {
 			id: 'core:redo',
-			iconPath: <AccessAlarm />,
+			iconPath: <RedoOutlinedIcon />,
 			disabled: () => !UndoManager.hasRedo()
         },
     ];

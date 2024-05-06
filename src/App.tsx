@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
@@ -8,30 +8,7 @@ import './App.scss';
 import "./fonts/fonts.scss";
 
 //Kenos Buttons
-import ButtonPrimaryKenos from "./components/CustomBlocksTelefonica/Buttons/ButtonPrimary";
-import SubmitButtonsKenos from "./components/CustomBlocksTelefonica/Buttons/SubmitButton";
-import DangerButtonsKenos from "./components/CustomBlocksTelefonica/Buttons/DangerButton";
-import LinkButtonKenos from "./components/CustomBlocksTelefonica/Buttons/LinkButton";
-import SecondaryButtonKenos from "./components/CustomBlocksTelefonica/Buttons/SecondaryButton";
-import IconButtonKenos from "./components/CustomBlocksTelefonica/Buttons/IconButton";
 
-//Kenos Cards
-import DataCardKenos from "./components/CustomBlocksTelefonica/Cards/DataCard";
-import DisplayDataCardKenos from "./components/CustomBlocksTelefonica/Cards/DisplayDataCard";
-import DisplayMediaCardKenos from "./components/CustomBlocksTelefonica/Cards/DisplayMediaCard";
-import DisplayMediaCardGroupKenos from "./components/CustomBlocksTelefonica/Cards/DisplayMediaCardGroup";
-import HighlightedCardKenos from "./components/CustomBlocksTelefonica/Cards/HighlightedCard";
-import AvatarKenos from "./components/CustomBlocksTelefonica/Avatar";
-import BadgeKenos from "./components/CustomBlocksTelefonica/Badge";
-import BreadcrumbsKenos from "./components/CustomBlocksTelefonica/Breadcrumbs";
-import CalloutKenos from "./components/CustomBlocksTelefonica/Callout";
-import SnapCardKenos from "./components/CustomBlocksTelefonica/Cards/SnapCard";
-import CheckboxKenos from "./components/CustomBlocksTelefonica/Checkbox";
-import ChipKenos from "./components/CustomBlocksTelefonica/Chip";
-import DividerKenos from "./components/CustomBlocksTelefonica/Divider";
-import HeaderKenos from './components/CustomBlocksTelefonica/Headers/Header';
-import HeroComponentKenos from './components/CustomBlocksTelefonica/Hero/HeroComponent';
-import HeroSlideshowKenos from './components/CustomBlocksTelefonica/Hero/HeroSlideshow';
 import TextComponentKenos from './components/CustomBlocksTelefonica/Text/TextComponent';
 import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
@@ -41,7 +18,6 @@ import cssKenos from '@uxhispam/kenos/css/kenos.css?inline';
 // import cssFonts from './hispam-pages/fonts/fonts.css?inline';
 // import cssRoboto from '@uxhispam/kenos/css/roboto.css'
 // import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
-import MediaCardKenos from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
 import Columns1Kenos from './components/CustomBlocksTelefonica/Columns/Columns1';
 import Columns2Kenos from './components/CustomBlocksTelefonica/Columns/Columns2';
@@ -51,7 +27,6 @@ import Columns6Kenos from './components/CustomBlocksTelefonica/Columns/Columns6'
 import H1 from './components/CustomBlocksTelefonica/Text/H1';
 import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
-import MediaCardTelefonica from './components/CustomBlocksTelefonica/Cards/MediaCardTelefonica';
 import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica';
 import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
@@ -60,7 +35,6 @@ import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanC
 import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTLPG';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
-import ValuePrepositionImageDark from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
 import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
 import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDark4Col';
@@ -86,6 +60,16 @@ import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHe
 import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
 // import PageIdContext from './hooks/PageContext';
 
+/* Hooks */
+import { PageContext } from './hooks/pageSlice'
+
+interface Item {
+    id: number;
+    name: string;
+    styles: string;
+    component: string;
+}
+
 declare var google: {
 	accounts: {
 		oauth2: any;
@@ -108,66 +92,32 @@ declare var google: {
 	};
 };
 
-// type PropsLandingPage = {
-// 	id?: number,
-// 	name?: string,
-// 	styles?: string,
-// 	component?: string,
-// }
-
 
 function App() {
 
-	const newPage = {
-		id: 0,
-		name: 'New page',
-		component: ``,
-	}
+	const { items, addItem } = useContext(PageContext);
+	const [newItemName, setNewItemName] = useState('');
 
-	const [ landingPage, setLandingPage ] = useState<any>([newPage]);
-	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-
-	// const { pageId } = useContext<any>(PageIdContext);
-
-	// const [ onEditorUpdate, setOnEditorUpdate] = useState<any>(null);
-
-	// const [currentPageId, setCurrentPageId] = useState<number | null>(null);
-
-	// useEffect(() => {
-	// 	setCurrentPageId(pageId);
-
-	// }, [pageId]);
-
-
-	useEffect(() => {
-		async function fetchMyAPI() {
-			try {
-				const response = await fetch('http://localhost:3000/get-html');
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				const jsonData = await response.json();
-				setLandingPage((prevState:any) => [...prevState, ...jsonData]);
-				const updatedData = [...landingPage, ...jsonData];
-            	setLandingPage(updatedData);
-				// landingPage.push(...jsonData)
-				landingPage.length >= 0 ? setIsOpen(true) : setIsOpen(false)
-			} catch (error) {
-				console.error('Error al obtener el HTML desde el backend', error);
-				setIsOpen(true)
-			}
+	const handleAddItem = (item: Item) => {
+		if (item.component.trim() !== '') {
+			const newItem: Item = {
+				id: Date.now(),
+				name: item.name,
+				styles: item.styles,
+				component: item.component
+			};
+		  	addItem(newItem);
+			saveHTML(newItem)
+		  	setNewItemName('');
 		}
-
-		fetchMyAPI()
-
-	}, []);
+	};
+	console.log("ITEMSSSSSSSSSS", items)
 
 	const onEditor = (editor: Editor, opts = {} ) => {
 
 		let currentPageId = 0;
 		let currentPageName = '';
 
-		console.log("LANDING PAGE ARRAY", landingPage)
 
 		const pfx = editor.getConfig('stylePrefix');
 		const commandName = 'save-export';
@@ -200,9 +150,7 @@ function App() {
 		};
 
 		editor.on('page:select', (page: any) => {
-			console.log('PAGE', page)
 			currentPageId = page._previousAttributes.id;
-			console.log('currentPageId', currentPageId)
 			currentPageName = page.attributes.name;
 		});
 
@@ -211,22 +159,10 @@ function App() {
 			run(editor: PluginOptions = {}) {
 				editor.Modal.open({
 					title: 'Modal example',
-				// 	content: `<pre id="css-to-parse">
-				// 	.simple-class {
-				// 	  background-image:url("https://image1.png"), url("https://image2.jpg");
-				// 	  background-attachment: fixed, scroll;
-				// 	  background-position:left top, center center;
-				// 	  background-repeat:repeat-y, no-repeat;
-				// 	  background-size: contain, cover;
-				// 	  box-shadow: 0 0 5px #9d7aa5, 0 0 10px #e6c3ee;
-				// 	  border: 2px solid #FF0000;
-				// 	}
-				//   </pre>`,
 					content: ``,
 				});
 
 				const exportData = {
-					//html: editor.getHtml(),
 					html: `<!doctype html>
 					<html lang="en">
 						<head>
@@ -242,7 +178,6 @@ function App() {
 				if (config.addExportBtn) {
 
 					const existingButtons = document.querySelectorAll(`${pfx}btn-prim`);
-					console.log("existingButtons", existingButtons)
 					existingButtons.forEach(button => button.remove());
 
 					const btnExp = document.createElement('button');
@@ -260,61 +195,37 @@ function App() {
 						el?.appendChild(btnExp);
 
 						btnExp.onclick = () => {
-							console.log('currentPageId 2', currentPageId)
-							const getExistingPage = landingPage.filter((page: any) => page.id == currentPageId);
-							if(getExistingPage[0].id > 0){
-								console.log('getExistingPage', getExistingPage)
-								console.log('currentPageName', currentPageName)
-								saveHTML(									
-									getExistingPage[0].id,
-									{
-										...getExistingPage[0],										
-										name: currentPageName,
-										// styles: exportData.css,
-										// component: exportData.html
-										styles: editor.getCss(),
-										component: editor.getHtml()
-									}
-								);
-								editor.Modal.close();
-							} else {
-								const nextIndex = landingPage.length + 1;
-								saveHTML(
-									nextIndex,
-									{
-										id: nextIndex,
-										name: `Page ${nextIndex}`,
-										// styles: exportData.css,
-										// component: exportData.html
-										styles: editor.getCss(),
-										component: editor.getHtml()
-									}
-								);
-								editor.Modal.close();
+							const nextIndex = items.length + 1;
+							let newItem = {
+								id: 0,
+								name:`Page ${nextIndex}`,
+								styles: editor.getCss(),
+								component: editor.getHtml()
 							}
+							handleAddItem(newItem)
 						}
 
-						el?.appendChild(btnExpExport);
-						btnExpExport.onclick = () => {
-							const zip = new JSZip();
-							const carpetaRaiz:any = zip.folder('mi_proyecto');
+						// el?.appendChild(btnExpExport);
+						// btnExpExport.onclick = () => {
+						// 	const zip = new JSZip();
+						// 	const carpetaRaiz:any = zip.folder('mi_proyecto');
 
-							carpetaRaiz.file('index.html', exportData.html);
-							carpetaRaiz.folder('css').file('style.css', exportData.css);
-							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-							// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
-							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
+						// 	carpetaRaiz.file('index.html', exportData.html);
+						// 	carpetaRaiz.folder('css').file('style.css', exportData.css);
+						// 	carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+						// 	// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
+						// 	carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
-							zip.generateAsync({ type: 'blob' }).then((blob) => {
-								const url = URL.createObjectURL(blob);
-								const link = document.createElement('a');
-								link.href = url;
-								link.download = `page_${currentPageId}.zip`;
-								document.body.appendChild(link);
-								link.click();
-								document.body.removeChild(link);
-							});
-						}
+						// 	zip.generateAsync({ type: 'blob' }).then((blob) => {
+						// 		const url = URL.createObjectURL(blob);
+						// 		const link = document.createElement('a');
+						// 		link.href = url;
+						// 		link.download = `page_${currentPageId}.zip`;
+						// 		document.body.appendChild(link);
+						// 		link.click();
+						// 		document.body.removeChild(link);
+						// 	});
+						// }
 					});
 				}
 
@@ -325,11 +236,10 @@ function App() {
 		});
 	};
 
-	const saveHTML = async (id: number, html: any) => {
-		console.log("HTML", [id, html])
-
+	const saveHTML = async (html: any) => {
 		try {
-			const response = await fetch('http://localhost:3000/save-html', {
+			// const response = await fetch('http://localhost:3000/save-html', {
+			const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -346,9 +256,11 @@ function App() {
 		}
 	};
 
+	
+
 	const gjsOptions: EditorConfig = {
 
-		height: '100%',
+		height: '100vh',
 		undoManager: {
 			trackSelection: false
 		},
@@ -360,7 +272,6 @@ function App() {
 		canvas: {
 			styles: [
 				'/hispam-pages/css-kenos/kenos.css',
-				// '/hispam-pages/css-kenos/reset.css',	
 				'/hispam-pages/css-kenos/roboto.css',
 				'/hispam-pages/fonts/fonts.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
@@ -376,30 +287,20 @@ function App() {
 				'https://via.placeholder.com/350x250/f28c33/fff',
 			],
 			pages: [
-				...landingPage
+				...items
 			],
 		},
 		pluginsOpts: {
 			"grapesjs-plugin-toolbox": {
 				panels: true
 			},
-			// "grapesjs-ga": {
-			// 	/* Test here your options  */
-			// },
-			// 'grapesjs-indexeddb': {
-			// 	options: {
-			// 		key: 'user-project-id',
-			// 		dbName: 'editorLocalData',
-			// 		objectStoreName: 'projects',
-			// 	}
-			// }
 		}
 	};
 
 	return (
 			<div>
 				{/*<GoogleOuthAnalytics />*/}
-				{ isOpen && <GjsEditor
+				{ items.length > 0 && <GjsEditor
 					grapesjs={grapesjs}
 					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
 					onEditor={onEditor}
@@ -412,21 +313,8 @@ function App() {
 						CardHeroRightLight,
 						CardHeroSectionDark,
 						CardDark4Col,
-						// ButtonPrimaryKenos,
-						// SubmitButtonsKenos,
-						// DataCardKenos,
-						// DangerButtonsKenos,
-						// LinkButtonKenos,
-						// SecondaryButtonKenos,
-						// IconButtonKenos,
-						// DisplayDataCardKenos,
-						// DisplayMediaCardKenos,
-						// DisplayMediaCardGroupKenos,
-						// HighlightedCardKenos,
-						// MediaCardKenos,
 						MediaCardTLPG,
 						CardHeroTLPG,
-						// ValuePrepositionImageDark,
 						ValuePrepositionImageDark4Col,
 						ValuePrepositionImageDarkLeft4Col,
 						ValuePrepositionIconDark4Col,
@@ -447,17 +335,6 @@ function App() {
 						PlanCardTelefonica2,
 						PlanCardTelefonica3,
 						PlanCardFeatTelefonica,
-						// SnapCardKenos,
-						// AvatarKenos,
-						// BadgeKenos,
-						// BreadcrumbsKenos,
-						// CalloutKenos,
-						// CheckboxKenos,
-						// ChipKenos,
-						// DividerKenos,
-						// HeaderKenos,
-						// HeroComponentKenos,
-						// HeroSlideshowKenos,
 						TextComponentKenos,
 						TextWrappingKenos,
 						Columns1Kenos,
@@ -475,14 +352,6 @@ function App() {
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',
 						},
-						// {
-						// 	id: 'grapesjs-indexeddb',
-						// 	src: 'https://unpkg.com/grapesjs-indexeddb'
-						// },
-						// {
-						// 	id: 'grapesjs-project-manager',
-						// 	src: 'https://unpkg.com/grapesjs-project-manager'
-						// },
 						{
 							id: 'grapesjs-plugin-export',
 							src: 'https://unpkg.com/grapesjs-plugin-export',

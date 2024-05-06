@@ -3,7 +3,6 @@ import { Editor, PluginOptions } from 'grapesjs';
 
 function ExportCode(props:any) {
     const [ editor, opts ] = props
-    console.log('PROPS', props)
     const pfx = editor?.getConfig('stylePrefix');
     const commandName = 'export';
 

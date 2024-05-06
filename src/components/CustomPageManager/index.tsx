@@ -5,7 +5,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import PageIdContext from "../../hooks/PageContext";
+import DeleteIcon from '@mui/icons-material/Delete';
+// import PageIdContext from "../../hooks/PageContext";
+
+import { PageContext } from '../../hooks/pageSlice'
 
 // type PropsLandingPage = {
 // 	id: number,
@@ -22,12 +25,13 @@ export default function CustomPageManager({
     remove,
 }: PagesResultProps) {
 
-    const { setPageId } = useContext<any>(PageIdContext);
     const [
         editableContent, 
         // setEditableContent
     ] = useState<string>('');
     const [selectedId, setSelectedId] = useState<string | null>(null);
+    const { items, removeItem } = useContext(PageContext);
+	const [newItemName, setNewItemName] = useState('');
 
     const handleFocus = (id: string) => {
         setSelectedId(id);
@@ -52,9 +56,30 @@ export default function CustomPageManager({
     };
 
     const getPageId = (page: any) => {
-        setPageId(page.id)
+        // setPageId(page.id)
         select(page)
     }
+
+    const handleRemoveItem = (id: any) => {
+        const removePage = pages.filter( page => page.id === id);
+        remove(removePage[0])
+        removeItem(id);
+        setAnchorEl(null);
+        removeHTML(id);
+    };
+
+    const removeHTML = async (id: any) => {
+        try {            
+            //const response = await fetch(`http://localhost:3000/remove-html/${id}`, {
+            const response = await fetch(`https://hispam-pages-backend.onrender.com/remove-html/${id}`, {
+              method: 'DELETE'
+            });
+            const data = await response.json();
+            console.log(data); // Maneja la respuesta del servidor
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
 
     // const handleContentChange = (event: React.ChangeEvent<HTMLElement>) => {
@@ -62,30 +87,30 @@ export default function CustomPageManager({
     // };
 
     const handleRename = (page: any) => {
-        console.log('PAGE NAME', page)
         page.setName(editableContent);
         handleClose();
     };
 
+    console.log("PAGES", pages)
+
     return (
         <div className="gjs-custom-page-manager">
             <div className="plus" onClick={addNewPage}>
-                +
+                Add new page
             </div>
             
-            {pages.map((page) => (
+            {pages.map((page, index) => (
                 <div
                     key={page.getId()}
                     className={`page-content ${selectedId === page.getId() ? 'selected' : 'not-selected'}`}
                     onClick={() => handleFocus(page.getId())}
                     id={`page-content_${page.getId()}`}
                 >                    
-                    <div onClick={() => getPageId(page)}>
-                        {/* <p contentEditable
-                            onBlur={handleContentChange}
-                            suppressContentEditableWarning={true} onFocus={() => handleRename(page)}>{page.getName() || 'Untitled page'}</p> */}
+                    <div onClick={() => getPageId(page)} className="btn-page">
                         <p>{page.getName() || 'Untitled page'}</p>
-                        <IconButton
+                        <div className={`delete-btn ${index == 0 ? 'hidden' : ''}`} onClick={() => handleRemoveItem(page.id)}><DeleteIcon fontSize="small"/></div>
+                        
+                        {/* <IconButton
                             aria-label="more"
                             id="long-button"
                             aria-controls={open ? 'long-menu' : undefined}
@@ -105,8 +130,8 @@ export default function CustomPageManager({
                         >
                             <MenuItem onClick={() => handleRename(page)}>Rename</MenuItem>
                             <MenuItem onClick={handleClose}>Duplicate</MenuItem>
-                            <MenuItem onClick={() => remove(page)}>Delete</MenuItem>
-                        </Menu>
+                            <MenuItem onClick={() => handleRemoveItem(page.id)}>Delete</MenuItem>
+                        </Menu> */}
                     </div>
                 </div>
             ))}
