@@ -29,6 +29,8 @@ const PlanCardTelefonica211 = (editor: Editor ) => {
 		content: { type: 'comp-with-js' },
 	});
 }
+
+console.log("PlanCardTelefonica211", PlanCardTelefonica211)
 const div = `
 	<style>	
 		.toggle {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
@@ -96,19 +96,19 @@ declare var google: {
 function App() {
 
 	const { items, addItem } = useContext(PageContext);
-	const [newItemName, setNewItemName] = useState('');
+	// const [newItemName, setNewItemName] = useState('');
 
-	const handleAddItem = (item: Item) => {
+	const handleAddItem = (item: Item, id: number) => {
 		if (item.component.trim() !== '') {
 			const newItem: Item = {
-				id: Date.now(),
+				id: id,
 				name: item.name,
 				styles: item.styles,
 				component: item.component
 			};
 		  	addItem(newItem);
 			saveHTML(newItem)
-		  	setNewItemName('');
+		  	//setNewItemName('');
 		}
 	};
 	console.log("ITEMSSSSSSSSSS", items)
@@ -150,7 +150,7 @@ function App() {
 		};
 
 		editor.on('page:select', (page: any) => {
-			currentPageId = page._previousAttributes.id;
+			currentPageId = parseInt(page.id);
 			currentPageName = page.attributes.name;
 		});
 
@@ -195,37 +195,51 @@ function App() {
 						el?.appendChild(btnExp);
 
 						btnExp.onclick = () => {
-							const nextIndex = items.length + 1;
-							let newItem = {
-								id: 0,
-								name:`Page ${nextIndex}`,
-								styles: editor.getCss(),
-								component: editor.getHtml()
-							}
-							handleAddItem(newItem)
+							const editPage = items.filter(item => item.id == currentPageId);
+							debugger
+							if(editPage[0]) {
+								let editItem = {
+									id: editPage[0].id,
+									name: editPage[0].name,
+									styles: editor.getCss(),
+									component: editor.getHtml()
+								}
+								handleAddItem(editItem, editItem.id);
+							} else {
+								const nextIndex = items.length + 1;
+								let newItem = {
+									id: Date.now(),
+									name:`Page ${nextIndex}`,
+									styles: editor.getCss(),
+									component: editor.getHtml()
+								}
+								handleAddItem(newItem, newItem.id);
+							}							
+							editor.Modal.close();
 						}
 
-						// el?.appendChild(btnExpExport);
-						// btnExpExport.onclick = () => {
-						// 	const zip = new JSZip();
-						// 	const carpetaRaiz:any = zip.folder('mi_proyecto');
+						el?.appendChild(btnExpExport);
+						btnExpExport.onclick = () => {
+							const zip = new JSZip();
+							const carpetaRaiz:any = zip.folder('mi_proyecto');
 
-						// 	carpetaRaiz.file('index.html', exportData.html);
-						// 	carpetaRaiz.folder('css').file('style.css', exportData.css);
-						// 	carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-						// 	// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
-						// 	carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
+							carpetaRaiz.file('index.html', exportData.html);
+							carpetaRaiz.folder('css').file('style.css', exportData.css);
+							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+							// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
+							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
-						// 	zip.generateAsync({ type: 'blob' }).then((blob) => {
-						// 		const url = URL.createObjectURL(blob);
-						// 		const link = document.createElement('a');
-						// 		link.href = url;
-						// 		link.download = `page_${currentPageId}.zip`;
-						// 		document.body.appendChild(link);
-						// 		link.click();
-						// 		document.body.removeChild(link);
-						// 	});
-						// }
+							zip.generateAsync({ type: 'blob' }).then((blob) => {
+								const url = URL.createObjectURL(blob);
+								const link = document.createElement('a');
+								link.href = url;
+								link.download = `page_${currentPageId}.zip`;
+								document.body.appendChild(link);
+								link.click();
+								document.body.removeChild(link);
+							});
+							editor.Modal.close();
+						}
 					});
 				}
 

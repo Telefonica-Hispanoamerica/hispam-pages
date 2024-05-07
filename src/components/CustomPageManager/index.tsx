@@ -1,21 +1,15 @@
 import { useContext, useState } from "react"
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
+// import IconButton from '@mui/material/IconButton';
+// import MenuItem from '@mui/material/MenuItem';
+// import Menu from '@mui/material/Menu';
 import DeleteIcon from '@mui/icons-material/Delete';
 // import PageIdContext from "../../hooks/PageContext";
 
-import { PageContext } from '../../hooks/pageSlice'
+import { PageContext } from '../../hooks/pageSlice';
 
-// type PropsLandingPage = {
-// 	id: number,
-// 	name: string,
-// 	styles: string,
-// 	component: string,
-// }
 
 export default function CustomPageManager({
     pages,
@@ -25,13 +19,12 @@ export default function CustomPageManager({
     remove,
 }: PagesResultProps) {
 
-    const [
-        editableContent, 
-        // setEditableContent
-    ] = useState<string>('');
+    // const [
+    //     editableContent, 
+    //     // setEditableContent
+    // ] = useState<string>('');
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const { items, removeItem } = useContext(PageContext);
-	const [newItemName, setNewItemName] = useState('');
+    const { removeItem } = useContext(PageContext);
 
     const handleFocus = (id: string) => {
         setSelectedId(id);
@@ -39,21 +32,24 @@ export default function CustomPageManager({
 
     const addNewPage = () => {
         const nextIndex = pages.length + 1;
+        const dateNumber = Date.now()
         add({
+            id: dateNumber.toString(),
             name: `Page ${nextIndex}`,
             component: `<h1>Page content ${nextIndex}</h1>`,
         });
     };
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+    console.log(anchorEl)
+    // const open = Boolean(anchorEl);
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    // const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    //     setAnchorEl(event.currentTarget);
+    // };
+    // const handleClose = () => {
+    //     setAnchorEl(null);
+    // };
 
     const getPageId = (page: any) => {
         // setPageId(page.id)
@@ -86,10 +82,10 @@ export default function CustomPageManager({
     //     setEditableContent(event.target.innerText);
     // };
 
-    const handleRename = (page: any) => {
-        page.setName(editableContent);
-        handleClose();
-    };
+    // const handleRename = (page: any) => {
+    //     page.setName(editableContent);
+    //     handleClose();
+    // };
 
     console.log("PAGES", pages)
 
