@@ -1,7 +1,6 @@
 import { iconsSvg } from '../IconsSvgBlocks';
 const div = `
 	<style>
-	/* .card-hero-right-l*/
 	p {
 		margin: 0;
 	}
@@ -170,9 +169,6 @@ const div = `
 			margin: 0;			
 		}
 	}
-	/* .card-hero-right-l */
-
-	/* Color */
 	.brand-low {
 		background-color: #E6F5FD;
 	}
@@ -184,7 +180,6 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;

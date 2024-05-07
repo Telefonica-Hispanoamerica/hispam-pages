@@ -33,7 +33,7 @@ const div = `
 		}
 	}
 	.title-section-vp {
-		font-family: 'Telefonica-Regular';
+		font-family: Telefonica-Regular, sans-serif;
 		font-size: 2.5rem;
 		line-height: 48px;
 		color: #fff;
@@ -211,7 +211,6 @@ const div = `
 			margin-top: 32px!important;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;

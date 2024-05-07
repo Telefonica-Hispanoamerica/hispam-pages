@@ -94,7 +94,6 @@ const div = `
 			-o-transform: rotate(180deg);
 		}
 		
-		/* css Plan Card */
 		body {
 			margin: 24px auto;
 			font-family: 'Telefonica-Regular', sans-serif;
@@ -105,9 +104,8 @@ const div = `
 			position: relative;
 			border: 1px solid #dddddd;
 			overflow: hidden;
-			width: 320px;
 			padding: 0 0 24px;
-			margin-top: 1rem
+			margin-top: 28px;
 		}
 		@media (max-width: 768px) {
 			.card {

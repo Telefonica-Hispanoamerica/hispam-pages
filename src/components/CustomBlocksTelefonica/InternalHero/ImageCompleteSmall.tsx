@@ -2,7 +2,6 @@ import { iconsSvg } from '../IconsSvgBlocks';
 
 const div = `
 	<style>
-	/* .hero-image-complete-small*/
 	p {
 		margin: 0;
 	}
@@ -190,9 +189,6 @@ const div = `
 			margin: 16px 0 0;			
 		}
 	}
-	/* .hero-image-complete-small */
-
-	/* Color */
 	.brand-low {
 		background-color: #E6F5FD;
 	}
@@ -217,7 +213,6 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;
@@ -279,7 +274,7 @@ function iHeroImageCompleteSmall(editor: any) {
 		label: 'Imagen completa pequeño',
 		activate: true,
 		content: div,
-		category: 'Internal hero',
+		category: 'Hero',
 		media: iconsSvg.iHeroImageComplete,
 		attributes: { class: 'custom-block' },
 	});

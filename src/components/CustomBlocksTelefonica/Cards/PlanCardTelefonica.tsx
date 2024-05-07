@@ -248,7 +248,6 @@ const div = `
 			transform: translateX(26px);
 		}
 		  
-		/* Rounded sliders */
 		.card .switch-options .slider.round {
 			border-radius: 34px;
 		}

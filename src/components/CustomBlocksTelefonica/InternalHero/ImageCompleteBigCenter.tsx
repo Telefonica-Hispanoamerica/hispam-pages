@@ -2,11 +2,10 @@ import { iconsSvg } from '../IconsSvgBlocks';
 
 const div = `
 	<style>
-	/* .hero-image-complete-center*/
 	p {
 		margin: 0;
 	}
-	.image-hero{
+	.image-hero-big-center{
 		width: 100%;
 		min-height: 524px;
 		opacity: .4;
@@ -15,7 +14,7 @@ const div = `
 		// transform: translate(0, -16%);
 	}
 	@media (max-width: 767px) {
-		.image-hero {
+		.image-hero-big-center {
 			width: 100%;
 			aspect-ratio: 1 / 2;
 			object-fit: cover;
@@ -171,9 +170,6 @@ const div = `
 			margin: 16px 0 0;			
 		}
 	}
-	/* .hero-image-complete-center */
-
-	/* Color */
 	.brand-low {
 		background-color: #E6F5FD;
 	}
@@ -204,7 +200,6 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;
@@ -237,8 +232,7 @@ const div = `
 	}
 	</style>
 	<section class='p-relative-hero-center'>
-		<div class='gradient-hero'></div>
-		<img class='image-hero' src="" alt=''/>
+		<img class='image-hero-big-center' src="" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero-center'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-center">
@@ -267,7 +261,7 @@ function ImageCompleteBigCenter(editor: any) {
 		label: 'Imagen completa grande centrado',
 		activate: true,
 		content: div,
-		category: 'Internal hero',
+		category: 'Hero',
 		media: iconsSvg.iHeroCenter,
 		attributes: { class: 'custom-block' },
 	});

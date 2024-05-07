@@ -20,7 +20,7 @@ const div = `
 		}
 	}
 	.title-section-vp-light {
-		font-family: 'Telefonica-Regular';
+		font-family: Telefonica-Regular, sans-serif;
 		font-size: 2.5rem;
 		line-height: 48px;
 		color: #313235;
@@ -54,7 +54,6 @@ const div = `
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* max-width: 288px; */
 		width: 100%;
 		text-align: center;
 		margin: 64px auto 0;
@@ -124,7 +123,6 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;

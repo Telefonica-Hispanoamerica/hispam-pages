@@ -7,7 +7,6 @@ const div = `
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* max-width: 288px; */
 		width: 100%;
 		text-align: center;
 		margin: 0 auto;
@@ -27,12 +26,15 @@ const div = `
 		-ms-border-radius: 8px;
 		-o-border-radius: 8px;
 		margin-bottom: 24px;
+		overflow: hidden;
 	}
 	.card-vp-img-no-link img {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;		
+		justify-content: center;
+		width: inherit;
+		aspect-ratio: 1 / 1;	
 	}
 	
 	.card-vp-img-no-link .title {

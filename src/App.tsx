@@ -154,13 +154,17 @@ function App() {
 			currentPageName = page.attributes.name;
 		});
 
+		editor.on('load', function() {
+			editor.runCommand('core:component-outline');
+		});		
+
 		editor.Commands.add(commandName, {
 
 			run(editor: PluginOptions = {}) {
-				editor.Modal.open({
-					title: 'Modal example',
-					content: ``,
-				});
+				// editor.Modal.open({
+				// 	title: 'Modal example',
+				// 	content: ``,
+				// });
 
 				const exportData = {
 					html: `<!doctype html>
@@ -175,10 +179,22 @@ function App() {
 					</html>`,
 					css: editor.getCss()
 				}
+
+				editor.Modal.open({
+					title: 'My title',
+					content: 'My content',
+					attributes: {
+						class: 'my-small-modal',
+					},
+				});			
+
 				if (config.addExportBtn) {
 
-					const existingButtons = document.querySelectorAll(`${pfx}btn-prim`);
-					existingButtons.forEach(button => button.remove());
+					// const existingButtons = document.querySelectorAll(`${pfx}btn-prim`);
+					// existingButtons.forEach(button => button.remove());
+
+					const divButtonsModal = document.createElement('div');
+					divButtonsModal.className = 'buttons-group';
 
 					const btnExp = document.createElement('button');
 					btnExp.innerHTML = `Save HTML ` + currentPageName;
@@ -190,13 +206,26 @@ function App() {
 					btnExpExport.className = `${pfx}btn-prim`;
 					btnExpExport.type = 'button';					
 
-					editor.on('run:save-export', () => {
-						const el = editor.Modal.getContentEl();
-						el?.appendChild(btnExp);
+					editor.on('run:save-export', () => {						
+						editor.runCommand('core:open-code');
+						
+						// const existingButtons = document.querySelectorAll(`.${pfx}btn-prim`);
+						// existingButtons.forEach(button => button.remove());
+						
+						const existingGroupButtons = document.querySelectorAll('.buttons-group');
+						existingGroupButtons.forEach(div => div.remove());
 
+						const el = editor.Modal.getContentEl();
+
+						divButtonsModal?.appendChild(btnExp);
+						divButtonsModal?.appendChild(btnExpExport);
+
+						el?.appendChild(divButtonsModal);
+						
+						
 						btnExp.onclick = () => {
 							const editPage = items.filter(item => item.id == currentPageId);
-							debugger
+							
 							if(editPage[0]) {
 								let editItem = {
 									id: editPage[0].id,
@@ -217,27 +246,28 @@ function App() {
 							}							
 							editor.Modal.close();
 						}
-
-						el?.appendChild(btnExpExport);
+						
 						btnExpExport.onclick = () => {
-							const zip = new JSZip();
-							const carpetaRaiz:any = zip.folder('mi_proyecto');
+							debugger
+							editor.runCommand('gjs-export-zip');
+							// const zip = new JSZip();
+							// const carpetaRaiz:any = zip.folder('mi_proyecto');
 
-							carpetaRaiz.file('index.html', exportData.html);
-							carpetaRaiz.folder('css').file('style.css', exportData.css);
-							carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-							// carpetaRaiz.folder('css').file('fonts.css', cssFonts);
-							carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
+							// carpetaRaiz.file('index.html', exportData.html);
+							// carpetaRaiz.folder('css').file('style.css', exportData.css);
+							// carpetaRaiz.folder('css').file('kenos.css', cssKenos);
+							// // carpetaRaiz.folder('css').file('fonts.css', cssFonts);
+							// carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
 
-							zip.generateAsync({ type: 'blob' }).then((blob) => {
-								const url = URL.createObjectURL(blob);
-								const link = document.createElement('a');
-								link.href = url;
-								link.download = `page_${currentPageId}.zip`;
-								document.body.appendChild(link);
-								link.click();
-								document.body.removeChild(link);
-							});
+							// zip.generateAsync({ type: 'blob' }).then((blob) => {
+							// 	const url = URL.createObjectURL(blob);
+							// 	const link = document.createElement('a');
+							// 	link.href = url;
+							// 	link.download = `page_${currentPageId}.zip`;
+							// 	document.body.appendChild(link);
+							// 	link.click();
+							// 	document.body.removeChild(link);
+							// });
 							editor.Modal.close();
 						}
 					});
@@ -323,11 +353,11 @@ function App() {
 						iHeroImageComplete,
 						iHeroImageCompleteSmall,
 						ImageCompleteBigCenter,
-						CardLight,
+						// CardLight,
 						CardHeroRightLight,
 						CardHeroSectionDark,
 						CardDark4Col,
-						MediaCardTLPG,
+						// MediaCardTLPG,
 						CardHeroTLPG,
 						ValuePrepositionImageDark4Col,
 						ValuePrepositionImageDarkLeft4Col,
@@ -345,10 +375,10 @@ function App() {
 						ValuePrepositionNoImageLightLeft4Col,
 						ValuePrepositionIconLightLeftDivider,
 						ValuePrepositionIconLightLeftDivider2ColContent,
-						PlanCardTelefonica,
+						// PlanCardTelefonica,
 						PlanCardTelefonica2,
 						PlanCardTelefonica3,
-						PlanCardFeatTelefonica,
+						// PlanCardFeatTelefonica,
 						TextComponentKenos,
 						TextWrappingKenos,
 						Columns1Kenos,

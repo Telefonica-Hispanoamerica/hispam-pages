@@ -131,7 +131,6 @@ const div = `
 		margin: 0;
 	}
 	
-	/* Color */
 	.brand-low {
 		background-color: #E6F5FD;
 	}

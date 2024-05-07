@@ -24,7 +24,7 @@ function TopbarButtons () {
     const cmdButtons: CommandButton[] = [
         {
 			id: 'core:component-outline',
-			iconPath: <HighlightAltOutlinedIcon />
+			iconPath: <HighlightAltOutlinedIcon />,
         },
         {
 			id: 'core:fullscreen',
@@ -41,7 +41,7 @@ function TopbarButtons () {
         // },
         {
 			id: 'save-export',
-			iconPath: <FileDownloadOutlinedIcon />
+			iconPath: <FileDownloadOutlinedIcon />,
         },
         // {
 		// 	id: 'export',

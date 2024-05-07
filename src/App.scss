@@ -72,15 +72,19 @@ body {
 }
 .gjs-editor-cont {
 	background-color: #f7f7f7;
-	//height: 94%!important;
+	height: 100%!important;
 	.gjs-mdl-container {		
 		.gjs-mdl-dialog {			
 			.gjs-mdl-content {				
 				#gjs-mdl-c {
 					display: flex;
-					.gjs-btn-prim {
-						margin-right: 10px;						
-					}
+					flex-direction: column;
+					.buttons-group {
+						display: flex;
+						.gjs-btn-prim {
+							margin-right: 10px;						
+						}
+					}					
 				}
 			}
 		}
@@ -133,4 +137,10 @@ body {
 
 .gjs-editor-column {
 	//height: 100vh;
+}
+.gjs-cv-canvas.gjs-cui {
+
+}
+.gjs-cv-canvas {
+	overflow: initial!important;
 }

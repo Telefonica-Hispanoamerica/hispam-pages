@@ -47,7 +47,6 @@ const div = `
 			margin-bottom: 32px;
 		}
 	}
-	/* .card-hero-left-d*/
 	p {
 		margin: 0;
 	}	
@@ -217,8 +216,6 @@ const div = `
 			margin: 16px 0 0;			
 		}
 	}
-	/* .card-hero-left-d */
-	/* .card-hero-right-d*/
 	.card-hero-right-d {
 		margin: 0 auto;
 		padding: 32px 64px 32px;
@@ -385,9 +382,6 @@ const div = `
 			margin: 0;			
 		}
 	}
-	/* .card-hero-right-d */
-
-	/* Color */
 	.brand-low {
 		background-color: #E6F5FD;
 	}
@@ -406,7 +400,6 @@ const div = `
 		background: rgba(255, 255, 255, .1);
     	border-radius: 16px;
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;

@@ -20,7 +20,7 @@ const div = `
 		}
 	}
 	.title-section-vp-light{
-		font-family: 'Telefonica-Regular';
+		font-family: Telefonica-Regular, sans-serif;
 		font-size: 2.5rem;
 		line-height: 48px;
 		color: #313235;
@@ -54,7 +54,6 @@ const div = `
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* max-width: 288px; */
 		width: 100%;
 		text-align: center;
 		margin: 64px auto 0;
@@ -67,7 +66,6 @@ const div = `
 	.card-vp-img-light .box-img {
 		width: 96px;
 		height: 96px;
-		/*overflow: hidden;*/
 		border-radius: 8px;
 		-webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
@@ -76,11 +74,14 @@ const div = `
 		margin-bottom: 24px;
 		display: flex;
 		justify-content: center;
-		align-items: center;	
+		align-items: center;
+		overflow: hidden;
 	}
 	.card-vp-img-light .box-img img {
 		object-fit: contain;
-    	border-radius: inherit;	
+    	border-radius: inherit;
+		width: inherit;
+		aspect-ratio: 1 / 1;
 	}
 	
 	.card-vp-img-light .title {
@@ -142,7 +143,6 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	/* Columns */
 	.gjs-row-kenos {
 		max-width: 1200px;
 		margin: 0 auto;
