@@ -3,7 +3,7 @@ import {
   StylesProvider,
   TraitsProvider,
 } from "@grapesjs/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CustomSelectorManager from "../CustomSelectorManager";
 import CustomStyleManager from "../CustomStyleManager";
 import CustomTraitManager from "../CustomTraitManager";
@@ -15,15 +15,54 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
+import { PageContext } from '../../hooks/pageSlice';
 
-function RightSidebar() {
+interface Props {
+	onMetaDescAdded: (tag: string) => void;
+}
 
-	const [value, setValue] = useState('1');
+const RightSidebar: React.FC = () =>{
+
+	const { addMetaDescription } = useContext(PageContext);
+	const [ value, setValue ] = useState('1');
+	//Tags keywords
+	const [ tags, setTags ] = useState<string[]>([]);
+	const [ tagInput, setTagInput ] = useState<string>('');
+
+	//Meta description
+	const [ metaDesc, setMetaDesc ] = useState<string>('');
 
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		console.log(event)
 		setValue(newValue);
 	};
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		console.log("E", event)
+		setTagInput(event.target.value);
+	}
+
+	const handleAddTag = () => {
+		if(tagInput.trim() !== '') {
+			setTags([...tags, tagInput.trim()]);
+			setTagInput('');
+		}
+	}
+
+	const handleRemoveTag = (index: number) => {
+		const newTags = [...tags];
+		newTags.splice(index, 1);
+		setTags(newTags)
+	}
+
+	const handleMetaDesc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setMetaDesc(event.target.value)
+	}
+
+	const handleAddMetaDesc = () => {
+		console.log("MetaDesc", metaDesc);
+		addMetaDescription(metaDesc);
+	}
 
   	return (
 		<div className="right-column">
@@ -41,6 +80,11 @@ function RightSidebar() {
 									
 									label="Propiedades" 
 									value="2"
+								/>
+								<Tab 
+									
+									label="Meta" 
+									value="3"
 								/>
 							</Tabs>
 						</Box>
@@ -63,6 +107,39 @@ function RightSidebar() {
 								<TraitsProvider>
 									{(props) => <CustomTraitManager {...props} />}
 								</TraitsProvider>
+							)}
+						</TabPanel>
+						<TabPanel value="3">
+							{value === '3' && (
+								<>
+									<div className="tags">
+										<input 
+											type="text"
+											value={tagInput}
+											onChange={handleInputChange}
+											placeholder="Escribe un tag"
+										/>
+										<button onClick={handleAddTag} >Agregar tag</button>
+									</div>
+									<div className="tags-container">
+										{tags.map((tag: any, index) => (
+											<span className="tag" key={index}>
+												{tag}
+												<button onClick={() => handleRemoveTag(index)}>x</button>
+											</span>
+										))}
+									</div>
+									<hr />
+									<div className="meta-description-field">
+										<textarea 
+											value={metaDesc}
+											onChange={handleMetaDesc}
+											name="textarea" 
+											rows={5} 
+										>Escribe una meta descripción</textarea>
+										<button onClick={handleAddMetaDesc}>Meta descripción</button>
+									</div>
+								</>								
 							)}
 						</TabPanel>
 					</div>					

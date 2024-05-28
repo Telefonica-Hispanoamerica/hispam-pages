@@ -144,3 +144,21 @@ body {
 .gjs-cv-canvas {
 	overflow: initial!important;
 }
+.gjs-container-pages {
+	position: relative;
+	.isLoading {
+		position: absolute;
+		background-color: rgba($color: #fff, $alpha: .4);
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		.img-loading {
+			width: 48px;
+		}
+	}
+}

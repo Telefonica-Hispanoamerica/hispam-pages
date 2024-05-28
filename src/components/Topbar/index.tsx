@@ -30,7 +30,7 @@ function Topbar() {
 				</DevicesProvider>
 			</div>
 			<div>
-				<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image"/>
+				<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image" />
 			</div>
 			<div>
 				<WithEditor>

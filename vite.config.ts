@@ -21,4 +21,5 @@ export default defineConfig({
 		  'hispam-pages/**/*.css', // Patrón para incluir todos los archivos CSS del paquete
 		],
 	},
+	assetsInclude: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.otf'],
 })

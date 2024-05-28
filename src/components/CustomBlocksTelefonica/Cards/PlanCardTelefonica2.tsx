@@ -30,9 +30,11 @@ const PlanCardTelefonica211 = (editor: Editor ) => {
 	});
 }
 
-console.log("PlanCardTelefonica211", PlanCardTelefonica211)
 const div = `
 	<style>	
+		p {
+			margin: 0;
+		}
 		.toggle {
 			display: none;
 		}
@@ -142,6 +144,7 @@ const div = `
 			margin-right: 4px;
 		}
 		.card .header-plan .tag p{
+			font-family: Roboto;
 			margin: 0 auto;
 		}
 		.card .header-plan .plan-name {
@@ -160,6 +163,7 @@ const div = `
 			margin-left: 6px;
 		}
 		.card .header-plan .capacity {
+			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height: 40px;
 			color: #fff;
@@ -193,6 +197,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .price-table .price {
+			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height:40px;
 			color: #313235;
@@ -215,6 +220,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card .price-table .offer-per-month span{
+			font-family: 'Roboto';
 			font-weight: 700;
 		}
 		.card .btn-main-content {

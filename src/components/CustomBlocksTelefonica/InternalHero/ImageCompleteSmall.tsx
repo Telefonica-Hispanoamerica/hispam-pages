@@ -1,3 +1,4 @@
+import { ComponentType } from 'react';
 import { iconsSvg } from '../IconsSvgBlocks';
 
 const div = `
@@ -5,7 +6,7 @@ const div = `
 	p {
 		margin: 0;
 	}
-	.image-hero{
+	.image-hero-small{
 		width: 100%;
 		min-height: 348px;
 		//aspect-ratio: 16 / 9;
@@ -14,7 +15,7 @@ const div = `
 		//margin-top: -14%;
 	}
 	@media (max-width: 767px) {
-		.image-hero {
+		.image-hero-small {
 			width: 100%;
 			aspect-ratio: 1 / 2;
 			object-fit: cover;
@@ -246,7 +247,7 @@ const div = `
 	</style>
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
-		<img class='image-hero' src="" alt=''/>
+		<img class='image-hero-small' src="" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-small">
@@ -272,7 +273,7 @@ function iHeroImageCompleteSmall(editor: any) {
 	editor.Blocks.add('heroImageCompleteSmall', {
 		id: 'heroImageCompleteSmall',
 		label: 'Imagen completa pequeño',
-		activate: true,
+		activate: false,
 		content: div,
 		category: 'Hero',
 		media: iconsSvg.iHeroImageComplete,

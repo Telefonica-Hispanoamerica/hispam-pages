@@ -21,18 +21,11 @@
     "@mui/icons-material": "^5.15.6",
     "@mui/lab": "^5.0.0-alpha.162",
     "@mui/material": "^5.15.6",
-    "@react-oauth/google": "^0.12.1",
-    "@types/gapi": "^0.0.47",
-    "@uxhispam/kenos": "file:uxhispam-kenos-1.0.0.tgz",
     "and": "^0.0.3",
     "axios": "^1.6.7",
     "file-saver": "^2.0.5",
-    "font-awesome": "^4.7.0",
-    "gapi-script": "^1.2.0",
-    "google-auth-library": "^9.6.3",
     "googleapis": "^133.0.0",
     "grapesjs": "^0.21.7",
-    "grapesjs-ga": "^1.0.2",
     "grapesjs-mjml": "^1.0.5",
     "grapesjs-preset-newsletter": "^1.0.2",
     "grapesjs-preset-webpage": "^1.0.3",
@@ -40,14 +33,12 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-ga": "^3.3.1",
-    "react-gapi": "^1.0.2",
-    "react-google-analytics": "^0.2.0",
     "react-icons": "^4.11.0",
     "vite-plugin-sass": "^0.1.0"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.7",
+    "@types/node": "^20.12.12",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -60,6 +51,7 @@
     "sass": "^1.70.0",
     "sass-loader": "^14.0.0",
     "typescript": "^5.0.2",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.4.5"
   }
 }

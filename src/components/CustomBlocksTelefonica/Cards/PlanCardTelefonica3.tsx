@@ -1,5 +1,8 @@
 const div = `
 	<style>	
+		p {
+			margin: 0;
+		}
 		.toggle {
 			display: none;
 		}
@@ -134,6 +137,7 @@ const div = `
 			margin-right: 4px;
 		}
 		.card-feat .header-plan .tag p{
+			font-family: Roboto;
 			margin: 0 auto;
 		}
 		.card-feat .header-plan .plan-name {
@@ -152,6 +156,7 @@ const div = `
 			margin-left: 6px;
 		}
 		.card-feat .header-plan .capacity {
+			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height: 40px;
 			color: #fff;
@@ -185,6 +190,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .price {
+			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height:40px;
 			color: #313235;
@@ -207,6 +213,7 @@ const div = `
 			-webkit-user-modify: read-write;
 		}
 		.card-feat .price-table .offer-per-month span{
+			font-family: 'Roboto';
 			font-weight: 700;
 		}
 		.card-feat .btn-main-content {

@@ -1,7 +1,9 @@
 import { iconsSvg } from '../IconsSvgBlocks';
+import { fontsTelefonica } from '../../common';
 
 const div = `
 	<style>
+	${fontsTelefonica}
 	p {
 		margin: 0;
 	}
@@ -63,7 +65,7 @@ const div = `
 		margin-bottom: 8px;
 	}
 	.hero-image-complete-center .content .title {
-		font-family: 'Telefonica-Regular', sans-serif;
+		font-family: Telefonica-Regular;
 		font-size: 3rem;
 		line-height: 56px;
 		color: #fff;

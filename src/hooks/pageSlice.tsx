@@ -11,27 +11,31 @@ interface ContextValue {
     items: Item[];
     removeItem: (id: number) => void;
     addItem: (item: Item) => void;
+    metaDescription: string;
+    addMetaDescription: (meta: string) => void;
 }
 
 const PageContext = createContext<ContextValue>({
     items: [],
     removeItem: () => {},
     addItem: () => {},
+    metaDescription: '',
+    addMetaDescription: () => {},
 });
 
 const PageProvider = ({ children }: { children: React.ReactNode }) => {
-    const [items, setItems] = useState<Item[]>([]);
+    const [ items, setItems ] = useState<Item[]>([]);
+    const [ metaDescription, setMetaDescription ] = useState<string>('');
 
     useEffect(() => {
         async function fetchMyAPI() {
 			try {
-				const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
-                //const response = await fetch('http://localhost:3000/get-html');
+				//const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
+                const response = await fetch('http://localhost:3000/get-html');
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
 				const jsonData = await response.json();
-				console.log("updatedData CONTXT", jsonData);
                 const hasDefaultItem = jsonData.some((item: Item) => item.id === 0);
                 const updatedData = hasDefaultItem ? jsonData : [items[0], ...jsonData];
 
@@ -44,8 +48,6 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
 		fetchMyAPI()
     }, []);
 
-    console.log("ITEMS CONTEXT", items)
-
     const removeItem = (id: number) => {
         setItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
@@ -54,10 +56,16 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
         setItems((prevItems) => [...prevItems, item]);
     };
 
+    const addMetaDescription = (newValue: string) => {
+        setMetaDescription(newValue);
+    };
+
     const value: ContextValue = {
         items,
         removeItem,
         addItem,
+        metaDescription,
+        addMetaDescription
     };
 
     return <PageContext.Provider value={value}>{children}</PageContext.Provider>;

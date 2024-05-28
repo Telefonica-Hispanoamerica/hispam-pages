@@ -177,9 +177,13 @@ const div = `
 	}
 	</style>
 	<section class='bg-light ptb-80'>
-		<p class="pretitle-vp-light">Pretitle</p>
-		<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
-		<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
+		<div class='gjs-row-kenos'>
+			<div class='gjs-cell-kenos'>
+				<p class="pretitle-vp-light">Pretitle</p>
+				<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
+				<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
+			</div>
+		</div>		
 		<div class='gjs-row-kenos'>
 			<div class='gjs-cell-kenos'>
 				<div class="card-vp-no-img-left-light">

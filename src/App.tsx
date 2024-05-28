@@ -1,23 +1,18 @@
-import { useContext } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
-import GjsEditor, { Canvas } from '@grapesjs/react';
+import GjsEditor, { Canvas, ModalProvider } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
 import LeftSidebar from './components/LeftSidebar';
 import './App.scss';
 import "./fonts/fonts.scss";
 
-//Kenos Buttons
-
-import TextComponentKenos from './components/CustomBlocksTelefonica/Text/TextComponent';
 import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
-//===============
+
 import JSZip from 'jszip';
-import cssKenos from '@uxhispam/kenos/css/kenos.css?inline';
-// import cssFonts from './hispam-pages/fonts/fonts.css?inline';
-// import cssRoboto from '@uxhispam/kenos/css/roboto.css'
-// import GoogleOuthAnalytics from './components/GoogleOuthAnalytics';
+
+// import cssFonts from '../public/hispam-pages/fonts/fonts-telefonica.css?inline';
 import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
 import Columns1Kenos from './components/CustomBlocksTelefonica/Columns/Columns1';
 import Columns2Kenos from './components/CustomBlocksTelefonica/Columns/Columns2';
@@ -27,13 +22,10 @@ import Columns6Kenos from './components/CustomBlocksTelefonica/Columns/Columns6'
 import H1 from './components/CustomBlocksTelefonica/Text/H1';
 import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
-import PlanCardTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica';
-import PlanCardFeatTelefonica from './components/CustomBlocksTelefonica/Cards/PlanCardFeatTelefonica';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
 import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
 import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
-import MediaCardTLPG from './components/CustomBlocksTelefonica/Cards/MediaCardTLPG';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
 import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
@@ -51,17 +43,29 @@ import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelef
 import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
-import iHeroImageComplete from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteSmall';
-import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
-import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBigCenter';
+import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
+
 import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHeroRightLight';
 import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
-// import PageIdContext from './hooks/PageContext';
 
 /* Hooks */
-import { PageContext } from './hooks/pageSlice'
+import { PageContext } from './hooks/pageSlice';
+import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
+import CustomModal from './components/CustomModal';
+import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
+import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
+
+// type EditorHandler = (editor?: Editor, param1?: string, param2?: []) => void;
+//console.log("EditorHandler", EditorHandler)
+
+// const handleEditor: EditorHandler = (editor, param1, param2) => {
+// 	// Lógica para manejar el editor y los parámetros adicionales
+// 	console.log('Editor:', editor);
+// 	console.log('Parámetro 1:', param1);
+// 	console.log('Parámetro 2:', param2);
+// };
 
 interface Item {
     id: number;
@@ -95,8 +99,10 @@ declare var google: {
 
 function App() {
 
-	const { items, addItem } = useContext(PageContext);
-	// const [newItemName, setNewItemName] = useState('');
+	const { items, addItem, metaDescription } = useContext(PageContext);
+	const [ isOpen, setIsOpen ] = useState<boolean>(false);
+	const [ isMetaDescription, setIsMetaDescription ] = useState<string>('')
+	const [ isTags, setIsTags ] = useState<string[]>([]);
 
 	const handleAddItem = (item: Item, id: number) => {
 		if (item.component.trim() !== '') {
@@ -111,179 +117,330 @@ function App() {
 		  	//setNewItemName('');
 		}
 	};
-	console.log("ITEMSSSSSSSSSS", items)
 
-	const onEditor = (editor: Editor, opts = {} ) => {
+	const setMetaDescription = (meta?: string) => {
+		return meta
+	}
 
-		let currentPageId = 0;
-		let currentPageName = '';
+	useEffect(() => {
+		console.log("META DESCRIPTION UPDATE USEEFFECT", metaDescription);
+		//onEditor( metaDescription, []);
+		//setIsMetaDescription(metaDescription)
+		// const resultMeta = setMetaDescription(metaDescription)
+		exportPage(metaDescription)
+		
+	}, [metaDescription]);
 
-
-		const pfx = editor.getConfig('stylePrefix');
-		const commandName = 'save-export';
-
-		const config: PluginOptions = {
-			addExportBtn: true,
-			btnLabel: 'Save HTML',
-			filenamePfx: 'grapesjs_template',
-			filename: undefined,
-			done: () => {},
-			onError: console.error,
-			root: {
-				css: {
-					'style.css': (editor: Editor) => editor.getCss()
-				},
-				'index.html': (editor: Editor) =>
-				`<!doctype html>
+	const exportPage = async (meta?: string, editor?: any) => {		
+		//event.preventDefault();
+		console.log("metaDescription BTN CLICK 1", meta)
+		if(editor) {
+			console.log("metaDescription BTN CLICK 2", meta)
+			const exportData = {
+				html: `<!doctype html>
 				<html lang="en">
 					<head>
 						<meta charset="utf-8">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-						<link rel="stylesheet" href="css/kenos.css">
-						<link rel="stylesheet" href="fonts/fonts.css">
+						<meta name="description" content="${meta}" />
+						<link rel="stylesheet" href="./styles.css">
 					</head>
 					${editor.getHtml()}
 				</html>`,
-			},
-			  isBinary: undefined,
-			  ...opts,
-		};
+				css: editor.getCss()
+			};
+			const zip = new JSZip();
 
-		editor.on('page:select', (page: any) => {
-			currentPageId = parseInt(page.id);
-			currentPageName = page.attributes.name;
+		const fontPaths = [
+			'/fonts/Telefonica-Light.eot',
+			'/fonts/Telefonica-Light.woff',
+			'/fonts/Telefonica-Light.woff2',
+			'/fonts/Telefonica-Light.ttf',
+			'/fonts/Telefonica-Regular.eot',
+			'/fonts/Telefonica-Regular.woff',
+			'/fonts/Telefonica-Regular.woff2',
+			'/fonts/Telefonica-Regular.ttf',
+			'/fonts/Telefonica-Bold.eot',
+			'/fonts/Telefonica-Bold.woff',
+			'/fonts/Telefonica-Bold.woff2',
+			'/fonts/Telefonica-Bold.ttf'
+		];
+
+		const fontFiles = await Promise.all(
+			fontPaths.map(fontPath =>
+			fetch(fontPath)
+				.then(res => res.arrayBuffer())
+				.then(arrayBuffer => ({
+					path: fontPath,
+					data: arrayBuffer
+				}))
+			)
+		);
+
+		fontFiles.forEach(({ path, data }) => {
+			const fonts: any = zip.folder('fonts');
+			const fontName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
+			fonts.file(fontName, data);
 		});
 
-		editor.on('load', function() {
-			editor.runCommand('core:component-outline');
-		});		
+		// New
 
-		editor.Commands.add(commandName, {
+		//console.log("headCode", updateExportHead())
+		zip.file('styles.css', exportData.css);
+		zip.file('index.html', exportData.html);
 
-			run(editor: PluginOptions = {}) {
-				// editor.Modal.open({
-				// 	title: 'Modal example',
-				// 	content: ``,
-				// });
+		zip.generateAsync({ type: 'blob' })
+			.then((content) => {
+				const downloadLink = document.createElement('a');
+				downloadLink.href = URL.createObjectURL(content);
+				downloadLink.download = 'project.zip';
+				downloadLink.click();
+			})
+			.catch((error) => {
+			console.error('Error:', error);
+			});
+		editor.Modal.close();
+		}		
+	}
 
-				const exportData = {
-					html: `<!doctype html>
-					<html lang="en">
-						<head>
-							<meta charset="utf-8">
-							<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-							<link rel="stylesheet" href="css/style.css">
-							<link rel="stylesheet" href="css/kenos.css">							
-						</head>
-						${editor.getHtml()}
-					</html>`,
-					css: editor.getCss()
-				}
+	//const onEditor: EditorHandler = (editor, isMetaDescription, tags) => {
 
-				editor.Modal.open({
-					title: 'My title',
-					content: 'My content',
-					attributes: {
-						class: 'my-small-modal',
-					},
-				});			
+	const onEditor = (editor: Editor) => {
+		//let editor: Editor
+		
 
-				if (config.addExportBtn) {
+		// console.log("Update on Editor 1", [metaDescription, tags])
 
-					// const existingButtons = document.querySelectorAll(`${pfx}btn-prim`);
-					// existingButtons.forEach(button => button.remove());
+		
+			// const editor = editor2
+			console.log("EDITOR", editor)
+			// console.log("Update on Editor INT", [metaDescription, tags])
 
-					const divButtonsModal = document.createElement('div');
-					divButtonsModal.className = 'buttons-group';
+			let currentPageId = 0;
+			let currentPageName = '';
 
-					const btnExp = document.createElement('button');
-					btnExp.innerHTML = `Save HTML ` + currentPageName;
-					btnExp.className = `${pfx}btn-prim`;
-					btnExp.type = 'button';
+			const pfx = editor.getConfig('stylePrefix');
+			const commandName = 'save-export';
 
-					const btnExpExport = document.createElement('button');
-					btnExpExport.innerHTML = `Export HTML ` + currentPageName;
-					btnExpExport.className = `${pfx}btn-prim`;
-					btnExpExport.type = 'button';					
+			const config: PluginOptions = {
+				addExportBtn: true,
+				btnLabel: 'Save HTML',
+				filenamePfx: 'grapesjs_template',
+				filename: undefined,
+				done: () => {},
+				onError: console.error,
+				// root: {
+				// 	css: {
+				// 		'style.css': (editor: Editor) => editor.getCss()
+				// 	},
+				// 	'index.html': (editor: Editor) =>
+				// 	`<!doctype html>
+				// 	<html lang="en">
+				// 		<head>
+				// 			<meta charset="utf-8">
+				// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				// 		</head>
+				// 		${editor.getHtml()}
+				// 	</html>`,
+				// },
+				isBinary: undefined,
+				//...opts,
+			};
 
-					editor.on('run:save-export', () => {						
-						editor.runCommand('core:open-code');
-						
-						// const existingButtons = document.querySelectorAll(`.${pfx}btn-prim`);
-						// existingButtons.forEach(button => button.remove());
-						
-						const existingGroupButtons = document.querySelectorAll('.buttons-group');
-						existingGroupButtons.forEach(div => div.remove());
+			editor.on('page:select', (page: any) => {
+				console.log("PAGE", page)
+				currentPageId = parseInt(page.id);
+				currentPageName = page.attributes.name;
+			});
 
-						const el = editor.Modal.getContentEl();
+			editor.on('load', function() {
+				editor.runCommand('core:component-outline');
+			});
 
-						divButtonsModal?.appendChild(btnExp);
-						divButtonsModal?.appendChild(btnExpExport);
+			// Custom panel
 
-						el?.appendChild(divButtonsModal);
-						
-						
-						btnExp.onclick = () => {
-							const editPage = items.filter(item => item.id == currentPageId);
-							
-							if(editPage[0]) {
-								let editItem = {
-									id: editPage[0].id,
-									name: editPage[0].name,
-									styles: editor.getCss(),
-									component: editor.getHtml()
-								}
-								handleAddItem(editItem, editItem.id);
-							} else {
-								const nextIndex = items.length + 1;
-								let newItem = {
-									id: Date.now(),
-									name:`Page ${nextIndex}`,
-									styles: editor.getCss(),
-									component: editor.getHtml()
-								}
-								handleAddItem(newItem, newItem.id);
-							}							
-							editor.Modal.close();
-						}
-						
-						btnExpExport.onclick = () => {
-							debugger
-							editor.runCommand('gjs-export-zip');
-							// const zip = new JSZip();
-							// const carpetaRaiz:any = zip.folder('mi_proyecto');
+			// const panelManager = editor.Panels;
 
-							// carpetaRaiz.file('index.html', exportData.html);
-							// carpetaRaiz.folder('css').file('style.css', exportData.css);
-							// carpetaRaiz.folder('css').file('kenos.css', cssKenos);
-							// // carpetaRaiz.folder('css').file('fonts.css', cssFonts);
-							// carpetaRaiz.folder('images').file('logo.png', /* contenido de la imagen */);
+			// panelManager.addPanel({
+			// 	id: 'custom-panel',
+			// 	el: '.custom-panel-container',
+			// 	buttons: [{
+			// 		id: 'custom-panel-toggle',
+			// 		className: 'custom-panel-toggle-button',
+			// 		label: 'Custom Panel',
+			// 		command: 'open-custom-panel',
+			// 	}],
+			// });
 
-							// zip.generateAsync({ type: 'blob' }).then((blob) => {
-							// 	const url = URL.createObjectURL(blob);
-							// 	const link = document.createElement('a');
-							// 	link.href = url;
-							// 	link.download = `page_${currentPageId}.zip`;
-							// 	document.body.appendChild(link);
-							// 	link.click();
-							// 	document.body.removeChild(link);
-							// });
-							editor.Modal.close();
-						}
+			// editor.Commands.add('open-custom-panel', {
+			// 	run(editor) {
+			// 	  	const panel = editor.Panels.getPanel('views-container').getPanel('custom-panel');
+			// 	  	panel.set('visible', !panel.get('visible'));
+			// 	},
+			// });
+
+			editor.Commands.add(commandName, {
+
+				run(editor: PluginOptions = {}) {
+
+					console.log("META DESCRIPTION 1", [editor, metaDescription])					
+
+					editor.Modal.open({
+						title: 'My title',
+						content: 'My content',
+						attributes: {
+							class: 'my-small-modal',
+						},
 					});
-				}
 
-			},
-			stop(editor) {
-				editor.Modal.close();
-			},
-		});
+					if (config.addExportBtn) {
+
+						const divButtonsModal = document.createElement('div');
+						divButtonsModal.className = 'buttons-group';
+
+						const btnExp = document.createElement('button');
+						btnExp.innerHTML = `Save HTML ` + currentPageName;
+						btnExp.className = `${pfx}btn-prim`;
+						btnExp.type = 'button';
+
+						const btnExpExport = document.createElement('button');
+						btnExpExport.innerHTML = `Export HTML ` + currentPageName;
+						btnExpExport.className = `${pfx}btn-prim`;
+						btnExpExport.type = 'button';
+
+						editor.on('run:save-export', () => {
+							editor.runCommand('core:open-code');
+
+							const existingGroupButtons = document.querySelectorAll('.buttons-group');
+							existingGroupButtons.forEach(div => div.remove());
+
+							const el = editor.Modal.getContentEl();
+
+							divButtonsModal?.appendChild(btnExp);
+							divButtonsModal?.appendChild(btnExpExport);
+
+							el?.appendChild(divButtonsModal);							
+
+							btnExp.onclick = () => {
+								const editPage = items.filter(item => item.id == currentPageId);
+
+								if(editPage[0]) {
+									let editItem = {
+										id: editPage[0].id,
+										name: editPage[0].name,
+										styles: editor.getCss(),
+										component: editor.getHtml()
+									}
+									handleAddItem(editItem, editItem.id);
+								} else {
+									const nextIndex = items.length + 1;
+									let newItem = {
+										id: Date.now(),
+										name:`Page ${nextIndex}`,
+										styles: editor.getCss(),
+										component: editor.getHtml()
+									}
+									handleAddItem(newItem, newItem.id);
+								}
+								editor.Modal.close();
+							}
+
+							btnExpExport.addEventListener('click', (event) => exportPage(metaDescription, editor));
+
+							// btnExpExport.onclick = (e) => {
+							// 	e.preventDefault();
+							// 	//exportPage(metaDescription, editor);
+							// 	// console.log("metaDescription BTN CLICK", resultMeta)
+							// 	// const exportData = {
+							// 	// 	html: `<!doctype html>
+							// 	// 	<html lang="en">
+							// 	// 		<head>
+							// 	// 			<meta charset="utf-8">
+							// 	// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+							// 	// 			<meta name="description" content="${resultMeta}" />
+							// 	// 			<link rel="stylesheet" href="./styles.css">
+							// 	// 		</head>
+							// 	// 		${editor.getHtml()}
+							// 	// 	</html>`,
+							// 	// 	css: editor.getCss()
+							// 	// };
+							// 	// const zip = new JSZip();
+
+							// 	// const fontPaths = [
+							// 	// 	'/fonts/Telefonica-Light.eot',
+							// 	// 	'/fonts/Telefonica-Light.woff',
+							// 	// 	'/fonts/Telefonica-Light.woff2',
+							// 	// 	'/fonts/Telefonica-Light.ttf',
+							// 	// 	'/fonts/Telefonica-Regular.eot',
+							// 	// 	'/fonts/Telefonica-Regular.woff',
+							// 	// 	'/fonts/Telefonica-Regular.woff2',
+							// 	// 	'/fonts/Telefonica-Regular.ttf',
+							// 	// 	'/fonts/Telefonica-Bold.eot',
+							// 	// 	'/fonts/Telefonica-Bold.woff',
+							// 	// 	'/fonts/Telefonica-Bold.woff2',
+							// 	// 	'/fonts/Telefonica-Bold.ttf'
+							// 	// ];
+
+							// 	// const fontFiles = await Promise.all(
+							// 	// 	fontPaths.map(fontPath =>
+							// 	// 	fetch(fontPath)
+							// 	// 		.then(res => res.arrayBuffer())
+							// 	// 		.then(arrayBuffer => ({
+							// 	// 			path: fontPath,
+							// 	// 			data: arrayBuffer
+							// 	// 		}))
+							// 	// 	)
+							// 	// );
+
+							// 	// fontFiles.forEach(({ path, data }) => {
+							// 	// 	const fonts: any = zip.folder('fonts');
+							// 	// 	const fontName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
+							// 	// 	fonts.file(fontName, data);
+							// 	// });
+
+							// 	// // New
+
+							// 	// //console.log("headCode", updateExportHead())
+							// 	// zip.file('styles.css', exportData.css);
+							// 	// zip.file('index.html', exportData.html);
+
+							// 	// zip.generateAsync({ type: 'blob' })
+							// 	// 	.then((content) => {
+							// 	// 		const downloadLink = document.createElement('a');
+							// 	// 		downloadLink.href = URL.createObjectURL(content);
+							// 	// 		downloadLink.download = 'project.zip';
+							// 	// 		downloadLink.click();
+							// 	// 	})
+							// 	// 	.catch((error) => {
+							// 	// 	console.error('Error:', error);
+							// 	// 	});
+							// 	// editor.Modal.close();
+							// }
+						});
+					}
+
+				},
+				stop(editor) {
+					editor.Modal.close();
+				},
+			});
+		
 	};
+
+
+	useEffect(() => {
+		if (items.length > 0) {
+		  setIsOpen(true);
+		} else {
+		  setIsOpen(false);
+		}
+	}, [items]);
+
 
 	const saveHTML = async (html: any) => {
 		try {
-			// const response = await fetch('http://localhost:3000/save-html', {
-			const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
+			const response = await fetch('http://localhost:3000/save-html', {
+			//const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -300,7 +457,10 @@ function App() {
 		}
 	};
 
-	
+	const getMetaDescription = (metaDesc: string) => {
+		console.log("Meta decsription", metaDesc);
+		setIsMetaDescription(metaDesc)
+	}
 
 	const gjsOptions: EditorConfig = {
 
@@ -313,9 +473,9 @@ function App() {
 		},
 		modal: { custom: true },
 		fromElement: true,
+		storageManager: false,
 		canvas: {
 			styles: [
-				'/hispam-pages/css-kenos/kenos.css',
 				'/hispam-pages/css-kenos/roboto.css',
 				'/hispam-pages/fonts/fonts.css',
 				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
@@ -333,96 +493,111 @@ function App() {
 			pages: [
 				...items
 			],
+			assetManager: {
+				uploadFile: false,
+				embedAsBase64: true,
+			},
 		},
 		pluginsOpts: {
-			"grapesjs-plugin-toolbox": {
-				panels: true
-			},
+			// "grapesjs-plugin-toolbox": {
+			// 	panels: true
+			// },
 		}
 	};
 
 	return (
-			<div>
-				{/*<GoogleOuthAnalytics />*/}
-				{ items.length > 0 && <GjsEditor
-					grapesjs={grapesjs}
-					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
-					onEditor={onEditor}
-					options={gjsOptions}
-					plugins={[
-						iHeroImageComplete,
-						iHeroImageCompleteSmall,
-						ImageCompleteBigCenter,
-						// CardLight,
-						CardHeroRightLight,
-						CardHeroSectionDark,
-						CardDark4Col,
-						// MediaCardTLPG,
-						CardHeroTLPG,
-						ValuePrepositionImageDark4Col,
-						ValuePrepositionImageDarkLeft4Col,
-						ValuePrepositionIconDark4Col,
-						ValuePrepositionIconDarkLeft4Col,
-						ValuePrepositionNoImageDark4Col,
-						ValuePrepositionNoImageDarkLeft4Col,
-						ValuePrepositionIconDarkLeftDivider,
-						ValuePrepositionIconDarkLeftDivider2ColContent,
-						ValuePrepositionIconLight4Col,
-						ValuePrepositionIconLightLeft4Col,
-						ValuePrepositionImageLight4Col,
-						ValuePrepositionImageLightLeft4Col,
-						ValuePrepositionNoImageLight4Col,
-						ValuePrepositionNoImageLightLeft4Col,
-						ValuePrepositionIconLightLeftDivider,
-						ValuePrepositionIconLightLeftDivider2ColContent,
-						// PlanCardTelefonica,
-						PlanCardTelefonica2,
-						PlanCardTelefonica3,
-						// PlanCardFeatTelefonica,
-						TextComponentKenos,
-						TextWrappingKenos,
-						Columns1Kenos,
-						Columns2Kenos,
-						Columns3Kenos,
-						Columns4Kenos,
-						Columns5Kenos,
-						Columns6Kenos,
-						H1,
-						H2,
-						paragraphKenos,
-						OrderedListKenos,
-						NumberListKenos,
-						{
-							id: 'gjs-blocks-basic',
-							src: 'https://unpkg.com/grapesjs-blocks-basic',
-						},
-						{
-							id: 'grapesjs-plugin-export',
-							src: 'https://unpkg.com/grapesjs-plugin-export',
-						},
-						{
-							id: 'grapesjs-style-border',
-							src: 'https://unpkg.com/grapesjs-style-border'
-						},
-						{
-							id: 'grapesjs-plugin-ckeditor',
-							src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
-						}
-					]}
-				>
-					<div className={'layout-editor-wrapper'}>
-						<LeftSidebar></LeftSidebar>
+		<div className='gjs-container-pages'>
+			{/*<GoogleOuthAnalytics />*/}
+			{ isOpen /*onEditor*/ ? (<GjsEditor
+				grapesjs={grapesjs}
+				grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+				onEditor={onEditor}
+				// onEditor={(editor) => onEditor(editor, metaDescription, [])}
+				//onEditor={() => onEditor(metaDescription, [])}
+				options={gjsOptions}
+				plugins={[
+					HeroImageCompleteBig,
+					iHeroImageCompleteSmall,
+					ImageCompleteBigCenter,
+					CardHeroRightLight,
+					CardHeroSectionDark,
+					CardLight,
+					CardDark4Col,
+					CardLight3Col,
+					CardHeroTLPG,
+					ValuePrepositionImageDark4Col,
+					ValuePrepositionImageDarkLeft4Col,
+					ValuePrepositionIconDark4Col,
+					ValuePrepositionIconDarkLeft4Col,
+					ValuePrepositionNoImageDark4Col,
+					ValuePrepositionNoImageDarkLeft4Col,
+					ValuePrepositionIconDarkLeftDivider,
+					ValuePrepositionIconDarkLeftDivider2ColContent,
+					ValuePrepositionIconLight4Col,
+					ValuePrepositionIconLightLeft4Col,
+					ValuePrepositionImageLight4Col,
+					ValuePrepositionImageLightLeft4Col,
+					ValuePrepositionNoImageLight4Col,
+					ValuePrepositionNoImageLightLeft4Col,
+					ValuePrepositionIconLightLeftDivider,
+					ValuePrepositionIconLightLeftDivider2ColContent,
+					PlanCardTelefonica2,
+					PlanCardTelefonica3,
+					TextWrappingKenos,
+					Columns1Kenos,
+					Columns2Kenos,
+					Columns3Kenos,
+					Columns4Kenos,
+					Columns5Kenos,
+					Columns6Kenos,
+					H1,
+					H2,
+					paragraphKenos,
+					OrderedListKenos,
+					NumberListKenos,
+					{
+						id: 'gjs-blocks-basic',
+						src: 'https://unpkg.com/grapesjs-blocks-basic',
+					},
+					{
+						id: 'grapesjs-plugin-export',
+						src: 'https://unpkg.com/grapesjs-plugin-export',
+					},
+					// {
+					// 	id: 'grapesjs-style-border',
+					// 	src: 'https://unpkg.com/grapesjs-style-border'
+					// },
+					// {
+					// 	id: 'grapesjs-plugin-ckeditor',
+					// 	src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
+					// }
+				]}
+			>
+				<div className={'layout-editor-wrapper'}>
+					<LeftSidebar></LeftSidebar>
 
-						<div className={'gjs-editor-column'}>
-							<Topbar></Topbar>
-							<Canvas />
-						</div>
-						<RightSidebar></RightSidebar>
-
+					<div className={'gjs-editor-column'}>
+						<Topbar></Topbar>
+						<Canvas />
 					</div>
-				</GjsEditor>}
-			</div>
+					<RightSidebar ></RightSidebar>
 
+				</div>
+				{/* <ModalProvider>
+					{({ open, title, content, close }) => (
+						<CustomModal
+						open={open}
+						title={title}
+						children={content}
+						close={close}
+						/>
+					)}
+				</ModalProvider> */}
+			</GjsEditor>) : (
+				<div className='isLoading'>
+					<img src='./images/LoadingMovistar.gif' alt='loading' className='img-loading'/>
+			</div>)}
+		</div>
 	)
 }
 

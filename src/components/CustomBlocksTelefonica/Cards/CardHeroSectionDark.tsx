@@ -432,9 +432,13 @@ const div = `
 	}
 	</style>
 	<section class='bg-dark ptb-80'>
-		<p class="pretitle-vp">Pretitle</p>
-		<h2 class="title-section-vp">Value Proposition title goes here</h2>
-		<p class="description-vp">This sample description is being used as a placeholder for real text.</p>
+		<div class='gjs-row-kenos'>
+			<div class='gjs-cell-kenos'>
+				<p class="pretitle-vp">Pretitle</p>
+				<h2 class="title-section-vp">Value Proposition title goes here</h2>
+				<p class="description-vp">This sample description is being used as a placeholder for real text.</p>
+			</div>
+		</div>		
 		<div class='gjs-row-kenos'>
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-left-d">

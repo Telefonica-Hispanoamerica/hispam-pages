@@ -5,6 +5,14 @@ const div = `
 	p {
 		margin: 0;
 	}
+	.section-hero {
+		background-color: #fff;
+	}
+	@media (max-width: 767px) {
+		.section-hero {
+			background-color: #000;
+		}
+	}
 	.image-hero{
 		width: 100%;
 		min-height: 524px;
@@ -17,6 +25,7 @@ const div = `
 			width: 100%;
 			aspect-ratio: 1 / 2;
 			object-fit: cover;
+			opcity: 0.4;
 		}
 	}
 	.gradient-hero {
@@ -34,6 +43,7 @@ const div = `
 			border: none;
 			height: 400px;
 			background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+			display: none;
 		}
 	}
 	.hero-image-complete {
@@ -248,7 +258,7 @@ const div = `
 		vertical-align: top;
 	}
 	</style>
-	<section class='p-relative-hero'>
+	<section class='p-relative-hero section-hero' >
 		<div class='gradient-hero'></div>
 		<img class='image-hero' src="" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero'>
@@ -274,7 +284,7 @@ const div = `
 	</section>	
 `
 
-function iHeroImageCompleteBig(editor: any) {		
+function HeroImageCompleteBig(editor: any) {		
 	editor.Blocks.add('heroImageCompleteBig', {
 		id: 'heroImageCompleteBig',
 		label: 'Imagen completa grande',
@@ -287,4 +297,4 @@ function iHeroImageCompleteBig(editor: any) {
 	
 }
   
-export default iHeroImageCompleteBig;
+export default HeroImageCompleteBig;
