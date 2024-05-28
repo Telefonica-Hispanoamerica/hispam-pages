@@ -6,6 +6,7 @@ import RightSidebar from './components/RightSidebar';
 import LeftSidebar from './components/LeftSidebar';
 import './App.scss';
 import "./fonts/fonts.scss";
+import axios from "axios";
 
 import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
@@ -462,7 +463,7 @@ function App() {
 		setIsMetaDescription(metaDesc)
 	}
 
-	const gjsOptions: EditorConfig = {
+	const gjsOptions: EditorConfig = {		
 
 		height: '100vh',
 		undoManager: {
@@ -473,7 +474,9 @@ function App() {
 		},
 		modal: { custom: true },
 		fromElement: true,
-		storageManager: false,
+		storageManager: {
+			type: 'local',
+		},
 		canvas: {
 			styles: [
 				'/hispam-pages/css-kenos/roboto.css',
@@ -493,16 +496,49 @@ function App() {
 			pages: [
 				...items
 			],
-			assetManager: {
-				uploadFile: false,
-				embedAsBase64: true,
-			},
 		},
 		pluginsOpts: {
 			// "grapesjs-plugin-toolbox": {
 			// 	panels: true
 			// },
-		}
+		},
+		assetManager: {
+			uploadFile: async (e: any) => {
+				const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+	  
+				// Check if files are extracted correctly
+				if (!files || !files.length) {
+				  console.error('No files found in the event');
+				  return;
+				}
+	  
+				const formData = new FormData();
+				for (let i = 0; i < files.length; i++) {
+				  formData.append('files[]', files[i], files[i].name);
+				}	  
+
+				try {
+					const response = await axios.post('http://localhost:3000/upload', formData, {
+					  headers: {
+						'Content-Type': 'multipart/form-data',
+					  },
+					});
+		
+					const data = response.data;
+		
+					if (data && Array.isArray(data)) {
+					  data.forEach((file: { url: string }) => {
+						const assetManager =  grapesjs.editors[0].editor.attributes.AssetManager
+						assetManager.add({ src: file.url });
+					  });
+					} else {
+					  console.error('Invalid response from server:', data);
+					}
+				  } catch (error) {
+					console.error('Error uploading file:', error);
+				}
+			},
+		},
 	};
 
 	return (
