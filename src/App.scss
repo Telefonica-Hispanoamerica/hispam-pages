@@ -162,3 +162,30 @@ body {
 		}
 	}
 }
+
+.modal-intro {
+	h2 {
+		font-size: 18px;
+		color: #fff;
+		text-align: center;
+		font-family: 'Telefonica-Regular', sans-serif;
+	}
+	.choose-template {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 16px;
+		margin: 24px auto 0;
+		.btn-template {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			border-radius: 8px;
+			padding: 24px;
+			text-align: center;
+			background-color: #019BEF;
+			font-weight: 500;
+			line-height: 24px;
+		}
+	}
+}

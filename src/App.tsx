@@ -57,17 +57,6 @@ import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHe
 import CustomModal from './components/CustomModal';
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
-
-// type EditorHandler = (editor?: Editor, param1?: string, param2?: []) => void;
-//console.log("EditorHandler", EditorHandler)
-
-// const handleEditor: EditorHandler = (editor, param1, param2) => {
-// 	// Lógica para manejar el editor y los parámetros adicionales
-// 	console.log('Editor:', editor);
-// 	console.log('Parámetro 1:', param1);
-// 	console.log('Parámetro 2:', param2);
-// };
-
 interface Item {
     id: number;
     name: string;
@@ -542,98 +531,90 @@ function App() {
 	};
 
 	return (
-		<div className='gjs-container-pages'>
-			{/*<GoogleOuthAnalytics />*/}
-			{ isOpen /*onEditor*/ ? (<GjsEditor
-				grapesjs={grapesjs}
-				grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
-				onEditor={onEditor}
-				// onEditor={(editor) => onEditor(editor, metaDescription, [])}
-				//onEditor={() => onEditor(metaDescription, [])}
-				options={gjsOptions}
-				plugins={[
-					HeroImageCompleteBig,
-					iHeroImageCompleteSmall,
-					ImageCompleteBigCenter,
-					CardHeroRightLight,
-					CardHeroSectionDark,
-					CardLight,
-					CardDark4Col,
-					CardLight3Col,
-					CardHeroTLPG,
-					ValuePrepositionImageDark4Col,
-					ValuePrepositionImageDarkLeft4Col,
-					ValuePrepositionIconDark4Col,
-					ValuePrepositionIconDarkLeft4Col,
-					ValuePrepositionNoImageDark4Col,
-					ValuePrepositionNoImageDarkLeft4Col,
-					ValuePrepositionIconDarkLeftDivider,
-					ValuePrepositionIconDarkLeftDivider2ColContent,
-					ValuePrepositionIconLight4Col,
-					ValuePrepositionIconLightLeft4Col,
-					ValuePrepositionImageLight4Col,
-					ValuePrepositionImageLightLeft4Col,
-					ValuePrepositionNoImageLight4Col,
-					ValuePrepositionNoImageLightLeft4Col,
-					ValuePrepositionIconLightLeftDivider,
-					ValuePrepositionIconLightLeftDivider2ColContent,
-					PlanCardTelefonica2,
-					PlanCardTelefonica3,
-					TextWrappingKenos,
-					Columns1Kenos,
-					Columns2Kenos,
-					Columns3Kenos,
-					Columns4Kenos,
-					Columns5Kenos,
-					Columns6Kenos,
-					H1,
-					H2,
-					paragraphKenos,
-					OrderedListKenos,
-					NumberListKenos,
-					{
-						id: 'gjs-blocks-basic',
-						src: 'https://unpkg.com/grapesjs-blocks-basic',
-					},
-					{
-						id: 'grapesjs-plugin-export',
-						src: 'https://unpkg.com/grapesjs-plugin-export',
-					},
-					// {
-					// 	id: 'grapesjs-style-border',
-					// 	src: 'https://unpkg.com/grapesjs-style-border'
-					// },
-					// {
-					// 	id: 'grapesjs-plugin-ckeditor',
-					// 	src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
-					// }
-				]}
-			>
-				<div className={'layout-editor-wrapper'}>
-					<LeftSidebar></LeftSidebar>
+		<>			
+			<div className='gjs-container-pages'>
+				{/*<GoogleOuthAnalytics />*/}
+				{ isOpen /*onEditor*/ ? (<GjsEditor
+					grapesjs={grapesjs}
+					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+					onEditor={onEditor}
+					// onEditor={(editor) => onEditor(editor, metaDescription, [])}
+					//onEditor={() => onEditor(metaDescription, [])}
+					options={gjsOptions}
+					plugins={[
+						HeroImageCompleteBig,
+						iHeroImageCompleteSmall,
+						ImageCompleteBigCenter,
+						CardHeroRightLight,
+						CardHeroSectionDark,
+						CardLight,
+						CardDark4Col,
+						CardLight3Col,
+						CardHeroTLPG,
+						ValuePrepositionImageDark4Col,
+						ValuePrepositionImageDarkLeft4Col,
+						ValuePrepositionIconDark4Col,
+						ValuePrepositionIconDarkLeft4Col,
+						ValuePrepositionNoImageDark4Col,
+						ValuePrepositionNoImageDarkLeft4Col,
+						ValuePrepositionIconDarkLeftDivider,
+						ValuePrepositionIconDarkLeftDivider2ColContent,
+						ValuePrepositionIconLight4Col,
+						ValuePrepositionIconLightLeft4Col,
+						ValuePrepositionImageLight4Col,
+						ValuePrepositionImageLightLeft4Col,
+						ValuePrepositionNoImageLight4Col,
+						ValuePrepositionNoImageLightLeft4Col,
+						ValuePrepositionIconLightLeftDivider,
+						ValuePrepositionIconLightLeftDivider2ColContent,
+						PlanCardTelefonica2,
+						PlanCardTelefonica3,
+						TextWrappingKenos,
+						Columns1Kenos,
+						Columns2Kenos,
+						Columns3Kenos,
+						Columns4Kenos,
+						Columns5Kenos,
+						Columns6Kenos,
+						H1,
+						H2,
+						paragraphKenos,
+						OrderedListKenos,
+						NumberListKenos,
+						{
+							id: 'gjs-blocks-basic',
+							src: 'https://unpkg.com/grapesjs-blocks-basic',
+						},
+						{
+							id: 'grapesjs-plugin-export',
+							src: 'https://unpkg.com/grapesjs-plugin-export',
+						},
+						// {
+						// 	id: 'grapesjs-style-border',
+						// 	src: 'https://unpkg.com/grapesjs-style-border'
+						// },
+						// {
+						// 	id: 'grapesjs-plugin-ckeditor',
+						// 	src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
+						// }
+					]}
+				>
+					<div className={'layout-editor-wrapper'}>
+						<LeftSidebar></LeftSidebar>
 
-					<div className={'gjs-editor-column'}>
-						<Topbar></Topbar>
-						<Canvas />
+						<div className={'gjs-editor-column'}>
+							<Topbar></Topbar>
+							<Canvas />
+						</div>
+						<RightSidebar ></RightSidebar>
+
 					</div>
-					<RightSidebar ></RightSidebar>
-
-				</div>
-				{/* <ModalProvider>
-					{({ open, title, content, close }) => (
-						<CustomModal
-						open={open}
-						title={title}
-						children={content}
-						close={close}
-						/>
-					)}
-				</ModalProvider> */}
-			</GjsEditor>) : (
-				<div className='isLoading'>
-					<img src='./images/LoadingMovistar.gif' alt='loading' className='img-loading'/>
-			</div>)}
-		</div>
+				</GjsEditor>) : (
+					<div className='isLoading'>
+						<img src='./images/LoadingMovistar.gif' alt='loading' className='img-loading'/>
+				</div>)}
+			</div>
+		</>		
 	)
 }
 

@@ -7,6 +7,21 @@ import { component } from './templateHTML'
 
 import { PageContext } from '../../hooks/pageSlice';
 
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+
+const style = {
+	position: "absolute" as "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	width: 400,
+	bgcolor: "#0B2739",
+	boxShadow: 24,
+	p: 4,
+	borderRadius: 4,
+};
+
 
 export default function CustomPageManager({
     pages,
@@ -18,12 +33,14 @@ export default function CustomPageManager({
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const { removeItem } = useContext(PageContext);
+    const [ open, setOpen ] = useState(true);
+	const handleClose = () => setOpen(false);
 
     const handleFocus = (id: string) => {
         setSelectedId(id);
     };
 
-    const addNewPage = () => {
+    const addNewPage = (pages: any) => {
         const nextIndex = pages.length + 1;
         const dateNumber = Date.now()
         add(
@@ -40,6 +57,7 @@ export default function CustomPageManager({
                 
             }
         );
+        console.log("PAGES", pages)
     };
 
     // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -71,24 +89,59 @@ export default function CustomPageManager({
     };
 
     return (
-        <div className="gjs-custom-page-manager">
-            <div className="plus" onClick={addNewPage}>
-                Add new page
-            </div>
-            
-            {pages.map((page, index) => (
-                <div
-                    key={page.getId()}
-                    className={`page-content ${selectedId === page.getId() ? 'selected' : 'not-selected'}`}
-                    onClick={() => handleFocus(page.getId())}
-                    id={`page-content_${page.getId()}`}
-                >                    
-                    <div onClick={() => getPageId(page)} className="btn-page">
-                        <p>{page.getName() || 'Untitled page'}</p>
-                        <div className={`delete-btn ${index == 0 ? 'hidden' : ''}`} onClick={() => handleRemoveItem(page.id)}><DeleteIcon fontSize="small"/></div>
-                    </div>
+        <>
+            <Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={style}>
+					<div className="modal-intro">
+						<h2>¿Cómo quieres crear tu landing page?</h2>
+                        {pages.map((page, index) => (
+                            <div
+                                key={page.getId()}
+                                className={`choose-template`}
+                                onClick={() => handleFocus(page.getId())}
+                                id={`page-content_${page.getId()}`}
+                            >                    
+                                <div onClick={() => getPageId(page)} className="btn-template">
+                                    <p>{page.getName() || 'Untitled page'}</p>
+                                    {/* <div className={`delete-btn ${index == 0 ? 'hidden' : ''}`} onClick={() => handleRemoveItem(page.id)}><DeleteIcon fontSize="small"/></div> */}
+                                </div>
+                            </div>
+                        ))}
+						<div className="choose-template">
+							<button className="btn-template" onClick={() => addNewPage(pages)}>
+								Plantilla Telefónica
+							</button>
+							<button className="btn-template">
+								Desde cero
+							</button>
+						</div>
+					</div>
+				</Box>
+			</Modal>
+            <div className="gjs-custom-page-manager">
+                <div className="plus" onClick={addNewPage}>
+                    Add new page
                 </div>
-            ))}
-        </div>      
+                
+                {pages.map((page, index) => (
+                    <div
+                        key={page.getId()}
+                        className={`page-content ${selectedId === page.getId() ? 'selected' : 'not-selected'}`}
+                        onClick={() => handleFocus(page.getId())}
+                        id={`page-content_${page.getId()}`}
+                    >                    
+                        <div onClick={() => getPageId(page)} className="btn-page">
+                            <p>{page.getName() || 'Untitled page'}</p>
+                            <div className={`delete-btn ${index == 0 ? 'hidden' : ''}`} onClick={() => handleRemoveItem(page.id)}><DeleteIcon fontSize="small"/></div>
+                        </div>
+                    </div>
+                ))}
+            </div>  
+        </>            
     );
 }
