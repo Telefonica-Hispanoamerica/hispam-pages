@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -32,7 +32,7 @@ export default function CustomPageManager({
 }: PagesResultProps) {
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const { removeItem } = useContext(PageContext);
+    const { items, addItem, removeItem } = useContext(PageContext);
     const [ open, setOpen ] = useState(true);
 	const handleClose = () => setOpen(false);
 
@@ -40,10 +40,10 @@ export default function CustomPageManager({
         setSelectedId(id);
     };
 
-    const addNewPage = (pages: any) => {
+    const addNewPage = () => {
         const nextIndex = pages.length + 1;
         const dateNumber = Date.now()
-        add(
+        const newPage = add(
             // {
             //     id: dateNumber.toString(),
             //     name: `Page ${nextIndex}`,
@@ -55,13 +55,20 @@ export default function CustomPageManager({
                 styles: styles,
                 component: component
                 
-            }
+            }            
         );
-        console.log("PAGES", pages)
+        openPage(newPage);
     };
 
-    // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    // console.log(anchorEl)
+    const openPage = (page?: any) => {
+        select(page);
+        setOpen(false);
+    }
+
+    const emptyPage = () => {
+        select(pages[0]);
+        setOpen(false);
+    }
 
     const getPageId = (page: any) => {
         select(page)
@@ -71,7 +78,6 @@ export default function CustomPageManager({
         const removePage = pages.filter( page => page.id === id);
         remove(removePage[0])
         removeItem(id);
-        //setAnchorEl(null);
         removeHTML(id);
     };
 
@@ -82,7 +88,7 @@ export default function CustomPageManager({
               method: 'DELETE'
             });
             const data = await response.json();
-            console.log(data); // Maneja la respuesta del servidor
+            console.log(data);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -98,25 +104,12 @@ export default function CustomPageManager({
 			>
 				<Box sx={style}>
 					<div className="modal-intro">
-						<h2>¿Cómo quieres crear tu landing page?</h2>
-                        {pages.map((page, index) => (
-                            <div
-                                key={page.getId()}
-                                className={`choose-template`}
-                                onClick={() => handleFocus(page.getId())}
-                                id={`page-content_${page.getId()}`}
-                            >                    
-                                <div onClick={() => getPageId(page)} className="btn-template">
-                                    <p>{page.getName() || 'Untitled page'}</p>
-                                    {/* <div className={`delete-btn ${index == 0 ? 'hidden' : ''}`} onClick={() => handleRemoveItem(page.id)}><DeleteIcon fontSize="small"/></div> */}
-                                </div>
-                            </div>
-                        ))}
+						<h2>¿Cómo quieres crear tu landing page?</h2>                        
 						<div className="choose-template">
-							<button className="btn-template" onClick={() => addNewPage(pages)}>
+							<button className="btn-template" onClick={addNewPage}>
 								Plantilla Telefónica
 							</button>
-							<button className="btn-template">
+							<button className="btn-template" onClick={emptyPage}>
 								Desde cero
 							</button>
 						</div>
