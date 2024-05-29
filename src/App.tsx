@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
-import GjsEditor, { Canvas, ModalProvider } from '@grapesjs/react';
+import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
 import LeftSidebar from './components/LeftSidebar';
@@ -54,7 +54,6 @@ import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardH
 /* Hooks */
 import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
-import CustomModal from './components/CustomModal';
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 interface Item {
@@ -91,8 +90,8 @@ function App() {
 
 	const { items, addItem, metaDescription } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	const [ isMetaDescription, setIsMetaDescription ] = useState<string>('')
-	const [ isTags, setIsTags ] = useState<string[]>([]);
+	//const [ isMetaDescription, setIsMetaDescription ] = useState<string>('')
+	//const [ isTags, setIsTags ] = useState<string[]>([]);
 
 	const handleAddItem = (item: Item, id: number) => {
 		if (item.component.trim() !== '') {
@@ -104,13 +103,12 @@ function App() {
 			};
 		  	addItem(newItem);
 			saveHTML(newItem)
-		  	//setNewItemName('');
 		}
 	};
 
-	const setMetaDescription = (meta?: string) => {
-		return meta
-	}
+	// const setMetaDescription = (meta?: string) => {
+	// 	return meta
+	// }
 
 	useEffect(() => {
 		console.log("META DESCRIPTION UPDATE USEEFFECT", metaDescription);
@@ -335,7 +333,7 @@ function App() {
 								editor.Modal.close();
 							}
 
-							btnExpExport.addEventListener('click', (event) => exportPage(metaDescription, editor));
+							btnExpExport.addEventListener('click', () => exportPage(metaDescription, editor));
 
 							// btnExpExport.onclick = (e) => {
 							// 	e.preventDefault();
@@ -447,10 +445,10 @@ function App() {
 		}
 	};
 
-	const getMetaDescription = (metaDesc: string) => {
-		console.log("Meta decsription", metaDesc);
-		setIsMetaDescription(metaDesc)
-	}
+	// const getMetaDescription = (metaDesc: string) => {
+	// 	console.log("Meta decsription", metaDesc);
+	// 	setIsMetaDescription(metaDesc)
+	// }
 
 	const gjsOptions: EditorConfig = {		
 

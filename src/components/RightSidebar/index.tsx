@@ -17,9 +17,9 @@ import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import { PageContext } from '../../hooks/pageSlice';
 
-interface Props {
-	onMetaDescAdded: (tag: string) => void;
-}
+// interface Props {
+// 	onMetaDescAdded: (tag: string) => void;
+// }
 
 const RightSidebar: React.FC = () =>{
 

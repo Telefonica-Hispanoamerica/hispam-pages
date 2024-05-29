@@ -1,34 +1,34 @@
-import { Editor } from 'grapesjs';
+// import { Editor } from 'grapesjs';
 
-const PlanCardTelefonica211 = (editor: Editor ) => {
-	// This is our custom script (avoid using arrow functions)
-	const script = function() {
-		// `this` is bound to the component element
-		console.log('the element JS');
-	};
+// const PlanCardTelefonica211 = (editor: Editor ) => {
+// 	// This is our custom script (avoid using arrow functions)
+// 	const script = function() {
+// 		// `this` is bound to the component element
+// 		console.log('the element JS');
+// 	};
 	
-	// Define a new custom component
-	editor.Components.addType('comp-with-js', {
-		model: {
-			defaults: {
-				script,
-				// Add some style, just to make the component visible
-				style: {
-					width: '100px',
-					height: '100px',
-					background: 'red',
-				}
-			}
-		}
-	});
+// 	// Define a new custom component
+// 	editor.Components.addType('comp-with-js', {
+// 		model: {
+// 			defaults: {
+// 				script,
+// 				// Add some style, just to make the component visible
+// 				style: {
+// 					width: '100px',
+// 					height: '100px',
+// 					background: 'red',
+// 				}
+// 			}
+// 		}
+// 	});
 	
-	// Create a block for the component, so we can drop it easily
-	editor.Blocks.add('test-block', {
-		label: 'Test block',
-		attributes: { class: 'fa fa-text' },
-		content: { type: 'comp-with-js' },
-	});
-}
+// 	// Create a block for the component, so we can drop it easily
+// 	editor.Blocks.add('test-block', {
+// 		label: 'Test block',
+// 		attributes: { class: 'fa fa-text' },
+// 		content: { type: 'comp-with-js' },
+// 	});
+// }
 
 const div = `
 	<style>	

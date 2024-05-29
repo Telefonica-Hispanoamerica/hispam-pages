@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -32,7 +32,7 @@ export default function CustomPageManager({
 }: PagesResultProps) {
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const { items, addItem, removeItem } = useContext(PageContext);
+    const { removeItem } = useContext(PageContext);
     const [ open, setOpen ] = useState(true);
 	const handleClose = () => setOpen(false);
 

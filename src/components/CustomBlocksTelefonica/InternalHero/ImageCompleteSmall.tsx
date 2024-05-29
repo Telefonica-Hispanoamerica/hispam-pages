@@ -1,4 +1,3 @@
-import { ComponentType } from 'react';
 import { iconsSvg } from '../IconsSvgBlocks';
 
 const div = `
