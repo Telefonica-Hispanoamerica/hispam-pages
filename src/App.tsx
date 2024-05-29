@@ -88,10 +88,8 @@ declare var google: {
 
 function App() {
 
-	const { items, addItem, metaDescription } = useContext(PageContext);
+	const { items, addItem, metaDescription, pageIdSelected } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	//const [ isMetaDescription, setIsMetaDescription ] = useState<string>('')
-	//const [ isTags, setIsTags ] = useState<string[]>([]);
 
 	const handleAddItem = (item: Item, id: number) => {
 		if (item.component.trim() !== '') {
@@ -105,10 +103,6 @@ function App() {
 			saveHTML(newItem)
 		}
 	};
-
-	// const setMetaDescription = (meta?: string) => {
-	// 	return meta
-	// }
 
 	useEffect(() => {
 		console.log("META DESCRIPTION UPDATE USEEFFECT", metaDescription);
@@ -189,232 +183,7 @@ function App() {
 			});
 		editor.Modal.close();
 		}		
-	}
-
-	//const onEditor: EditorHandler = (editor, isMetaDescription, tags) => {
-
-	const onEditor = (editor: Editor) => {
-		//let editor: Editor
-		
-
-		// console.log("Update on Editor 1", [metaDescription, tags])
-
-		
-			// const editor = editor2
-			console.log("EDITOR", editor)
-			// console.log("Update on Editor INT", [metaDescription, tags])
-
-			let currentPageId = 0;
-			let currentPageName = '';
-
-			const pfx = editor.getConfig('stylePrefix');
-			const commandName = 'save-export';
-
-			const config: PluginOptions = {
-				addExportBtn: true,
-				btnLabel: 'Save HTML',
-				filenamePfx: 'grapesjs_template',
-				filename: undefined,
-				done: () => {},
-				onError: console.error,
-				// root: {
-				// 	css: {
-				// 		'style.css': (editor: Editor) => editor.getCss()
-				// 	},
-				// 	'index.html': (editor: Editor) =>
-				// 	`<!doctype html>
-				// 	<html lang="en">
-				// 		<head>
-				// 			<meta charset="utf-8">
-				// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				// 		</head>
-				// 		${editor.getHtml()}
-				// 	</html>`,
-				// },
-				isBinary: undefined,
-				//...opts,
-			};
-
-			editor.on('page:select', (page: any) => {
-				console.log("PAGE", page)
-				currentPageId = parseInt(page.id);
-				currentPageName = page.attributes.name;
-			});
-
-			editor.on('load', function() {
-				editor.runCommand('core:component-outline');
-			});
-
-			// Custom panel
-
-			// const panelManager = editor.Panels;
-
-			// panelManager.addPanel({
-			// 	id: 'custom-panel',
-			// 	el: '.custom-panel-container',
-			// 	buttons: [{
-			// 		id: 'custom-panel-toggle',
-			// 		className: 'custom-panel-toggle-button',
-			// 		label: 'Custom Panel',
-			// 		command: 'open-custom-panel',
-			// 	}],
-			// });
-
-			// editor.Commands.add('open-custom-panel', {
-			// 	run(editor) {
-			// 	  	const panel = editor.Panels.getPanel('views-container').getPanel('custom-panel');
-			// 	  	panel.set('visible', !panel.get('visible'));
-			// 	},
-			// });
-
-			editor.Commands.add(commandName, {
-
-				run(editor: PluginOptions = {}) {
-
-					console.log("META DESCRIPTION 1", [editor, metaDescription])					
-
-					editor.Modal.open({
-						title: 'My title',
-						content: 'My content',
-						attributes: {
-							class: 'my-small-modal',
-						},
-					});
-
-					if (config.addExportBtn) {
-
-						const divButtonsModal = document.createElement('div');
-						divButtonsModal.className = 'buttons-group';
-
-						const btnExp = document.createElement('button');
-						btnExp.innerHTML = `Save HTML ` + currentPageName;
-						btnExp.className = `${pfx}btn-prim`;
-						btnExp.type = 'button';
-
-						const btnExpExport = document.createElement('button');
-						btnExpExport.innerHTML = `Export HTML ` + currentPageName;
-						btnExpExport.className = `${pfx}btn-prim`;
-						btnExpExport.type = 'button';
-
-						editor.on('run:save-export', () => {
-							editor.runCommand('core:open-code');
-
-							const existingGroupButtons = document.querySelectorAll('.buttons-group');
-							existingGroupButtons.forEach(div => div.remove());
-
-							const el = editor.Modal.getContentEl();
-
-							divButtonsModal?.appendChild(btnExp);
-							divButtonsModal?.appendChild(btnExpExport);
-
-							el?.appendChild(divButtonsModal);							
-
-							btnExp.onclick = () => {
-								const editPage = items.filter(item => item.id == currentPageId);
-
-								if(editPage[0]) {
-									let editItem = {
-										id: editPage[0].id,
-										name: editPage[0].name,
-										styles: editor.getCss(),
-										component: editor.getHtml()
-									}
-									handleAddItem(editItem, editItem.id);
-								} else {
-									const nextIndex = items.length + 1;
-									let newItem = {
-										id: Date.now(),
-										name:`Page ${nextIndex}`,
-										styles: editor.getCss(),
-										component: editor.getHtml()
-									}
-									handleAddItem(newItem, newItem.id);
-								}
-								editor.Modal.close();
-							}
-
-							btnExpExport.addEventListener('click', () => exportPage(metaDescription, editor));
-
-							// btnExpExport.onclick = (e) => {
-							// 	e.preventDefault();
-							// 	//exportPage(metaDescription, editor);
-							// 	// console.log("metaDescription BTN CLICK", resultMeta)
-							// 	// const exportData = {
-							// 	// 	html: `<!doctype html>
-							// 	// 	<html lang="en">
-							// 	// 		<head>
-							// 	// 			<meta charset="utf-8">
-							// 	// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-							// 	// 			<meta name="description" content="${resultMeta}" />
-							// 	// 			<link rel="stylesheet" href="./styles.css">
-							// 	// 		</head>
-							// 	// 		${editor.getHtml()}
-							// 	// 	</html>`,
-							// 	// 	css: editor.getCss()
-							// 	// };
-							// 	// const zip = new JSZip();
-
-							// 	// const fontPaths = [
-							// 	// 	'/fonts/Telefonica-Light.eot',
-							// 	// 	'/fonts/Telefonica-Light.woff',
-							// 	// 	'/fonts/Telefonica-Light.woff2',
-							// 	// 	'/fonts/Telefonica-Light.ttf',
-							// 	// 	'/fonts/Telefonica-Regular.eot',
-							// 	// 	'/fonts/Telefonica-Regular.woff',
-							// 	// 	'/fonts/Telefonica-Regular.woff2',
-							// 	// 	'/fonts/Telefonica-Regular.ttf',
-							// 	// 	'/fonts/Telefonica-Bold.eot',
-							// 	// 	'/fonts/Telefonica-Bold.woff',
-							// 	// 	'/fonts/Telefonica-Bold.woff2',
-							// 	// 	'/fonts/Telefonica-Bold.ttf'
-							// 	// ];
-
-							// 	// const fontFiles = await Promise.all(
-							// 	// 	fontPaths.map(fontPath =>
-							// 	// 	fetch(fontPath)
-							// 	// 		.then(res => res.arrayBuffer())
-							// 	// 		.then(arrayBuffer => ({
-							// 	// 			path: fontPath,
-							// 	// 			data: arrayBuffer
-							// 	// 		}))
-							// 	// 	)
-							// 	// );
-
-							// 	// fontFiles.forEach(({ path, data }) => {
-							// 	// 	const fonts: any = zip.folder('fonts');
-							// 	// 	const fontName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
-							// 	// 	fonts.file(fontName, data);
-							// 	// });
-
-							// 	// // New
-
-							// 	// //console.log("headCode", updateExportHead())
-							// 	// zip.file('styles.css', exportData.css);
-							// 	// zip.file('index.html', exportData.html);
-
-							// 	// zip.generateAsync({ type: 'blob' })
-							// 	// 	.then((content) => {
-							// 	// 		const downloadLink = document.createElement('a');
-							// 	// 		downloadLink.href = URL.createObjectURL(content);
-							// 	// 		downloadLink.download = 'project.zip';
-							// 	// 		downloadLink.click();
-							// 	// 	})
-							// 	// 	.catch((error) => {
-							// 	// 	console.error('Error:', error);
-							// 	// 	});
-							// 	// editor.Modal.close();
-							// }
-						});
-					}
-
-				},
-				stop(editor) {
-					editor.Modal.close();
-				},
-			});
-		
-	};
-
+	}	
 
 	useEffect(() => {
 		if (items.length > 0) {
@@ -422,7 +191,7 @@ function App() {
 		} else {
 		  setIsOpen(false);
 		}
-	}, [items]);
+	}, [items]);	
 
 
 	const saveHTML = async (html: any) => {
@@ -445,13 +214,7 @@ function App() {
 		}
 	};
 
-	// const getMetaDescription = (metaDesc: string) => {
-	// 	console.log("Meta decsription", metaDesc);
-	// 	setIsMetaDescription(metaDesc)
-	// }
-
-	const gjsOptions: EditorConfig = {		
-
+	const gjsOptions: EditorConfig = {
 		height: '100vh',
 		undoManager: {
 			trackSelection: false
@@ -467,8 +230,7 @@ function App() {
 		canvas: {
 			styles: [
 				'/hispam-pages/css-kenos/roboto.css',
-				'/hispam-pages/fonts/fonts.css',
-				// 'https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'
+				'/hispam-pages/fonts/fonts.css'
 			],
 			scripts: []
 		},
@@ -484,14 +246,13 @@ function App() {
 				...items
 			],
 		},
-		pluginsOpts: {
-			// "grapesjs-plugin-toolbox": {
-			// 	panels: true
-			// },
-		},
+		pluginsOpts: {},
 		assetManager: {
+			
 			uploadFile: async (e: any) => {
 				const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+				// const pageId = pageIdSelected;
+				const pageId = "12345";
 	  
 				// Check if files are extracted correctly
 				if (!files || !files.length) {
@@ -500,6 +261,8 @@ function App() {
 				}
 	  
 				const formData = new FormData();
+				formData.append('pageId', pageId); 
+				debugger
 				for (let i = 0; i < files.length; i++) {
 				  formData.append('files[]', files[i], files[i].name);
 				}	  
@@ -526,18 +289,137 @@ function App() {
 				}
 			},
 		},
+	};	
+
+	const onEditor = (editor: Editor) => {
+		let currentPageId = 0;
+		let currentPageName = '';
+
+		const pfx = editor.getConfig('stylePrefix');
+		const commandName = 'save-export';
+
+		const config: PluginOptions = {
+			addExportBtn: true,
+			btnLabel: 'Save HTML',
+			filenamePfx: 'grapesjs_template',
+			filename: undefined,
+			done: () => {},
+			onError: console.error,
+			// root: {
+			// 	css: {
+			// 		'style.css': (editor: Editor) => editor.getCss()
+			// 	},
+			// 	'index.html': (editor: Editor) =>
+			// 	`<!doctype html>
+			// 	<html lang="en">
+			// 		<head>
+			// 			<meta charset="utf-8">
+			// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			// 		</head>
+			// 		${editor.getHtml()}
+			// 	</html>`,
+			// },
+			isBinary: undefined,
+			//...opts,
+		};
+
+		editor.on('page:select', (page: any) => {
+			console.log("PAGE", page)
+			currentPageId = parseInt(page.id);
+			currentPageName = page.attributes.name;
+		});
+
+		editor.on('load', function() {
+			editor.runCommand('core:component-outline');
+		});
+
+		editor.Commands.add(commandName, {
+
+			run(editor: PluginOptions = {}) {
+
+				console.log("META DESCRIPTION 1", [editor, metaDescription])					
+
+				editor.Modal.open({
+					title: 'My title',
+					content: 'My content',
+					attributes: {
+						class: 'my-small-modal',
+					},
+				});
+
+				if (config.addExportBtn) {
+
+					const divButtonsModal = document.createElement('div');
+					divButtonsModal.className = 'buttons-group';
+
+					const btnExp = document.createElement('button');
+					btnExp.innerHTML = `Save HTML ` + currentPageName;
+					btnExp.className = `${pfx}btn-prim`;
+					btnExp.type = 'button';
+
+					const btnExpExport = document.createElement('button');
+					btnExpExport.innerHTML = `Export HTML ` + currentPageName;
+					btnExpExport.className = `${pfx}btn-prim`;
+					btnExpExport.type = 'button';
+
+					editor.on('run:save-export', () => {
+						editor.runCommand('core:open-code');
+
+						const existingGroupButtons = document.querySelectorAll('.buttons-group');
+						existingGroupButtons.forEach(div => div.remove());
+
+						const el = editor.Modal.getContentEl();
+
+						divButtonsModal?.appendChild(btnExp);
+						divButtonsModal?.appendChild(btnExpExport);
+
+						el?.appendChild(divButtonsModal);							
+
+						btnExp.onclick = () => {
+							const editPage = items.filter(item => item.id == currentPageId);
+
+							if(editPage[0]) {
+								let editItem = {
+									id: editPage[0].id,
+									name: editPage[0].name,
+									styles: editor.getCss(),
+									component: editor.getHtml()
+								}
+								handleAddItem(editItem, editItem.id);
+							} else {
+								const nextIndex = items.length + 1;
+								let newItem = {
+									id: Date.now(),
+									name:`Page ${nextIndex}`,
+									styles: editor.getCss(),
+									component: editor.getHtml()
+								}
+								handleAddItem(newItem, newItem.id);
+							}
+							editor.Modal.close();
+						}
+
+						btnExpExport.addEventListener('click', () => exportPage(metaDescription, editor));
+					});
+				}
+
+			},
+			stop(editor) {
+				editor.Modal.close();
+			},
+		});		
 	};
+
+	console.log("EDITOR====", )
+	console.log("gjsOptions====", gjsOptions)
 
 	return (
 		<>			
 			<div className='gjs-container-pages'>
-				{/*<GoogleOuthAnalytics />*/}
-				{ isOpen /*onEditor*/ ? (<GjsEditor
+				{ isOpen ? (<GjsEditor
 					grapesjs={grapesjs}
 					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
 					onEditor={onEditor}
-					// onEditor={(editor) => onEditor(editor, metaDescription, [])}
-					//onEditor={() => onEditor(metaDescription, [])}
 					options={gjsOptions}
 					plugins={[
 						HeroImageCompleteBig,
@@ -586,15 +468,7 @@ function App() {
 						{
 							id: 'grapesjs-plugin-export',
 							src: 'https://unpkg.com/grapesjs-plugin-export',
-						},
-						// {
-						// 	id: 'grapesjs-style-border',
-						// 	src: 'https://unpkg.com/grapesjs-style-border'
-						// },
-						// {
-						// 	id: 'grapesjs-plugin-ckeditor',
-						// 	src: 'https://unpkg.com/grapesjs-plugin-ckeditor'
-						// }
+						}
 					]}
 				>
 					<div className={'layout-editor-wrapper'}>
@@ -610,7 +484,7 @@ function App() {
 				</GjsEditor>) : (
 					<div className='isLoading'>
 						<img src='./images/LoadingMovistar.gif' alt='loading' className='img-loading'/>
-				</div>)}
+				</div>)}			
 			</div>
 		</>		
 	)

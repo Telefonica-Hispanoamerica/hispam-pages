@@ -13,6 +13,8 @@ interface ContextValue {
     addItem: (item: Item) => void;
     metaDescription: string;
     addMetaDescription: (meta: string) => void;
+    pageIdSelected: string;
+    getPageIdSelected: (pageId: string) => void;
 }
 
 const PageContext = createContext<ContextValue>({
@@ -21,11 +23,14 @@ const PageContext = createContext<ContextValue>({
     addItem: () => {},
     metaDescription: '',
     addMetaDescription: () => {},
+    pageIdSelected: '',
+    getPageIdSelected: () => {}
 });
 
 const PageProvider = ({ children }: { children: React.ReactNode }) => {
     const [ items, setItems ] = useState<Item[]>([]);
     const [ metaDescription, setMetaDescription ] = useState<string>('');
+    const [ pageIdSelected, setPageIdSelected ] = useState<string>('');
 
     useEffect(() => {
         async function fetchMyAPI() {
@@ -60,12 +65,19 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
         setMetaDescription(newValue);
     };
 
+    const getPageIdSelected = (id: string) => {
+        setPageIdSelected(id)
+    }
+
     const value: ContextValue = {
         items,
         removeItem,
         addItem,
         metaDescription,
-        addMetaDescription
+        addMetaDescription,
+        pageIdSelected,
+        getPageIdSelected,
+
     };
 
     return <PageContext.Provider value={value}>{children}</PageContext.Provider>;

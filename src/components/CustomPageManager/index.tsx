@@ -32,7 +32,7 @@ export default function CustomPageManager({
 }: PagesResultProps) {
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const { removeItem } = useContext(PageContext);
+    const { getPageIdSelected, removeItem } = useContext(PageContext);
     const [ open, setOpen ] = useState(true);
 	const handleClose = () => setOpen(false);
 
@@ -43,7 +43,7 @@ export default function CustomPageManager({
     const addNewPage = () => {
         const nextIndex = pages.length + 1;
         const dateNumber = Date.now()
-        const newPage = add(
+        const newPage: any = add(
             // {
             //     id: dateNumber.toString(),
             //     name: `Page ${nextIndex}`,
@@ -57,7 +57,9 @@ export default function CustomPageManager({
                 
             }            
         );
+        console.log("NEW PAGE", newPage.id)
         openPage(newPage);
+        getPageIdSelected(newPage.id)
     };
 
     const openPage = (page?: any) => {
