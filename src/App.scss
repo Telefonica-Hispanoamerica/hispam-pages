@@ -55,11 +55,11 @@ body {
 
 .layout-editor-wrapper {
   	display: grid;
-	  grid-template-columns: 16% 68% 16%;
-	  height: 100%;
-	@media(min-width: 1720px) {
-		grid-template-columns: 15% 70% 15%;
-	}
+	grid-template-columns: 85% 15%;
+	height: 100%;
+	// @media(min-width: 1720px) {
+	// 	grid-template-columns: 70% 15%;
+	// }
 }
 
 .gjs-row {

@@ -236,6 +236,12 @@ function App() {
 		},
 		projectData: {
 			assets: [
+				'/images/template-telefonica/serie1.jpg',
+				'/images/template-telefonica/serie2.jpg',
+				'/images/template-telefonica/serie3.jpg',
+				'/images/template-telefonica/serie4.jpg',
+				'/images/template-telefonica/serie5.jpg',
+				'/images/template-telefonica/hero.webp',
 				'https://via.placeholder.com/350x250/78c5d6/fff',
 				'https://via.placeholder.com/350x250/459ba8/fff',
 				'https://via.placeholder.com/350x250/79c267/fff',
@@ -472,7 +478,7 @@ function App() {
 					]}
 				>
 					<div className={'layout-editor-wrapper'}>
-						<LeftSidebar></LeftSidebar>
+						{/* <LeftSidebar></LeftSidebar> */}
 
 						<div className={'gjs-editor-column'}>
 							<Topbar></Topbar>

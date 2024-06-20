@@ -10,15 +10,21 @@
                     //height: 46px;
                     .MuiTabs-flexContainer {
                         display: grid;
-                        grid-template-columns: repeat(3, 33%);
+                        grid-template-columns: repeat(6, 16.6%);
                         min-height: initial;
                         .MuiButtonBase-root {
                             text-transform: none;
                             min-height: 46px;
                             font-size: 12px;
                             font-weight: 400;
+                            max-width: initial;
+                            min-width: initial;
                             &:focus {
                                 outline: none;
+                            }
+                            svg {
+                                width: 18px;
+                                height: 18px ;
                             }
                         }
                     }

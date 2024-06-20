@@ -19,7 +19,8 @@ export const component = `
    </div>
 </section>
 <section id="iejmus" class="p-relative-hero section-hero">
-   <div class="gradient-hero"></div><img src="" alt="" id="ign09p" class="image-hero" />
+   <div class="gradient-hero"></div>
+   <img src="images/template-telefonica/hero.webp" alt="" id="ign09p" class="image-hero" />
    <div class="gjs-row-kenos p-absolute-hero">
       <div class="gjs-cell-kenos">
          <div class="hero-image-complete">
@@ -30,7 +31,7 @@ export const component = `
                      id="ivnzaf" class="link-button">Link button</a></div>
             </div>
             <div class="img-content">
-
+               
             </div>
          </div>
       </div>
