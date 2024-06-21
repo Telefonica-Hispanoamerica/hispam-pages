@@ -120,7 +120,7 @@ export default function CustomPageManager({
 			</Modal>
             <div className="gjs-custom-page-manager">
                 <div className="plus" onClick={addNewPage}>
-                    Add new page
+                    Añadir Plantilla Telefónica
                 </div>
                 
                 {pages.map((page, index) => (
