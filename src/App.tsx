@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
@@ -56,6 +56,8 @@ import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
+
+
 interface Item {
     id: number;
     name: string;
@@ -90,6 +92,14 @@ function App() {
 
 	const { items, addItem, metaDescription, pageIdSelected } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
+	const [ meta, setMeta ] = useState("");
+	const [ mainEditor, setMainEditor ] = useState<any>();
+	const [ currentlyPageId, setCurrentlyPageId ] = useState<string>('');
+	const currentPageIdRef = useRef('');
+
+	console.log("PAGE ELECTED FROM APP", pageIdSelected)
+
+	currentPageIdRef.current = pageIdSelected;
 
 	const handleAddItem = (item: Item, id: number) => {
 		if (item.component.trim() !== '') {
@@ -103,87 +113,6 @@ function App() {
 			saveHTML(newItem)
 		}
 	};
-
-	useEffect(() => {
-		console.log("META DESCRIPTION UPDATE USEEFFECT", metaDescription);
-		//onEditor( metaDescription, []);
-		//setIsMetaDescription(metaDescription)
-		// const resultMeta = setMetaDescription(metaDescription)
-		exportPage(metaDescription)
-		
-	}, [metaDescription]);
-
-	const exportPage = async (meta?: string, editor?: any) => {		
-		//event.preventDefault();
-		console.log("metaDescription BTN CLICK 1", meta)
-		if(editor) {
-			console.log("metaDescription BTN CLICK 2", meta)
-			const exportData = {
-				html: `<!doctype html>
-				<html lang="en">
-					<head>
-						<meta charset="utf-8">
-						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-						<meta name="description" content="${meta}" />
-						<link rel="stylesheet" href="./styles.css">
-					</head>
-					${editor.getHtml()}
-				</html>`,
-				css: editor.getCss()
-			};
-			const zip = new JSZip();
-
-		const fontPaths = [
-			'/fonts/Telefonica-Light.eot',
-			'/fonts/Telefonica-Light.woff',
-			'/fonts/Telefonica-Light.woff2',
-			'/fonts/Telefonica-Light.ttf',
-			'/fonts/Telefonica-Regular.eot',
-			'/fonts/Telefonica-Regular.woff',
-			'/fonts/Telefonica-Regular.woff2',
-			'/fonts/Telefonica-Regular.ttf',
-			'/fonts/Telefonica-Bold.eot',
-			'/fonts/Telefonica-Bold.woff',
-			'/fonts/Telefonica-Bold.woff2',
-			'/fonts/Telefonica-Bold.ttf'
-		];
-
-		const fontFiles = await Promise.all(
-			fontPaths.map(fontPath =>
-			fetch(fontPath)
-				.then(res => res.arrayBuffer())
-				.then(arrayBuffer => ({
-					path: fontPath,
-					data: arrayBuffer
-				}))
-			)
-		);
-
-		fontFiles.forEach(({ path, data }) => {
-			const fonts: any = zip.folder('fonts');
-			const fontName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
-			fonts.file(fontName, data);
-		});
-
-		// New
-
-		//console.log("headCode", updateExportHead())
-		zip.file('styles.css', exportData.css);
-		zip.file('index.html', exportData.html);
-
-		zip.generateAsync({ type: 'blob' })
-			.then((content) => {
-				const downloadLink = document.createElement('a');
-				downloadLink.href = URL.createObjectURL(content);
-				downloadLink.download = 'project.zip';
-				downloadLink.click();
-			})
-			.catch((error) => {
-			console.error('Error:', error);
-			});
-		editor.Modal.close();
-		}		
-	}	
 
 	useEffect(() => {
 		if (items.length > 0) {
@@ -214,6 +143,9 @@ function App() {
 		}
 	};
 
+	console.log("ON EDITOR PAGE ID 1", currentlyPageId);
+
+
 	const gjsOptions: EditorConfig = {
 		height: '100vh',
 		undoManager: {
@@ -227,6 +159,7 @@ function App() {
 		storageManager: {
 			type: 'local',
 		},
+        // storageManager: { autoload: 0 },
 		canvas: {
 			styles: [
 				'/hispam-pages/css-kenos/roboto.css',
@@ -242,11 +175,6 @@ function App() {
 				'/images/template-telefonica/serie4.jpg',
 				'/images/template-telefonica/serie5.jpg',
 				'/images/template-telefonica/hero.webp',
-				'https://via.placeholder.com/350x250/78c5d6/fff',
-				'https://via.placeholder.com/350x250/459ba8/fff',
-				'https://via.placeholder.com/350x250/79c267/fff',
-				'https://via.placeholder.com/350x250/c5d647/fff',
-				'https://via.placeholder.com/350x250/f28c33/fff',
 			],
 			pages: [
 				...items
@@ -256,11 +184,48 @@ function App() {
 		assetManager: {
 			
 			uploadFile: async (e: any) => {
+				e.preventDefault();
+				let currentPageId = 0;
 				const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
-				// const pageId = pageIdSelected;
-				const pageId = "12345";
-	  
-				// Check if files are extracted correctly
+
+				const pageId = currentPageIdRef.current;
+
+				//Get images html
+				// Assuming you have access to the GrapeJS editor instance
+					// var editor = grapesjs.init({
+					// 	// GrapeJS configuration
+					// });
+					
+					// // Function to get all image URLs from the page
+					// function getImageURLs() {
+					// 	// Get the HTML content of the current page
+					// 	var htmlContent = editor.getHtml();
+					
+					// 	// Create a temporary DOM element to parse the HTML content
+					// 	var tempDiv = document.createElement('div');
+					// 	tempDiv.innerHTML = htmlContent;
+					
+					// 	// Use querySelectorAll to get all image elements
+					// 	var images = tempDiv.querySelectorAll('img');
+					
+					// 	// Extract the src attribute from each image element
+					// 	var imageUrls = [];
+					// 	images.forEach(function(img) {
+					// 	var src = img.getAttribute('src');
+					// 	if (src) {
+					// 		imageUrls.push(src);
+					// 	}
+					// 	});
+					
+					// 	return imageUrls;
+					// }
+					
+					// // Example usage
+					// var imageUrls = getImageURLs();
+					// console.log(imageUrls);
+
+				//Get images html
+
 				if (!files || !files.length) {
 				  console.error('No files found in the event');
 				  return;
@@ -298,6 +263,8 @@ function App() {
 	};	
 
 	const onEditor = (editor: Editor) => {
+		(window as any).editor = editor;
+		//setMainEditor((window as any).editor)
 		let currentPageId = 0;
 		let currentPageName = '';
 
@@ -308,7 +275,7 @@ function App() {
 			addExportBtn: true,
 			btnLabel: 'Save HTML',
 			filenamePfx: 'grapesjs_template',
-			filename: undefined,
+			filename: undefined,			
 			done: () => {},
 			onError: console.error,
 			// root: {
@@ -329,21 +296,26 @@ function App() {
 			//...opts,
 		};
 
+		console.log("CONGIR---------- 1", config)
+
 		editor.on('page:select', (page: any) => {
 			console.log("PAGE", page)
 			currentPageId = parseInt(page.id);
+			setCurrentlyPageId(page.id)
 			currentPageName = page.attributes.name;
 		});
 
 		editor.on('load', function() {
-			editor.runCommand('core:component-outline');
+			editor.runCommand('core:component-outline');			
 		});
 
+		
+
 		editor.Commands.add(commandName, {
-
+			
 			run(editor: PluginOptions = {}) {
-
-				console.log("META DESCRIPTION 1", [editor, metaDescription])					
+				console.log("metaDescription inicial 111111 ------", PageContext);
+				//console.log("META DESCRIPTION 1", [editor, metaDescription])					
 
 				editor.Modal.open({
 					title: 'My title',
@@ -354,19 +326,19 @@ function App() {
 				});
 
 				if (config.addExportBtn) {
-
+					console.log("CONGIR---------- 2", config)
 					const divButtonsModal = document.createElement('div');
 					divButtonsModal.className = 'buttons-group';
 
-					const btnExp = document.createElement('button');
+					const btnExp = document.createElement('a');
 					btnExp.innerHTML = `Save HTML ` + currentPageName;
 					btnExp.className = `${pfx}btn-prim`;
-					btnExp.type = 'button';
+					// btnExp.type = 'button';
 
-					const btnExpExport = document.createElement('button');
+					const btnExpExport = document.createElement('a');
 					btnExpExport.innerHTML = `Export HTML ` + currentPageName;
 					btnExpExport.className = `${pfx}btn-prim`;
-					btnExpExport.type = 'button';
+					// btnExpExport.type = 'button';
 
 					editor.on('run:save-export', () => {
 						editor.runCommand('core:open-code');
@@ -404,8 +376,10 @@ function App() {
 							}
 							editor.Modal.close();
 						}
-
-						btnExpExport.addEventListener('click', () => exportPage(metaDescription, editor));
+						console.log("metaDescription inicial 2  ------", metaDescription);
+						let metaDesc = metaDescription
+						// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
+						btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
 					});
 				}
 
@@ -416,7 +390,7 @@ function App() {
 		});		
 	};
 
-	console.log("EDITOR====", )
+	console.log("EDITOR====", mainEditor)
 	console.log("gjsOptions====", gjsOptions)
 
 	return (
@@ -481,11 +455,10 @@ function App() {
 						{/* <LeftSidebar></LeftSidebar> */}
 
 						<div className={'gjs-editor-column'}>
-							<Topbar></Topbar>
+						 	<Topbar mainEditor={window.editor}></Topbar>			
 							<Canvas />
 						</div>
 						<RightSidebar ></RightSidebar>
-
 					</div>
 				</GjsEditor>) : (
 					<div className='isLoading'>

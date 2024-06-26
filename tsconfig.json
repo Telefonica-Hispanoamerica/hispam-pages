@@ -10,7 +10,7 @@
     //"allowJs": true, // Para archivos JS
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    //"moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -21,7 +21,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Others */
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "include": ["src"],
   // "include": ["./src/**/*.ts?", "src/GoogleAnalyticsApp.jsx", "src/AnalyticsPage.jsx"],

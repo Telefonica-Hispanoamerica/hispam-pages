@@ -153,7 +153,7 @@ const RightSidebar: React.FC = () =>{
 											onChange={handleInputChange}
 											placeholder="Escribe un tag"
 										/>
-										<button onClick={handleAddTag} >Agregar tag</button>
+										<a onClick={handleAddTag} >Agregar tag</a>
 									</div>
 									<div className="tags-container">
 										{tags.map((tag: any, index) => (
@@ -171,7 +171,7 @@ const RightSidebar: React.FC = () =>{
 											name="textarea" 
 											rows={5} 
 										>Escribe una meta descripción</textarea>
-										<button onClick={handleAddMetaDesc}>Meta descripción</button>
+										<a onClick={handleAddMetaDesc}>Meta descripción</a>
 									</div>
 								</>								
 							)}
