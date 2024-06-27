@@ -29,7 +29,7 @@ export const component = `
       <div class="gjs-cell-kenos">
          <div class="card-vp-img-light">
             <div class="box-img">
-               <img src="" />
+               <img src="images/template-telefonica/no-photo.avif" alt="" />
             </div>
             <div id="iufinf" class="title roboto-regular">Escoge el plan</div>
             <div id="i7db97" class="description roboto-regular">Puedes elegir entra los planes Movistar que	vienen con Netflix</div>
@@ -38,7 +38,7 @@ export const component = `
       <div class="gjs-cell-kenos">
          <div class="card-vp-img-light">
             <div class="box-img">
-               <img src="" />
+               <img src="images/template-telefonica/no-photo.avif" alt="" />
             </div>
             <div id="inpjyb" class="title roboto-regular">Contrátalo junto a tu línea Movistar</div>
             <div id="ik29fc" class="description roboto-regular">Y págalo en tu factura sin complicaciones</div>
@@ -47,7 +47,7 @@ export const component = `
       <div class="gjs-cell-kenos">
          <div class="card-vp-img-light">
             <div class="box-img">
-               <img src="" />
+               <img src="images/template-telefonica/no-photo.avif" alt="" />
             </div>
             <div id="iddaol" class="title roboto-regular">Activa tu cuenta de Netflix</div>
             <div id="ixxddp" class="description roboto-regular">Ingresa a Netflix y activa tu cuenta con
@@ -57,7 +57,7 @@ export const component = `
       <div class="gjs-cell-kenos">
          <div class="card-vp-img-light">
             <div class="box-img">
-               <img src="" />
+               <img src="images/template-telefonica/no-photo.avif" alt="" />
             </div>
             <div id="i9gk4y" class="title roboto-regular">Encuentra las series recomendadas de Netflix</div>
             <div id="ifodyg" class="description roboto-regular">Disfruta todo el catálogo de Netflix sin
@@ -79,10 +79,11 @@ export const component = `
          <div class="header-plan">
             <div class="plan-name">
                Plan name
-               <img src="/hispam-pages/images/question-regular.svg" alt="" />
+               <img src="images/template-telefonica/question-regular.svg" alt="" />
             </div><span class="capacity">12 GB</span>
             <div class="offer-description"><span>x12 month </span>Offer description</div>
-            <div class="tag"><img src="/hispam-pages/images/offer-percent-filled.svg" alt="offer" />
+            <div class="tag">
+               <img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
                <p>Tag label</p>
             </div>
          </div>
@@ -98,52 +99,63 @@ export const component = `
                button</a></div><input type="checkbox" id="toggle" class="toggle" />
          <div class="card-collapse">
             <div id="content" class="card-content">
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options">
+                  <img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
                </div>
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options">
+                  <img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
                </div>
-               <div class="long-offer-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" fill="none">
-                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
-                        fill="#008EDD"></path>
-                  </svg><span class="txt">Long offer description</span></div>
-               <div class="long-offer-row-streaming"><img src="/hispam-pages/images/Image2.jpg"
-                     class="streaming-app" /><span class="txt">Long offer description</span></div>
-               <div class="long-offer-list"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+               <div class="long-offer-row">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      viewBox="0 0 24 24" fill="none">
                      <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
                         fill="#008EDD"></path>
                   </svg>
-                  <div class="content"><span class="title">Offer description longer </span><span
-                        class="description">Long offer description</span><a href="" class="link">Text
-                        link</a></div>
+                  <span class="txt">Long offer description</span>
                </div>
-            </div><label for="toggle" class="card-header"><span class="toggleLabel">More details</span><img
-                  src="/hispam-pages/images/chevron-down-regular.svg" alt="expanded" /></label>
+               <div class="long-offer-row-streaming">
+                  <img src="images/template-telefonica/Image2.jpg" class="streaming-app" /><span class="txt">Long offer description</span>
+               </div>
+               <div class="long-offer-list">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
+                        fill="#008EDD"></path>
+                  </svg>
+                  <div class="content"><span class="title">Offer description longer </span>
+                     <span class="description">Long offer description</span><a href="" class="link">Text link</a>
+                  </div>
+               </div>
+            </div>
+            <label for="toggle" class="card-header">
+               <span class="toggleLabel">More details</span>
+                  <img src="images/template-telefonica/chevron-down-regular.svg" alt="expanded" />
+               </label>
          </div>
       </div>
    </div>
    <div class="gjs-cell-kenos">
       <div id="i0wrct"></div>
       <div class="card-feat">
-         <div class="feature-tag"><img src="/hispam-pages/images/icon.svg" alt="" />
+         <div class="feature-tag">
+            <img src="images/template-telefonica/offer-percent-filled.svg" alt="" />
             Featured tag
          </div>
          <div class="header-plan">
             <div class="plan-name">
                Plan name
-               <img src="/hispam-pages/images/question-regular.svg" alt="" />
+               <img src="images/template-telefonica/question-regular.svg" alt="" />
             </div><span class="capacity">12 GB</span>
             <div class="offer-description"><span>x12 month </span>Offer description</div>
-            <div class="tag"><img src="/hispam-pages/images/offer-percent-filled.svg" alt="offer" />
+            <div class="tag">
+               <img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
                <p>Tag label</p>
             </div>
          </div>
@@ -155,40 +167,62 @@ export const component = `
             </div>
             <div class="offer-per-month"><span>x12 month.</span> Offer description</div>
          </div>
-         <div class="btn-main-content"><a class="btn-primary">Primary button</a><a class="btn-second">Secondary
-               button</a></div><input type="checkbox" id="toggle-2" class="toggle" />
+         <div class="btn-main-content">
+            <a class="btn-primary">Primary button</a>
+            <a class="btn-second">Secondary button</a>
+         </div>
+         <input type="checkbox" id="toggle-2" class="toggle" />
          <div class="card-collapse">
             <div id="content-2" class="card-content">
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
-                  <div class="streaming"><span class="add-streaming">Add Streaming</span><span
-                        class="description">Description</span></div><label class="switch"><input
-                        type="checkbox" checked /><span class="slider round"></span></label>
+               <div class="switch-options">
+                  <img src="images/template-telefonica/Image.jpg" class="icon-circle" />
+                  <div class="streaming">
+                     <span class="add-streaming">Add Streaming</span>
+                     <span class="description">Description</span>
+                  </div>
+                  <label class="switch">
+                     <input type="checkbox" checked /><span class="slider round"></span>
+                  </label>
                </div>
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
-                  <div class="streaming"><span class="add-streaming">Add Streaming</span><span
-                        class="description">Description</span></div><label class="switch"><input
-                        type="checkbox" checked /><span class="slider round"></span></label>
+               <div class="switch-options">
+                  <img src="images/template-telefonica/Image.jpg" class="icon-circle" />
+                  <div class="streaming">
+                     <span class="add-streaming">Add Streaming</span>
+                     <span class="description">Description</span></div>
+                     <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                     </label>
                </div>
-               <div class="long-offer-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" fill="none">
-                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
-                        fill="#008EDD"></path>
-                  </svg><span class="txt">Long offer description</span></div>
-               <div class="long-offer-row-streaming"><img src="/hispam-pages/images/Image2.jpg"
-                     class="streaming-app" /><span class="txt">Long offer description</span></div>
-               <div class="long-offer-list"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" fill="none">
+               <div class="long-offer-row">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                      <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
                         fill="#008EDD"></path>
                   </svg>
-                  <div class="content"><span class="title">Offer description longer </span><span
-                        class="description">Long offer description</span><a href="" class="link">Text
-                        link</a></div>
+                  <span class="txt">Long offer description</span>
                </div>
-            </div><label for="toggle" class="card-header"><span class="toggleLabel">More details</span><img
-                  src="/hispam-pages/images/chevron-down-regular.svg" alt="expanded" /></label>
+               <div class="long-offer-row-streaming">
+                  <img src="images/template-telefonica/Image2.jpg" class="streaming-app" />
+                  <span class="txt">Long offer description</span>
+               </div>
+               <div class="long-offer-list">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
+                        fill="#008EDD"></path>
+                  </svg>
+                  <div class="content">
+                     <span class="title">Offer description longer </span>
+                     <span class="description">Long offer description</span>
+                     <a href="" class="link">Text link</a>
+                  </div>
+               </div>
+            </div>
+            <label for="toggle" class="card-header">
+               <span class="toggleLabel">More details</span>
+               <img src="images/template-telefonica/chevron-down-regular.svg" alt="expanded" />
+            </label>
          </div>
       </div>
    </div>
@@ -198,10 +232,10 @@ export const component = `
          <div class="header-plan">
             <div class="plan-name">
                Plan name
-               <img src="/hispam-pages/images/question-regular.svg" alt="" />
+               <img src="images/template-telefonica/question-regular.svg" alt="" />
             </div><span class="capacity">12 GB</span>
             <div class="offer-description"><span>x12 month </span>Offer description</div>
-            <div class="tag"><img src="/hispam-pages/images/offer-percent-filled.svg" alt="offer" />
+            <div class="tag"><img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
                <p>Tag label</p>
             </div>
          </div>
@@ -217,12 +251,12 @@ export const component = `
                button</a></div><input type="checkbox" id="toggle-3" class="toggle" />
          <div class="card-collapse">
             <div id="content-3" class="card-content">
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options"><img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
                </div>
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options"><img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
@@ -233,7 +267,7 @@ export const component = `
                         d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
                         fill="#008EDD"></path>
                   </svg><span class="txt">Long offer description</span></div>
-               <div class="long-offer-row-streaming"><img src="/hispam-pages/images/Image2.jpg"
+               <div class="long-offer-row-streaming"><img src="images/template-telefonica/Image2.jpg"
                      class="streaming-app" /><span class="txt">Long offer description</span></div>
                <div class="long-offer-list"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      viewBox="0 0 24 24" fill="none">
@@ -246,23 +280,23 @@ export const component = `
                         link</a></div>
                </div>
             </div><label for="toggle" class="card-header"><span class="toggleLabel">More details</span><img
-                  src="/hispam-pages/images/chevron-down-regular.svg" alt="expanded" /></label>
+                  src="images/template-telefonica/chevron-down-regular.svg" alt="expanded" /></label>
          </div>
       </div>
    </div>
    <div class="gjs-cell-kenos">
       <div id="iztxpu"></div>
       <div class="card-feat">
-         <div class="feature-tag"><img src="/hispam-pages/images/icon.svg" alt="" />
+         <div class="feature-tag"><img src="images/template-telefonica/offer-percent-filled.svg" alt="" />
             Featured tag
          </div>
          <div class="header-plan">
             <div class="plan-name">
                Plan name
-               <img src="/hispam-pages/images/question-regular.svg" alt="" />
+               <img src="images/template-telefonica/question-regular.svg" alt="" />
             </div><span class="capacity">12 GB</span>
             <div class="offer-description"><span>x12 month </span>Offer description</div>
-            <div class="tag"><img src="/hispam-pages/images/offer-percent-filled.svg" alt="offer" />
+            <div class="tag"><img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
                <p>Tag label</p>
             </div>
          </div>
@@ -278,12 +312,12 @@ export const component = `
                button</a></div><input type="checkbox" id="toggle-4" class="toggle" />
          <div class="card-collapse">
             <div id="content-4" class="card-content">
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options"><img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
                </div>
-               <div class="switch-options"><img src="/hispam-pages/images/Image.jpg" class="icon-circle" />
+               <div class="switch-options"><img src="images/template-telefonica/Image.jpg" class="icon-circle" />
                   <div class="streaming"><span class="add-streaming">Add Streaming</span><span
                         class="description">Description</span></div><label class="switch"><input
                         type="checkbox" checked /><span class="slider round"></span></label>
@@ -294,7 +328,7 @@ export const component = `
                         d="M17.687 11.023C17.8971 11.0762 18.0623 11.2386 18.1212 11.4515C18.18 11.6644 18.1212 11.8941 17.9699 12.051L8.6842 21.67C8.56655 21.7876 8.41529 21.8493 8.26123 21.8493C8.14919 21.8493 8.03714 21.8157 7.9363 21.7484C7.69821 21.5916 7.60297 21.2834 7.70661 21.0117L10.4069 13.9613L6.29485 12.9445C6.08756 12.8941 5.9223 12.7316 5.86348 12.5216C5.80465 12.3115 5.85787 12.0818 6.00633 11.9249L14.9223 2.3535C15.1212 2.14062 15.4349 2.1042 15.6758 2.26387C15.9167 2.42353 16.0119 2.73726 15.9055 3.00896L13.1856 9.91372L17.687 11.023ZM11.7682 13.754L9.87467 18.698L16.3789 11.9585L12.2332 10.9361C12.0651 10.8941 11.9223 10.7793 11.8439 10.6196C11.7654 10.4627 11.757 10.2751 11.8215 10.1098L13.6366 5.50476L7.58616 12.0005L11.3537 12.9333C11.5217 12.9753 11.6646 13.0902 11.743 13.247C11.8214 13.4039 11.8299 13.5888 11.7682 13.754Z"
                         fill="#008EDD"></path>
                   </svg><span class="txt">Long offer description</span></div>
-               <div class="long-offer-row-streaming"><img src="/hispam-pages/images/Image2.jpg"
+               <div class="long-offer-row-streaming"><img src="images/template-telefonica/Image2.jpg"
                      class="streaming-app" /><span class="txt">Long offer description</span></div>
                <div class="long-offer-list"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      viewBox="0 0 24 24" fill="none">
@@ -307,7 +341,7 @@ export const component = `
                         link</a></div>
                </div>
             </div><label for="toggle" class="card-header"><span class="toggleLabel">More details</span><img
-                  src="/hispam-pages/images/chevron-down-regular.svg" alt="expanded" /></label>
+                  src="images/template-telefonica/chevron-down-regular.svg" alt="expanded" /></label>
          </div>
       </div>
    </div>
@@ -315,8 +349,8 @@ export const component = `
 <section id="i41mxo" class="bg-dark ptb-80">
    <div class="gjs-row-kenos">
       <div class="gjs-cell-kenos">
-         <h2 id="ibg712" class="title-section-vp-light">Los grandes lanzamientos de Netflix para el 2024</h2>
-         <p id="ic096r" class="description-vp-light">Muchas de las series recomendadas de Netflix y esperadas por
+         <h2 id="ibg712" class="title-section-vp">Los grandes lanzamientos de Netflix para el 2024</h2>
+         <p id="ic096r" class="description-vp">Muchas de las series recomendadas de Netflix y esperadas por
             los usuarios, sorprenden con nuevas temporadas para continuar con lo mejor de la trama. Estas son
             sólo algunos de los últimos lanzamientos y series recomendadas que llegarán a Netflix en el 2024.
          </p>

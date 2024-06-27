@@ -8,6 +8,7 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
+import CodeIcon from '@mui/icons-material/Code';
 
 interface CommandButton {
     id: string
@@ -41,7 +42,7 @@ function TopbarButtons () {
         // },
         {
 			id: 'save-export',
-			iconPath: <FileDownloadOutlinedIcon />,
+			iconPath: <CodeIcon />,
         },
         // {
 		// 	id: 'export',

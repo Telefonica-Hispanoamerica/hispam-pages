@@ -19,6 +19,91 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 	const exportPage = async (meta: string) => {
 
 		if(mainEditor) {
+			const zip = new JSZip();
+			
+			const fontPaths = [
+				'/fonts/Telefonica-Light.eot',
+				'/fonts/Telefonica-Light.woff',
+				'/fonts/Telefonica-Light.woff2',
+				'/fonts/Telefonica-Light.ttf',
+				'/fonts/Telefonica-Regular.eot',
+				'/fonts/Telefonica-Regular.woff',
+				'/fonts/Telefonica-Regular.woff2',
+				'/fonts/Telefonica-Regular.ttf',
+				'/fonts/Telefonica-Bold.eot',
+				'/fonts/Telefonica-Bold.woff',
+				'/fonts/Telefonica-Bold.woff2',
+				'/fonts/Telefonica-Bold.ttf'
+			];
+
+			const fontFiles = await Promise.all(
+				fontPaths.map(fontPath =>
+				fetch(fontPath)
+					.then(res => res.arrayBuffer())
+					.then(arrayBuffer => ({
+						path: fontPath,
+						data: arrayBuffer
+					}))
+				)
+			);
+
+			fontFiles.forEach(({ path, data }) => {
+				const fonts: any = zip.folder('fonts');
+				const fontName:any = path.split('/').pop();
+				fonts.file(fontName, data);
+			});
+
+			function getImageURLs() {
+				var htmlContent = mainEditor.getHtml();
+				var tempDiv = document.createElement('div');
+				tempDiv.innerHTML = htmlContent;
+			
+				var images = tempDiv.querySelectorAll('img');
+			
+				var imageUrls: any[] = [];
+				images.forEach(function(img) {
+					var src = img.getAttribute('src');
+					if (src) {
+						imageUrls.push(src);
+					}
+				});
+			
+				return imageUrls;
+			}
+
+			var imageUrls = getImageURLs();
+
+			const imgFiles = await Promise.all(
+				imageUrls.map(imgPath =>
+				fetch(imgPath)
+					.then(res => res.arrayBuffer())
+					.then(arrayBuffer => ({
+						path: imgPath,
+						data: arrayBuffer
+					}))
+				)
+			);
+		
+			imgFiles.forEach(({ path, data }) => {
+				const imgs: any = zip.folder('images');
+				const imgName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
+				imgs.file(imgName, data);
+			});
+
+			const htmlExport = mainEditor.getHtml();
+
+			let urlIndex = 0;
+
+			const htmlString = htmlExport.replace(/<img([^>]+)src="([^">]+)"/g, (match, p1, p2) => {
+				if (urlIndex < imageUrls.length) {
+					const nuevaURLSinTemplate = imageUrls[urlIndex++].replace('/template-telefonica/', '/');
+					return `<img${p1}src="${nuevaURLSinTemplate}"`;
+				}
+				return match;
+			});
+
+			console.log(htmlString);
+
 			const exportData = {
 				html: `<!doctype html>
 				<html lang="en">
@@ -29,70 +114,26 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 						<link rel="stylesheet" href="./styles.css">
 						<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 					</head>
-					${mainEditor.getHtml()}
+					${htmlString}
 				</html>`,
-				css: mainEditor.getCss()
+				css: `${mainEditor.getCss()}`
 			};
-			const zip = new JSZip();
 
-		const fontPaths = [
-			'/fonts/Telefonica-Light.eot',
-			'/fonts/Telefonica-Light.woff',
-			'/fonts/Telefonica-Light.woff2',
-			'/fonts/Telefonica-Light.ttf',
-			'/fonts/Telefonica-Regular.eot',
-			'/fonts/Telefonica-Regular.woff',
-			'/fonts/Telefonica-Regular.woff2',
-			'/fonts/Telefonica-Regular.ttf',
-			'/fonts/Telefonica-Bold.eot',
-			'/fonts/Telefonica-Bold.woff',
-			'/fonts/Telefonica-Bold.woff2',
-			'/fonts/Telefonica-Bold.ttf'
-		];
+			zip.file('styles.css', exportData.css);
+			zip.file('index.html', exportData.html);
 
-		const fontFiles = await Promise.all(
-			fontPaths.map(fontPath =>
-			fetch(fontPath)
-				.then(res => res.arrayBuffer())
-				.then(arrayBuffer => ({
-					path: fontPath,
-					data: arrayBuffer
-				}))
-			)
-		);
-
-		fontFiles.forEach(({ path, data }) => {
-			const fonts: any = zip.folder('fonts');
-			const fontName:any = path.split('/').pop(); // Obtiene el nombre del archivo desde la ruta
-			fonts.file(fontName, data);
-		});
-
-		//console.log("headCode", updateExportHead())
-		zip.file('styles.css', exportData.css);
-		zip.file('index.html', exportData.html);
-
-		zip.generateAsync({ type: 'blob' })
-			.then((content) => {
-				const downloadLink = document.createElement('a');
-				downloadLink.href = URL.createObjectURL(content);
-				downloadLink.download = 'project.zip';
-				downloadLink.click();
-			})
-			.catch((error) => {
-			console.error('Error:', error);
-			});
-		//editor.Modal.close();
-		}		
+			zip.generateAsync({ type: 'blob' })
+				.then((content) => {
+					const downloadLink = document.createElement('a');
+					downloadLink.href = URL.createObjectURL(content);
+					downloadLink.download = 'project.zip';
+					downloadLink.click();
+				})
+				.catch((error) => {
+				console.error('Error:', error);
+				});
+			}		
 	};
-
-	// console.log("IMAGENES", )
-	// mainEditor.AssetManager.all.models.forEach((item: any) => console.log("ITEM", item))
-	if(mainEditor) {
-		console.log("mainEditor.AssetManager.all.models", mainEditor.AssetManager.getConfig().em.attributes.AssetManager.all.models)
-		mainEditor.AssetManager.all.models.forEach((item: any) => {
-			console.log("ITEM", item.attributes.src)
-		})
-	}
 
 	return (
 		<div className="top-sidebar">

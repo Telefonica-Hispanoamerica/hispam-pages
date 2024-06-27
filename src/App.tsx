@@ -92,9 +92,7 @@ function App() {
 
 	const { items, addItem, metaDescription, pageIdSelected } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	const [ meta, setMeta ] = useState("");
 	const [ mainEditor, setMainEditor ] = useState<any>();
-	const [ currentlyPageId, setCurrentlyPageId ] = useState<string>('');
 	const currentPageIdRef = useRef('');
 
 	console.log("PAGE ELECTED FROM APP", pageIdSelected)
@@ -143,8 +141,6 @@ function App() {
 		}
 	};
 
-	console.log("ON EDITOR PAGE ID 1", currentlyPageId);
-
 
 	const gjsOptions: EditorConfig = {
 		height: '100vh',
@@ -182,12 +178,13 @@ function App() {
 		},
 		pluginsOpts: {},
 		assetManager: {
+			upload: false,
+    		autoAdd: false,
+    		embedAsBase64: false,
 			
 			uploadFile: async (e: any) => {
 				e.preventDefault();
-				let currentPageId = 0;
 				const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
-
 				const pageId = currentPageIdRef.current;
 
 				//Get images html
@@ -196,10 +193,10 @@ function App() {
 					// 	// GrapeJS configuration
 					// });
 					
-					// // Function to get all image URLs from the page
+					// // // Function to get all image URLs from the page
 					// function getImageURLs() {
 					// 	// Get the HTML content of the current page
-					// 	var htmlContent = editor.getHtml();
+					// 	var htmlContent = grapesjs.editors[0].getHtml();
 					
 					// 	// Create a temporary DOM element to parse the HTML content
 					// 	var tempDiv = document.createElement('div');
@@ -209,7 +206,7 @@ function App() {
 					// 	var images = tempDiv.querySelectorAll('img');
 					
 					// 	// Extract the src attribute from each image element
-					// 	var imageUrls = [];
+					// 	var imageUrls: any[] = [];
 					// 	images.forEach(function(img) {
 					// 	var src = img.getAttribute('src');
 					// 	if (src) {
@@ -220,9 +217,10 @@ function App() {
 					// 	return imageUrls;
 					// }
 					
+					
 					// // Example usage
 					// var imageUrls = getImageURLs();
-					// console.log(imageUrls);
+					// console.log("IMAGES", imageUrls);
 
 				//Get images html
 
@@ -233,10 +231,12 @@ function App() {
 	  
 				const formData = new FormData();
 				formData.append('pageId', pageId); 
-				debugger
+				console.log("files", files)
 				for (let i = 0; i < files.length; i++) {
 				  formData.append('files[]', files[i], files[i].name);
-				}	  
+				}
+
+				console.log("FORM DATA", formData)
 
 				try {
 					const response = await axios.post('http://localhost:3000/upload', formData, {
@@ -264,7 +264,6 @@ function App() {
 
 	const onEditor = (editor: Editor) => {
 		(window as any).editor = editor;
-		//setMainEditor((window as any).editor)
 		let currentPageId = 0;
 		let currentPageName = '';
 
@@ -296,12 +295,8 @@ function App() {
 			//...opts,
 		};
 
-		console.log("CONGIR---------- 1", config)
-
 		editor.on('page:select', (page: any) => {
-			console.log("PAGE", page)
 			currentPageId = parseInt(page.id);
-			setCurrentlyPageId(page.id)
 			currentPageName = page.attributes.name;
 		});
 
@@ -313,9 +308,7 @@ function App() {
 
 		editor.Commands.add(commandName, {
 			
-			run(editor: PluginOptions = {}) {
-				console.log("metaDescription inicial 111111 ------", PageContext);
-				//console.log("META DESCRIPTION 1", [editor, metaDescription])					
+			run(editor: PluginOptions = {}) {		
 
 				editor.Modal.open({
 					title: 'My title',
@@ -326,7 +319,6 @@ function App() {
 				});
 
 				if (config.addExportBtn) {
-					console.log("CONGIR---------- 2", config)
 					const divButtonsModal = document.createElement('div');
 					divButtonsModal.className = 'buttons-group';
 
@@ -376,10 +368,9 @@ function App() {
 							}
 							editor.Modal.close();
 						}
-						console.log("metaDescription inicial 2  ------", metaDescription);
 						let metaDesc = metaDescription
 						// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
-						btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
+						// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
 					});
 				}
 

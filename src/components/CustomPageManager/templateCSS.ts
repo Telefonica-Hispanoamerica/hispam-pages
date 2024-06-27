@@ -5,51 +5,7 @@ export const styles = `
 body {
    margin: 0;
 }
-*{
-   box-sizing:border-box;
-}
-body{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
-*{
-   box-sizing:border-box;
-}
-body{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
-*{
-   box-sizing:border-box;
-}
-body{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
-*{
-   box-sizing:border-box;
-}
-body{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
-*{
-   box-sizing:border-box;
-}
-body{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
+
 p{
    margin-top:0px;
    margin-right:0px;
@@ -414,13 +370,6 @@ p{
 }
 .toggle:checked + .card-collapse .card-header img{
    transform:rotate(180deg);
-}
-body{
-   margin-top:24px;
-   margin-right:auto;
-   margin-bottom:24px;
-   margin-left:auto;
-   font-family:Telefonica-Regular, sans-serif;
 }
 .card{
    background-color:rgb(255, 255, 255);
@@ -2922,5 +2871,4 @@ body{
   font-weight: 700;
   font-style: normal;
 }
-
 `
