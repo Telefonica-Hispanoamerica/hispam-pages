@@ -1,9 +1,6 @@
 const id = crypto.randomUUID();
 export const StylePlanCardFeatContent = `
-	<style>	
-		p {
-			margin: 0;
-		}
+	<style>
 		.toggle {
 			display: none;
 		}
@@ -69,11 +66,6 @@ export const StylePlanCardFeatContent = `
 			-moz-transform: rotate(0deg);
 			-ms-transform: rotate(0deg);
 			-o-transform: rotate(0deg);
-		}
-
-		body {
-			margin: 24px auto;
-			font-family: 'Telefonica-Regular', sans-serif;
 		}
 
 		.card-feat {

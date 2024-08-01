@@ -1,9 +1,6 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
-	p {
-		margin: 0;
-	}
 	.pretitle-vp-light{
 		font-family: Roboto;
 		font-weight: 400;

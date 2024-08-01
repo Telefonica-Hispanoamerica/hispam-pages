@@ -1,9 +1,6 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
-	p {
-		margin: 0;
-	}
 	.header-light-vp {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

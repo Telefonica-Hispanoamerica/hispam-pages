@@ -35,16 +35,28 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         async function fetchMyAPI() {
 			try {
-				const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
-                //const response = await fetch('http://localhost:3000/get-html');
+				// const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
+                const response = await fetch('http://localhost:3000/get-html');
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
 				const jsonData = await response.json();
                 const hasDefaultItem = jsonData.some((item: Item) => item.id === 0);
                 const updatedData = hasDefaultItem ? jsonData : [items[0], ...jsonData];
+                if(updatedData[0] == undefined){
+                    const dateNumber = Date.now()
+                    let pageBlank = [{
+                        id: dateNumber,
+                        name: `Page Blank`,
+                        styles: '',
+                        component: `<h1>Page content Blank</h1>`,
+                    }];
 
-                setItems(updatedData);
+                    setItems(pageBlank);
+                } else {
+                    setItems(updatedData);
+                }
+                
 			} catch (error) {
 				console.error('Error al obtener el HTML desde el backend', error);
 			}

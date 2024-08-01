@@ -85,8 +85,8 @@ export default function CustomPageManager({
 
     const removeHTML = async (id: any) => {
         try {            
-            //const response = await fetch(`http://localhost:3000/remove-html/${id}`, {
-            const response = await fetch(`https://hispam-pages-backend.onrender.com/remove-html/${id}`, {
+            const response = await fetch(`http://localhost:3000/remove-html/${id}`, {
+            //const response = await fetch(`https://hispam-pages-backend.onrender.com/remove-html/${id}`, {
               method: 'DELETE'
             });
             const data = await response.json();

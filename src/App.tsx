@@ -57,6 +57,9 @@ import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHe
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import TabsCardPlan from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan';
+import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/valuePrepLeft';
+import ValuePrepCenter from './components/CustomBlocksTelefonica/Molecules/valuePrepCenter';
+import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -133,8 +136,8 @@ function App() {
 
 	const saveHTML = async (html: any) => {
 		try {
-			//const response = await fetch('http://localhost:3000/save-html', {
-			const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
+			const response = await fetch('http://localhost:3000/save-html', {
+			//const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -168,8 +171,9 @@ function App() {
         // storageManager: { autoload: 0 },
 		canvas: {
 			styles: [
-				'/hispam-pages/css-kenos/roboto.css',
-				'/hispam-pages/fonts/fonts.css'
+				'styles/global-styles.css',
+				'hispam-pages/css-kenos/roboto.css',
+				'hispam-pages/fonts/fonts.css'
 			],
 			scripts: []
 		},
@@ -203,18 +207,15 @@ function App() {
 				}
 	  
 				const formData = new FormData();
-				formData.append('pageId', pageId); 
-				console.log("files", files)
+				formData.append('pageId', pageId);
 				for (let i = 0; i < files.length; i++) {
-				  formData.append('files[]', files[i], files[i].name);
+				  	formData.append('files[]', files[i], files[i].name);
 				}
-
-				console.log("FORM DATA", formData)
 
 				try {
 					//https://hispam-pages-backend.onrender.com/
-					//const response = await axios.post('http://localhost:3000/upload', formData, {
-					const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
+					const response = await axios.post('http://localhost:3000/upload', formData, {
+					//const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
 					  headers: {
 						'Content-Type': 'multipart/form-data',
 					  },
@@ -252,22 +253,7 @@ function App() {
 			filename: undefined,			
 			done: () => {},
 			onError: console.error,
-			// root: {
-			// 	css: {
-			// 		'style.css': (editor: Editor) => editor.getCss()
-			// 	},
-			// 	'index.html': (editor: Editor) =>
-			// 	`<!doctype html>
-			// 	<html lang="en">
-			// 		<head>
-			// 			<meta charset="utf-8">
-			// 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			// 		</head>
-			// 		${editor.getHtml()}
-			// 	</html>`,
-			// },
 			isBinary: undefined,
-			//...opts,
 		};
 
 		editor.on('page:select', (page: any) => {
@@ -297,55 +283,55 @@ function App() {
 					const divButtonsModal = document.createElement('div');
 					divButtonsModal.className = 'buttons-group';
 
-					const btnExp = document.createElement('a');
-					btnExp.innerHTML = `Save HTML ` + currentPageName;
-					btnExp.className = `${pfx}btn-prim`;
+					// const btnExp = document.createElement('a');
+					// btnExp.innerHTML = `Save HTML ` + currentPageName;
+					// btnExp.className = `${pfx}btn-prim`;
 					// btnExp.type = 'button';
 
-					const btnExpExport = document.createElement('a');
-					btnExpExport.innerHTML = `Export HTML ` + currentPageName;
-					btnExpExport.className = `${pfx}btn-prim`;
+					// const btnExpExport = document.createElement('a');
+					// btnExpExport.innerHTML = `Export HTML ` + currentPageName;
+					// btnExpExport.className = `${pfx}btn-prim`;
 					// btnExpExport.type = 'button';
 
-					editor.on('run:save-export', () => {
-						editor.runCommand('core:open-code');
+					// editor.on('run:save-export', () => {
+					// 	editor.runCommand('core:open-code');
 
-						const existingGroupButtons = document.querySelectorAll('.buttons-group');
-						existingGroupButtons.forEach(div => div.remove());
+					// 	const existingGroupButtons = document.querySelectorAll('.buttons-group');
+					// 	existingGroupButtons.forEach(div => div.remove());
 
-						const el = editor.Modal.getContentEl();
+					// 	const el = editor.Modal.getContentEl();
 
-						divButtonsModal?.appendChild(btnExp);
-						divButtonsModal?.appendChild(btnExpExport);
+					// 	divButtonsModal?.appendChild(btnExp);
+					// 	divButtonsModal?.appendChild(btnExpExport);
 
-						el?.appendChild(divButtonsModal);							
+					// 	el?.appendChild(divButtonsModal);							
 
-						btnExp.onclick = () => {
-							const editPage = items.filter(item => item.id == currentPageId);
-							if(editPage[0]) {
-								let editItem = {
-									id: editPage[0].id,
-									name: editPage[0].name,
-									styles: editor.getCss(),
-									component: editor.getHtml()
-								}
-								handleAddItem(editItem, editItem.id);
-							} else {
-								const nextIndex = items.length + 1;
-								let newItem = {
-									id: Date.now(),
-									name:`Page ${nextIndex}`,
-									styles: editor.getCss(),
-									component: editor.getHtml()
-								}
-								handleAddItem(newItem, newItem.id);
-							}
-							editor.Modal.close();
-						}
-						// let metaDesc = metaDescription
-						// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
-						// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
-					});
+					// 	btnExp.onclick = () => {
+					// 		const editPage = items.filter(item => item.id == currentPageId);
+					// 		if(editPage[0]) {
+					// 			let editItem = {
+					// 				id: editPage[0].id,
+					// 				name: editPage[0].name,
+					// 				styles: editor.getCss(),
+					// 				component: editor.getHtml()
+					// 			}
+					// 			handleAddItem(editItem, editItem.id);
+					// 		} else {
+					// 			const nextIndex = items.length + 1;
+					// 			let newItem = {
+					// 				id: Date.now(),
+					// 				name:`Page ${nextIndex}`,
+					// 				styles: editor.getCss(),
+					// 				component: editor.getHtml()
+					// 			}
+					// 			handleAddItem(newItem, newItem.id);
+					// 		}
+					// 		editor.Modal.close();
+					// 	}
+					// 	// let metaDesc = metaDescription
+					// 	// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
+					// 	// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
+					// });
 				}
 
 			},
@@ -353,10 +339,7 @@ function App() {
 				editor.Modal.close();
 			},
 		});		
-	};	
-
-	console.log("EDITOR====", mainEditor)
-	console.log("gjsOptions====", gjsOptions)
+	};
 
 	return (
 		<>			
@@ -407,7 +390,11 @@ function App() {
 						OrderedListKenos,
 						NumberListKenos,
 						TabsCardPlan,
-						// TabsCardPlan2,
+						// Molecules,
+						ValuePrepLeft,
+						ValuePrepCenter,
+						// Atoms,
+						SectionBlank,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',

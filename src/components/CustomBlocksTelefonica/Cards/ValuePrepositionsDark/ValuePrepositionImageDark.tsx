@@ -1,8 +1,5 @@
 const div = `
 	<style>
-	p {
-		margin: 0;
-	}
 	.card-vp-img-no-link {
 		display: flex;
 		flex-direction: column;

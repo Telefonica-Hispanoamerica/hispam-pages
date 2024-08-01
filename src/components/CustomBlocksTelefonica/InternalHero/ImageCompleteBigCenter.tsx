@@ -5,9 +5,6 @@ import { ColumnsGeneralStyleContent } from '../Columns/ColumnsGeneral';
 export const StyleImageCompleteBigCenter = `
 	<style>
 	${fontsTelefonica}
-	p {
-		margin: 0;
-	}
 	.image-hero-big-center{
 		width: 100%;
 		min-height: 524px;

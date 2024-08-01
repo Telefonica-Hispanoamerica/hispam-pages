@@ -3,9 +3,6 @@ import { iconsSvg } from '../IconsSvgBlocks';
 
 export const StyleHeroImageCompleteBig = `
 	<style>
-	p {
-		margin: 0;
-	}
 	.section-hero {
 		background-color: #fff;
 	}

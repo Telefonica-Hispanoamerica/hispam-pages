@@ -3,9 +3,6 @@ import { iconsSvg } from '../IconsSvgBlocks';
 
 export const StyleiHeroImageCompleteSmall = `
 	<style>
-	p {
-		margin: 0;
-	}
 	.image-hero-small{
 		width: 100%;
 		min-height: 348px;

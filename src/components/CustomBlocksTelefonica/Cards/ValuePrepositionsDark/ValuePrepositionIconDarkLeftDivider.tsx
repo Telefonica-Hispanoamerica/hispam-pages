@@ -1,9 +1,6 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 const styles: string = `
 <style>
-p {
-	margin: 0;
-}
 .header-dark-vp {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

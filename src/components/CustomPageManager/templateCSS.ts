@@ -1,19 +1,6 @@
 import { StylePlanCardContent } from "../CustomBlocksTelefonica/Cards/PlanCard";
 import { StylePlanCardFeatContent } from "../CustomBlocksTelefonica/Cards/PlanCardFeature";
 export const styles = `
-* {
-   box-sizing: border-box;
-}
-body {
-   margin: 0;
-}
-
-p{
-   margin-top:0px;
-   margin-right:0px;
-   margin-bottom:0px;
-   margin-left:0px;
-}
 .section-hero{
    background-color:rgb(255, 255, 255);
 }

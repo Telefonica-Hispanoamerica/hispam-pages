@@ -1,9 +1,6 @@
 import { iconsSvg } from '../IconsSvgBlocks';
 const div = `
-	<style>
-	p {
-		margin: 0;
-	}
+	<style>	
 	.card-hero-left-l {
 		margin: 0 auto;
 		padding: 32px 64px 32px;

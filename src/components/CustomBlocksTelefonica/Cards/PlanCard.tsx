@@ -1,9 +1,6 @@
 const id = crypto.randomUUID();
 export const StylePlanCardContent = `
 	<style>	
-		p {
-			margin: 0;
-		}
 		.toggle {
 			display: none;
 		}

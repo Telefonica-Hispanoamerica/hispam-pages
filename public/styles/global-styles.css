@@ -1,0 +1,48 @@
+body {
+    margin: 24px auto;
+    font-family: 'Telefonica-Regular', sans-serif;
+}
+.gjs-row-kenos {
+    margin: 0 auto;
+    padding: 8px;
+    display: table;
+    width: 100%;
+    border-spacing: 16px;			
+}
+
+@media (max-width: 768px) {
+    .gjs-row-kenos {
+        width: 100%;
+        padding: 0;
+    }
+    .gjs-cell-kenos {
+        width: 100%;
+        display: block;
+        height: 100%;
+        margin: 0 0 16px;
+        vertical-align: top;
+    }
+}	
+
+.gjs-cell-kenos {
+    width: 8%;
+    display: table-cell;
+    height: 75px;
+    vertical-align: top;
+}
+p {
+    margin: 0;
+}
+.bg-light {
+    background-color: #fff
+}
+.ptb-80 {
+    padding: 80px 0;
+}
+@media (max-width: 767px) {
+    .ptb-80 {
+        padding: 32px 16px;
+    }
+}
+
+/* Tabs */

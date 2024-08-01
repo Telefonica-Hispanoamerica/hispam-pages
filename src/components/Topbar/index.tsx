@@ -8,6 +8,7 @@ import './topbar.scss';
 import JSZip from 'jszip';
 import { Editor } from 'grapesjs';
 import { PageContext } from '../../hooks/pageSlice';
+import GlobalCSS from '../../../public/styles/global-styles.css?inline';
 //Icons
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
@@ -112,6 +113,7 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 						<meta charset="utf-8">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 						<meta name="description" content="${meta}" />
+						<link rel="stylesheet" href="./global-styles.css">
 						<link rel="stylesheet" href="./styles.css">
 						<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 					</head>
@@ -121,11 +123,9 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 			};
 
 			let cleanedCssContent = removeDuplicateLines(exportData.css);
-			console.log("DUPLICATE CSS----- ORIGINAL", mainEditor.getCss());
-			console.log("DUPLICATE CSS----- CLEAN", cleanedCssContent);
 
-			// zip.file('styles.css', exportData.css);
-			zip.file('styles.css', cleanedCssContent);
+			zip.file('global-styles.css', 	GlobalCSS);
+			zip.file('styles.css', exportData.css);
 			zip.file('index.html', exportData.html);
 
 			zip.generateAsync({ type: 'blob' })
@@ -140,21 +140,6 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				});
 			}		
 	};
-
-	function removeDuplicateLines(cssContent: any) {
-		console.log("---- DDDD", cssContent)
-
-		// Split the content into lines
-		let lines = cssContent.split('\n');
-        console.log("SPLIT", lines)
-		// Use lodash to remove duplicate lines
-		let uniqueLines = _.uniq(lines);
-		console.log("UNIQUELINES", uniqueLines)
-		// Join the lines back together
-		let result = uniqueLines.join('\n');
-		console.log("RESULR", result)
-		return result;
-	}
 
 	return (
 		<div className="top-sidebar">

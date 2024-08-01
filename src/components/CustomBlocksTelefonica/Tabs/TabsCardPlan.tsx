@@ -13,13 +13,6 @@ const div = `
 			padding-bottom: 52px;
 			background-color: #fff;
 		}
-        a {
-            color: #21D4FD; 
-            transition: all 0.3s;
-        }
-        a:hover {
-            color: #B721FF;
-        }
 
         .tabbed {
             overflow-x: hidden;
@@ -82,12 +75,7 @@ const div = `
         .tabbed [type="radio"]:nth-of-type(3):checked ~ .tab-content:nth-of-type(3),
         .tabbed [type="radio"]:nth-of-type(4):checked ~ .tab-content:nth-of-type(4) {
             display: block;
-        }
-		body {
-			margin: 24px auto;
-			font-family: 'Telefonica-Regular', sans-serif;
-		}
-		
+        }	
 
 		.tab-container {
     		display: inline-block;			

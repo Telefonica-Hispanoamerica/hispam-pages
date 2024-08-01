@@ -1,5 +1,5 @@
-import { iconsSvg } from '../../IconsSvgBlocks';
-const div = `
+import { iconsSvg } from '../IconsSvgBlocks';
+export const StyleValuePrepCenter = `
 	<style>
 	.pretitle-vp-light {
 		font-family: Roboto;
@@ -128,80 +128,27 @@ const div = `
 			font-size: 0.875rem;
 			line-height: 20px;
 		}
-	}
-	.bg-light {
-		background-color: #fff
-	}
-	.ptb-80 {
-		padding: 80px 0;
-	}
-	@media (max-width: 767px) {
-		.ptb-80 {
-			padding: 32px 16px;
-		}
-	}
-	</style>
-	<section class='bg-light ptb-80'>
-		<div class='gjs-row-kenos'>
-			<div class='gjs-cell-kenos'>
-				<p class="pretitle-vp-light">Pretitle</p>
-				<h2 class="title-section-vp-light">Value Proposition title goes here</h2>
-				<p class="description-vp-light">This sample description is being used as a placeholder for real text.</p>
-			</div>
-		</div>		
-		<div class='gjs-row-kenos'>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img-light">					
-					<div class="box-img">
-						<img src="" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
-				</div>
-			</div>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img-light">
-					<div class="box-img">
-						<img src="" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
-				</div>
-			</div>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img-light">
-					<div class="box-img">
-						<img src="" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
-				</div>
-			</div>
-			<div class='gjs-cell-kenos'>
-				<div class="card-vp-img-light">
-					<div class="box-img">
-						<img src="" />
-					</div>        
-					<div class="title roboto-regular">Block Title</div>
-					<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
-					<a href="" class="text-link">Text Link</a>
-				</div>
-			</div>
-		</div>	
-	</section>	
+	}	
+	</style>`
+export const DivValuePrepCenter = `
+	<div class="card-vp-img-light">					
+		<div class="box-img">
+			<img src="" />
+		</div>        
+		<div class="title roboto-regular">Block Title</div>
+		<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>
+		<a href="" class="text-link">Text Link</a>
+	</div>
 `
 
-function ValuePrepositionIconLight4Col(editor: any) {		
-	editor.Blocks.add('valuePrepositionIconLight4Col', {
-		id: 'valuePrepositionIconLight4Col',
-		label: 'Icono centrado',
+function ValuePrepCenter(editor: any) {		
+	editor.Blocks.add('valuePrepCenter', {
+		id: 'valuePrepCenter',
+		label: 'Img centrado',
 		activate: true,
-		content: div,
-		category: 'Value Prepositions Light',
-		media: iconsSvg.headerTitleAnd4ColValueP,
+		content: StyleValuePrepCenter+DivValuePrepCenter,
+		category: 'Moleculas',
+		media: iconsSvg.valuePrepositionCenter,
 		attributes: { class: 'custom-block' },
 	});
 	
@@ -224,4 +171,4 @@ function ValuePrepositionIconLight4Col(editor: any) {
 
 /*1 col*/
 /* <svg width="10" height="20" viewBox="0 0 4 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;"><rect x="0.25" y="0.25" width="4" height="18" rx="0.75" stroke="#019BEF" stroke-width="1"></rect></svg> */
-export default ValuePrepositionIconLight4Col;
+export default ValuePrepCenter;
