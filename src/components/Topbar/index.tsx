@@ -94,7 +94,7 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 
 			let urlIndex = 0;
 
-			const htmlString = htmlExport.replace(/<img([^>]+)src="([^">]+)"/g, (match, p1, p2) => {
+			const htmlString = htmlExport.replace(/<img([^>]+)src="([^">]+)"/g, (match, p1) => {
 				if (urlIndex < imageUrls.length) {
 					const nuevaURLSinTemplate = imageUrls[urlIndex++].replace('/template-telefonica/', '/');
 					return `<img${p1}src="${nuevaURLSinTemplate}"`;
@@ -103,6 +103,7 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 			});
 
 			console.log(htmlString);
+			
 
 			const exportData = {
 				html: `<!doctype html>
@@ -119,7 +120,12 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				css: `${mainEditor.getCss()}`
 			};
 
-			zip.file('styles.css', exportData.css);
+			let cleanedCssContent = removeDuplicateLines(exportData.css);
+			console.log("DUPLICATE CSS----- ORIGINAL", mainEditor.getCss());
+			console.log("DUPLICATE CSS----- CLEAN", cleanedCssContent);
+
+			// zip.file('styles.css', exportData.css);
+			zip.file('styles.css', cleanedCssContent);
 			zip.file('index.html', exportData.html);
 
 			zip.generateAsync({ type: 'blob' })
@@ -134,6 +140,21 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				});
 			}		
 	};
+
+	function removeDuplicateLines(cssContent: any) {
+		console.log("---- DDDD", cssContent)
+
+		// Split the content into lines
+		let lines = cssContent.split('\n');
+        console.log("SPLIT", lines)
+		// Use lodash to remove duplicate lines
+		let uniqueLines = _.uniq(lines);
+		console.log("UNIQUELINES", uniqueLines)
+		// Join the lines back together
+		let result = uniqueLines.join('\n');
+		console.log("RESULR", result)
+		return result;
+	}
 
 	return (
 		<div className="top-sidebar">

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import './TopbarButtons.scss'
 import HighlightAltOutlinedIcon from '@mui/icons-material/HighlightAltOutlined';
 import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+// import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';

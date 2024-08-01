@@ -35,8 +35,8 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         async function fetchMyAPI() {
 			try {
-				//const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
-                const response = await fetch('http://localhost:3000/get-html');
+				const response = await fetch('https://hispam-pages-backend.onrender.com/get-html');
+                //const response = await fetch('http://localhost:3000/get-html');
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

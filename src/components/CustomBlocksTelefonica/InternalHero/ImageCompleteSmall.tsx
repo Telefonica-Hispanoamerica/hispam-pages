@@ -1,6 +1,7 @@
+import { ColumnsGeneralStyleContent } from '../Columns/ColumnsGeneral';
 import { iconsSvg } from '../IconsSvgBlocks';
 
-const div = `
+export const StyleiHeroImageCompleteSmall = `
 	<style>
 	p {
 		margin: 0;
@@ -213,37 +214,9 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	.gjs-row-kenos {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 8px;
-		display: table;
-		width: 100%;
-		border-spacing: 16px;
-	}
-
-	@media (max-width: 768px) {
-		.gjs-row-kenos {
-			width: 100%;
-			padding: 0;
-			border-spacing: 8px;
-		}
-		.gjs-cell-kenos {
-			width: 100%;
-			display: block;
-			height: 100%;
-			margin: 0 0 16px;
-			vertical-align: top;
-		}
-	}	
-	
-	.gjs-cell-kenos {
-		width: 8%;
-		display: table-cell;
-		height: 75px;
-		vertical-align: top;
-	}
 	</style>
+	${ColumnsGeneralStyleContent}`
+	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
 		<img class='image-hero-small' src="" alt=''/>
@@ -266,14 +239,14 @@ const div = `
 			</div>
 		</div>
 	</section>	
-`
+	`
 
 function iHeroImageCompleteSmall(editor: any) {		
 	editor.Blocks.add('heroImageCompleteSmall', {
 		id: 'heroImageCompleteSmall',
 		label: 'Imagen completa pequeño',
 		activate: false,
-		content: div,
+		content: StyleiHeroImageCompleteSmall+DiviHeroImageCompleteSmall,
 		category: 'Hero',
 		media: iconsSvg.iHeroImageComplete,
 		attributes: { class: 'custom-block' },

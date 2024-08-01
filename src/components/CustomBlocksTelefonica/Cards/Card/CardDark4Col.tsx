@@ -211,39 +211,6 @@ const div = `
 			margin-top: 32px!important;
 		}
 	}
-	.gjs-row-kenos {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 8px;
-		display: table;
-		width: 100%;
-		border-spacing: 16px;
-	}
-
-	@media (max-width: 768px) {
-		.gjs-row-kenos {
-			width: 100%;
-			padding: 0;
-			border-spacing: 8px;
-			display: flex;
-        	flex-direction: column;
-        	align-items: center;
-		}
-		.gjs-cell-kenos {
-			width: 100%!important;
-			display: block!important;
-			height: 100%!important;
-			margin: 0 0 16px!important;
-			vertical-align: top;
-		}
-	}	
-	
-	.gjs-cell-kenos {
-		width: 8%;
-		display: table-cell;
-		height: 75px;
-		vertical-align: top;
-	}
 	</style>
 	<section class='bg-dark ptb-80'>
 		<div class='gjs-row-kenos'>

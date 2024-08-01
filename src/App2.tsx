@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
-//import type { Editor, EditorConfig, PluginOptions } from 'grapesjs/dist/index';
 import GjsEditor, { Canvas } from '@grapesjs/react';
-import Topbar from './components/Topbar';
+// import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
-import LeftSidebar from './components/LeftSidebar';
+// import LeftSidebar from './components/LeftSidebar';
 import './App.scss';
 import "./fonts/fonts.scss";
 import axios from "axios";
@@ -25,8 +24,8 @@ import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
-import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
-import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
+// import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
+// import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
 import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
@@ -89,9 +88,8 @@ declare var google: {
 const App2 = () => {
     //console.log("EDITOR//", editor)
 
-	const { items, addItem, metaDescription, pageIdSelected } = useContext(PageContext);
+	const { items, addItem, metaDescription } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-    const [ editor, setEditor ] = useState<Editor>()
 	const [ config, setConfig ] = useState<PluginOptions>({
         addExportBtn: true,
         btnLabel: 'Save HTML',
@@ -302,7 +300,7 @@ const App2 = () => {
 				}	  
 
 				try {
-					const response = await axios.post('http://localhost:3000/upload', formData, {
+					const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
 					  headers: {
 						'Content-Type': 'multipart/form-data',
 					  },
@@ -579,8 +577,8 @@ const App2 = () => {
 						ValuePrepositionNoImageLightLeft4Col,
 						ValuePrepositionIconLightLeftDivider,
 						ValuePrepositionIconLightLeftDivider2ColContent,
-						PlanCardTelefonica2,
-						PlanCardTelefonica3,
+						// PlanCardTelefonica2,
+						// PlanCardTelefonica3,
 						TextWrappingKenos,
 						Columns1Kenos,
 						Columns2Kenos,
@@ -607,7 +605,7 @@ const App2 = () => {
 						{/* <LeftSidebar></LeftSidebar> */}
 
 						<div className={'gjs-editor-column'}>
-							<Topbar></Topbar>
+							{/* <Topbar></Topbar> */}
 							<Canvas />
 						</div>
 						<RightSidebar ></RightSidebar>

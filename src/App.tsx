@@ -3,7 +3,7 @@ import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
-import LeftSidebar from './components/LeftSidebar';
+// import LeftSidebar from './components/LeftSidebar';
 import './App.scss';
 import "./fonts/fonts.scss";
 import axios from "axios";
@@ -11,7 +11,7 @@ import axios from "axios";
 import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
 
 
-import JSZip from 'jszip';
+// import JSZip from 'jszip';
 
 // import cssFonts from '../public/hispam-pages/fonts/fonts-telefonica.css?inline';
 import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
@@ -25,8 +25,8 @@ import H2 from './components/CustomBlocksTelefonica/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
-import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
-import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
+// import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
+// import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
 import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
 import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
@@ -56,6 +56,8 @@ import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
+import TabsCardPlan from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan';
+// import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
 interface Item {
@@ -87,12 +89,20 @@ declare var google: {
 	};
 };
 
+// Extend the Window interface
+declare global {
+	interface Window {
+	  editor: any; // Replace 'any' with the actual type of editor if you know it
+	}
+ }
+
 
 function App() {
 
-	const { items, addItem, metaDescription, pageIdSelected } = useContext(PageContext);
+	const { items, addItem, pageIdSelected } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	const [ mainEditor, setMainEditor ] = useState<any>();
+	// const [ mainEditor, setMainEditor ] = useState<any>();
+	const mainEditor = useState<any>();
 	const currentPageIdRef = useRef('');
 
 	console.log("PAGE ELECTED FROM APP", pageIdSelected)
@@ -123,8 +133,8 @@ function App() {
 
 	const saveHTML = async (html: any) => {
 		try {
-			const response = await fetch('http://localhost:3000/save-html', {
-			//const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
+			//const response = await fetch('http://localhost:3000/save-html', {
+			const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -165,12 +175,12 @@ function App() {
 		},
 		projectData: {
 			assets: [
-				'/images/template-telefonica/serie1.jpg',
-				'/images/template-telefonica/serie2.jpg',
-				'/images/template-telefonica/serie3.jpg',
-				'/images/template-telefonica/serie4.jpg',
-				'/images/template-telefonica/serie5.jpg',
-				'/images/template-telefonica/hero.webp',
+				'images/template-telefonica/serie1.jpg',
+				'images/template-telefonica/serie2.jpg',
+				'images/template-telefonica/serie3.jpg',
+				'images/template-telefonica/serie4.jpg',
+				'images/template-telefonica/serie5.jpg',
+				'images/template-telefonica/hero.webp',
 			],
 			pages: [
 				...items
@@ -187,43 +197,6 @@ function App() {
 				const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
 				const pageId = currentPageIdRef.current;
 
-				//Get images html
-				// Assuming you have access to the GrapeJS editor instance
-					// var editor = grapesjs.init({
-					// 	// GrapeJS configuration
-					// });
-					
-					// // // Function to get all image URLs from the page
-					// function getImageURLs() {
-					// 	// Get the HTML content of the current page
-					// 	var htmlContent = grapesjs.editors[0].getHtml();
-					
-					// 	// Create a temporary DOM element to parse the HTML content
-					// 	var tempDiv = document.createElement('div');
-					// 	tempDiv.innerHTML = htmlContent;
-					
-					// 	// Use querySelectorAll to get all image elements
-					// 	var images = tempDiv.querySelectorAll('img');
-					
-					// 	// Extract the src attribute from each image element
-					// 	var imageUrls: any[] = [];
-					// 	images.forEach(function(img) {
-					// 	var src = img.getAttribute('src');
-					// 	if (src) {
-					// 		imageUrls.push(src);
-					// 	}
-					// 	});
-					
-					// 	return imageUrls;
-					// }
-					
-					
-					// // Example usage
-					// var imageUrls = getImageURLs();
-					// console.log("IMAGES", imageUrls);
-
-				//Get images html
-
 				if (!files || !files.length) {
 				  console.error('No files found in the event');
 				  return;
@@ -239,7 +212,9 @@ function App() {
 				console.log("FORM DATA", formData)
 
 				try {
-					const response = await axios.post('http://localhost:3000/upload', formData, {
+					//https://hispam-pages-backend.onrender.com/
+					//const response = await axios.post('http://localhost:3000/upload', formData, {
+					const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
 					  headers: {
 						'Content-Type': 'multipart/form-data',
 					  },
@@ -347,7 +322,6 @@ function App() {
 
 						btnExp.onclick = () => {
 							const editPage = items.filter(item => item.id == currentPageId);
-
 							if(editPage[0]) {
 								let editItem = {
 									id: editPage[0].id,
@@ -368,7 +342,7 @@ function App() {
 							}
 							editor.Modal.close();
 						}
-						let metaDesc = metaDescription
+						// let metaDesc = metaDescription
 						// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
 						// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
 					});
@@ -379,7 +353,7 @@ function App() {
 				editor.Modal.close();
 			},
 		});		
-	};
+	};	
 
 	console.log("EDITOR====", mainEditor)
 	console.log("gjsOptions====", gjsOptions)
@@ -418,8 +392,8 @@ function App() {
 						ValuePrepositionNoImageLightLeft4Col,
 						ValuePrepositionIconLightLeftDivider,
 						ValuePrepositionIconLightLeftDivider2ColContent,
-						PlanCardTelefonica2,
-						PlanCardTelefonica3,
+						// PlanCardTelefonica2,
+						// PlanCardTelefonica3,
 						TextWrappingKenos,
 						Columns1Kenos,
 						Columns2Kenos,
@@ -432,6 +406,8 @@ function App() {
 						paragraphKenos,
 						OrderedListKenos,
 						NumberListKenos,
+						TabsCardPlan,
+						// TabsCardPlan2,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',
@@ -439,6 +415,10 @@ function App() {
 						{
 							id: 'grapesjs-plugin-export',
 							src: 'https://unpkg.com/grapesjs-plugin-export',
+						},
+						{
+							id: 'grapesjs-tabs',
+							src: 'https://unpkg.com/grapesjs-tabs',
 						}
 					]}
 				>
