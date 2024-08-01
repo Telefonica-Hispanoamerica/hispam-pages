@@ -1,0 +1,70 @@
+.gjs-custom-selector-manager {
+    .items {
+        border-bottom: 1px solid #d1d5db;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        h5 {
+            margin: 0;
+        }
+        .MuiFormControl-root {
+            margin-left: auto;
+            .MuiInputBase-root {
+                .MuiSelect-select {
+                    padding: 4px 32px 4px 11px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    .input-class {
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 6px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .btn-add {
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+        }
+        .select-to-component {
+            font-size: 14px;
+        }
+        .tag-box {
+            background-color: #019DF4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin: 2px;
+            div {
+                color: white;
+                padding: 0 0 0 6px;
+                font-size: 10px;
+                
+            }
+            button {
+                background-color: transparent;
+                color: white;
+                padding: 2px 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .selected {   
+        display: flex;     
+        p {
+            text-align: center;
+            font-size: 14px;
+            .opacity-70 {
+                opacity: .7;
+            }
+        }
+    }
+}

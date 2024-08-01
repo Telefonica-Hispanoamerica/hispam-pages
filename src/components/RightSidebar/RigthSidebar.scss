@@ -1,0 +1,56 @@
+.right-column {
+    border-left: 1px solid #d1d5db;
+    background-color: #FFFFFF;
+    //height: 100vh;
+    .tabs-buttons {
+        .MuiBox-root {
+            .MuiTabs-root {
+                min-height: 46px;
+                .MuiTabs-scroller {
+                    //height: 46px;
+                    .MuiTabs-flexContainer {
+                        display: grid;
+                        grid-template-columns: repeat(6, 16.6%);
+                        min-height: initial;
+                        .MuiButtonBase-root {
+                            text-transform: none;
+                            min-height: 46px;
+                            font-size: 12px;
+                            font-weight: 400;
+                            max-width: initial;
+                            min-width: initial;
+                            &:focus {
+                                outline: none;
+                            }
+                            svg {
+                                width: 18px;
+                                height: 18px ;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tabs-content {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        // overflow-y: auto;
+        // height: 100vh;
+        .MuiTabPanel-root {
+            padding: 16px 8px;
+            max-width: 100%;
+            .tags {
+
+            }
+            .tags-container {
+
+            }
+            .meta-description-field{
+                textarea {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

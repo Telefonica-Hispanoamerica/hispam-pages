@@ -5,9 +5,12 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    // "types": ["gapi"],
+    // "jsx": "react", // Para archivos JSX
+    //"allowJs": true, // Para archivos JS
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    //"moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -18,8 +21,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Others */
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "include": ["src"],
+  // "include": ["./src/**/*.ts?", "src/GoogleAnalyticsApp.jsx", "src/AnalyticsPage.jsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

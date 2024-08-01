@@ -1,0 +1,96 @@
+.gjs-custom-page-manager {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    user-select: auto;
+    width: auto;
+    //height: 200px;
+    box-sizing: border-box;
+    .plus {
+        background-color: transparent;
+        font-size: 32px;
+        padding: 6px;
+        cursor: pointer;
+        border: 1px solid #000;
+        border-radius: 6px;
+        width: 86%;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 16px;
+        background-color: #e9e9e9;
+        margin: 0 auto 16px;
+        &:hover {
+            background-color: #019DF4;
+            color: #fff;
+            border: none;
+            border: 1px solid #019DF4;
+        }
+    }
+    .page-content {
+        width: 100%;        
+        font-size: .875rem;
+        line-height: 1.25rem;
+        &:hover {
+            background-color: rgba($color: #000000, $alpha: .1);
+        }
+        &.focus {
+            background-color: rgba($color: #019DF4, $alpha: 1);
+            color: #fff;
+        }
+        &.selected {
+            background-color: rgba($color: #019DF4, $alpha: 1);
+            color: #fff;
+        }
+        
+        &.not-selected {
+            background-color: initial;
+            //color: initial;
+        }
+        .btn-page {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: .5rem 1rem .5rem 1rem;    
+            justify-content: space-between;
+            line-height: 0;
+            .delete-btn {
+                cursor: pointer;
+                svg {
+                    &:hover {
+                        fill: #FF374A;
+                    }
+                }                
+                &.hidden {
+                    display: none;
+                }
+            }            
+            p {
+                margin: 0;
+                line-height: 24px;
+            }
+            .MuiButtonBase-root {
+                padding: 0;
+                margin-left: auto;
+                &:hover {
+                    background-color: transparent;
+                }
+                &:focus {
+                    outline: none;
+                }
+                .MuiSvgIcon-root {
+                    width: .875em;
+                    height: .875em;
+                }
+            }
+        }        
+    }
+}
+
+.MuiPaper-root {
+    .MuiList-root {
+        padding: 0;
+        .MuiButtonBase-root {
+            font-size: .875rem;
+        }
+    }
+}

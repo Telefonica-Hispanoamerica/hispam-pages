@@ -1,0 +1,47 @@
+.top-sidebar {
+	display: grid;
+	// grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 26% 26% 48%;
+	align-items: center;
+	border-bottom: 1px solid #d1d5db;
+	background-color: #FFFFFF;
+	//height: 46px;
+	div {
+		//text-align: center;
+		&:nth-child(2) {
+			text-align: center;
+		}
+		.MuiInputBase-root {
+			margin-bottom: 8px;
+			.MuiSelect-select {
+				font-size: 13px;
+				padding: 2px 20px 2px 8px;
+			}
+		}
+		.logo-image {
+			height: 28px; /* Ajusta la altura automáticamente para mantener la proporción */
+		}
+	}
+	.top-bar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.export-btn {
+			display: flex;
+			align-items: center;
+			font-size: 12px;
+			border: 1px solid #1976d2;
+			padding: 2px 8px;
+			border-radius: 4px;
+			background-color: #1976d2;
+			color: #fff;
+			cursor: pointer;
+			margin-left: 24px;
+			svg {
+				margin-right: 10px;
+				width: 18px;
+				height: 18px;
+			}
+		}
+	}
+}
