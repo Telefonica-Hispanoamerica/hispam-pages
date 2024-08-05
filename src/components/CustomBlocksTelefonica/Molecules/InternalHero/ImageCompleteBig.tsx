@@ -199,7 +199,7 @@ export const StyleHeroImageCompleteBig = `
 export const DivHeroImageCompleteBig = `
 	<section class='p-relative-hero section-hero' >
 		<div class='gradient-hero'></div>
-		<img class='image-hero' src="" alt=''/>
+		<img class='image-hero' src="images/template-telefonica/hero.webp" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete">

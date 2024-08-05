@@ -1,4 +1,5 @@
-import { DivCardHeroRightLightContent, StyleCardHeroRightLightContent } from "../Cards/CardHeroRightLight";
+import { DivCardHeroRightLightContent, StyleCardHeroRightLightContent } from "../../Others/CardHeroRightLight";
+import { iconsSvg } from "../../IconsSvgBlocks";
 const div = `
 	<style>	
 		.page-content {
@@ -178,8 +179,8 @@ function TabsCardPlan(editor: any) {
 		editable: true,
 		activate: true,
 		content: div,
-		category: 'Moleculas',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		category: 'Templates',
+		media: iconsSvg.heroTabs,
 		attributes: { class: 'custom-block' },
 	});
 	

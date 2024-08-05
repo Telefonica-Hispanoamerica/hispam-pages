@@ -203,7 +203,7 @@ export const StyleImageCompleteBigCenter = `
 
 	export const DivImageCompleteBigCenter = `
 	<section class='p-relative-hero-center'>
-		<img class='image-hero-big-center' src="" alt=''/>
+		<img class='image-hero-big-center' src="images/template-telefonica/hero.webp" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero-center'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-center">

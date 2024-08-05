@@ -40,28 +40,29 @@ import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/Numb
 // import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft3Col';
 // import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
 // import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
-import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider';
-import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/ValuePrepositionIconLightLeftDivider2ColContent';
+import ValuePrep4xCenter from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
+import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
 // import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 // import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteSmall';
 import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBigCenter';
 // import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 
-import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHeroRightLight';
+import CardHeroRightLight from './components/CustomBlocksTelefonica/Others/CardHeroRightLight';
 // import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
 
 /* Hooks */
 import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBig';
 // import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
-import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
-import TabsCardPlan from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan';
+import CardLight from './components/CustomBlocksTelefonica/Others/Card/CardLight';
+import TabsCardPlan from './components/CustomBlocksTelefonica/Templates/Tabs/TabsCardPlan';
 import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepLeft';
 import ValuePrepCenter from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepCenter';
 import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
 import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature';
 import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
+import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xLeft';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -382,8 +383,9 @@ function App() {
 						iHeroImageCompleteSmall,
 						ImageCompleteBigCenter,
 						//Template
-						ValuePrepositionIconLightLeftDivider,
-						ValuePrepositionIconLightLeftDivider2ColContent,
+						ValuePrep4xLeft,
+						ValuePrep4xCenter,
+						TabsCardPlan,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',

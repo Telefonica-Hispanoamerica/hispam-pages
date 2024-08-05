@@ -233,10 +233,10 @@ const div = `
 	</section>	
 `
 
-function ValuePrepositionIconLightLeftDivider2ColContent(editor: any) {		
-	editor.Blocks.add('valuePrepositionIconLeftLightDivider2ColContent', {
-		id: 'valuePrepositionIconLeftLightDivider2ColContent',
-		label: 'Icono izquierda',
+function ValuePrep4xCenter(editor: any) {		
+	editor.Blocks.add('ValuePrep4xCenter', {
+		id: 'valuePrep4xCenter',
+		label: 'Template VP Center',
 		activate: true,
 		content: div,
 		category: 'Templates',
@@ -246,4 +246,4 @@ function ValuePrepositionIconLightLeftDivider2ColContent(editor: any) {
 	
 }
   
-export default ValuePrepositionIconLightLeftDivider2ColContent;
+export default ValuePrep4xCenter;

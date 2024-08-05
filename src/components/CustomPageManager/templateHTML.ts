@@ -1,24 +1,13 @@
+import { DivHeroImageCompleteBig } from "../CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBig";
+import { DivImageCompleteBigCenter } from "../CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBigCenter";
 import { DivPlanCardContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCard";
 import { DivPlanCardFeatContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature";
+import { DivValuePrepCenter } from "../CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepCenter";
 
 export const component = `
 <body>
 <section id="iejmus" class="p-relative-hero section-hero">
-   <div class="gradient-hero"></div>
-   <img src="images/template-telefonica/hero.webp" alt="" id="ign09p" class="image-hero" />
-   <div class="gjs-row-kenos p-absolute-hero">
-      <div class="gjs-cell-kenos">
-         <div class="hero-image-complete">
-            <div class="content">
-               <div id="i26ofn" class="title">Activa Netflix con tu plan de internet fibra o pospago</div>
-               <div id="idzhto" class="description">Desde la app Mi Movistar</div>
-               <div id="i4e1ys" class="button-group"><a id="ilonox" class="primary-button">Contrata aquí</a><a
-                     id="ivnzaf" class="link-button">Link button</a></div>
-            </div>
-            <div class="img-content"></div>
-         </div>
-      </div>
-   </div>
+   ${DivHeroImageCompleteBig}
 </section>
 <section id="ihrklv" class="bg-light ptb-80">
    <div class="gjs-row-kenos">
@@ -30,42 +19,16 @@ export const component = `
    </div>
    <div class="gjs-row-kenos">
       <div class="gjs-cell-kenos">
-         <div class="card-vp-img-light">
-            <div class="box-img">
-               <img src="images/template-telefonica/no-photo.avif" alt="" />
-            </div>
-            <div id="iufinf" class="title roboto-regular">Escoge el plan</div>
-            <div id="i7db97" class="description roboto-regular">Puedes elegir entra los planes Movistar que	vienen con Netflix</div>
-         </div>
+         ${DivValuePrepCenter}
       </div>
       <div class="gjs-cell-kenos">
-         <div class="card-vp-img-light">
-            <div class="box-img">
-               <img src="images/template-telefonica/no-photo.avif" alt="" />
-            </div>
-            <div id="inpjyb" class="title roboto-regular">Contrátalo junto a tu línea Movistar</div>
-            <div id="ik29fc" class="description roboto-regular">Y págalo en tu factura sin complicaciones</div>
-         </div>
+         ${DivValuePrepCenter}
       </div>
       <div class="gjs-cell-kenos">
-         <div class="card-vp-img-light">
-            <div class="box-img">
-               <img src="images/template-telefonica/no-photo.avif" alt="" />
-            </div>
-            <div id="iddaol" class="title roboto-regular">Activa tu cuenta de Netflix</div>
-            <div id="ixxddp" class="description roboto-regular">Ingresa a Netflix y activa tu cuenta con
-               Movistar</div>
-         </div>
+         ${DivValuePrepCenter}
       </div>
       <div class="gjs-cell-kenos">
-         <div class="card-vp-img-light">
-            <div class="box-img">
-               <img src="images/template-telefonica/no-photo.avif" alt="" />
-            </div>
-            <div id="i9gk4y" class="title roboto-regular">Encuentra las series recomendadas de Netflix</div>
-            <div id="ifodyg" class="description roboto-regular">Disfruta todo el catálogo de Netflix sin
-               restricciones</div>
-         </div>
+         ${DivValuePrepCenter}
       </div>
    </div>
 </section>
@@ -146,23 +109,7 @@ export const component = `
    </div>
 </section>
 <section id="i5htzo" class="p-relative-hero-center">
-   <img src="images/template-telefonica/hero.webp"	alt="" id="i7s6dp" class="image-hero-big-center" />
-   <div class="gjs-row-kenos p-absolute-hero-center">
-      <div class="gjs-cell-kenos">
-         <div class="hero-image-complete-center">
-            <div class="content">
-               <div id="iwhvqe" class="pretitle">Movistar Conecta Max</div>
-               <div id="i0pkad" class="title">Manta, sofá y Netflix</div>
-               <div id="i0nstr" class="description">Incluimos Netflix en todos los planes Movistar conecta Max.
-               </div>
-               <div id="i16bbw" class="button-group"><a id="icednr" class="primary-button">Lo quiero</a></div>
-            </div>
-            <div class="img-content">
-
-            </div>
-         </div>
-      </div>
-   </div>
+   ${DivImageCompleteBigCenter}
 </section>
 <section id="if86e7" class="bg-dark ptb-80">
    <div class="gjs-row-kenos">

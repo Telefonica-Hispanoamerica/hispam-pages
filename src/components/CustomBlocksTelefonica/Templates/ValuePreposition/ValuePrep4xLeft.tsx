@@ -204,9 +204,9 @@ const div = `
 	</section>	
 `
 
-function ValuePrepositionIconLightLeftDivider(editor: any) {		
-	editor.Blocks.add('valuePrepositionIconLeftLightDivider', {
-		id: 'valuePrepositionIconLeftLightDivider',
+function ValuePrep4xLeft(editor: any) {		
+	editor.Blocks.add('ValuePrep4xLeft', {
+		id: 'valuePrep4xLeft',
 		label: 'Icono izquierda',
 		activate: true,
 		content: div,
@@ -217,4 +217,4 @@ function ValuePrepositionIconLightLeftDivider(editor: any) {
 	
 }
   
-export default ValuePrepositionIconLightLeftDivider;
+export default ValuePrep4xLeft;

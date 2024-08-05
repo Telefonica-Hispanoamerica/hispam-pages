@@ -3,7 +3,7 @@ import { iconsSvg } from "../../IconsSvgBlocks";
 const id = crypto.randomUUID();
 export const StylePlanCardFeatContent = `
 	<style>
-		.toggle {
+		input.toggle {
 			display: none;
 		}
 
@@ -363,9 +363,9 @@ export const StylePlanCardFeatContent = `
 		}
 
 		.card-feat .switch-options input:checked+.slider:before {
-			-webkit-transform: translateX(26px);
-			-ms-transform: translateX(26px);
-			transform: translateX(26px);
+			-webkit-transform: translateX(22px);
+			-ms-transform: translateX(22px);
+			transform: translateX(22px);
 		}
 
 		.card-feat .switch-options .slider.round {
@@ -491,18 +491,18 @@ export const StylePlanCardFeatContent = `
 	export const DivPlanCardFeatContent = `
 	<div class='card-feat'>
 		<div class="feature-tag">
-			<img src="hispam-pages/images/icon.svg" alt="" />
+			<img src="images/template-telefonica/icon-light-white.svg" alt="" />
 			Featured tag
 		</div>
 		<div class='header-plan'>
 			<div class='plan-name'>
 				Plan name
-				<img src="hispam-pages/images/question-regular.svg" alt="" />
+				<img src="images/template-telefonica/question-regular.svg" alt="" />
 			</div>
 			<span class='capacity'>12 GB</span>
 			<div class='offer-description'><span>x12 month </span>Offer description</div>
 			<div class='tag'>
-				<img src="hispam-pages/images/offer-percent-filled.svg" alt="offer" />
+				<img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
 				<p>Tag label</p>
 			</div>
 		</div>
@@ -523,7 +523,7 @@ export const StylePlanCardFeatContent = `
 		<div class="card-collapse">
 			<div class="card-content" id="content">
 				<div class='switch-options'>
-					<img src="hispam-pages/images/Image.jpg" class='icon-circle' />
+					<img src="images/template-telefonica/Image.jpg" class='icon-circle' />
 					<div class='streaming'>
 						<span class='add-streaming'>Add Streaming</span>
 						<span class='description'>Description</span>
@@ -534,7 +534,7 @@ export const StylePlanCardFeatContent = `
 					</label>
 				</div>
 				<div class='switch-options'>
-					<img src="hispam-pages/images/Image.jpg" class='icon-circle' />
+					<img src="images/template-telefonica/Image.jpg" class='icon-circle' />
 					<div class='streaming'>
 						<span class='add-streaming'>Add Streaming</span>
 						<span class='description'>Description</span>
@@ -554,7 +554,7 @@ export const StylePlanCardFeatContent = `
 					<span class='txt'>Long offer description</span>
 				</div>
 				<div class='long-offer-row-streaming'>
-					<img src="hispam-pages/images/Image2.jpg" class='streaming-app' />
+					<img src="images/template-telefonica/Image2.jpg" class='streaming-app' />
 					<span class='txt'>Long offer description</span>
 				</div>
 				<div class='long-offer-list'>
@@ -573,7 +573,7 @@ export const StylePlanCardFeatContent = `
 			</div>
 			<label class="card-header" for="toggle${id}">
 				<span class="toggleLabel" id="toggleLabel${id}">Ocultar detalles</span>
-				<img src="hispam-pages/images/chevron-down-regular.svg" alt="expanded" />
+				<img src="images/template-telefonica/chevron-down-regular.svg" alt="expanded" />
 			</label>
 		</div>
 	</div>
