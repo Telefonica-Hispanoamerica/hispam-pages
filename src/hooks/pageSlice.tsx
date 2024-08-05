@@ -16,7 +16,7 @@ interface ContextValue {
     addMetaDescription: (meta: string) => void;
     pageIdSelected: string;
     getPageIdSelected: (pageId: string) => void;
-    editorContext: {};
+    editorContext: Editor | null;
     getEditorContext: (editor: Editor) => void
 }
 
@@ -28,7 +28,7 @@ const PageContext = createContext<ContextValue>({
     addMetaDescription: () => {},
     pageIdSelected: '',
     getPageIdSelected: () => {},
-    editorContext: {},
+    editorContext: null,
     getEditorContext: () => {}
 });
 
@@ -36,7 +36,7 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     const [ items, setItems ] = useState<Item[]>([]);
     const [ metaDescription, setMetaDescription ] = useState<string>('');
     const [ pageIdSelected, setPageIdSelected ] = useState<string>('');
-    const [ editorContext, setEditorContext ] = useState<any>();    
+    const [ editorContext, setEditorContext ] = useState<Editor | null>(null);   
 
     useEffect(() => {
         async function fetchMyAPI() {

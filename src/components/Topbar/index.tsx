@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+import { Editor } from 'grapesjs';
 import { DevicesProvider, WithEditor } from '@grapesjs/react'
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,13 +12,19 @@ import GlobalCSS from '../../../public/styles/global-styles.css?inline';
 //Icons
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
+interface TopbarProps {
+	editorParamaters: Editor;
+}
 
-function Topbar() {
+const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 
-	const { editorContext, metaDescription } = useContext(PageContext);
-	
+	const { metaDescription } = useContext(PageContext);
+
+	console.log("editorContext----", editorParamaters)
+
 	const exportPage = async (meta: string) => {
-		if(editorContext) {
+		if(editorParamaters) {
+			console.log("------------ttttttttttttttt")
 			const zip = new JSZip();
 			
 			const fontPaths = [
@@ -53,7 +60,7 @@ function Topbar() {
 			});
 
 			function getImageURLs() {
-				const htmlContent = editorContext.getHtml();
+				const htmlContent = editorParamaters.getHtml();
 				const tempDiv = document.createElement('div');
 				tempDiv.innerHTML = htmlContent;
 			
@@ -89,7 +96,7 @@ function Topbar() {
 				imgs.file(imgName, data);
 			});
 
-			const htmlExport = editorContext.getHtml();
+			const htmlExport = editorParamaters.getHtml();
 
 			let urlIndex = 0;
 
@@ -114,7 +121,7 @@ function Topbar() {
 					</head>
 					${htmlString}
 				</html>`,
-				css: `${editorContext.getCss()}`
+				css: `${editorParamaters.getCss()}`
 			};
 
 			zip.file('global-styles.css', GlobalCSS);
@@ -161,13 +168,11 @@ function Topbar() {
 			<div>
 				<WithEditor>
 					<div className='top-bar'>
-						<TopbarButtons></TopbarButtons>
-						{ editorContext && (
+						<TopbarButtons></TopbarButtons>						
 							<a className='export-btn' onClick={() => exportPage(metaDescription)}>
 								<FileDownloadOutlinedIcon />
 								Exportar HTML
-							</a>
-						)}						
+							</a>					
 					</div>					
 				</WithEditor>
 			</div>

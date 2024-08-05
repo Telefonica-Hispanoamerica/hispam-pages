@@ -1,6 +1,4 @@
 import { DivCardHeroRightLightContent, StyleCardHeroRightLightContent } from "../Cards/CardHeroRightLight";
-import { StylePlanCardContent, DivPlanCardContent } from "../Molecules/PlanCard/PlanCard";
-import { StylePlanCardFeatContent, DivPlanCardFeatContent } from "../Molecules/PlanCard/PlanCardFeature";
 const div = `
 	<style>	
 		.page-content {
@@ -110,9 +108,7 @@ const div = `
 			animation: fadeEffect 1s;
 		}
 	</style>
-	${StyleCardHeroRightLightContent}		
-	${StylePlanCardFeatContent}
-	${StylePlanCardContent}
+	${StyleCardHeroRightLightContent}
 	<div class="page-content">
 		${DivCardHeroRightLightContent}
 		<div data-gjs-highlightable="true" id="ihyvfg" data-gjs-type="tabs" draggable="true" class="">

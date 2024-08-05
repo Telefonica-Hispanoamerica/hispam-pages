@@ -27,34 +27,34 @@ import OrderedListKenos from './components/CustomBlocksTelefonica/Atoms/Text/Ord
 import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/NumberList';
 // import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
 // import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
-import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
-import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
-import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
-import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDark4Col';
-import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeft3Col';
-import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDark4Col';
-import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDarkLeft3Col';
-import ValuePrepositionIconLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLight4Col';
-import ValuePrepositionIconLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeft3Col';
-import ValuePrepositionImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageLight4Col';
-import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft3Col';
-import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
-import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
+// import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
+// import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
+// import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
+// import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDark4Col';
+// import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeft3Col';
+// import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDark4Col';
+// import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDarkLeft3Col';
+// import ValuePrepositionIconLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLight4Col';
+// import ValuePrepositionIconLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeft3Col';
+// import ValuePrepositionImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageLight4Col';
+// import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft3Col';
+// import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
+// import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
 import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider';
 import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/ValuePrepositionIconLightLeftDivider2ColContent';
-import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
-import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
+// import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
+// import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteSmall';
 import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBigCenter';
-import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
+// import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 
 import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHeroRightLight';
-import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
+// import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
 
 /* Hooks */
 import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBig';
-import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
+// import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import TabsCardPlan from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan';
 import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepLeft';
@@ -65,12 +65,12 @@ import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/Pla
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
-interface Item {
-    id: number;
-    name: string;
-    styles: string;
-    component: string;
-}
+// interface Item {
+//     id: number;
+//     name: string;
+//     styles: string;
+//     component: string;
+// }
 
 declare var google: {
 	accounts: {
@@ -104,24 +104,30 @@ declare global {
 
 function App() {
 
-	const { items, addItem, pageIdSelected, getEditorContext } = useContext(PageContext);
+	const { 
+		items,
+		editorContext,
+		// addItem, 
+		pageIdSelected, 
+		getEditorContext 
+	} = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
 	const currentPageIdRef = useRef('');
 
 	currentPageIdRef.current = pageIdSelected;
 
-	const handleAddItem = (item: Item, id: number) => {
-		if (item.component.trim() !== '') {
-			const newItem: Item = {
-				id: id,
-				name: item.name,
-				styles: item.styles,
-				component: item.component
-			};
-		  	addItem(newItem);
-			saveHTML(newItem)
-		}
-	};
+	// const handleAddItem = (item: Item, id: number) => {
+	// 	if (item.component.trim() !== '') {
+	// 		const newItem: Item = {
+	// 			id: id,
+	// 			name: item.name,
+	// 			styles: item.styles,
+	// 			component: item.component
+	// 		};
+	// 	  	addItem(newItem);
+	// 		saveHTML(newItem)
+	// 	}
+	// };
 
 	useEffect(() => {
 		if (items.length > 0) {
@@ -132,25 +138,25 @@ function App() {
 	}, [items]);	
 
 
-	const saveHTML = async (html: any) => {
-		try {
-			const response = await fetch('http://localhost:3000/save-html', {
-			//const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(html),
-			});
-			if (response.ok) {
-				console.log('HTML guardado exitosamente', html);
-			} else {
-				console.error('Error al guardar el HTML en el backend:', response.statusText);
-			}
-		} catch (error) {
-		  	console.error('Error al guardar el HTML en el backend', error);
-		}
-	};
+	// const saveHTML = async (html: any) => {
+	// 	try {
+	// 		const response = await fetch('http://localhost:3000/save-html', {
+	// 		//const response = await fetch('https://hispam-pages-backend.onrender.com/save-html', {
+	// 			method: 'POST',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			},
+	// 			body: JSON.stringify(html),
+	// 		});
+	// 		if (response.ok) {
+	// 			console.log('HTML guardado exitosamente', html);
+	// 		} else {
+	// 			console.error('Error al guardar el HTML en el backend:', response.statusText);
+	// 		}
+	// 	} catch (error) {
+	// 	  	console.error('Error al guardar el HTML en el backend', error);
+	// 	}
+	// };
 
 
 	const gjsOptions: EditorConfig = {
@@ -239,10 +245,10 @@ function App() {
 	const onEditor = (editor: Editor) => {		
 		(window as any).editor = editor;
 		getEditorContext(editor);
-		let currentPageId = 0;
-		let currentPageName = '';
+		// let currentPageId = 0;
+		// let currentPageName = '';
 
-		const pfx = editor.getConfig('stylePrefix');
+		// const pfx = editor.getConfig('stylePrefix');
 		const commandName = 'save-export';
 
 		const config: PluginOptions = {
@@ -255,10 +261,10 @@ function App() {
 			isBinary: undefined,
 		};
 
-		editor.on('page:select', (page: any) => {
-			currentPageId = parseInt(page.id);
-			currentPageName = page.attributes.name;
-		});
+		// editor.on('page:select', (page: any) => {
+		// 	currentPageId = parseInt(page.id);
+		// 	currentPageName = page.attributes.name;
+		// });
 
 		editor.on('load', function() {
 			editor.runCommand('core:component-outline');			
@@ -348,30 +354,7 @@ function App() {
 					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
 					onEditor={onEditor}
 					options={gjsOptions}
-					plugins={[										
-						//CardHeroSectionDark,
-						// CardLight,
-						// CardDark4Col,
-						// CardLight3Col,
-						// CardHeroTLPG,
-						// ValuePrepositionImageDark4Col,
-						// ValuePrepositionImageDarkLeft4Col,
-						// ValuePrepositionIconDark4Col,
-						// ValuePrepositionIconDarkLeft4Col,
-						// ValuePrepositionNoImageDark4Col,
-						// ValuePrepositionNoImageDarkLeft4Col,
-						// ValuePrepositionIconDarkLeftDivider,
-						// ValuePrepositionIconDarkLeftDivider2ColContent,
-						// ValuePrepositionIconLight4Col,
-						// ValuePrepositionIconLightLeft4Col,
-						// ValuePrepositionImageLight4Col,
-						// ValuePrepositionImageLightLeft4Col,
-						// ValuePrepositionNoImageLight4Col,
-						// ValuePrepositionNoImageLightLeft4Col,
-						// ValuePrepositionIconLightLeftDivider,						
-						// PlanCardTelefonica2,
-						// PlanCardTelefonica3,
-						
+					plugins={[						
 						// Columnas,
 						Columns1Kenos,
 						Columns2Kenos,
@@ -419,7 +402,7 @@ function App() {
 						{/* <LeftSidebar></LeftSidebar> */}
 
 						<div className={'gjs-editor-column'}>
-						 	<Topbar></Topbar>			
+						 	{editorContext && <Topbar editorParamaters={editorContext} />}			
 							<Canvas />
 						</div>
 						<RightSidebar ></RightSidebar>
