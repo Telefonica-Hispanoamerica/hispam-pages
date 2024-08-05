@@ -1,7 +1,5 @@
-import { iconsSvg } from '../IconsSvgBlocks';
-import { ColumnsGeneralStyleContent } from './ColumnsGeneral';
+import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
-	${ColumnsGeneralStyleContent}
 	<div class='gjs-row-kenos'>
 		<div class='gjs-cell-kenos'></div>
 		<div class='gjs-cell-kenos'></div>
@@ -16,7 +14,7 @@ function Columns4Kenos(editor: any) {
 		label: 'Columns 4',
 		activate: true,
 		content: div,
-		category: 'Columns',
+		category: 'Columnas',
 		media: iconsSvg.column4,
 		attributes: { class: 'custom-block' },
 	});

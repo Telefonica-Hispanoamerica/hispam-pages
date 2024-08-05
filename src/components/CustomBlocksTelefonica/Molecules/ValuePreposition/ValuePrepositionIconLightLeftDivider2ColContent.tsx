@@ -239,7 +239,7 @@ function ValuePrepositionIconLightLeftDivider2ColContent(editor: any) {
 		label: 'Icono izquierda',
 		activate: true,
 		content: div,
-		category: 'Value Prepositions Light',
+		category: 'Templates',
 		media: iconsSvg.headerLeftAnd2ColValueP,
 		attributes: { class: 'custom-block' },
 	});

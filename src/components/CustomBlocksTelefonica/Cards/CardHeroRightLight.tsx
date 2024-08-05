@@ -241,7 +241,7 @@ function CardHeroRightLight(editor: any) {
 		label: 'Hero Der.',
 		activate: true,
 		content: StyleCardHeroRightLightContent+DivCardHeroRightLightContent,
-		category: 'Cards',
+		category: 'Moleculas',
 		media: iconsSvg.iheroCardRight,
 		attributes: { class: 'custom-block' },
 	});

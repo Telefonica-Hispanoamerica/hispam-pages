@@ -1,5 +1,4 @@
-import { ColumnsGeneralStyleContent } from '../Columns/ColumnsGeneral';
-import { iconsSvg } from '../IconsSvgBlocks';
+import { iconsSvg } from '../../IconsSvgBlocks';
 
 export const StyleiHeroImageCompleteSmall = `
 	<style>
@@ -211,8 +210,7 @@ export const StyleiHeroImageCompleteSmall = `
 			padding: 32px 16px;
 		}
 	}
-	</style>
-	${ColumnsGeneralStyleContent}`
+	</style>`
 	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
@@ -241,10 +239,10 @@ export const StyleiHeroImageCompleteSmall = `
 function iHeroImageCompleteSmall(editor: any) {		
 	editor.Blocks.add('heroImageCompleteSmall', {
 		id: 'heroImageCompleteSmall',
-		label: 'Imagen completa pequeño',
+		label: 'Hero pequeño',
 		activate: false,
 		content: StyleiHeroImageCompleteSmall+DiviHeroImageCompleteSmall,
-		category: 'Hero',
+		category: 'Moleculas',
 		media: iconsSvg.iHeroImageComplete,
 		attributes: { class: 'custom-block' },
 	});

@@ -1,7 +1,6 @@
 import { DivCardHeroRightLightContent, StyleCardHeroRightLightContent } from "../Cards/CardHeroRightLight";
-import { StylePlanCardContent, DivPlanCardContent } from "../Cards/PlanCard";
-import { StylePlanCardFeatContent, DivPlanCardFeatContent } from "../Cards/PlanCardFeature";
-import { ColumnsGeneralStyleContent } from "../Columns/ColumnsGeneral";
+import { StylePlanCardContent, DivPlanCardContent } from "../Molecules/PlanCard/PlanCard";
+import { StylePlanCardFeatContent, DivPlanCardFeatContent } from "../Molecules/PlanCard/PlanCardFeature";
 const div = `
 	<style>	
 		.page-content {
@@ -111,7 +110,6 @@ const div = `
 			animation: fadeEffect 1s;
 		}
 	</style>
-	${ColumnsGeneralStyleContent}
 	${StyleCardHeroRightLightContent}		
 	${StylePlanCardFeatContent}
 	${StylePlanCardContent}
@@ -135,28 +133,41 @@ const div = `
 			<div data-gjs-highlightable="true" id="inykh4" data-gjs-type="tab-contents" class="tab-contents" draggable="true">
 				<div id="ietfse" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ic6c6w" class="tab-content" draggable="true" hidden="">
 					<div class='gjs-row-kenos'>
-						<div class='gjs-cell-kenos'>
-							${DivPlanCardContent}
-						</div>
-						<div class='gjs-cell-kenos'>						
-							${DivPlanCardFeatContent}
-						</div>
-						<div class='gjs-cell-kenos'>
-							${DivPlanCardContent}
-						</div>
-						<div class='gjs-cell-kenos'>
-							${DivPlanCardContent}
-						</div>
+						<div class='gjs-cell-kenos'>Content tab 1</div>
+						<div class='gjs-cell-kenos'>Content tab 1</div>
+						<div class='gjs-cell-kenos'>Content tab 1</div>
+						<div class='gjs-cell-kenos'>Content tab 1</div>
 					</div>
 				</div>
 				<div id="i2qqwr" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="i5kopr" class="tab-content" draggable="true" hidden="">
-					<div data-gjs-highlightable="true" id="iyfwwy" data-gjs-type="text" draggable="true" class="" contenteditable="false">Tab Content 2</div>
+					<div data-gjs-highlightable="true" id="iyfwwy" data-gjs-type="text" draggable="true" class="" contenteditable="false">
+						<div class='gjs-row-kenos'>
+							<div class='gjs-cell-kenos'>Content tab 2</div>
+							<div class='gjs-cell-kenos'>Content tab 2</div>
+							<div class='gjs-cell-kenos'>Content tab 2</div>
+							<div class='gjs-cell-kenos'>Content tab 2</div>
+						</div>
+					</div>
 				</div>
 				<div id="ixggop" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ix0mp4" class="tab-content" draggable="true" hidden="">
-					<div data-gjs-highlightable="true" id="iqqh8u" data-gjs-type="text" draggable="true" class="" contenteditable="false">Tab Content 3</div>
+					<div data-gjs-highlightable="true" id="iqqh8u" data-gjs-type="text" draggable="true" class="" contenteditable="false">
+						<div class='gjs-row-kenos'>
+							<div class='gjs-cell-kenos'>Content tab 3</div>
+							<div class='gjs-cell-kenos'>Content tab 3</div>
+							<div class='gjs-cell-kenos'>Content tab 3</div>
+							<div class='gjs-cell-kenos'>Content tab 3</div>
+						</div>
+					</div>
 				</div>
 				<div id="ixggopa" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ix0mp5" class="tab-content" draggable="true">
-					<div data-gjs-highlightable="true" id="iqqh8o" data-gjs-type="text" draggable="true" class="" contenteditable="false">Tab Content 4</div>
+					<div data-gjs-highlightable="true" id="iqqh8o" data-gjs-type="text" draggable="true" class="" contenteditable="false">
+						<div class='gjs-row-kenos'>
+							<div class='gjs-cell-kenos'>Content tab 4</div>
+							<div class='gjs-cell-kenos'>Content tab 4</div>
+							<div class='gjs-cell-kenos'>Content tab 4</div>
+							<div class='gjs-cell-kenos'>Content tab 4</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>        
@@ -167,11 +178,11 @@ function TabsCardPlan(editor: any) {
 	
 	editor.Blocks.add('tabsCardPlan', {
 		id: 'tabsCardPlan',
-		label: 'Hero + Tabs + Plan Card',
+		label: 'Hero + 4 Tabs',
 		editable: true,
 		activate: true,
 		content: div,
-		category: 'Tabs',
+		category: 'Moleculas',
 		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
 		attributes: { class: 'custom-block' },
 	});

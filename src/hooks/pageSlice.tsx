@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { Editor } from 'grapesjs';
 
 interface Item {
     id: number;
@@ -15,6 +16,8 @@ interface ContextValue {
     addMetaDescription: (meta: string) => void;
     pageIdSelected: string;
     getPageIdSelected: (pageId: string) => void;
+    editorContext: {};
+    getEditorContext: (editor: Editor) => void
 }
 
 const PageContext = createContext<ContextValue>({
@@ -24,13 +27,16 @@ const PageContext = createContext<ContextValue>({
     metaDescription: '',
     addMetaDescription: () => {},
     pageIdSelected: '',
-    getPageIdSelected: () => {}
+    getPageIdSelected: () => {},
+    editorContext: {},
+    getEditorContext: () => {}
 });
 
 const PageProvider = ({ children }: { children: React.ReactNode }) => {
     const [ items, setItems ] = useState<Item[]>([]);
     const [ metaDescription, setMetaDescription ] = useState<string>('');
     const [ pageIdSelected, setPageIdSelected ] = useState<string>('');
+    const [ editorContext, setEditorContext ] = useState<any>();    
 
     useEffect(() => {
         async function fetchMyAPI() {
@@ -58,11 +64,21 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
                 }
                 
 			} catch (error) {
-				console.error('Error al obtener el HTML desde el backend', error);
+				const dateNumber = Date.now()
+                    let pageBlank = [
+                        {
+                        id: dateNumber,
+                        name: `Page Blank`,
+                        styles: '',
+                        component: `<h1>Page content Blank</h1>`,
+                    }
+                ];
+
+                setItems(pageBlank);
 			}
 		}
 
-		fetchMyAPI()
+		fetchMyAPI();
     }, []);
 
     const removeItem = (id: number) => {
@@ -79,6 +95,10 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
 
     const getPageIdSelected = (id: string) => {
         setPageIdSelected(id)
+    };
+
+    const getEditorContext = (editor: Editor) => {
+        setEditorContext(editor);
     }
 
     const value: ContextValue = {
@@ -89,7 +109,8 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
         addMetaDescription,
         pageIdSelected,
         getPageIdSelected,
-
+        editorContext,
+        getEditorContext
     };
 
     return <PageContext.Provider value={value}>{children}</PageContext.Provider>;

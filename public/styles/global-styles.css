@@ -1,8 +1,9 @@
 body {
-    margin: 24px auto;
+    margin: 0 auto;
     font-family: 'Telefonica-Regular', sans-serif;
 }
 .gjs-row-kenos {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 8px;
     display: table;
@@ -36,8 +37,30 @@ p {
 .bg-light {
     background-color: #fff
 }
+
+.brand-low {
+    background-color: #E6F5FD;
+}
 .ptb-80 {
     padding: 80px 0;
+}
+.p-relative-hero {
+    position: relative;
+    overflow: hidden;
+    max-height: 524px;
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .p-relative-hero {
+        height: 400px
+    }
+}	
+.p-absolute-hero {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 @media (max-width: 767px) {
     .ptb-80 {

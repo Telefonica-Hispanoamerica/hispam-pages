@@ -158,7 +158,7 @@ function CardLight(editor: any) {
 		label: 'Card',
 		activate: true,
 		content: div,
-		category: 'Card',
+		category: 'Moleculas',
 		media: iconsSvg.card,
 		attributes: { class: 'custom-block' },
 	});

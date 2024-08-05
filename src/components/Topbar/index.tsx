@@ -6,20 +6,18 @@ import TopbarButtons from '../TopbarButtons'
 import LogoUxHispam from '../../assets/logo-uxhispam.svg'
 import './topbar.scss';
 import JSZip from 'jszip';
-import { Editor } from 'grapesjs';
 import { PageContext } from '../../hooks/pageSlice';
 import GlobalCSS from '../../../public/styles/global-styles.css?inline';
 //Icons
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 
-function Topbar({mainEditor} : { mainEditor: Editor }) {
+function Topbar() {
 
-	const { metaDescription } = useContext(PageContext);
-
+	const { editorContext, metaDescription } = useContext(PageContext);
+	
 	const exportPage = async (meta: string) => {
-
-		if(mainEditor) {
+		if(editorContext) {
 			const zip = new JSZip();
 			
 			const fontPaths = [
@@ -55,13 +53,13 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 			});
 
 			function getImageURLs() {
-				var htmlContent = mainEditor.getHtml();
-				var tempDiv = document.createElement('div');
+				const htmlContent = editorContext.getHtml();
+				const tempDiv = document.createElement('div');
 				tempDiv.innerHTML = htmlContent;
 			
-				var images = tempDiv.querySelectorAll('img');
+				const images = tempDiv.querySelectorAll('img');
 			
-				var imageUrls: any[] = [];
+				const imageUrls: any[] = [];
 				images.forEach(function(img) {
 					var src = img.getAttribute('src');
 					if (src) {
@@ -91,7 +89,7 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				imgs.file(imgName, data);
 			});
 
-			const htmlExport = mainEditor.getHtml();
+			const htmlExport = editorContext.getHtml();
 
 			let urlIndex = 0;
 
@@ -102,9 +100,6 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				}
 				return match;
 			});
-
-			console.log(htmlString);
-			
 
 			const exportData = {
 				html: `<!doctype html>
@@ -119,12 +114,10 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 					</head>
 					${htmlString}
 				</html>`,
-				css: `${mainEditor.getCss()}`
+				css: `${editorContext.getCss()}`
 			};
 
-			let cleanedCssContent = removeDuplicateLines(exportData.css);
-
-			zip.file('global-styles.css', 	GlobalCSS);
+			zip.file('global-styles.css', GlobalCSS);
 			zip.file('styles.css', exportData.css);
 			zip.file('index.html', exportData.html);
 
@@ -169,10 +162,12 @@ function Topbar({mainEditor} : { mainEditor: Editor }) {
 				<WithEditor>
 					<div className='top-bar'>
 						<TopbarButtons></TopbarButtons>
-						<a className='export-btn' onClick={() => exportPage(metaDescription)}>
-							<FileDownloadOutlinedIcon />
-							Exportar HTML
-						</a>
+						{ editorContext && (
+							<a className='export-btn' onClick={() => exportPage(metaDescription)}>
+								<FileDownloadOutlinedIcon />
+								Exportar HTML
+							</a>
+						)}						
 					</div>					
 				</WithEditor>
 			</div>

@@ -1,6 +1,8 @@
+import { iconsSvg } from "../../IconsSvgBlocks";
+
 const id = crypto.randomUUID();
-export const StylePlanCardContent = `
-	<style>	
+export const StylePlanCardFeatContent = `
+	<style>
 		.toggle {
 			display: none;
 		}
@@ -13,7 +15,7 @@ export const StylePlanCardContent = `
 
 		.card-content {
 			max-height: 500px;
-			transition: max-height 0.5s ease-out;			
+			transition: max-height 0.5s ease-out;
 			overflow: hidden;
 			margin-top: 1rem;
 		}
@@ -68,28 +70,48 @@ export const StylePlanCardContent = `
 			-o-transform: rotate(0deg);
 		}
 
-		body {
-			margin: 24px auto;
-			font-family: 'Telefonica-Regular', sans-serif;
-		}
-
-		.card {
+		.card-feat {
 			background-color: #fff;
-			border-radius: 1rem;
+			border-radius: 1.5rem 1.5rem 1rem 1rem;
 			position: relative;
 			border: 1px solid #dddddd;
-			overflow: hidden;
 			padding: 0 0 24px;
-			margin-top: 28px;
+			-webkit-border-radius: 1.5rem 1.5rem 1rem 1rem;
+			-moz-border-radius: 1.5rem 1.5rem 1rem 1rem;
+			-ms-border-radius: 1.5rem 1.5rem 1rem 1rem;
+			-o-border-radius: 1.5rem 1.5rem 1rem 1rem;
+			border: 2px solid #019BEF;
 		}
 
 		@media (max-width: 768px) {
-			.card {
+			.card-feat {
 				margin-bottom: 24px;
 			}
 		}
 
-		.card .header-plan {
+		.card-feat .feature-tag {
+			font-family: 'Roboto';
+			background-color: #019BEF;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+			font-size: 0.875rem;
+			padding: 4px, 16px, 4px, 16px;
+			border-radius: 1rem 1rem 0 0;
+			-webkit-border-radius: 1rem 1rem 0 0;
+			-moz-border-radius: 1rem 1rem 0 0;
+			-ms-border-radius: 1rem 1rem 0 0;
+			-o-border-radius: 1rem 1rem 0 0;
+			height: 28px;
+			border: 2px solid #019BEF;
+		}
+
+		.card-feat .feature-tag img {
+			margin-right: 8px;
+		}
+
+		.card-feat .header-plan {
 			background-color: #0B2739;
 			padding: 1rem 1rem 2rem;
 			color: #fff;
@@ -100,7 +122,7 @@ export const StylePlanCardContent = `
 			align-items: center;
 		}
 
-		.card .header-plan .tag {
+		.card-feat .header-plan .tag {
 			background-color: #e63780;
 			padding: 4px 1rem;
 			color: #fff;
@@ -115,16 +137,16 @@ export const StylePlanCardContent = `
 			justify-content: center;
 		}
 
-		.card .header-plan .tag img {
+		.card-feat .header-plan .tag img {
 			margin-right: 4px;
 		}
 
-		.card .header-plan .tag p {
+		.card-feat .header-plan .tag p {
 			font-family: Roboto;
 			margin: 0 auto;
 		}
 
-		.card .header-plan .plan-name {
+		.card-feat .header-plan .plan-name {
 			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
@@ -137,11 +159,11 @@ export const StylePlanCardContent = `
 			justify-content: center;
 		}
 
-		.card .header-plan .plan-name img {
+		.card-feat .header-plan .plan-name img {
 			margin-left: 6px;
 		}
 
-		.card .header-plan .capacity {
+		.card-feat .header-plan .capacity {
 			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height: 40px;
@@ -151,7 +173,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .header-plan .offer-description {
+		.card-feat .header-plan .offer-description {
 			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
@@ -161,18 +183,18 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .header-plan .offer-description span {
+		.card-feat .header-plan .offer-description span {
 			font-weight: 700;
 		}
 
-		.card .price-table {
+		.card-feat .price-table {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			padding: 2rem 1rem 8px;
 		}
 
-		.card .price-table .offer-description-price {
+		.card-feat .price-table .offer-description-price {
 			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
@@ -180,7 +202,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .price-table .price {
+		.card-feat .price-table .price {
 			font-family: Telefonica-Regular;
 			font-size: 2rem;
 			line-height: 40px;
@@ -188,18 +210,18 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .price-table .price span {
+		.card-feat .price-table .price span {
 			font-size: 22px;
 			line-height: 30px;
 			color: #313235;
 			-webkit-user-modify: read-write;
 		}
 
-		.card .price-table .offer-per-month {
+		.card-feat .price-table .offer-per-month {
 			color: #737578;
 		}
 
-		.card .price-table .offer-per-month p {
+		.card-feat .price-table .offer-per-month p {
 			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
@@ -207,16 +229,16 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .price-table .offer-per-month span {
+		.card-feat .price-table .offer-per-month span {
 			font-family: 'Roboto';
 			font-weight: 700;
 		}
 
-		.card .btn-main-content {
+		.card-feat .btn-main-content {
 			padding: 0 1rem;
 		}
 
-		.card .btn-main-content .btn-primary {
+		.card-feat .btn-main-content .btn-primary {
 			font-family: 'Roboto';
 			font-size: 1.125rem;
 			font-weight: 600;
@@ -232,7 +254,7 @@ export const StylePlanCardContent = `
 			text-align: center;
 		}
 
-		.card .btn-main-content .btn-second {
+		.card-feat .btn-main-content .btn-second {
 			font-family: 'Roboto';
 			font-size: 1.125rem;
 			font-weight: 600;
@@ -248,7 +270,7 @@ export const StylePlanCardContent = `
 			text-align: center;
 		}
 
-		.card .switch-options {
+		.card-feat .switch-options {
 			display: flex;
 			padding: 1rem 8px;
 			flex-direction: row;
@@ -260,21 +282,21 @@ export const StylePlanCardContent = `
 			justify-content: space-between;
 		}
 
-		.card .switch-options .icon-circle {
+		.card-feat .switch-options .icon-circle {
 			width: 40px;
 			height: 40px;
 			border-radius: 1000px;
 			background: url(<path-to-image>) lightgray 50% / cover no-repeat;
 		}
 
-		.card .switch-options .streaming {
+		.card-feat .switch-options .streaming {
 			width: 60%;
 			display: flex;
 			flex-direction: column;
 			margin-left: 8px;
 		}
 
-		.card .switch-options .streaming .add-streaming {
+		.card-feat .switch-options .streaming .add-streaming {
 			font-family: 'Roboto';
 			align-self: stretch;
 			color: #313235;
@@ -285,7 +307,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .switch-options .streaming .description {
+		.card-feat .switch-options .streaming .description {
 			font-family: 'Roboto';
 			color: #737578;
 			font-size: 0.875rem;
@@ -295,20 +317,20 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .switch-options .switch {
+		.card-feat .switch-options .switch {
 			position: relative;
 			display: inline-block;
 			width: 60px;
 			height: 34px;
 		}
 
-		.card .switch-options .switch input {
+		.card-feat .switch-options .switch input {
 			opacity: 0;
 			width: 0;
 			height: 0;
 		}
 
-		.card .switch-options .slider {
+		.card-feat .switch-options .slider {
 			position: absolute;
 			cursor: pointer;
 			top: 0;
@@ -320,7 +342,7 @@ export const StylePlanCardContent = `
 			transition: .4s;
 		}
 
-		.card .switch-options .slider:before {
+		.card-feat .switch-options .slider:before {
 			position: absolute;
 			content: "";
 			height: 26px;
@@ -332,29 +354,29 @@ export const StylePlanCardContent = `
 			transition: .4s;
 		}
 
-		.card .switch-options input:checked+.slider {
+		.card-feat .switch-options input:checked+.slider {
 			background-color: #2196F3;
 		}
 
-		.card .switch-options input:focus+.slider {
+		.card-feat .switch-options input:focus+.slider {
 			box-shadow: 0 0 1px #2196F3;
 		}
 
-		.card .switch-options input:checked+.slider:before {
+		.card-feat .switch-options input:checked+.slider:before {
 			-webkit-transform: translateX(26px);
 			-ms-transform: translateX(26px);
 			transform: translateX(26px);
 		}
 
-		.card .switch-options .slider.round {
+		.card-feat .switch-options .slider.round {
 			border-radius: 34px;
 		}
 
-		.card .switch-options .slider.round:before {
+		.card-feat .switch-options .slider.round:before {
 			border-radius: 50%;
 		}
 
-		.card .long-offer-row {
+		.card-feat .long-offer-row {
 			display: flex;
 			height: 40px;
 			padding: 4px 8px 4px 1rem;
@@ -365,16 +387,16 @@ export const StylePlanCardContent = `
 			margin: 0 1rem 1rem;
 		}
 
-		.card .long-offer-row .icon {
+		.card-feat .long-offer-row .icon {
 			width: 24px;
 			height: 24px;
 		}
 
-		.card .long-offer-row .img {
+		.card-feat .long-offer-row .img {
 			height: 24px;
 		}
 
-		.card .long-offer-row .txt {
+		.card-feat .long-offer-row .txt {
 			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
@@ -385,7 +407,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .long-offer-row-streaming {
+		.card-feat .long-offer-row-streaming {
 			display: flex;
 			height: auto;
 			padding: 8px 8px 8px 1rem;
@@ -396,11 +418,11 @@ export const StylePlanCardContent = `
 			margin: 0 1rem 1rem;
 		}
 
-		.card .long-offer-row-streaming .streaming-app {
+		.card-feat .long-offer-row-streaming .streaming-app {
 			height: 24px;
 		}
 
-		.card .long-offer-row-streaming .txt {
+		.card-feat .long-offer-row-streaming .txt {
 			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
@@ -411,12 +433,12 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .long-offer-list .icon {
+		.card-feat .long-offer-list .icon {
 			width: 24px;
 			height: 24px;
 		}
 
-		.card .long-offer-list {
+		.card-feat .long-offer-list {
 			display: flex;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
@@ -427,18 +449,18 @@ export const StylePlanCardContent = `
 			border-top: 1px solid #EEE;
 		}
 
-		.card .long-offer-list:last-child {
+		.card-feat .long-offer-list:last-child {
 			border-bottom: 1px solid #EEE;
 		}
 
-		.card .long-offer-list .content {
+		.card-feat .long-offer-list .content {
 			display: flex;
 			flex-direction: column;
 			justify-content: start;
 			align-items: start;
 		}
 
-		.card .long-offer-list .content .title {
+		.card-feat .long-offer-list .content .title {
 			font-family: 'Roboto';
 			color: #313235;
 			font-size: 0.875rem;
@@ -447,7 +469,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .long-offer-list .content .description {
+		.card-feat .long-offer-list .content .description {
 			font-family: 'Roboto';
 			color: #737578;
 			font-size: 0.875rem;
@@ -456,7 +478,7 @@ export const StylePlanCardContent = `
 			-webkit-user-modify: read-write;
 		}
 
-		.card .long-offer-list .content .link {
+		.card-feat .long-offer-list .content .link {
 			font-family: 'Roboto';
 			color: #019BEF;
 			text-align: center;
@@ -464,10 +486,14 @@ export const StylePlanCardContent = `
 			font-weight: 500;
 			line-height: 20px;
 			-webkit-user-modify: read-write;
-		}
+		}	
 	</style>`
-export const DivPlanCardContent = `
-	<div class='card'>
+	export const DivPlanCardFeatContent = `
+	<div class='card-feat'>
+		<div class="feature-tag">
+			<img src="hispam-pages/images/icon.svg" alt="" />
+			Featured tag
+		</div>
 		<div class='header-plan'>
 			<div class='plan-name'>
 				Plan name
@@ -553,9 +579,21 @@ export const DivPlanCardContent = `
 	</div>
 	`
 
-function PlanCard(editor: any) {
+function PlanCardFeature(editor: any) {
 	const script = function() {
 		console.log('the element JS');
+
+		// const handleChange = () => {
+        //     const label = document.getElementsByClassName('toggleLabel') as HTMLCollectionOf<HTMLElement>;
+        //     if (toggle.checked) {
+        //         label[0].innerHTML = "Hide details";
+        //     } else {
+        //         label[0].innerHTML = "More details";
+        //     }
+        // };
+
+		// const toggle = document.getElementById('toggle') as HTMLInputElement;
+        // toggle.addEventListener('change', handleChange);
 
 		const handleChange = (index: string) => {
 			const labels = document.getElementById(`toggleLabel${index}`) as HTMLInputElement;
@@ -582,20 +620,20 @@ function PlanCard(editor: any) {
 		}
 	});
 	
-	editor.Blocks.add('planCard', {
-		id: 'planCard',
-		label: 'Plan Card',
+	editor.Blocks.add('planCardTelefonicaFeat', {
+		id: 'planCardTelefonicaFeat',
+		label: 'Plan Card Feature',
 		editable: true,
 		activate: true,
 		content: [
 			{ type: 'comp-with-js' },
-			StylePlanCardContent+DivPlanCardContent
+			StylePlanCardFeatContent+DivPlanCardFeatContent
 		],
-		category: 'Cards',
-		media: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z"/></svg>',
+		category: 'Moleculas',
+		media: iconsSvg.card,
 		attributes: { class: 'custom-block' },
 	});
 	
 }
   
-export default PlanCard;
+export default PlanCardFeature;

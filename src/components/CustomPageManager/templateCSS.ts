@@ -1,5 +1,5 @@
-import { StylePlanCardContent } from "../CustomBlocksTelefonica/Cards/PlanCard";
-import { StylePlanCardFeatContent } from "../CustomBlocksTelefonica/Cards/PlanCardFeature";
+import { StylePlanCardContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCard";
+import { StylePlanCardFeatContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature";
 export const styles = `
 .section-hero{
    background-color:rgb(255, 255, 255);

@@ -8,23 +8,23 @@ import './App.scss';
 import "./fonts/fonts.scss";
 import axios from "axios";
 
-import TextWrappingKenos from './components/CustomBlocksTelefonica/Text/H1';
+import TextWrappingKenos from './components/CustomBlocksTelefonica/Atoms/Text/H1';
 
 
 // import JSZip from 'jszip';
 
 // import cssFonts from '../public/hispam-pages/fonts/fonts-telefonica.css?inline';
-import Columns3Kenos from './components/CustomBlocksTelefonica/Columns/Columns3';
-import Columns1Kenos from './components/CustomBlocksTelefonica/Columns/Columns1';
-import Columns2Kenos from './components/CustomBlocksTelefonica/Columns/Columns2';
-import Columns4Kenos from './components/CustomBlocksTelefonica/Columns/Columns4';
-import Columns5Kenos from './components/CustomBlocksTelefonica/Columns/Columns5';
-import Columns6Kenos from './components/CustomBlocksTelefonica/Columns/Columns6';
-import H1 from './components/CustomBlocksTelefonica/Text/H1';
-import H2 from './components/CustomBlocksTelefonica/Text/H2';
-import paragraphKenos from './components/CustomBlocksTelefonica/Text/P';
-import OrderedListKenos from './components/CustomBlocksTelefonica/Text/OrderedList';
-import NumberListKenos from './components/CustomBlocksTelefonica/Text/NumberList';
+import Columns3Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns3';
+import Columns1Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns1';
+import Columns2Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns2';
+import Columns4Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns4';
+import Columns5Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns5';
+import Columns6Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns6';
+import H1 from './components/CustomBlocksTelefonica/Atoms/Text/H1';
+import H2 from './components/CustomBlocksTelefonica/Atoms/Text/H2';
+import paragraphKenos from './components/CustomBlocksTelefonica/Atoms/Text/P';
+import OrderedListKenos from './components/CustomBlocksTelefonica/Atoms/Text/OrderedList';
+import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/NumberList';
 // import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
 // import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
 import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
@@ -41,11 +41,11 @@ import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefon
 import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
 import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
 import ValuePrepositionIconLightLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider';
-import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeftDivider2ColContent';
+import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/ValuePrepositionIconLightLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
-import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteSmall';
-import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBigCenter';
+import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteSmall';
+import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBigCenter';
 import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 
 import CardHeroRightLight from './components/CustomBlocksTelefonica/Cards/CardHeroRightLight';
@@ -53,13 +53,15 @@ import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardH
 
 /* Hooks */
 import { PageContext } from './hooks/pageSlice';
-import HeroImageCompleteBig from './components/CustomBlocksTelefonica/InternalHero/ImageCompleteBig';
+import HeroImageCompleteBig from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBig';
 import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Cards/Card/CardLight';
 import TabsCardPlan from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan';
-import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/valuePrepLeft';
-import ValuePrepCenter from './components/CustomBlocksTelefonica/Molecules/valuePrepCenter';
+import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepLeft';
+import ValuePrepCenter from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepCenter';
 import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
+import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature';
+import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -102,13 +104,9 @@ declare global {
 
 function App() {
 
-	const { items, addItem, pageIdSelected } = useContext(PageContext);
+	const { items, addItem, pageIdSelected, getEditorContext } = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
-	// const [ mainEditor, setMainEditor ] = useState<any>();
-	const mainEditor = useState<any>();
 	const currentPageIdRef = useRef('');
-
-	console.log("PAGE ELECTED FROM APP", pageIdSelected)
 
 	currentPageIdRef.current = pageIdSelected;
 
@@ -216,18 +214,18 @@ function App() {
 					//https://hispam-pages-backend.onrender.com/
 					const response = await axios.post('http://localhost:3000/upload', formData, {
 					//const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
-					  headers: {
-						'Content-Type': 'multipart/form-data',
-					  },
+						headers: {
+							'Content-Type': 'multipart/form-data',
+						},
 					});
 		
 					const data = response.data;
 		
 					if (data && Array.isArray(data)) {
-					  data.forEach((file: { url: string }) => {
-						const assetManager =  grapesjs.editors[0].editor.attributes.AssetManager
-						assetManager.add({ src: file.url });
-					  });
+						data.forEach((file: { url: string }) => {
+							const assetManager =  grapesjs.editors[0].editor.attributes.AssetManager
+							assetManager.add({ src: file.url });
+						});
 					} else {
 					  console.error('Invalid response from server:', data);
 					}
@@ -238,8 +236,9 @@ function App() {
 		},
 	};	
 
-	const onEditor = (editor: Editor) => {
+	const onEditor = (editor: Editor) => {		
 		(window as any).editor = editor;
+		getEditorContext(editor);
 		let currentPageId = 0;
 		let currentPageName = '';
 
@@ -293,45 +292,45 @@ function App() {
 					// btnExpExport.className = `${pfx}btn-prim`;
 					// btnExpExport.type = 'button';
 
-					// editor.on('run:save-export', () => {
-					// 	editor.runCommand('core:open-code');
+					editor.on('run:save-export', () => {
+						editor.runCommand('core:open-code');
 
-					// 	const existingGroupButtons = document.querySelectorAll('.buttons-group');
-					// 	existingGroupButtons.forEach(div => div.remove());
+						// const existingGroupButtons = document.querySelectorAll('.buttons-group');
+						// existingGroupButtons.forEach(div => div.remove());
 
-					// 	const el = editor.Modal.getContentEl();
+						// const el = editor.Modal.getContentEl();
 
-					// 	divButtonsModal?.appendChild(btnExp);
-					// 	divButtonsModal?.appendChild(btnExpExport);
+						// divButtonsModal?.appendChild(btnExp);
+						// divButtonsModal?.appendChild(btnExpExport);
 
-					// 	el?.appendChild(divButtonsModal);							
+						// el?.appendChild(divButtonsModal);							
 
-					// 	btnExp.onclick = () => {
-					// 		const editPage = items.filter(item => item.id == currentPageId);
-					// 		if(editPage[0]) {
-					// 			let editItem = {
-					// 				id: editPage[0].id,
-					// 				name: editPage[0].name,
-					// 				styles: editor.getCss(),
-					// 				component: editor.getHtml()
-					// 			}
-					// 			handleAddItem(editItem, editItem.id);
-					// 		} else {
-					// 			const nextIndex = items.length + 1;
-					// 			let newItem = {
-					// 				id: Date.now(),
-					// 				name:`Page ${nextIndex}`,
-					// 				styles: editor.getCss(),
-					// 				component: editor.getHtml()
-					// 			}
-					// 			handleAddItem(newItem, newItem.id);
-					// 		}
-					// 		editor.Modal.close();
-					// 	}
-					// 	// let metaDesc = metaDescription
-					// 	// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
-					// 	// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
-					// });
+						// btnExp.onclick = () => {
+						// 	const editPage = items.filter(item => item.id == currentPageId);
+						// 	if(editPage[0]) {
+						// 		let editItem = {
+						// 			id: editPage[0].id,
+						// 			name: editPage[0].name,
+						// 			styles: editor.getCss(),
+						// 			component: editor.getHtml()
+						// 		}
+						// 		handleAddItem(editItem, editItem.id);
+						// 	} else {
+						// 		const nextIndex = items.length + 1;
+						// 		let newItem = {
+						// 			id: Date.now(),
+						// 			name:`Page ${nextIndex}`,
+						// 			styles: editor.getCss(),
+						// 			component: editor.getHtml()
+						// 		}
+						// 		handleAddItem(newItem, newItem.id);
+						// 	}
+						// 	editor.Modal.close();
+						// }
+						// let metaDesc = metaDescription
+						// btnExpExport.addEventListener('click', (event) => exportPage(editor, event));
+						// btnExpExport.onclick = (event) => exportPage(editor, metaDesc, event)
+					});
 				}
 
 			},
@@ -349,52 +348,59 @@ function App() {
 					grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
 					onEditor={onEditor}
 					options={gjsOptions}
-					plugins={[
-						HeroImageCompleteBig,
-						iHeroImageCompleteSmall,
-						ImageCompleteBigCenter,
-						CardHeroRightLight,
-						CardHeroSectionDark,
-						CardLight,
-						CardDark4Col,
-						CardLight3Col,
-						CardHeroTLPG,
-						ValuePrepositionImageDark4Col,
-						ValuePrepositionImageDarkLeft4Col,
-						ValuePrepositionIconDark4Col,
-						ValuePrepositionIconDarkLeft4Col,
-						ValuePrepositionNoImageDark4Col,
-						ValuePrepositionNoImageDarkLeft4Col,
-						ValuePrepositionIconDarkLeftDivider,
-						ValuePrepositionIconDarkLeftDivider2ColContent,
-						ValuePrepositionIconLight4Col,
-						ValuePrepositionIconLightLeft4Col,
-						ValuePrepositionImageLight4Col,
-						ValuePrepositionImageLightLeft4Col,
-						ValuePrepositionNoImageLight4Col,
-						ValuePrepositionNoImageLightLeft4Col,
-						ValuePrepositionIconLightLeftDivider,
-						ValuePrepositionIconLightLeftDivider2ColContent,
+					plugins={[										
+						//CardHeroSectionDark,
+						// CardLight,
+						// CardDark4Col,
+						// CardLight3Col,
+						// CardHeroTLPG,
+						// ValuePrepositionImageDark4Col,
+						// ValuePrepositionImageDarkLeft4Col,
+						// ValuePrepositionIconDark4Col,
+						// ValuePrepositionIconDarkLeft4Col,
+						// ValuePrepositionNoImageDark4Col,
+						// ValuePrepositionNoImageDarkLeft4Col,
+						// ValuePrepositionIconDarkLeftDivider,
+						// ValuePrepositionIconDarkLeftDivider2ColContent,
+						// ValuePrepositionIconLight4Col,
+						// ValuePrepositionIconLightLeft4Col,
+						// ValuePrepositionImageLight4Col,
+						// ValuePrepositionImageLightLeft4Col,
+						// ValuePrepositionNoImageLight4Col,
+						// ValuePrepositionNoImageLightLeft4Col,
+						// ValuePrepositionIconLightLeftDivider,						
 						// PlanCardTelefonica2,
 						// PlanCardTelefonica3,
-						TextWrappingKenos,
+						
+						// Columnas,
 						Columns1Kenos,
 						Columns2Kenos,
 						Columns3Kenos,
 						Columns4Kenos,
 						Columns5Kenos,
 						Columns6Kenos,
+						// Atoms,
+						SectionBlank,
 						H1,
 						H2,
 						paragraphKenos,
 						OrderedListKenos,
 						NumberListKenos,
-						TabsCardPlan,
+						TextWrappingKenos,
 						// Molecules,
 						ValuePrepLeft,
 						ValuePrepCenter,
-						// Atoms,
-						SectionBlank,
+						CardLight,
+						PlanCardFeature,
+						PlanCard,
+						TabsCardPlan,						
+						CardHeroRightLight,
+						HeroImageCompleteBig,
+						iHeroImageCompleteSmall,
+						ImageCompleteBigCenter,
+						//Template
+						ValuePrepositionIconLightLeftDivider,
+						ValuePrepositionIconLightLeftDivider2ColContent,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',
@@ -413,7 +419,7 @@ function App() {
 						{/* <LeftSidebar></LeftSidebar> */}
 
 						<div className={'gjs-editor-column'}>
-						 	<Topbar mainEditor={window.editor}></Topbar>			
+						 	<Topbar></Topbar>			
 							<Canvas />
 						</div>
 						<RightSidebar ></RightSidebar>

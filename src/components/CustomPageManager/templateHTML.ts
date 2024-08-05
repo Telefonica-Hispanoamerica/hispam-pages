@@ -1,5 +1,5 @@
-import { DivPlanCardContent } from "../CustomBlocksTelefonica/Cards/PlanCard";
-import { DivPlanCardFeatContent } from "../CustomBlocksTelefonica/Cards/PlanCardFeature";
+import { DivPlanCardContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCard";
+import { DivPlanCardFeatContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature";
 
 export const component = `
 <body>
