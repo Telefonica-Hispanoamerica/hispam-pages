@@ -557,11 +557,14 @@ export const DivPlanCardContent = `
 
 function PlanCard(editor: any) {
 	const script = function() {
+		const id = crypto.randomUUID();
 		console.log('the element JS');
+		console.log("IDDDDD 2", id);
 
-		const handleChange = (index: string) => {
-			const labels = document.getElementById(`toggleLabel${index}`) as HTMLInputElement;
-			const toggle = document.getElementById(`toggle${index}`) as HTMLInputElement;
+		const labels = document.getElementById(`toggleLabel${id}`) as HTMLInputElement;
+		const toggle = document.getElementById(`toggle${id}`) as HTMLInputElement;
+
+		const handleChange = (index: string) => {			
 			if (!toggle.checked) {
 				console.log("UNCHECKED", labels)
 				labels.innerHTML = "Ocultar detalles";
@@ -571,8 +574,11 @@ function PlanCard(editor: any) {
 			}
 		};
 
+		
 		// Attach event listeners for each toggle
-		(document.getElementById('toggle'+id) as HTMLInputElement).addEventListener('change', () => handleChange(id));
+		if(toggle){
+			(document.getElementById('toggle'+id) as HTMLInputElement).addEventListener('change', () => handleChange(id));
+		}		
 	};
 	
 	// Define a new custom component

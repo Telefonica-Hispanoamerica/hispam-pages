@@ -7,7 +7,7 @@ import TopbarButtons from '../TopbarButtons'
 import LogoUxHispam from '../../assets/logo-uxhispam.svg'
 import './topbar.scss';
 import JSZip from 'jszip';
-import { PageContext } from '../../hooks/pageSlice';
+import { PageContext, Tag } from '../../hooks/pageSlice';
 import GlobalCSS from '../../../public/styles/global-styles.css?inline';
 //Icons
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
@@ -18,13 +18,15 @@ interface TopbarProps {
 
 const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 
-	const { metaDescription } = useContext(PageContext);
+	const { metaDescription, tagsKeywords } = useContext(PageContext);
 
-	console.log("editorContext----", editorParamaters)
-
-	const exportPage = async (meta: string) => {
+	const exportPage = async (meta: string, keywords: Tag[]) => {
 		if(editorParamaters) {
-			console.log("------------ttttttttttttttt")
+			const tagsAdded: string[] = [];
+			keywords.forEach((tagg: { tag: string }) => {
+				tagsAdded.push(tagg.tag);
+				tagsAdded.join(", ")
+			})
 			const zip = new JSZip();
 			
 			const fontPaths = [
@@ -114,6 +116,7 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 					<head>
 						<meta charset="utf-8">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+						<meta name="keywords" content="${tagsAdded}">
 						<meta name="description" content="${meta}" />
 						<link rel="stylesheet" href="./global-styles.css">
 						<link rel="stylesheet" href="./styles.css">
@@ -169,7 +172,7 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 				<WithEditor>
 					<div className='top-bar'>
 						<TopbarButtons></TopbarButtons>						
-							<a className='export-btn' onClick={() => exportPage(metaDescription)}>
+							<a className='export-btn' onClick={() => exportPage(metaDescription, tagsKeywords)}>
 								<FileDownloadOutlinedIcon />
 								Exportar HTML
 							</a>					

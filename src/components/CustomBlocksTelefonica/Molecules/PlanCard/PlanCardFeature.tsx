@@ -607,6 +607,7 @@ function PlanCardFeature(editor: any) {
 			}
 		};
 
+		console.log("IDDDDD", id);
 		// Attach event listeners for each toggle
 		(document.getElementById('toggle'+id) as HTMLInputElement).addEventListener('change', () => handleChange(id));
 	};

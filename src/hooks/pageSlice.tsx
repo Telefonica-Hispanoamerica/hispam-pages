@@ -8,12 +8,20 @@ interface Item {
     component: string;
 }
 
+export interface Tag {
+    id: string;
+    tag: string
+}
+
 interface ContextValue {
     items: Item[];
     removeItem: (id: number) => void;
     addItem: (item: Item) => void;
     metaDescription: string;
     addMetaDescription: (meta: string) => void;
+    tagsKeywords: Tag[],
+    addTagsKeywords: (tag: Tag) => void;
+    removeTagKeyword: (id: string) => void;
     pageIdSelected: string;
     getPageIdSelected: (pageId: string) => void;
     editorContext: Editor | null;
@@ -26,6 +34,9 @@ const PageContext = createContext<ContextValue>({
     addItem: () => {},
     metaDescription: '',
     addMetaDescription: () => {},
+    tagsKeywords: [],
+    addTagsKeywords: () => {},
+    removeTagKeyword: () => {},
     pageIdSelected: '',
     getPageIdSelected: () => {},
     editorContext: null,
@@ -36,7 +47,8 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     const [ items, setItems ] = useState<Item[]>([]);
     const [ metaDescription, setMetaDescription ] = useState<string>('');
     const [ pageIdSelected, setPageIdSelected ] = useState<string>('');
-    const [ editorContext, setEditorContext ] = useState<Editor | null>(null);   
+    const [ editorContext, setEditorContext ] = useState<Editor | null>(null);
+    const [ tagsKeywords, setTagsKeywords ] = useState<Tag[]>([]);
 
     useEffect(() => {
         async function fetchMyAPI() {
@@ -101,12 +113,23 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
         setEditorContext(editor);
     }
 
+    const addTagsKeywords = (tag: Tag) => {
+        setTagsKeywords((prevTags) => [...prevTags, tag]);
+    }
+
+    const removeTagKeyword = (id: string) => {
+        setTagsKeywords((prevTags) => prevTags.filter((tag) => tag.id !== id ))
+    }
+
     const value: ContextValue = {
         items,
         removeItem,
         addItem,
         metaDescription,
         addMetaDescription,
+        tagsKeywords,
+        addTagsKeywords,
+        removeTagKeyword,
         pageIdSelected,
         getPageIdSelected,
         editorContext,

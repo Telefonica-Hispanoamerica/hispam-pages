@@ -19,7 +19,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
-import { PageContext } from '../../hooks/pageSlice';
+import { PageContext, Tag } from '../../hooks/pageSlice';
 
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import QueueIcon from '@mui/icons-material/Queue';
@@ -33,10 +33,10 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 
 const RightSidebar: React.FC = () =>{
 
-	const { addMetaDescription } = useContext(PageContext);
+	const { addMetaDescription, addTagsKeywords, removeTagKeyword, tagsKeywords } = useContext(PageContext);
 	const [ value, setValue ] = useState('1');
 	//Tags keywords
-	const [ tags, setTags ] = useState<string[]>([]);
+	//const [ tags, setTags ] = useState<string[]>([]);
 	const [ tagInput, setTagInput ] = useState<string>('');
 
 	//Meta description
@@ -48,21 +48,22 @@ const RightSidebar: React.FC = () =>{
 	};
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log("E", event)
 		setTagInput(event.target.value);
 	}
 
-	const handleAddTag = () => {
+	const handleAddTag = () => {		
 		if(tagInput.trim() !== '') {
-			setTags([...tags, tagInput.trim()]);
-			setTagInput('');
-		}
+			//setTags([...tags, tagInput.trim()]);			
+			const tagAdd: Tag = {
+				id: crypto.randomUUID(),
+				tag: tagInput
+			}
+			addTagsKeywords(tagAdd);
+		}		
 	}
 
-	const handleRemoveTag = (index: number) => {
-		const newTags = [...tags];
-		newTags.splice(index, 1);
-		setTags(newTags)
+	const handleRemoveTag = (index: string) => {
+		removeTagKeyword(index)
 	}
 
 	const handleMetaDesc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -70,7 +71,6 @@ const RightSidebar: React.FC = () =>{
 	}
 
 	const handleAddMetaDesc = () => {
-		console.log("MetaDesc", metaDesc);
 		addMetaDescription(metaDesc);
 	}
 
@@ -143,31 +143,36 @@ const RightSidebar: React.FC = () =>{
 							{value === '3' && (
 								<>
 									<div className="tags">
-										<input 
-											type="text"
-											value={tagInput}
-											onChange={handleInputChange}
-											placeholder="Escribe un tag"
-										/>
-										<a onClick={handleAddTag} >Agregar tag</a>
+										<h4 className="title-meta">Agregar keywords</h4>
+										<div className="box-tags">
+											<input 
+												type="text"
+												value={tagInput}
+												onChange={handleInputChange}
+												placeholder="Escribe un tag"
+												className="input-forms-hispam-page"
+											/>
+											<a onClick={handleAddTag} className="btn-primary-hispam-page">Agregar tag</a>
+										</div>										
 									</div>
 									<div className="tags-container">
-										{tags.map((tag: any, index) => (
+										{tagsKeywords.map((tag: any, index) => (
 											<span className="tag" key={index}>
-												{tag}
-												<button onClick={() => handleRemoveTag(index)}>x</button>
+												{tag.tag}
+												<button onClick={() => handleRemoveTag(tag.id)} className="close">x</button>
 											</span>
 										))}
 									</div>
-									<hr />
+									<hr className="separate" />
 									<div className="meta-description-field">
+										<h4 className="title-meta">Agregar Descripción</h4>
 										<textarea 
 											value={metaDesc}
 											onChange={handleMetaDesc}
 											name="textarea" 
 											rows={5} 
 										>Escribe una meta descripción</textarea>
-										<a onClick={handleAddMetaDesc}>Meta descripción</a>
+										<a onClick={handleAddMetaDesc} className="btn-primary-hispam-page">Meta descripción</a>
 									</div>
 								</>								
 							)}

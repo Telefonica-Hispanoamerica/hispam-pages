@@ -189,3 +189,41 @@ body {
 		}
 	}
 }
+
+//Inputs
+.input-forms-hispam-page {
+	border-radius: 4px;
+    border: none;
+    border: 1px solid #ccc;
+    padding: 6px;
+	&:focus {
+		border: 1px solid #1976d2;
+	}
+	&:focus-visible {
+		border: 1px solid #1976d2;
+	}
+}
+textarea {
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	padding: 6px;
+}
+
+//Buttons
+.btn-primary-hispam-page {
+	display: flex;
+    align-items: center;
+    font-size: 12px;
+    border: 1px solid #1976d2;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background-color: #1976d2;
+    color: #fff;
+    cursor: pointer;
+	margin: 0;
+	justify-content: center;
+	&:hover {
+		color: #fff;
+	}
+}

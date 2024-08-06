@@ -40,15 +40,73 @@
         .MuiTabPanel-root {
             padding: 16px 8px;
             max-width: 100%;
+            .title-meta {
+                font-size: 13px;
+                font-weight: 600;
+                color:#313235;
+                margin-bottom: 8px;
+            }
+            .separate {
+                border: 1px solid #EEEEEE;
+                margin: 16px auto;
+            }
             .tags {
-
+                display: flex;
+                flex-direction: column;
+                .box-tags {
+                    display: grid;
+                    grid-template-columns: 60% 37%;
+                    grid-gap: 8px;
+                    align-items: center;
+                    .input-forms-hispam-page {
+                        height: 36px;
+                    }
+                    .btn-primary-hispam-page{
+                        height: 36px;
+                    }
+                }                
             }
             .tags-container {
-
+                display: flex;
+                grid-gap: 4px;
+                flex-direction: row;
+                align-items: center;
+                margin: 8px auto;
+                display: flex;
+                flex-wrap: wrap;
+                .tag {
+                    padding: 6px 0 6px 6px;
+                    color: #fff;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    background-color: #E63780;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    -ms-border-radius: 4px;
+                    -o-border-radius: 4px;
+                    height: 28px;
+                    display: flex;
+                    align-items: center;
+                    .close {
+                        background-color: transparent;
+                        padding: 8px 10px 8px 16px;
+                        color: #fff;
+                        font-size: 14px;
+                        &:hover {
+                            border-color: transparent;
+                        }
+                        &:focus {
+                            outline: none;
+                        }
+                        &:focus-visible {
+                            outline: none;
+                        }
+                    }
+                }
             }
-            .meta-description-field{
-                textarea {
-                    width: 100%;
+            .meta-description-field {
+                .btn-primary-hispam-page {
+                    height: 36px;
                 }
             }
         }
