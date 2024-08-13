@@ -28,20 +28,14 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 				tagsAdded.join(", ")
 			})
 			const zip = new JSZip();
-			
+
 			const fontPaths = [
-				'/fonts/Telefonica-Light.eot',
-				'/fonts/Telefonica-Light.woff',
-				'/fonts/Telefonica-Light.woff2',
-				'/fonts/Telefonica-Light.ttf',
-				'/fonts/Telefonica-Regular.eot',
-				'/fonts/Telefonica-Regular.woff',
-				'/fonts/Telefonica-Regular.woff2',
-				'/fonts/Telefonica-Regular.ttf',
-				'/fonts/Telefonica-Bold.eot',
-				'/fonts/Telefonica-Bold.woff',
-				'/fonts/Telefonica-Bold.woff2',
-				'/fonts/Telefonica-Bold.ttf'
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-light-webfont.woff',
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-light-webfont.woff2',
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-regular-webfont.woff',
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-regular-webfont.woff2',
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-bold-webfont.woff',
+				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-bold-webfont.woff2'
 			];
 
 			const fontFiles = await Promise.all(

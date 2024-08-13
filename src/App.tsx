@@ -41,7 +41,7 @@ import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/Numb
 // import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
 // import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
 import ValuePrep4xCenter from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
-import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
+// import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
 // import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 // import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteSmall';
@@ -177,7 +177,7 @@ function App() {
 		canvas: {
 			styles: [
 				'styles/global-styles.css',
-				'hispam-pages/css-kenos/roboto.css',
+				'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap',
 				'hispam-pages/fonts/fonts.css'
 			],
 			scripts: []
@@ -372,16 +372,16 @@ function App() {
 						NumberListKenos,
 						TextWrappingKenos,
 						// Molecules,
+						HeroImageCompleteBig,
+						iHeroImageCompleteSmall,
+						ImageCompleteBigCenter,
 						ValuePrepLeft,
 						ValuePrepCenter,
 						CardLight,
 						PlanCardFeature,
 						PlanCard,
 						TabsCardPlan,						
-						CardHeroRightLight,
-						HeroImageCompleteBig,
-						iHeroImageCompleteSmall,
-						ImageCompleteBigCenter,
+						CardHeroRightLight,						
 						//Template
 						ValuePrep4xLeft,
 						ValuePrep4xCenter,

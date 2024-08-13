@@ -1,22 +1,6 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 const div = `
 	<style>
-	@font-face {
-		font-family: "Telefonica-Regular";
-		src: url("https://www.movistar.com.co/assets/fonts_movistar/Telefonica-Regular.woff2") format("woff2"), url("https://www.movistar.com.co/assets/fonts_movistar/Telefonica-Regular.woff2") format("woff");
-		font-weight: 400;
-		font-style: normal;
-		font-display: swap;
-	}
-	body {
-		font-family: "Telefonica-Regular", sans-serif;
-		font-size: 16px;
-		line-height: 24px;
-		margin: 0;
-	}
-	p {
-		margin: 0;
-	}
 	.pretitle-vp {
 		font-family: Roboto;
 		font-weight: 400;

@@ -564,7 +564,8 @@ function PlanCard(editor: any) {
 		const labels = document.getElementById(`toggleLabel${id}`) as HTMLInputElement;
 		const toggle = document.getElementById(`toggle${id}`) as HTMLInputElement;
 
-		const handleChange = (index: string) => {			
+		const handleChange = (index: string) => {
+			console.log("INDEX", index)
 			if (!toggle.checked) {
 				console.log("UNCHECKED", labels)
 				labels.innerHTML = "Ocultar detalles";

@@ -15,48 +15,27 @@ export function cx(...inputs: any[]): string {
 
 export const fontsTelefonica = `
 @font-face {
-    font-family: 'Telefonica-Light';
-    src: url('fonts/Telefonica-Light.eot');
-    src:    url('fonts/Telefonica-Light.eot?#iefix') format('embedded-opentype'), 
-            url('fonts/Telefonica-Light.woff') format('woff'),
-            url('fonts/Telefonica-Light.woff2') format('woff2'),
-            url('fonts/Telefonica-Light.ttf') format('truetype');
-    font-weight: 300;
+    font-family: 'Telefonica-Regular';
+    src: url('fonts/telefonica-regular-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-regular-webfont.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Telefonica-Regular';
-    src: url('fonts/Telefonica-Regular.eot');
-    src:    url('fonts/Telefonica-Regular.eot?#iefix') format('embedded-opentype'), 
-            url('fonts/Telefonica-Regular.woff') format('woff'),
-            url('fonts/Telefonica-Regular.woff2') format('woff2'),
-            url('fonts/Telefonica-Regular.ttf') format('truetype');
-    font-weight: 400;
+    font-family: 'Telefonica-Light';
+    src: url('fonts/telefonica-light-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-light-webfont.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
     font-family: 'Telefonica-Bold';
-    src: url('fonts/Telefonica-Bold.eot');
-    src:    url('fonts/Telefonica-Bold.eot?#iefix') format('embedded-opentype'), 
-            url('fonts/Telefonica-Bold.woff') format('woff'),
-            url('fonts/Telefonica-Bold.woff2') format('woff2'),
-            url('fonts/Telefonica-Bold.ttf') format('truetype');
-    font-weight: 600;
+    src: url('fonts/telefonica-bold-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-bold-webfont.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Telefonica-Medium';
-    src: url("/fonts/Telefonica_Sans_Medium.woff2") format("woff2"), 
-            url("/fonts/Telefonica-Sans-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
 }
 
 `
