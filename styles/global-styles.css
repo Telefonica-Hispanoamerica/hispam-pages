@@ -2,6 +2,14 @@ body {
     margin: 0 auto;
     font-family: 'Telefonica-Regular', sans-serif;
 }
+h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcaption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
 .gjs-row-kenos {
     max-width: 1200px;
     margin: 0 auto;
