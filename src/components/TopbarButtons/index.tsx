@@ -32,18 +32,18 @@ function TopbarButtons () {
 			iconPath: <FullscreenOutlinedIcon />,
 			options: { target: '#root' }
         },
-        // {
-		// 	id: 'core:open-code',
-		// 	iconPath: <CodeOutlined />
-        // },
+        {
+			id: 'core:open-code',
+			iconPath: <CodeIcon />
+        },
         // {
 		// 	id: 'export-template',
 		// 	iconPath: <CodeOutlined />
         // },
-        {
-			id: 'save-export',
-			iconPath: <CodeIcon />,
-        },
+        // {
+		// 	id: 'save-export',
+		// 	iconPath: <CodeIcon />,
+        // },
         // {
 		// 	id: 'export',
 		// 	iconPath: <CodeOutlined />

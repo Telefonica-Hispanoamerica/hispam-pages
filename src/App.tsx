@@ -40,7 +40,7 @@ import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/Numb
 // import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft3Col';
 // import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
 // import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
-import ValuePrep4xCenter from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
+import ValuePrep4xCenter from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xCenter';
 // import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
 // import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
 // import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
@@ -56,13 +56,13 @@ import { PageContext } from './hooks/pageSlice';
 import HeroImageCompleteBig from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBig';
 // import CardLight3Col from './components/CustomBlocksTelefonica/Cards/Card/CardLight3Col';
 import CardLight from './components/CustomBlocksTelefonica/Others/Card/CardLight';
-import TabsCardPlan from './components/CustomBlocksTelefonica/Templates/Tabs/TabsCardPlan';
+import TabsCardPlan from './components/CustomBlocksTelefonica/Organisms/Tabs/TabsCardPlan';
 import ValuePrepLeft from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepLeft';
 import ValuePrepCenter from './components/CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepCenter';
 import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
 import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature';
 import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
-import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xLeft';
+import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xLeft';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -219,8 +219,8 @@ function App() {
 
 				try {
 					//https://hispam-pages-backend.onrender.com/
-					const response = await axios.post('http://localhost:3000/upload', formData, {
-					//const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
+					//const response = await axios.post('http://localhost:3000/upload', formData, {
+					const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
 						headers: {
 							'Content-Type': 'multipart/form-data',
 						},
@@ -241,6 +241,9 @@ function App() {
 				}
 			},
 		},
+		cssComposer: {
+			// options
+		}
 	};	
 
 	const onEditor = (editor: Editor) => {		
@@ -271,7 +274,94 @@ function App() {
 			editor.runCommand('core:component-outline');			
 		});
 
-		
+		editor.on('component:remove', function(component) {
+			// Remover CSS
+			let css: any = editor.getCss();
+			let selector = component.getSelectorsString();
+			let regex = new RegExp(`${selector}\\s*{[^}]*}`, 'g');
+			css = css.replace(regex, '');
+			editor.setStyle(css);
+
+			// Remover HTML
+			let html = editor.getHtml();
+			let componentHtml = component.toHTML();
+			// html = html.replace(html, '');
+			//editor.setComponents(componentHtml);
+
+			//editor.setHtml(html);
+
+			// Remover JS
+			let js = editor.getJs();
+			let componentId = component.getId();
+			let jsRegex = new RegExp(`[\\s\\S]*?// Component: ${componentId}[\\s\\S]*?// End Component: ${componentId}`, 'g');
+			js = js.replace(jsRegex, '');
+			//editor.setJs(js);
+		});
+
+		// editor.Commands.add('clear-html', () => editor.DomComponents.clear() );
+
+		// const cssRule = editor.Css.setRule('.class1', { color: 'red' }, {
+		// 	atRuleType: 'media',
+		// 	atRuleParams: '(min-width: 500px)'
+		// });
+		// cssRule.getAtRule(); // "@media (min-width: 500px)"
+
+		// editor.Components.addType('text', {
+		// 	isComponent: el => el.tagName === 'text',
+		// 	model: {
+		// 	  defaults: {
+		// 		traits: [
+		// 		  // Strings are automatically converted to text types
+		// 		  'name', // Same as: { type: 'text', name: 'name' }
+		// 		  'placeholder',
+		// 		  {
+		// 			type: 'select', // Type of the trait
+		// 			name: 'type', // (required) The name of the attribute/property to use on component
+		// 			label: 'Type', // The label you will see in Settings
+		// 			options: [
+		// 			  { id: 'text', label: 'Text'},
+		// 			  { id: 'email', label: 'Email'},
+		// 			  { id: 'password', label: 'Password'},
+		// 			  { id: 'number', label: 'Number'},
+		// 			]
+		// 		  }, {
+		// 			type: 'checkbox',
+		// 			name: 'required',
+		// 		}],
+		// 		// As by default, traits are bound to attributes, so to define
+		// 		// their initial value we can use attributes
+		// 		attributes: { type: 'text', required: true },
+		// 	  },
+		// 	},
+		// });
+
+		// editor.Components.addType('image', {
+		// 	isComponent: el => el.tagName === 'image',
+		// 	model: {
+		// 	  	defaults: {
+		// 			traits: {
+		// 				// The trait `name` property is used as a key
+		// 				labels: {
+		// 				  	href: 'Href label',
+		// 				},
+		// 				// For built-in traits, like `text` type, these are used on input DOM attributes
+		// 				attributes: {
+		// 				  	href: { placeholder: 'eg. https://google.com' },
+		// 				},
+		// 				// For `select` types, these are used to translate option labels
+		// 				options: {
+		// 					target: {
+		// 						// Here the key is the `id` of the option
+		// 						_blank: 'New window',
+		// 					},
+		// 				},
+		// 			},
+		// 			// As by default, traits are bound to attributes, so to define
+		// 			// their initial value we can use attributes
+		// 		attributes: { type: 'text', required: true },
+		// 	  },
+		// 	},
+		// });
 
 		editor.Commands.add(commandName, {
 			

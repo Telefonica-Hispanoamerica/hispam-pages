@@ -1,4 +1,5 @@
 import { useEditor } from '@grapesjs/react';
+
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
@@ -20,10 +21,12 @@ export default function TraitPropertyField({
 }: StylePropertyFieldProps) {
     const editor = useEditor();
     const handleChange = (value: string) => {
+        console.log("handleChange", value )
         trait.setValue(value);
     };
 
     const onChange = (ev: any) => {
+        console.log("ON CHANGE", ev )
         handleChange(ev.target.value);
     };
 
@@ -51,6 +54,8 @@ export default function TraitPropertyField({
         />
     );
 
+    console.log("PROPERTIES 1", trait)
+    console.log("PROPERTIES TYPE", [type, defValue, value, valueWithDef])
     switch (type) {
         case 'select':
         {
@@ -115,7 +120,7 @@ export default function TraitPropertyField({
     {
         inputToRender = (
             <Button fullWidth onClick={handleButtonClick}>
-            {trait.getLabel()}
+                {trait.getLabel()}
             </Button>
         );
     }

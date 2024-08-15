@@ -55,12 +55,12 @@ body {
 
 .layout-editor-wrapper {
   	display: grid;
-	grid-template-columns: 85% 15%;
+	grid-template-columns: 82% 18%;
 	height: 100%;
 	overflow-y: hidden;
-	// @media(min-width: 1720px) {
-	// 	grid-template-columns: 70% 15%;
-	// }
+	@media(min-width: 1720px) {
+		grid-template-columns: 85% 15%;
+	}
 }
 
 .gjs-row {
@@ -218,7 +218,7 @@ textarea {
     align-items: center;
     font-size: 12px;
     border: 1px solid #1976d2;
-    padding: 2px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     background-color: #1976d2;
     color: #fff;

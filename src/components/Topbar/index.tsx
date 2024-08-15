@@ -11,6 +11,7 @@ import { PageContext, Tag } from '../../hooks/pageSlice';
 import GlobalCSS from '../../../public/styles/global-styles.css?inline';
 //Icons
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 interface TopbarProps {
 	editorParamaters: Editor;
@@ -141,6 +142,9 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 	return (
 		<div className="top-sidebar">
 			<div>
+				<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image" />
+			</div>
+			<div>
 				<DevicesProvider>
 					{({ selected, select, devices }) => (
 						<Select 
@@ -158,18 +162,36 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 						</Select>
 					)}
 				</DevicesProvider>
-			</div>
+			</div>			
 			<div>
-				<img src={LogoUxHispam} alt="Logo UX Hispam" className="logo-image" />
-			</div>
-			<div>
+				{/* <DevicesProvider>
+					{({ selected, select, devices }) => (
+						<Select 
+							value={selected} 
+							onChange={(ev) => select(ev.target.value)}
+							labelId="demo-select-small-label"
+							id="demo-select-small"
+							sx={{ m: 1, minWidth: 150 }}
+						>
+							{devices.map((device) => (
+								<MenuItem value={device.id} key={device.id}>
+								{device.getName()}
+								</MenuItem>
+							))}
+						</Select>
+					)}
+				</DevicesProvider> */}
 				<WithEditor>
 					<div className='top-bar'>
 						<TopbarButtons></TopbarButtons>						
-							<a className='export-btn' onClick={() => exportPage(metaDescription, tagsKeywords)}>
-								<FileDownloadOutlinedIcon />
-								Exportar HTML
-							</a>					
+						<a className='export-btn' onClick={() => exportPage(metaDescription, tagsKeywords)}>
+							<FileDownloadOutlinedIcon />
+							Exportar HTML
+						</a>
+						<a className='export-btn' href="https://squoosh.app/" target="_blank">
+							<AddPhotoAlternateIcon />
+							Optimizar imagen
+						</a>	
 					</div>					
 				</WithEditor>
 			</div>

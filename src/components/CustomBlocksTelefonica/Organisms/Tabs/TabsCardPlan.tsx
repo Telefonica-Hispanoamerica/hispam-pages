@@ -179,7 +179,7 @@ function TabsCardPlan(editor: any) {
 		editable: true,
 		activate: true,
 		content: div,
-		category: 'Templates',
+		category: 'Organismos',
 		media: iconsSvg.heroTabs,
 		attributes: { class: 'custom-block' },
 	});

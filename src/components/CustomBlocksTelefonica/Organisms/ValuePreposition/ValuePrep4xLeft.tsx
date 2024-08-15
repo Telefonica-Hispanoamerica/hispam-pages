@@ -210,7 +210,7 @@ function ValuePrep4xLeft(editor: any) {
 		label: 'Icono izquierda',
 		activate: true,
 		content: div,
-		category: 'Templates',
+		category: 'Organismos',
 		media: iconsSvg.header2ColAnd3ColValueP,
 		attributes: { class: 'custom-block' },
 	});

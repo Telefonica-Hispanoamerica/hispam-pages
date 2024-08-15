@@ -239,7 +239,7 @@ function ValuePrep4xCenter(editor: any) {
 		label: 'Template VP Center',
 		activate: true,
 		content: div,
-		category: 'Templates',
+		category: 'Organismos',
 		media: iconsSvg.headerLeftAnd2ColValueP,
 		attributes: { class: 'custom-block' },
 	});

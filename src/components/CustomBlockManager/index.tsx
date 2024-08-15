@@ -28,10 +28,12 @@ export default function CustomBlockManager({
                                 onDragStart={(ev) => dragStart(block, ev.nativeEvent)}
                                 onDragEnd={() => dragStop(false)}
                             >
-                                <div
-                                    className="image-size"
-                                    dangerouslySetInnerHTML={{ __html: block.getMedia()! }}
-                                />
+                                { block.getMedia() && (
+                                    <div
+                                        className="image-size"
+                                        dangerouslySetInnerHTML={{ __html: block.getMedia()! }}
+                                    />
+                                )}
                                 <div
                                     className={category == "Value Prepositions Dark" ? 'text-size dark' : 'text-size'}
                                     title={block.getLabel()}
