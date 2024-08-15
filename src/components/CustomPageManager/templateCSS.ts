@@ -849,12 +849,6 @@ export const styles = `
       margin-bottom:0px;
       margin-left:0px;
    }
-   .ptb-80{
-      padding-top:32px;
-      padding-right:16px;
-      padding-bottom:32px;
-      padding-left:16px;
-   }
    .title-section-vp-light{
       margin-top:0px;
       margin-right:auto;

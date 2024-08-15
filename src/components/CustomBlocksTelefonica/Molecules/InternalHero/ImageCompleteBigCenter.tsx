@@ -172,9 +172,6 @@ export const StyleImageCompleteBigCenter = `
 	.brand-low {
 		background-color: #E6F5FD;
 	}
-	.ptb-80 {
-		padding: 80px 0;
-	}
 	.p-relative-hero-center {
 		position: relative;
 		overflow: hidden;
@@ -193,11 +190,6 @@ export const StyleImageCompleteBigCenter = `
 		transform: translate(-50%, -50%);
 		top: 50%;
 		left: 50%;
-	}
-	@media (max-width: 767px) {
-		.ptb-80 {
-			padding: 32px 16px;
-		}
 	}
 	</style>`
 

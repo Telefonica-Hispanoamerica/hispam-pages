@@ -283,19 +283,18 @@ function App() {
 			editor.setStyle(css);
 
 			// Remover HTML
-			let html = editor.getHtml();
+			let html: any = editor.getHtml();
 			let componentHtml = component.toHTML();
-			// html = html.replace(html, '');
-			//editor.setComponents(componentHtml);
-
-			//editor.setHtml(html);
 
 			// Remover JS
-			let js = editor.getJs();
+			let js: any = editor.getJs();
 			let componentId = component.getId();
 			let jsRegex = new RegExp(`[\\s\\S]*?// Component: ${componentId}[\\s\\S]*?// End Component: ${componentId}`, 'g');
 			js = js.replace(jsRegex, '');
-			//editor.setJs(js);
+		});
+
+		editor.on('component:update', function(component) {
+            console.log("Component UPDATE", component)
 		});
 
 		// editor.Commands.add('clear-html', () => editor.DomComponents.clear() );

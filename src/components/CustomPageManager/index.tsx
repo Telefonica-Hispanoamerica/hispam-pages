@@ -1,4 +1,5 @@
-import { useContext, useState } from "react"
+import { useEditor } from '@grapesjs/react';
+import { useContext, useState } from "react";
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,7 +31,7 @@ export default function CustomPageManager({
     select,
     remove,
 }: PagesResultProps) {
-
+    const editor = useEditor();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const { getPageIdSelected, removeItem } = useContext(PageContext);
     const [ open, setOpen ] = useState(true);
@@ -64,15 +65,18 @@ export default function CustomPageManager({
 
     const openPage = (page?: any) => {
         select(page);
-        setOpen(false);
+        setOpen(false);        
     }
 
-    const emptyPage = () => {
+    const emptyPage = () => {  
+        console.log("PAGE [o] empty Page", pages)
         select(pages[0]);
         setOpen(false);
+        
     }
 
     const getPageId = (page: any) => {
+        console.log("PAGE [o] getPageId", pages)
         select(page)
     }
 
