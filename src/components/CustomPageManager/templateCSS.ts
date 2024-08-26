@@ -4,29 +4,7 @@ import { StylePlanCardContent } from "../CustomBlocksTelefonica/Molecules/PlanCa
 import { StylePlanCardFeatContent } from "../CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature";
 import { StyleValuePrepCenter } from "../CustomBlocksTelefonica/Molecules/ValuePreposition/valuePrepCenter";
 export const styles = `
-.title-section-vp-light{
-   font-family:Telefonica-Regular, sans-serif;
-   font-size:2.5rem;
-   line-height:48px;
-   color:rgb(49, 50, 53);
-   margin-top:0px;
-   margin-right:auto;
-   margin-bottom:16px;
-   margin-left:auto;
-   text-align:center;
-}
-.description-vp-light{
-   font-family:Roboto;
-   font-weight:400;
-   font-size:1.125rem;
-   line-height:24px;
-   color:rgb(115, 117, 120);
-   margin-top:0px;
-   margin-right:auto;
-   margin-bottom:0px;
-   margin-left:auto;
-   text-align:center;
-}
+
 .bg-light{
    background-color:rgb(255, 255, 255);
 }
@@ -188,21 +166,6 @@ export const styles = `
 }
 .mt-64{
    margin-top:64px !important;
-}
-.p-relative-hero-center{
-   position:relative;
-   overflow-x:hidden;
-   overflow-y:hidden;
-   max-height:524px;
-   display:flex;
-   align-items:center;
-   background-color:rgb(0, 0, 0);
-}
-.p-absolute-hero-center{
-   position:absolute;
-   transform:translate(-50%, -50%);
-   top:50%;
-   left:50%;
 }
 .card-hero-left-d{
    margin-top:0px;
@@ -735,9 +698,6 @@ export const styles = `
     font-style: normal;
 }
 @media (max-width: 768px){
-   .p-relative-hero{
-      height:400px;
-   }
    .card{
       margin-bottom:24px;
    }
@@ -748,138 +708,7 @@ export const styles = `
       margin-top:32px !important;
    }
 }
-@media (max-width: 767px){
-   .section-hero{
-      background-color:rgb(0, 0, 0);
-   }
-   .image-hero{
-      width:100%;
-      aspect-ratio:1 / 2;
-      object-fit:cover;
-   }
-   .gradient-hero{
-      width:100%;
-      border-top-width:initial;
-      border-right-width:initial;
-      border-bottom-width:initial;
-      border-left-width:initial;
-      border-top-style:none;
-      border-right-style:none;
-      border-bottom-style:none;
-      border-left-style:none;
-      border-top-color:initial;
-      border-right-color:initial;
-      border-bottom-color:initial;
-      border-left-color:initial;
-      border-image-source:initial;
-      border-image-slice:initial;
-      border-image-width:initial;
-      border-image-outset:initial;
-      border-image-repeat:initial;
-      height:400px;
-      background-image:none;
-      background-position-x:initial;
-      background-position-y:initial;
-      background-size:initial;
-      background-repeat:initial;
-      background-attachment:initial;
-      background-origin:initial;
-      background-clip:initial;
-      background-color:initial;
-      background-color: rgba(0,0,0, .7)
-   }
-   .hero-image-complete{
-      display:flex;
-      flex-direction:column;
-      padding-top:24px;
-      padding-right:24px;
-      padding-bottom:24px;
-      padding-left:24px;
-      border-top-width:initial;
-      border-right-width:initial;
-      border-bottom-width:initial;
-      border-left-width:initial;
-      border-top-style:none;
-      border-right-style:none;
-      border-bottom-style:none;
-      border-left-style:none;
-      border-top-color:initial;
-      border-right-color:initial;
-      border-bottom-color:initial;
-      border-left-color:initial;
-      border-image-source:initial;
-      border-image-slice:initial;
-      border-image-width:initial;
-      border-image-outset:initial;
-      border-image-repeat:initial;
-      row-gap:initial;
-   }
-   .hero-image-complete .content{
-      order:2;
-   }
-   .hero-image-complete .content .title{
-      font-size:1.5rem;
-      line-height:32px;
-   }
-   .hero-image-complete .content .description{
-      font-size:1rem;
-      line-height:24px;
-   }
-   .hero-image-complete .content ul li{
-      font-size:1rem;
-      line-height:24px;
-   }
-   .hero-image-complete .img-content{
-      order:1;
-   }
-   .hero-image-complete .button-group .link-button{
-      margin-top:16px;
-      margin-right:0px;
-      margin-bottom:0px;
-      margin-left:0px;
-      font-size:0.875rem;
-   }
-   .hero-image-complete .button-group .primary-button{
-      padding-top:12px;
-      padding-right:8px;
-      padding-bottom:12px;
-      padding-left:8px;
-      margin-top:16px;
-      margin-right:0px;
-      margin-bottom:0px;
-      margin-left:0px;
-   }
-   .title-section-vp-light{
-      margin-top:0px;
-      margin-right:auto;
-      margin-bottom:16px;
-      margin-left:auto;
-      font-size:1.75rem;
-      line-height:36px;
-   }
-   .description-vp-light{
-      font-size:1rem;
-      line-height:24px;
-      margin-bottom:32px;
-   }
-   .card-vp-img-light{
-      margin-top:0px;
-      margin-right:auto;
-      margin-bottom:24px;
-      margin-left:auto;
-   }
-   .card-vp-img-light .title{
-      font-size:1.125rem;
-      line-height:24px;
-   }
-   .card-vp-img-light .description{
-      font-size:0.875rem;
-      line-height:20px;
-   }
-   .card-vp-img-light .text-link{
-      font-size:0.875rem;
-      line-height:20px;
-   }
+@media (max-width: 767px){ 
    .title-section-vp{
       margin-top:0px;
       margin-right:auto;
@@ -916,69 +745,6 @@ export const styles = `
    .card-dark-left .button-group .primary-button{
       font-size:0.875rem;
       line-height:20px;
-   }
-   .image-hero-big-center{
-      width:100%;
-      aspect-ratio:1 / 2;
-      object-fit:cover;
-   }
-   .hero-image-complete-center{
-      padding-top:24px;
-      padding-right:24px;
-      padding-bottom:24px;
-      padding-left:24px;
-      border-top-width:initial;
-      border-right-width:initial;
-      border-bottom-width:initial;
-      border-left-width:initial;
-      border-top-style:none;
-      border-right-style:none;
-      border-bottom-style:none;
-      border-left-style:none;
-      border-top-color:initial;
-      border-right-color:initial;
-      border-bottom-color:initial;
-      border-left-color:initial;
-      border-image-source:initial;
-      border-image-slice:initial;
-      border-image-width:initial;
-      border-image-outset:initial;
-      border-image-repeat:initial;
-   }
-   .hero-image-complete-center .content{
-      order:2;
-   }
-   .hero-image-complete-center .content .title{
-      font-size:1.5rem;
-      line-height:32px;
-   }
-   .hero-image-complete-center .content .description{
-      font-size:1rem;
-      line-height:24px;
-   }
-   .hero-image-complete-center .content ul li{
-      font-size:1rem;
-      line-height:24px;
-   }
-   .hero-image-complete-center .img-content{
-      order:1;
-   }
-   .hero-image-complete-center .button-group .link-button{
-      margin-top:16px;
-      margin-right:0px;
-      margin-bottom:0px;
-      margin-left:0px;
-      font-size:0.875rem;
-   }
-   .hero-image-complete-center .button-group .primary-button{
-      padding-top:12px;
-      padding-right:8px;
-      padding-bottom:12px;
-      padding-left:8px;
-      margin-top:16px;
-      margin-right:0px;
-      margin-bottom:0px;
-      margin-left:0px;
    }
    .card-hero-left-d{
       display:flex;

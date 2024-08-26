@@ -131,9 +131,9 @@ export const StyleValuePrepCenter = `
 	}	
 	</style>`
 export const DivValuePrepCenter = `
-	<div class="card-vp-img-light">					
+	<div class="card-vp-img-light">
 		<div class="box-img">
-			<img src="" />
+			<img src="images/template-telefonica/icon-light-blue.svg" alt="" />
 		</div>        
 		<div class="title roboto-regular">Block Title</div>
 		<div class="description roboto-regular">This sample description is being used as a placeholder for real text.</div>

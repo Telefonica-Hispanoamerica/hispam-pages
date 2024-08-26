@@ -32,6 +32,7 @@ export const StyleiHeroImageCompleteSmall = `
 			border: none;
 			height: 400px;
 			background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+			display: none;
 		}
 	}
 	.hero-image-complete-small {
@@ -214,7 +215,7 @@ export const StyleiHeroImageCompleteSmall = `
 	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
-		<img class='image-hero-small' src="" alt=''/>
+		<img class='image-hero-small' src="images/template-telefonica/hero.webp" alt=''/>
 		<div class='gjs-row-kenos p-absolute-hero'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-small">

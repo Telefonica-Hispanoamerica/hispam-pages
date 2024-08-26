@@ -63,6 +63,7 @@ import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
 import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature';
 import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
 import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xLeft';
+import { Height } from '@mui/icons-material';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -170,10 +171,10 @@ function App() {
 		},
 		modal: { custom: true },
 		fromElement: true,
-		storageManager: {
-			type: 'local',
-		},
-        // storageManager: { autoload: 0 },
+		// storageManager: {
+		// 	type: 'local',
+		// },
+        storageManager: { autoload: false },
 		canvas: {
 			styles: [
 				'styles/global-styles.css',
@@ -305,14 +306,190 @@ function App() {
 		// });
 		// cssRule.getAtRule(); // "@media (min-width: 500px)"
 
-		// editor.Components.addType('text', {
-		// 	isComponent: el => el.tagName === 'text',
+
+		//https://grapesjs.com/docs/modules/Components.html#built-in-component-types
+
+		const svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 24 24" style="fill: rgba(0,0,0,0.15); transform: scale(0.75)"';
+
+		// editor.Components.addType('image', {
+		// 	isComponent: el => el.tagName === 'IMG',
+		// 	model: {
+		// 		defaults: {
+		// 			traits: [
+		// 				// Text inputs
+		// 				'alt',
+		// 				'width',
+		// 				'height',
+		// 				{
+		// 					type: 'text',
+		// 					name: 'custom-title',
+		// 					label: 'Title', // Label shown in trait manager
+		// 					placeholder: 'Add a title', // Placeholder text
+		// 				},
+		// 				{
+		// 					type: 'checkbox',
+		// 					name: 'full-width',
+		// 					label: 'Full Width', // Adds a checkbox trait
+		// 				},
+		// 				{
+		// 					type: 'select',
+		// 					name: 'alignment',
+		// 					label: 'Alignment',
+		// 					options: [
+		// 						{ id: 'left', name: 'Left' },
+		// 						{ id: 'center', name: 'Center' },
+		// 						{ id: 'right', name: 'Right' },
+		// 					],
+		// 				}
+		// 			],
+		// 			// Attributes are bound to component HTML attributes
+		// 			attributes: {
+		// 				alt: 'default-image',
+		// 				width: '500px',
+		// 				height: '500px',
+		// 				'custom-title': '',
+		// 				'full-width': false,
+		// 				'alignment': 'center',
+		// 			},
+		// 			// Can define new properties for the component model
+		// 			customProperty: 'customValue',
+		// 		},
+		// 		// If you need to react to changes in traits or attributes, use the following function
+		// 		init() {
+		// 			this.on('change:traits:custom-title', this.customFunction);
+		// 		},
+		// 		customFunction() {
+		// 			console.log('Custom function triggered');
+		// 		},
+		// 	},
+		// });
+
+
+		
+		
+		editor.Components.addType('responsive-image', {
+			isComponent: el => el.tagName === 'IMG',
+			model: {
+				defaults: {
+					traits: [
+						{
+							type: 'text',
+							name: 'src',
+							label: 'Default Image',
+						},
+						{
+							type: 'text',
+							name: 'srcset-desktop',
+							label: 'Desktop',
+							placeholder: 'URL for desktop version',
+						},
+						{
+							type: 'text',
+							name: 'srcset-mobile',
+							label: 'Mobile',
+							placeholder: 'URL for mobile version',
+						},
+						{
+							type: 'text',
+							name: 'sizes',
+							label: 'Sizes',
+							placeholder: '(max-width: 767px) 100vw, 50vw', // Example sizes attribute
+						},
+						{
+							type: 'text',
+							name: 'sizes',
+							label: 'Sizes',
+							placeholder: '(max-width: 767px) 100vw, 50vw', // Example sizes attribute
+						},
+						{
+							type: 'text',
+							name: 'width',
+							label: 'Width',
+							placeholder: 'auto', // Example sizes attribute
+						},
+						{
+							type: 'text',
+							name: 'height',
+							label: 'Height',
+							placeholder: 'auto', // Example sizes attribute
+						},
+					],
+					attributes: {
+						src: '',
+						'srcset-desktop': '',
+						'srcset-mobile': '',
+						sizes: '',
+						width: '',
+						height: '',
+					},
+				},
+				init() {
+					this.on('change:attributes:src change:attributes:srcset-desktop change:attributes:srcset-mobile change:attributes:sizes device:change', this.updateSrcset);
+				},
+			  	updateSrcset() {
+					//debugger
+					const attributes = this.get('attributes');
+			
+					if (!attributes) return; // Verifica que attributes no sea undefined
+			
+					const src = attributes.src || '';
+					const srcsetDesktop = attributes['srcset-desktop'] || '';
+					const srcsetMobile = attributes['srcset-mobile'] || '';
+					const sizes = attributes.sizes || '';
+					const width = attributes.width || ''; // Ancho de la imagen
+					const height = attributes.height || ''; // Altura de la imagen
+			
+					// Construir el atributo srcset
+					let srcset = '';
+			
+					if (srcsetMobile) {
+						srcset += `${srcsetMobile} 767w, `;
+					}
+					if (srcsetDesktop) {
+						srcset += `${srcsetDesktop} 768w`;
+					}
+			
+					// Actualizar los atributos del modelo del componente
+					this.set('attributes', {
+						...attributes,
+						srcset,
+						sizes,
+						src, // Imagen por defecto
+						width,         // Actualizar el ancho de la imagen
+						height,        // Actualizar la altura de la imagen
+					});
+			
+					// Actualizar el elemento en el canvas de GrapesJS
+					if (this.view) {
+						this.view.el.setAttribute('srcset', srcset);
+						this.view.el.setAttribute('sizes', sizes);
+						this.view.el.setAttribute('src', src);
+						// Solo establecer width y height si están definidos
+						if (width) {
+							this.view.el.setAttribute('width', width);
+						}
+						if (height) {
+							this.view.el.setAttribute('height', height);
+						}	
+						this.trigger('change:attributes');				
+					}
+				},
+			},
+		  });
+
+		  
+
+
+		// editor.Components.addType('image', {
+		// 	isComponent: el => el.tagName === 'image',
 		// 	model: {
 		// 	  defaults: {
 		// 		traits: [
 		// 		  // Strings are automatically converted to text types
 		// 		  'name', // Same as: { type: 'text', name: 'name' }
 		// 		  'placeholder',
+		// 		  'width',
+		// 		  'height',
 		// 		  {
 		// 			type: 'select', // Type of the trait
 		// 			name: 'type', // (required) The name of the attribute/property to use on component
@@ -329,13 +506,20 @@ function App() {
 		// 		}],
 		// 		// As by default, traits are bound to attributes, so to define
 		// 		// their initial value we can use attributes
-		// 		attributes: { type: 'text', required: true },
+		// 		//attributes: { type: 'text', required: true },
+		// 		attributes: { // Default attributes
+		// 			type: 'text',
+		// 			name: 'default-name',
+		// 			placeholder: 'Insert text here',
+		// 			width: 500,
+		// 			height: 500,
+		// 		},
 		// 	  },
 		// 	},
 		// });
 
-		// editor.Components.addType('image', {
-		// 	isComponent: el => el.tagName === 'image',
+		// editor.Components.addType('img', {
+		// 	isComponent: el => el.tagName === 'img',
 		// 	model: {
 		// 	  	defaults: {
 		// 			traits: {
@@ -486,7 +670,11 @@ function App() {
 						{
 							id: 'grapesjs-tabs',
 							src: 'https://unpkg.com/grapesjs-tabs',
-						}
+						},
+						// {
+						// 	id: 'grapesjs-preset-webpage',
+						// 	src: 'https://unpkg.com/grapesjs-preset-webpage'
+						// }						
 					]}
 				>
 					<div className={'layout-editor-wrapper'}>

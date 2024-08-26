@@ -12,17 +12,23 @@ export const StyleHeroImageCompleteBig = `
 	}
 	.image-hero{
 		width: 100%;
-		min-height: 524px;
+		//min-height: 524px;
 		// aspect-ratio: 16 / 9;
 		// object-fit: cover;
 		// transform: translate(0, -16%);
 	}
-	@media (max-width: 767px) {
+	/*@media (max-width: 767px) {
 		.image-hero {
 			width: 100%;
 			aspect-ratio: 1 / 2;
 			object-fit: cover;
 			opcity: 0.4;
+		}
+	}*/
+	@media (max-width: 767px) {
+		.image-hero {
+			width: 100%;
+			object-fit: fill;
 		}
 	}
 	.gradient-hero {
@@ -74,8 +80,7 @@ export const StyleHeroImageCompleteBig = `
 		border-radius:4px;
 		padding: 4px 4px 3px 4px;
 		margin-bottom: 8px;
-		color: 
-		#019BEF;
+		color: #019BEF;
 		font-size: 0.875rem;
 		width: fit-content;
 		backgroud-color: #E6F5FD;
