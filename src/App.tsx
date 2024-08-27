@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react'
-import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
+import grapesjs, { Editor, EditorConfig, PluginOptions, Component } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
@@ -74,6 +74,16 @@ import { Height } from '@mui/icons-material';
 //     component: string;
 // }
 
+interface CustomComponent extends Component {
+	updateImage: () => void;
+  }
+  
+  interface Device {
+	name?: string;
+	type?: string;
+	widthMedia?: number;
+  }
+
 declare var google: {
 	accounts: {
 		oauth2: any;
@@ -115,6 +125,7 @@ function App() {
 	} = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
 	const currentPageIdRef = useRef('');
+	const [ device, setDevice ] = useState<string>('')
 
 	currentPageIdRef.current = pageIdSelected;
 
@@ -274,6 +285,7 @@ function App() {
 		editor.on('load', function() {
 			editor.runCommand('core:component-outline');			
 		});
+		
 
 		editor.on('component:remove', function(component) {
 			// Remover CSS
@@ -297,185 +309,248 @@ function App() {
 		editor.on('component:update', function(component) {
             console.log("Component UPDATE", component)
 		});
-
-		// editor.Commands.add('clear-html', () => editor.DomComponents.clear() );
-
-		// const cssRule = editor.Css.setRule('.class1', { color: 'red' }, {
-		// 	atRuleType: 'media',
-		// 	atRuleParams: '(min-width: 500px)'
-		// });
-		// cssRule.getAtRule(); // "@media (min-width: 500px)"
-
-
-		//https://grapesjs.com/docs/modules/Components.html#built-in-component-types
-
-		const svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 24 24" style="fill: rgba(0,0,0,0.15); transform: scale(0.75)"';
-
-		// editor.Components.addType('image', {
-		// 	isComponent: el => el.tagName === 'IMG',
-		// 	model: {
-		// 		defaults: {
-		// 			traits: [
-		// 				// Text inputs
-		// 				'alt',
-		// 				'width',
-		// 				'height',
-		// 				{
-		// 					type: 'text',
-		// 					name: 'custom-title',
-		// 					label: 'Title', // Label shown in trait manager
-		// 					placeholder: 'Add a title', // Placeholder text
-		// 				},
-		// 				{
-		// 					type: 'checkbox',
-		// 					name: 'full-width',
-		// 					label: 'Full Width', // Adds a checkbox trait
-		// 				},
-		// 				{
-		// 					type: 'select',
-		// 					name: 'alignment',
-		// 					label: 'Alignment',
-		// 					options: [
-		// 						{ id: 'left', name: 'Left' },
-		// 						{ id: 'center', name: 'Center' },
-		// 						{ id: 'right', name: 'Right' },
-		// 					],
-		// 				}
-		// 			],
-		// 			// Attributes are bound to component HTML attributes
-		// 			attributes: {
-		// 				alt: 'default-image',
-		// 				width: '500px',
-		// 				height: '500px',
-		// 				'custom-title': '',
-		// 				'full-width': false,
-		// 				'alignment': 'center',
-		// 			},
-		// 			// Can define new properties for the component model
-		// 			customProperty: 'customValue',
-		// 		},
-		// 		// If you need to react to changes in traits or attributes, use the following function
-		// 		init() {
-		// 			this.on('change:traits:custom-title', this.customFunction);
-		// 		},
-		// 		customFunction() {
-		// 			console.log('Custom function triggered');
-		// 		},
-		// 	},
-		// });
-
-
 		
-		
-		editor.Components.addType('responsive-image', {
+
+		// Definir un nuevo tipo de componente 'image'		
+		editor.Components.addType('image', {
 			isComponent: el => el.tagName === 'IMG',
 			model: {
-				defaults: {
-					traits: [
-						{
-							type: 'text',
-							name: 'src',
-							label: 'Default Image',
-						},
-						{
-							type: 'text',
-							name: 'srcset-desktop',
-							label: 'Desktop',
-							placeholder: 'URL for desktop version',
-						},
-						{
-							type: 'text',
-							name: 'srcset-mobile',
-							label: 'Mobile',
-							placeholder: 'URL for mobile version',
-						},
-						{
-							type: 'text',
-							name: 'sizes',
-							label: 'Sizes',
-							placeholder: '(max-width: 767px) 100vw, 50vw', // Example sizes attribute
-						},
-						{
-							type: 'text',
-							name: 'sizes',
-							label: 'Sizes',
-							placeholder: '(max-width: 767px) 100vw, 50vw', // Example sizes attribute
-						},
-						{
-							type: 'text',
-							name: 'width',
-							label: 'Width',
-							placeholder: 'auto', // Example sizes attribute
-						},
-						{
-							type: 'text',
-							name: 'height',
-							label: 'Height',
-							placeholder: 'auto', // Example sizes attribute
-						},
-					],
-					attributes: {
-						src: '',
-						'srcset-desktop': '',
-						'srcset-mobile': '',
-						sizes: '',
-						width: '',
-						height: '',
-					},
+			defaults: {
+				traits: [
+					// {
+					// 	type: 'text', // Tipo de trait para almacenar la URL de la imagen
+					// 	name: 'src',
+					// 	label: 'Imagen URL',
+					// 	changeProp: true,
+					// 	command: 'upload-image',
+					// 	// Personalizar el trait para incluir un botón para cargar archivos
+					// 	// onChange() {
+					// 	//   // No hace falta lógica aquí, se manejará en el evento de carga de archivo
+					// 	// }
+					//   },
+					//   {
+					// 	type: 'button', // Botón para abrir el explorador de archivos
+					// 	label: 'Cargar Imagen',
+					// 	command: 'upload-image', // Comando que se ejecuta al hacer clic
+					//   },
+					'src',
+					'srcset-desktop',
+					'srcset-mobile',
+					'alt',
+					'width',
+					'height',
+					'loading'
+				],
+				attributes: {
+					src: '',
+					//src: 'file',
+					'srcset-desktop': '',
+					'srcset-mobile': '',
+					alt: '',
+					width: 'auto',
+					height: 'auto',
+					loading: 'lazy'
 				},
-				init() {
-					this.on('change:attributes:src change:attributes:srcset-desktop change:attributes:srcset-mobile change:attributes:sizes device:change', this.updateSrcset);
-				},
-			  	updateSrcset() {
-					//debugger
+			},
+			// Definir el método dentro del modelo del componente
+			init() {
+				// Definir el método updateSrcset dentro del modelo
+				this.updateSrcset = function() {
+					console.log("UPDATE SRCSET ------>")
 					const attributes = this.get('attributes');
-			
-					if (!attributes) return; // Verifica que attributes no sea undefined
+					if (!attributes) return;
 			
 					const src = attributes.src || '';
 					const srcsetDesktop = attributes['srcset-desktop'] || '';
 					const srcsetMobile = attributes['srcset-mobile'] || '';
-					const sizes = attributes.sizes || '';
-					const width = attributes.width || ''; // Ancho de la imagen
-					const height = attributes.height || ''; // Altura de la imagen
-			
-					// Construir el atributo srcset
+					const width = attributes.width || '';
+					const height = attributes.height || '';
+					const loading = attributes.loading || '';
+					
+					const currentDevice = editor.getDevice() as string | Device;
+
 					let srcset = '';
-			
-					if (srcsetMobile) {
+					// if (srcsetMobile) {
+					// 	srcset += `${srcsetMobile} 767w, `;
+					// }
+					// if (srcsetDesktop) {
+					// 	srcset += `${srcsetDesktop} 768w`;
+					// }
+
+					if(currentDevice == 'mobilePortrait') {
 						srcset += `${srcsetMobile} 767w, `;
-					}
-					if (srcsetDesktop) {
+					} else {
 						srcset += `${srcsetDesktop} 768w`;
 					}
+
+					console.log("srcset---- IMG", srcset)
 			
-					// Actualizar los atributos del modelo del componente
-					this.set('attributes', {
-						...attributes,
-						srcset,
-						sizes,
-						src, // Imagen por defecto
-						width,         // Actualizar el ancho de la imagen
-						height,        // Actualizar la altura de la imagen
+					const sizes = "(max-width: 767px) 300px, (max-width: 768px) 1200px, 1400px";
+			
+					// Actualizar atributos del modelo del componente
+					this.set({
+						'srcset': srcset,
+						'sizes': sizes,
+						'src': src,
+						'width': width,
+						'height': height,
+						'loading': loading
 					});
 			
-					// Actualizar el elemento en el canvas de GrapesJS
+					// Actualizar el DOM directamente
 					if (this.view) {
-						this.view.el.setAttribute('srcset', srcset);
-						this.view.el.setAttribute('sizes', sizes);
-						this.view.el.setAttribute('src', src);
-						// Solo establecer width y height si están definidos
-						if (width) {
-							this.view.el.setAttribute('width', width);
+						const el = this.view.el;
+						el.setAttribute('srcset', srcset);
+						el.setAttribute('sizes', sizes);
+						el.setAttribute('src', src);
+						if (width) el.setAttribute('width', width);
+						if (height) el.setAttribute('height', height);
+						if (height) el.setAttribute('loading', loading);
+					}					
+				};
+			},
+			},
+		});
+
+		editor.Commands.add('upload-image', {						
+			run(editor) {
+				console.log("RUN UPLOAD")
+				const fileInput: any = document.createElement('input');
+				fileInput.type = 'file';
+				fileInput.accept = 'image/*';
+				fileInput.style.display = 'none';
+		
+				fileInput.addEventListener('change', async  function() {
+					const file = fileInput.files[0];
+					if (file) {
+					const reader = new FileReader();
+					reader.onload = async function(e: any) {
+						// const imgComponent: any = editor.getSelected();
+						// console.log("imgComponent 1", imgComponent)
+						console.log("imgComponent 2", e)
+						// if (imgComponent) {
+						// 	imgComponent.set('attributes', { src: e.target.result, srcset: e.target.result });
+						// 	imgComponent.view.el.src = e.target.result; // Actualiza el src en el canvas
+						// }
+						e.preventDefault();
+						const files = e.dataTransfer ? e.dataTransfer.files : e.target.result;
+						console.log("files", files)
+						const pageId = currentPageIdRef.current;
+
+						if (!files || !files.length) {
+							console.error('No files found in the event');
+							return;
 						}
-						if (height) {
-							this.view.el.setAttribute('height', height);
-						}	
-						this.trigger('change:attributes');				
+			
+						const formData = new FormData();
+						formData.append('pageId', pageId);
+						for (let i = 0; i < files.length; i++) {
+							formData.append('files[]', files[i], files[i].name);
+						}
+
+						try {
+							//https://hispam-pages-backend.onrender.com/
+							//const response = await axios.post('http://localhost:3000/upload', formData, {
+							const response = await axios.post('https://hispam-pages-backend.onrender.com/upload', formData, {
+								headers: {
+									'Content-Type': 'multipart/form-data',
+								},
+							});
+				
+							const data = response.data;
+				
+							if (data && Array.isArray(data)) {
+								data.forEach((file: { url: string }) => {
+									// const assetManager =  grapesjs.editors[0].editor.attributes.AssetManager
+									// assetManager.add({ src: file.url });
+									const imgComponent: any = editor.getSelected();
+									console.log("imgComponent 1", imgComponent)
+									console.log("imgComponent 2", e)
+									if (imgComponent) {
+										imgComponent.set('attributes', { src: file.url, srcset: file.url });
+										imgComponent.view.el.src = file.url; // Actualiza el src en el canvas
+									}
+								});
+							} else {
+								console.error('Invalid response from server:', data);
+							}
+						} catch (error) {
+							console.error('Error uploading file:', error);
+						}
+					};					
+					reader.readAsDataURL(file);
 					}
+				});
+
+				console.log("READR----", fileInput)
+		
+				document.body.appendChild(fileInput);
+				fileInput.click();
+				document.body.removeChild(fileInput);
+			}
+		});
+		
+		// Función para actualizar los componentes existentes
+		function updateAllComponentsSrcset(editor: any) {
+			// Obtener todos los componentes
+			const components = editor.getWrapper().findType('image');  // Actualizado para encontrar solo componentes de tipo 'image'
+  
+			components.forEach((component: any) => {
+				// Verificar si el componente tiene el método 'updateSrcset' y es del tipo correcto
+				if (typeof component.updateSrcset === 'function') {
+					component.updateSrcset();
+				}
+			});
+		}		  
+		
+		editor.on('change:device', () => {
+			console.log('CHANGE DEVICE');
+			updateAllComponentsSrcset(editor);
+			editor.runCommand('canvas:spot:update');
+		});
+
+		editor.Components.addType('button', {
+			isComponent: el => el.tagName === 'A',			
+			model: {
+			defaults: {
+				traits: [
+					'title',
+					'href',
+					{
+						type: 'select', // Type of the trait
+						name: 'target', // (required) The name of the attribute/property to use on component
+						label: 'Target', // The label you will see in Settings
+						options: [
+							{ id: '_blank', label: 'blank'},
+							{ id: '_parent', label: '_parent'},
+							{ id: '_self', label: '_self'},
+							{ id: '_top', label: '_top'},
+						]
+					},
+					{
+						type: 'select',
+						label: 'rel',
+          				name: 'rel',
+						options: [
+							{ id: 'noopener_noreferrer', name: 'noopener noreferrer' },
+							{ id: 'nofollow', name: 'nofollow' },
+						  ],
+						changeProp: true
+					}
+					//'rel',
+				],
+				attributes: {
+					title: '',
+					href: '',
+					target: '',
+					rel: ''
 				},
 			},
-		  });
+			// Definir el método dentro del modelo del componente
+				
+			},
+		});
+	
 
 		  
 
