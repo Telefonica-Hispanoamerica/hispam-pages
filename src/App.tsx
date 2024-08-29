@@ -64,6 +64,9 @@ import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanC
 import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
 import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xLeft';
 import { Height } from '@mui/icons-material';
+import primaryButton from './components/CustomBlocksTelefonica/Molecules/Buttons/PrimaryButton';
+import HeroCard from './components/CustomBlocksTelefonica/Organisms/Hero/HeroCard';
+import TabsHero from './components/CustomBlocksTelefonica/Organisms/Tabs/TabsHero';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -255,6 +258,51 @@ function App() {
 		},
 		cssComposer: {
 			// options
+		},
+		styleManager: {
+			sectors: [
+			  {
+				name: 'General',
+				open: true,
+				buildProps: ['float', 'display', 'position', 'top', 'right', 'left', 'bottom'],
+				properties: [
+				  {
+					name: 'Display',
+					property: 'display',
+					type: 'select',
+					defaults: 'block',
+					list: [
+					  { value: 'block', name: 'Block' },
+					  { value: 'inline', name: 'Inline' },
+					  { value: 'flex', name: 'Flex' },
+					  { value: 'grid', name: 'Grid' },
+					  { value: 'inline-block', name: 'Inline Block' },
+					  { value: 'none', name: 'None' },
+					  { value: 'inline-flex', name: 'Inline Flex' },
+					],
+				  },
+				],
+			  },
+			  // Puedes añadir más sectores si necesitas más propiedades
+			],
+		  },
+		  deviceManager: {
+			devices: [
+				{
+					name: 'Desktop',
+					width: '', // un valor vacío significa no tener restricciones de ancho
+				},
+				{
+					name: 'Tablet',
+					width: '768px', // Cambia el valor del ancho según el tamaño del dispositivo
+					widthMedia: '768px' // Media query para el dispositivo Tablet
+				},
+				{
+					name: 'Mobile',
+					width: '320px',
+					widthMedia: '757px' // Media query para el dispositivo Móvil
+				}
+			]
 		}
 	};	
 
@@ -287,128 +335,273 @@ function App() {
 		});
 		
 
-		editor.on('component:remove', function(component) {
-			// Remover CSS
-			let css: any = editor.getCss();
-			let selector = component.getSelectorsString();
-			let regex = new RegExp(`${selector}\\s*{[^}]*}`, 'g');
-			css = css.replace(regex, '');
-			editor.setStyle(css);
+		// editor.on('component:remove', function(component) {
+		// 	// Remover CSS
+		// 	let css: any = editor.getCss();
+		// 	let selector = component.getSelectorsString();
+		// 	let regex = new RegExp(`${selector}\\s*{[^}]*}`, 'g');
+		// 	css = css.replace(regex, '');
+		// 	editor.setStyle(css);
 
-			// Remover HTML
-			let html: any = editor.getHtml();
-			let componentHtml = component.toHTML();
+		// 	// Remover HTML
+		// 	let html: any = editor.getHtml();
+		// 	let componentHtml = component.toHTML();
 
-			// Remover JS
-			let js: any = editor.getJs();
-			let componentId = component.getId();
-			let jsRegex = new RegExp(`[\\s\\S]*?// Component: ${componentId}[\\s\\S]*?// End Component: ${componentId}`, 'g');
-			js = js.replace(jsRegex, '');
-		});
+		// 	// Remover JS
+		// 	let js: any = editor.getJs();
+		// 	let componentId = component.getId();
+		// 	let jsRegex = new RegExp(`[\\s\\S]*?// Component: ${componentId}[\\s\\S]*?// End Component: ${componentId}`, 'g');
+		// 	js = js.replace(jsRegex, '');
+		// });
 
 		editor.on('component:update', function(component) {
             console.log("Component UPDATE", component)
-		});
-		
+		});	
 
-		// Definir un nuevo tipo de componente 'image'		
+		editor.on('component:selected', (model) => {
+			const selected = editor.getSelected();
+			if (selected) {
+			  	const styleManager = editor.StyleManager;
+			  	styleManager.addSector('responsive', {
+					name: 'Responsive',
+					open: true,
+					buildProps: ['display', 'padding'],
+					properties: [
+						{
+							property: 'width',
+							type: 'number',
+							units: ['px', '%'],
+							defaults: 'auto',
+							min: 0,
+						},
+						{
+							property: 'margin',
+							type: 'composite',
+							properties: [
+								{ name: 'Top', property: 'margin-top' },
+								{ name: 'Right', property: 'margin-right' },
+								{ name: 'Bottom', property: 'margin-bottom' },
+								{ name: 'Left', property: 'margin-left' },
+							],
+						},
+						{
+							name: 'Display',  // Título de la propiedad en el panel de estilos
+							property: 'display',  // Propiedad CSS
+							type: 'select',  // Tipo de input (en este caso, un select)
+							defaults: 'block',  // Valor por defecto
+							list: [
+								{ value: 'block', name: 'Block' },
+								{ value: 'inline', name: 'Inline' },
+								{ value: 'flex', name: 'Flex' },
+								{ value: 'grid', name: 'Grid' },
+								{ value: 'inline-block', name: 'Inline Block' },
+								{ value: 'none', name: 'None' },
+								{ value: 'inline-flex', name: 'Inline Flex' },
+							  // Añadir más opciones si es necesario
+							],
+						  },
+						{
+							name: 'Flex Direction',
+							property: 'flex-direction',
+							type: 'select',
+							defaults: 'row',
+							list: [
+								{ value: 'row', name: 'Row' },
+								{ value: 'row-reverse', name: 'Row Reverse' },
+								{ value: 'column', name: 'Column' },
+								{ value: 'column-reverse', name: 'Column Reverse' },
+							],
+						},
+						{
+							name: 'Align Items',
+							property: 'align-items',
+							type: 'select',
+							defaults: 'center',
+							list: [
+								{ value: 'flex-start', name: 'Start' },
+								{ value: 'center', name: 'Center' },
+								{ value: 'flex-end', name: 'End' },
+								{ value: 'stretch', name: 'Stretch' },
+								{ value: 'baseline', name: 'Baseline' },
+							],
+						},
+						{
+							name: 'Justify Content',
+							property: 'justify-content',
+							type: 'select',
+							defaults: 'center',
+							list: [
+								{ value: 'flex-start', name: 'Start' },
+								{ value: 'center', name: 'Center' },
+								{ value: 'flex-end', name: 'End' },
+								{ value: 'space-between', name: 'Space Between' },
+								{ value: 'space-around', name: 'Space Around' },
+								{ value: 'space-evenly', name: 'Space Evenly' },
+							],
+						},
+						{
+							name: 'Flex Wrap',
+							property: 'flex-wrap',
+							type: 'select',
+							defaults: 'nowrap',
+							list: [
+								{ value: 'nowrap', name: 'No Wrap' },
+								{ value: 'wrap', name: 'Wrap' },
+								{ value: 'wrap-reverse', name: 'Wrap Reverse' },
+							],
+						},
+						{
+							name: 'Align Content',
+							property: 'align-content',
+							type: 'select',
+							defaults: 'stretch',
+							list: [
+								{ value: 'flex-start', name: 'Start' },
+								{ value: 'center', name: 'Center' },
+								{ value: 'flex-end', name: 'End' },
+								{ value: 'space-between', name: 'Space Between' },
+								{ value: 'space-around', name: 'Space Around' },
+								{ value: 'stretch', name: 'Stretch' },
+							],
+						},
+						{
+							name: 'Padding',  // Nombre que aparecerá en el panel de estilos
+							property: 'padding',  // Propiedad CSS
+							type: 'composite',  // Tipo de control compuesto
+							properties: [  // Define sub-propiedades para cada lado del padding
+								{
+									name: 'Top',
+									property: 'padding-top',
+									type: 'number',  // Tipo de input (número)
+									units: ['px', 'em', '%'],  // Unidades disponibles
+									defaults: '0',  // Valor por defecto
+									min: 0,  // Valor mínimo
+								},
+								{
+									name: 'Right',
+									property: 'padding-right',
+									type: 'number',
+									units: ['px', 'em', '%'],
+									defaults: '0',
+									min: 0,
+								},
+								{
+									name: 'Bottom',
+									property: 'padding-bottom',
+									type: 'number',
+									units: ['px', 'em', '%'],
+									defaults: '0',
+									min: 0,
+								},
+								{
+									name: 'Left',
+									property: 'padding-left',
+									type: 'number',
+									units: ['px', 'em', '%'],
+									defaults: '0',
+									min: 0,
+								},
+							],
+						},
+					],
+			  	});
+			}
+		});
+
+		editor.CssComposer.setRule('@media (max-width: 767px)', {
+			'.gjs-cell-kenos': {
+			  	'font-size': '12px',
+			 	'width': '100%',
+				'display': 'block',
+				'height': '100%',
+				'margin': '0 0 16px',
+				'vertical-align': 'top'
+			},
+		 });
+	
 		editor.Components.addType('image', {
 			isComponent: el => el.tagName === 'IMG',
 			model: {
-			defaults: {
-				traits: [
-					// {
-					// 	type: 'text', // Tipo de trait para almacenar la URL de la imagen
-					// 	name: 'src',
-					// 	label: 'Imagen URL',
-					// 	changeProp: true,
-					// 	command: 'upload-image',
-					// 	// Personalizar el trait para incluir un botón para cargar archivos
-					// 	// onChange() {
-					// 	//   // No hace falta lógica aquí, se manejará en el evento de carga de archivo
-					// 	// }
-					//   },
-					//   {
-					// 	type: 'button', // Botón para abrir el explorador de archivos
-					// 	label: 'Cargar Imagen',
-					// 	command: 'upload-image', // Comando que se ejecuta al hacer clic
-					//   },
-					'src',
-					'srcset-desktop',
-					'srcset-mobile',
-					'alt',
-					'width',
-					'height',
-					'loading'
-				],
-				attributes: {
-					src: '',
-					//src: 'file',
-					'srcset-desktop': '',
-					'srcset-mobile': '',
-					alt: '',
-					width: 'auto',
-					height: 'auto',
-					loading: 'lazy'
+				defaults: {
+					traits: [
+						'id',
+						'src',
+						'srcset-desktop',
+						'srcset-mobile',
+						'alt',
+						'width',
+						'height',
+						'loading'
+					],
+					attributes: {
+						id: '',
+						src: '',
+						'srcset-desktop': '',
+						'srcset-mobile': '',
+						alt: '',
+						width: 'auto',
+						height: 'auto',
+						loading: 'lazy'
+					},
 				},
-			},
-			// Definir el método dentro del modelo del componente
-			init() {
-				// Definir el método updateSrcset dentro del modelo
-				this.updateSrcset = function() {
-					console.log("UPDATE SRCSET ------>")
-					const attributes = this.get('attributes');
-					if (!attributes) return;
-			
-					const src = attributes.src || '';
-					const srcsetDesktop = attributes['srcset-desktop'] || '';
-					const srcsetMobile = attributes['srcset-mobile'] || '';
-					const width = attributes.width || '';
-					const height = attributes.height || '';
-					const loading = attributes.loading || '';
+				init() {
+					this.updateSrcset = function() {
+						const attributes = this.get('attributes');
+						if (!attributes) return;
+				
+						const id = attributes.id || '';
+						const src = attributes.src || '';
+						const srcsetDesktop = attributes['srcset-desktop'] || '';
+						const srcsetMobile = attributes['srcset-mobile'] || '';
+						const width = attributes.width || '';
+						const height = attributes.height || '';
+						const loading = attributes.loading || '';
+						
+						const currentDevice = editor.getDevice() as string | Device;
+
+						let srcset = '';
+						// if (srcsetMobile) {
+						// 	srcset += `${srcsetMobile} 767w, `;
+						// }
+						// if (srcsetDesktop) {
+						// 	srcset += `${srcsetDesktop} 768w`;
+						// }
+
+						if(currentDevice == 'mobilePortrait' && srcsetMobile) {
+							srcset += `${srcsetMobile} 767w, `;
+						} else {
+							srcset += `${srcsetDesktop} 768w`;
+						}			
+						const sizes = "(max-width: 767px) 300px, (max-width: 768px) 1200px, 1400px";
+
+						if( 
+							this.get('srcset') !== srcset ||
+							this.get('sizes') !== sizes ||
+							this.get('src') !== src
+						) {
+							this.set({
+								'id': id,
+								'srcset': srcset,
+								'sizes': sizes,
+								'src': src,
+								'width': width,
+								'height': height,
+								'loading': loading
+							});
 					
-					const currentDevice = editor.getDevice() as string | Device;
-
-					let srcset = '';
-					// if (srcsetMobile) {
-					// 	srcset += `${srcsetMobile} 767w, `;
-					// }
-					// if (srcsetDesktop) {
-					// 	srcset += `${srcsetDesktop} 768w`;
-					// }
-
-					if(currentDevice == 'mobilePortrait') {
-						srcset += `${srcsetMobile} 767w, `;
-					} else {
-						srcset += `${srcsetDesktop} 768w`;
-					}
-
-					console.log("srcset---- IMG", srcset)
-			
-					const sizes = "(max-width: 767px) 300px, (max-width: 768px) 1200px, 1400px";
-			
-					// Actualizar atributos del modelo del componente
-					this.set({
-						'srcset': srcset,
-						'sizes': sizes,
-						'src': src,
-						'width': width,
-						'height': height,
-						'loading': loading
-					});
-			
-					// Actualizar el DOM directamente
-					if (this.view) {
-						const el = this.view.el;
-						el.setAttribute('srcset', srcset);
-						el.setAttribute('sizes', sizes);
-						el.setAttribute('src', src);
-						if (width) el.setAttribute('width', width);
-						if (height) el.setAttribute('height', height);
-						if (height) el.setAttribute('loading', loading);
-					}					
-				};
-			},
+							if (this.view) {
+								const el = this.view.el;
+								el.setAttribute('id', id);
+								el.setAttribute('srcset', srcset);
+								el.setAttribute('sizes', sizes);
+								el.setAttribute('src', src);
+								if (width) el.setAttribute('width', width);
+								if (height) el.setAttribute('height', height);
+								if (height) el.setAttribute('loading', loading);
+							}
+						}				
+					};
+				},
 			},
 		});
 
@@ -481,8 +674,6 @@ function App() {
 					reader.readAsDataURL(file);
 					}
 				});
-
-				console.log("READR----", fileInput)
 		
 				document.body.appendChild(fileInput);
 				fileInput.click();
@@ -490,13 +681,10 @@ function App() {
 			}
 		});
 		
-		// Función para actualizar los componentes existentes
 		function updateAllComponentsSrcset(editor: any) {
-			// Obtener todos los componentes
-			const components = editor.getWrapper().findType('image');  // Actualizado para encontrar solo componentes de tipo 'image'
+			const components = editor.getWrapper().findType('image'); 
   
 			components.forEach((component: any) => {
-				// Verificar si el componente tiene el método 'updateSrcset' y es del tipo correcto
 				if (typeof component.updateSrcset === 'function') {
 					component.updateSrcset();
 				}
@@ -504,51 +692,158 @@ function App() {
 		}		  
 		
 		editor.on('change:device', () => {
-			console.log('CHANGE DEVICE');
 			updateAllComponentsSrcset(editor);
 			editor.runCommand('canvas:spot:update');
 		});
 
 		editor.Components.addType('button', {
-			isComponent: el => el.tagName === 'A',			
+			isComponent: el => el.tagName === 'A',
 			model: {
-			defaults: {
-				traits: [
-					'title',
-					'href',
-					{
-						type: 'select', // Type of the trait
-						name: 'target', // (required) The name of the attribute/property to use on component
-						label: 'Target', // The label you will see in Settings
-						options: [
-							{ id: '_blank', label: 'blank'},
-							{ id: '_parent', label: '_parent'},
-							{ id: '_self', label: '_self'},
-							{ id: '_top', label: '_top'},
-						]
+				defaults: {
+				  	tagName: 'a',
+				  	attributes: {
+						href: '',
+						target: '_self',
+						id: '',
+						rel: ''
 					},
-					{
-						type: 'select',
-						label: 'rel',
-          				name: 'rel',
-						options: [
-							{ id: 'noopener_noreferrer', name: 'noopener noreferrer' },
-							{ id: 'nofollow', name: 'nofollow' },
-						  ],
-						changeProp: true
+				  	traits: [
+						{
+							type: 'text', // Tipo de trait como texto
+							label: 'Contenido', // Etiqueta del trait
+							name: 'content', // Nombre del trait que coincide con el nombre de propiedad que vas a observar
+							changeProp: true, // Permite que el cambio actualice la vista
+							placeholder: 'Inserte el texto aqui'
+						},
+						{
+							type: 'text',
+							label: 'Href',
+							name: 'href'
+						},
+						{
+							type: 'select',
+							label: 'Target',
+							name: 'target',
+							options: [
+								{ value: '_self', name: 'Self' },
+								{ value: '_blank', name: 'Blank' }
+							]
+						},
+						{
+							type: 'text',
+							label: 'ID',
+							name: 'id'
+						},
+						{
+							type: 'select',
+							label: 'Rel',
+							name: 'rel',
+							options: [
+								{ value: 'noopener', name: 'Noopener' },
+								{ value: 'noreferrer', name: 'Noreferrer' },
+								{ value: 'nofollow', name: 'Nofollow' }
+							],
+							attributes: { multiple: true }
+						}
+					],
+					content: '',
+				},
+				init() {
+					this.on('change:content', this.handleContentChange); // Observa cambios en 'content'
+				  },
+				handleContentChange() {
+					const newText = this.get('content');
+					this.components(newText);
+					if(this.view) {						
+						this.view.updateContent();
 					}
-					//'rel',
-				],
-				attributes: {
-					title: '',
-					href: '',
-					target: '',
-					rel: ''
 				},
 			},
-			// Definir el método dentro del modelo del componente
+			view: {
+				updateContent() {
+					const newText = this.model.get('content'); // Obtiene el texto actualizado del modelo
+					if (typeof newText === 'string') {
+						this.el.textContent = newText; // Actualiza el texto del componente en la vista
+					}
+				}
+			}
+		});
+
+
+		editor.DomComponents.addType('text', {
+			model: {
+				defaults: {
+					tagName: 'text',
+					editable: true,
+					traits: [
+						{
+							type: 'text',
+							label: 'Contenido',
+							name: 'content',
+							changeProp: true,
+							placeholder: 'Inserte el texto aqui'
+						},
+					],
+					content: '',
+				},
+				init() {
+					this.on('change:content', this.handleContentChange); // Observa cambios en 'content'
+				  },
+				handleContentChange() {
+					const newText = this.get('content');
+					this.components(newText);
+					if(this.view) {						
+						this.view.updateContent();
+					}
+				},
 				
 			},
+			view: {
+				updateContent() {
+					const newText = this.model.get('content'); // Obtiene el texto actualizado del modelo
+					if (typeof newText === 'string') {
+						this.el.textContent = newText; // Actualiza el texto del componente en la vista
+					}
+				}
+			}
+		});
+
+		editor.Components.addType('tag-component-comp', {
+			isComponent: el => el.tagName === 'tag-component-comp',
+			model: {
+				defaults: {
+					editable: true,
+					traits: [
+						{
+							type: 'text',
+							label: 'Contenido 22222',
+							name: 'content',
+							changeProp: true,
+							placeholder: 'Inserte el texto aqui 2222'
+						}
+					],
+					content: '',
+				},
+				init() {
+					this.on('change:content', this.handleContentChange); // Observa cambios en 'content'
+				  },
+				handleContentChange() {
+					const newText = this.get('content');
+					this.components(newText);
+					if(this.view) {						
+						this.view.updateContent();
+					}
+				},
+				
+			},
+			view: {
+				updateContent() {
+					const newText = this.model.get('content'); // Obtiene el texto actualizado del modelo
+					if (typeof newText === 'string') {
+						this.el.textContent = newText; // Actualiza el texto del componente en la vista
+					}
+				}
+			}
 		});
 	
 
@@ -728,12 +1023,16 @@ function App() {
 						CardLight,
 						PlanCardFeature,
 						PlanCard,
-						TabsCardPlan,						
-						CardHeroRightLight,						
+						TabsCardPlan,
+						CardHeroRightLight,
+						primaryButton,
+						//Organism
+						HeroCard,						
 						//Template
 						ValuePrep4xLeft,
 						ValuePrep4xCenter,
 						TabsCardPlan,
+						TabsHero,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',

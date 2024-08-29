@@ -134,7 +134,6 @@ const div = `
 		line-height: 24px;
 		color: #019BEF;
 		margin: 24px auto 0;
-		-webkit-user-modify: read-write;
 		display: block;
 	}
 	@media (max-width: 767px) {

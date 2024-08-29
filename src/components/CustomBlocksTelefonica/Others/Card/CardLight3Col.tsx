@@ -161,7 +161,6 @@ const div = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 	}
 	@media (max-width: 767px) {
 		.card-light-3col .button-group .link-button {
@@ -183,7 +182,6 @@ const div = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 	}
 	@media (max-width: 767px) {
 		.card-light-3col .button-group .primary-button {
@@ -205,7 +203,7 @@ const div = `
 	.mt-64 {
 		margin-top: 64px!important;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 767px) {
 		.mt-64 {
 			margin-top: 32px!important;
 		}

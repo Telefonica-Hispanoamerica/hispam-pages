@@ -1,6 +1,13 @@
 .gjs-custom-style-manager {
     text-align: left;
-    border: 1px solid #d1d5db;
+    //border: 1px solid #d1d5db;
+    .mb-3.px-1.w-full {
+        display: grid;
+        grid-template-columns: 26% 68%;
+        align-items: center;
+        grid-gap: 16px;
+        margin-bottom: 16px;
+    }
     .MuiPaper-root {
         box-shadow: none;
         .MuiButtonBase-root {

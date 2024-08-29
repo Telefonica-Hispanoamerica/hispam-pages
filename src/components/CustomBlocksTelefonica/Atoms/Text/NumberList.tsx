@@ -8,13 +8,11 @@ const div = `
 			font-size: 18px;
 			line-height: 24px;
 			color: #86888C;	
-			-webkit-user-modify: read-write;		
 		}
 		@media (max-width: 767px) {
 			ol li {
 				font-size: 16px;
     			line-height: 24px;
-				-webkit-user-modify: read-write;
 			}
 		}
 	</style>

@@ -1,4 +1,5 @@
 import { iconsSvg } from '../IconsSvgBlocks';
+import { divTag, styleTag } from '../Molecules/Content/Tag';
 const div = `
 	<style>
 	.pretitle-vp {
@@ -77,17 +78,6 @@ const div = `
 		.card-hero-left-d .content {
 			order: 2
 		}
-	}
-	.card-hero-left-d .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius:4px;
-		padding: 4px 4px 3px 4px;
-		margin-bottom: 8px;
-		color: #019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
-		background-color: #E6F5FD;
 	}
 	.card-hero-left-d .content .pretitle {
 		font-family: Roboto;
@@ -184,7 +174,6 @@ const div = `
 		color: #fff;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -207,7 +196,6 @@ const div = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -243,17 +231,6 @@ const div = `
 		.card-hero-right-d .content {
 			order: 2
 		}
-	}
-	.card-hero-right-d .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius:4px;
-		padding: 4px 4px 3px 4px;
-		margin-bottom: 8px;
-		color: #019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
-		background-color: #E6F5FD;
 	}
 	.card-hero-right-d .content .pretitle {
 		font-family: Roboto;
@@ -350,7 +327,6 @@ const div = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -373,7 +349,6 @@ const div = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -399,7 +374,8 @@ const div = `
 	.odd-hero {
 		background: rgba(255, 255, 255, .1);
     	border-radius: 16px;
-	}	
+	}
+	${styleTag}
 	</style>
 	<section class='bg-dark ptb-80'>
 		<div class='gjs-row-kenos'>
@@ -413,7 +389,7 @@ const div = `
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-left-d">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>
@@ -433,7 +409,7 @@ const div = `
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-right-d odd-hero">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>
@@ -453,7 +429,7 @@ const div = `
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-left-d">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>
@@ -473,7 +449,7 @@ const div = `
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-right-d odd-hero">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>

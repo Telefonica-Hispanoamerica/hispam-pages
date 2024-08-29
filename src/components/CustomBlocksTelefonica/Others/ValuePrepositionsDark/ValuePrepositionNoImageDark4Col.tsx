@@ -99,9 +99,7 @@ const div = `
 		font-size: 1rem;
 		line-height: 24px;
 		color: #fff;
-		margin: 24px auto 0;
-		-webkit-user-modify: read-write;
-		
+		margin: 24px auto 0;		
 	}
 	@media (max-width: 767px) {
 		.card-vp-no-img .text-link {

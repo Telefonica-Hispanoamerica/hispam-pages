@@ -79,7 +79,6 @@ const div = `
 			text-decoration: none;
 			-webkit-user-drag: element;
 			user-select: none;
-			-webkit-user-modify: read-write;
 		}
 		.media-card .box-content .buttons .link-buttom {
 			color: #00A9E0;
@@ -94,7 +93,6 @@ const div = `
 			text-decoration: underline;
 			text-underline-offset: 5px;
     		margin-left: 16px;
-			-webkit-user-modify: read-write;
 		}		
 
 		@media (max-width: 768px) {

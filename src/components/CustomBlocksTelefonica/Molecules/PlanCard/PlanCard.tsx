@@ -110,8 +110,7 @@ export const StylePlanCardContent = `
 			border-radius: 4px;
 			position: absolute;
 			bottom: -12px;
-			text-align: center;
-			-webkit-user-modify: read-write;
+			text-align: center;			
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -133,7 +132,6 @@ export const StylePlanCardContent = `
 			color: #fff;
 			margin: 0;
 			text-align: center;
-			-webkit-user-modify: read-write;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -150,7 +148,6 @@ export const StylePlanCardContent = `
 			color: #fff;
 			margin: 0;
 			text-align: center;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .header-plan .offer-description {
@@ -159,8 +156,7 @@ export const StylePlanCardContent = `
 			line-height: 20px;
 			color: #fff;
 			margin: 0;
-			text-align: center;
-			-webkit-user-modify: read-write;
+			text-align: center;			
 		}
 
 		.card .header-plan .offer-description span {
@@ -178,8 +174,7 @@ export const StylePlanCardContent = `
 			font-family: 'Roboto';
 			font-size: 0.875rem;
 			line-height: 20px;
-			color: #737578;
-			-webkit-user-modify: read-write;
+			color: #737578;			
 		}
 
 		.card .price-table .price {
@@ -187,14 +182,12 @@ export const StylePlanCardContent = `
 			font-size: 2rem;
 			line-height: 40px;
 			color: #313235;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .price-table .price span {
 			font-size: 22px;
 			line-height: 30px;
 			color: #313235;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .price-table .offer-per-month {
@@ -206,7 +199,6 @@ export const StylePlanCardContent = `
 			font-size: 0.875rem;
 			line-height: 20px;
 			color: #737578;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .price-table .offer-per-month span {
@@ -230,7 +222,6 @@ export const StylePlanCardContent = `
 			border: 0;
 			margin: 1rem auto 1rem;
 			cursor: pointer;
-			-webkit-user-modify: read-write;
 			text-align: center;
 		}
 
@@ -246,7 +237,6 @@ export const StylePlanCardContent = `
 			border: 1.5px solid #019df4;
 			margin: 1rem auto 1rem;
 			cursor: pointer;
-			-webkit-user-modify: read-write;
 			text-align: center;
 		}
 
@@ -284,7 +274,6 @@ export const StylePlanCardContent = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 24px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .switch-options .streaming .description {
@@ -294,7 +283,6 @@ export const StylePlanCardContent = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .switch-options .switch {
@@ -384,7 +372,6 @@ export const StylePlanCardContent = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .long-offer-row-streaming {
@@ -410,7 +397,6 @@ export const StylePlanCardContent = `
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .long-offer-list .icon {
@@ -446,7 +432,6 @@ export const StylePlanCardContent = `
 			font-size: 0.875rem;
 			font-weight: 700;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .long-offer-list .content .description {
@@ -455,7 +440,6 @@ export const StylePlanCardContent = `
 			font-size: 0.875rem;
 			font-weight: 400;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 
 		.card .long-offer-list .content .link {
@@ -465,7 +449,6 @@ export const StylePlanCardContent = `
 			font-size: 0.875rem;
 			font-weight: 500;
 			line-height: 20px;
-			-webkit-user-modify: read-write;
 		}
 	</style>`
 export const DivPlanCardContent = `

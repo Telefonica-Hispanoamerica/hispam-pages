@@ -187,23 +187,6 @@ export const styles = `
    padding-bottom:0px;
    padding-left:24px;
 }
-.card-hero-left-d .content .tag-label{
-   font-family:Roboto;
-   font-weight:500;
-   border-top-left-radius:4px;
-   border-top-right-radius:4px;
-   border-bottom-right-radius:4px;
-   border-bottom-left-radius:4px;
-   padding-top:4px;
-   padding-right:4px;
-   padding-bottom:3px;
-   padding-left:4px;
-   margin-bottom:8px;
-   color:rgb(1, 155, 239);
-   font-size:0.875rem;
-   width:fit-content;
-   background-color:rgb(230, 245, 253);
-}
 .card-hero-left-d .content .pretitle{
    font-family:Roboto;
    font-weight:400;
@@ -322,23 +305,6 @@ export const styles = `
    padding-right:24px;
    padding-bottom:0px;
    padding-left:24px;
-}
-.card-hero-right-d .content .tag-label{
-   font-family:Roboto;
-   font-weight:500;
-   border-top-left-radius:4px;
-   border-top-right-radius:4px;
-   border-bottom-right-radius:4px;
-   border-bottom-left-radius:4px;
-   padding-top:4px;
-   padding-right:4px;
-   padding-bottom:3px;
-   padding-left:4px;
-   margin-bottom:8px;
-   color:rgb(1, 155, 239);
-   font-size:0.875rem;
-   width:fit-content;
-   background-color:rgb(230, 245, 253);
 }
 .card-hero-right-d .content .pretitle{
    font-family:Roboto;
@@ -697,7 +663,7 @@ export const styles = `
     font-weight: normal;
     font-style: normal;
 }
-@media (max-width: 768px){
+@media (max-width: 767px){
    .card{
       margin-bottom:24px;
    }

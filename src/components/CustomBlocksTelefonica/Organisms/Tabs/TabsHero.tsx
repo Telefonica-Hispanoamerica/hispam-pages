@@ -1,9 +1,9 @@
-import { DivCardHeroRightLightContent, StyleCardHeroRightLightContent } from "../../Others/CardHeroRightLight";
 import { iconsSvg } from "../../IconsSvgBlocks";
+import { DivHeroCardContent, StyleHeroCardContent } from "../Hero/HeroCard";
 const div = `
 	<style>	
 		.page-content {
-            margin: 32px auto; 
+            margin: 0 auto 32px; 
             padding: 0; 
             background: #F6F6F6;
         }
@@ -133,9 +133,9 @@ const div = `
 			animation: fadeEffect 1s;
 		}
 	</style>
-	${StyleCardHeroRightLightContent}
+	${StyleHeroCardContent}
 	<div class="page-content">
-		${DivCardHeroRightLightContent}
+		${DivHeroCardContent}
 		<div data-gjs-highlightable="true" id="ihyvfg" data-gjs-type="tabs" draggable="true" class="tabs-content">
 			<div id="izkgll" data-gjs-type="tab-container" draggable="true" role="tablist" class="tabs">
 				<div data-gjs-highlightable="true" id="ic6c6w" data-gjs-type="tab" draggable="true" role="tab" aria-controls="ietfse" class="tab tab-active" aria-selected="false">
@@ -154,39 +154,39 @@ const div = `
 			<div data-gjs-highlightable="true" id="inykh4" data-gjs-type="tab-contents" class="tab-contents" draggable="true">
 				<div id="ietfse" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ic6c6w" class="tab-content" draggable="true" hidden="">
 					<div class='gjs-row-kenos'>
-						<div class='gjs-cell-kenos'>Content tab 1</div>
-						<div class='gjs-cell-kenos'>Content tab 1</div>
-						<div class='gjs-cell-kenos'>Content tab 1</div>
-						<div class='gjs-cell-kenos'>Content tab 1</div>
+						<div class='gjs-cell-kenos'></div>
+						<div class='gjs-cell-kenos'></div>
+						<div class='gjs-cell-kenos'></div>
+						<div class='gjs-cell-kenos'></div>
 					</div>
 				</div>
 				<div id="i2qqwr" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="i5kopr" class="tab-content" draggable="true" hidden="">
 					<div data-gjs-highlightable="true" id="iyfwwy" data-gjs-type="text" draggable="true" class="" contenteditable="false">
 						<div class='gjs-row-kenos'>
-							<div class='gjs-cell-kenos'>Content tab 2</div>
-							<div class='gjs-cell-kenos'>Content tab 2</div>
-							<div class='gjs-cell-kenos'>Content tab 2</div>
-							<div class='gjs-cell-kenos'>Content tab 2</div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
 						</div>
 					</div>
 				</div>
 				<div id="ixggop" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ix0mp4" class="tab-content" draggable="true" hidden="">
 					<div data-gjs-highlightable="true" id="iqqh8u" data-gjs-type="text" draggable="true" class="" contenteditable="false">
 						<div class='gjs-row-kenos'>
-							<div class='gjs-cell-kenos'>Content tab 3</div>
-							<div class='gjs-cell-kenos'>Content tab 3</div>
-							<div class='gjs-cell-kenos'>Content tab 3</div>
-							<div class='gjs-cell-kenos'>Content tab 3</div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
 						</div>
 					</div>
 				</div>
 				<div id="ixggopa" data-gjs-type="tab-content" role="tabpanel" aria-labelledby="ix0mp5" class="tab-content" draggable="true">
 					<div data-gjs-highlightable="true" id="iqqh8o" data-gjs-type="text" draggable="true" class="" contenteditable="false">
 						<div class='gjs-row-kenos'>
-							<div class='gjs-cell-kenos'>Content tab 4</div>
-							<div class='gjs-cell-kenos'>Content tab 4</div>
-							<div class='gjs-cell-kenos'>Content tab 4</div>
-							<div class='gjs-cell-kenos'>Content tab 4</div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
+							<div class='gjs-cell-kenos'></div>
 						</div>
 					</div>
 				</div>
@@ -195,10 +195,10 @@ const div = `
     </div>
 	`
 
-function TabsCardPlan(editor: any) {
+function TabsHero(editor: any) {
 	
-	editor.Blocks.add('tabsCardPlan', {
-		id: 'tabsCardPlan',
+	editor.Blocks.add('tabsHero', {
+		id: 'tabsHero',
 		label: 'Hero + 4 Tabs',
 		editable: true,
 		activate: true,
@@ -210,4 +210,4 @@ function TabsCardPlan(editor: any) {
 	
 }
   
-export default TabsCardPlan;
+export default TabsHero;

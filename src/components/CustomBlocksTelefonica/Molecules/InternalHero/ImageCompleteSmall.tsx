@@ -1,4 +1,5 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
+import { divTag, styleTag } from '../Content/Tag';
 
 export const StyleiHeroImageCompleteSmall = `
 	<style>
@@ -59,18 +60,6 @@ export const StyleiHeroImageCompleteSmall = `
 		.hero-image-complete-small .content {
 			order: 2
 		}
-	}
-	.hero-image-complete-small .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius:4px;
-		padding: 4px 4px 3px 4px;
-		margin-bottom: 8px;
-		color: 
-		#019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
-		backgroud-color: #E6F5FD;
 	}
 	.hero-image-complete-small .content .pretitle {
 		font-family: Roboto;
@@ -155,7 +144,6 @@ export const StyleiHeroImageCompleteSmall = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -178,7 +166,6 @@ export const StyleiHeroImageCompleteSmall = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -211,6 +198,7 @@ export const StyleiHeroImageCompleteSmall = `
 			padding: 32px 16px;
 		}
 	}
+	${styleTag}
 	</style>`
 	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
@@ -220,7 +208,7 @@ export const StyleiHeroImageCompleteSmall = `
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-small">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="title">Fullbody Card title</div>
 						<div class="description">This sample description is being used as a placeholder for real text.</div>
 						<div class="button-group">							

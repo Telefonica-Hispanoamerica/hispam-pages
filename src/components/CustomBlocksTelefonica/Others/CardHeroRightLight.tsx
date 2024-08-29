@@ -1,4 +1,5 @@
 import { iconsSvg } from '../IconsSvgBlocks';
+import { divTag, styleTag } from '../Molecules/Content/Tag';
 export const StyleCardHeroRightLightContent = `
 	<style>
 	.hero-right-image {
@@ -40,18 +41,6 @@ export const StyleCardHeroRightLightContent = `
 			order: 2
 		}
 	}
-
-	.card-hero-right-l .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius: 4px;
-		padding: 4px 4px 3px 4px;
-		margin-bottom: 8px;
-		color: #019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
-	}
-
 	.card-hero-right-l .content .pretitle {
 		font-family: Roboto;
 		font-weight: 400;
@@ -160,7 +149,6 @@ export const StyleCardHeroRightLightContent = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 
@@ -185,7 +173,6 @@ export const StyleCardHeroRightLightContent = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 
@@ -209,6 +196,7 @@ export const StyleCardHeroRightLightContent = `
 			padding: 32px 16px;
 		}
 	}
+	${styleTag}
 	</style>`
 	export const DivCardHeroRightLightContent = `
 	<section class='hero-right-image'>
@@ -216,7 +204,7 @@ export const StyleCardHeroRightLightContent = `
 			<div class='gjs-cell-kenos'>
 				<div class="card-hero-right-l">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>

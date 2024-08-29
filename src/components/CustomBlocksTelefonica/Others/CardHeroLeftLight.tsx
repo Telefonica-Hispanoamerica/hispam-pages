@@ -1,4 +1,5 @@
 import { iconsSvg } from '../IconsSvgBlocks';
+import { divTag, styleTag } from '../Molecules/Content/Tag';
 const div = `
 	<style>	
 	.card-hero-left-l {
@@ -28,16 +29,6 @@ const div = `
 		.card-hero-left-l .content {
 			order: 2
 		}
-	}
-	.card-hero-left-l .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius:4px;
-		padding: 4px 4px 3px 4px;
-		margin-bottom: 8px;
-		color: #019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
 	}
 	.card-hero-left-l .content .pretitle {
 		font-family: Roboto;
@@ -134,7 +125,6 @@ const div = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -157,7 +147,6 @@ const div = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 		text-align: center;
 	}
 	@media (max-width: 767px) {
@@ -176,7 +165,8 @@ const div = `
 		.ptb-80 {
 			padding: 32px 16px;
 		}
-	}	
+	}
+	${styleTag}
 	</style>
 	<section class=''>
 		<div class='gjs-row-kenos'>
@@ -186,7 +176,7 @@ const div = `
 						<img src="" alt="" />
 					</div>
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>

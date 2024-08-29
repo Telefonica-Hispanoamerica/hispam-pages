@@ -11,34 +11,33 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
     vertical-align: baseline;
 }
 .gjs-row-kenos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 8px;
-    display: table;
-    width: 100%;
-    border-spacing: 16px;			
+    padding: 16px;
+    grid-gap: 16px
 }
 
-@media (max-width: 768px) {
+.gjs-cell-kenos {
+    width: 100%;
+    display: flex;
+    min-height: 75px;
+}
+@media (max-width: 767px) {
     .gjs-row-kenos {
-        width: 100%;
-        padding: 0;
+        display: flex;
+        flex-direction: column;        
+        max-width: initial;        
+        padding: 16px;
     }
     .gjs-cell-kenos {
+        display: flex;
         width: 100%;
-        display: block;
-        height: 100%;
-        margin: 0 0 16px;
-        vertical-align: top;
     }
 }	
 
-.gjs-cell-kenos {
-    width: 8%;
-    display: table-cell;
-    height: 75px;
-    vertical-align: top;
-}
 p {
     margin: 0;
 }
@@ -59,7 +58,7 @@ p {
     display: flex;
     align-items: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .p-relative-hero {
         height: 400px
     }
@@ -74,6 +73,10 @@ p {
     .ptb-80 {
         padding: 32px 16px;
     }
+}
+
+.w-100-glp {
+    width: 100%;
 }
 
 /* Tabs */

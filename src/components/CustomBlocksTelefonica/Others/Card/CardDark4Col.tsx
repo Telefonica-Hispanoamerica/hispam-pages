@@ -146,7 +146,6 @@ const div = `
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
 	}
 	@media (max-width: 767px) {
 		.card-dark-left .button-group .link-button {
@@ -168,7 +167,6 @@ const div = `
 		-moz-border-radius: 60px;
 		-ms-border-radius: 60px;
 		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
 	}
 	@media (max-width: 767px) {
 		.card-dark-left .button-group .primary-button {

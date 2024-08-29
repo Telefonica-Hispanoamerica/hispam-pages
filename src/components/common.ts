@@ -16,24 +16,24 @@ export function cx(...inputs: any[]): string {
 export const fontsTelefonica = `
 @font-face {
     font-family: 'Telefonica-Regular';
-    src: url('fonts/telefonica-regular-webfont.woff2') format('woff2'),
-         url('fonts/telefonica-regular-webfont.woff') format('woff');
+    src: url('fonts/Telefonica-Fonts/telefonica-regular-webfont.woff2') format('woff2'),
+         url('fonts/Telefonica-Fonts/telefonica-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Telefonica-Light';
-    src: url('fonts/telefonica-light-webfont.woff2') format('woff2'),
-         url('fonts/telefonica-light-webfont.woff') format('woff');
+    src: url('fonts/Telefonica-Fonts/telefonica-light-webfont.woff2') format('woff2'),
+         url('fonts/Telefonica-Fonts/telefonica-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Telefonica-Bold';
-    src: url('fonts/telefonica-bold-webfont.woff2') format('woff2'),
-         url('fonts/telefonica-bold-webfont.woff') format('woff');
+    src: url('fonts/Telefonica-Fonts/telefonica-bold-webfont.woff2') format('woff2'),
+         url('fonts/Telefonica-Fonts/telefonica-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

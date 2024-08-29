@@ -1,5 +1,7 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 import { fontsTelefonica } from '../../../common';
+import { divPrimaryButton, stylePrimaryButton } from '../Buttons/PrimaryButton';
+import { divTag, styleTag } from '../Content/Tag';
 
 export const StyleImageCompleteBigCenter = `
 	<style>
@@ -41,17 +43,6 @@ export const StyleImageCompleteBigCenter = `
 		.hero-image-complete-center .content {
 			order: 2
 		}
-	}
-	.hero-image-complete-center .content .tag-label {
-		font-family: Roboto;
-		font-weight: 500;
-		border-radius:4px;
-		padding: 4px 4px 3px 4px;
-		margin: 0 auto 15px;
-		color: #019BEF;
-		font-size: 0.875rem;
-		width: fit-content;
-		backgroud-color: #E6F5FD;
 	}
 	.hero-image-complete-center .content .pretitle {
 		font-family: Roboto;
@@ -127,48 +118,6 @@ export const StyleImageCompleteBigCenter = `
 	.hero-image-complete-center .img-content img {
 		width: 100%;
 	}
-	.hero-image-complete-center .button-group .link-button {
-		font-family: Roboto;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
-		color: #737578;
-		margin: 24px 0;
-		color: #019BEF;
-		text-decoration: underline;
-		text-underline-offset: 4px;
-		-webkit-user-modify: read-write;
-		text-align: center;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-center .button-group .link-button {
-			margin: 16px 0 0;
-			font-size: 0.875rem;
-		}
-	}
-	.hero-image-complete-center .button-group .primary-button {
-		font-family: Roboto;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
-		background-color: #019BEF;
-		color: #fff;
-		margin: 24px 0;
-		padding: 12px 16px 11px 16px;
-		border-radius: 60px;
-		-webkit-border-radius: 60px;
-		-moz-border-radius: 60px;
-		-ms-border-radius: 60px;
-		-o-border-radius: 60px;
-		-webkit-user-modify: read-write;
-		text-align: center;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-center .button-group .primary-button {
-			padding: 12px 8px;
-			margin: 16px 0 0;			
-		}
-	}
 	.brand-low {
 		background-color: #E6F5FD;
 	}
@@ -180,7 +129,7 @@ export const StyleImageCompleteBigCenter = `
 		align-items: center;
 		background-color: #000;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 767px) {
 		.p-relative-hero {
 			height: 400px
 		}
@@ -191,6 +140,8 @@ export const StyleImageCompleteBigCenter = `
 		top: 50%;
 		left: 50%;
 	}
+	${stylePrimaryButton}
+	${styleTag}
 	</style>`
 
 	export const DivImageCompleteBigCenter = `
@@ -200,13 +151,13 @@ export const StyleImageCompleteBigCenter = `
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-center">
 					<div class="content">
-						<div class="tag-label brand-low">Tag label</div>
+						${divTag}
 						<div class="pretitle">Pre-title</div>
 						<div class="title">Fullbody Card title</div>
 						<div class="subtitle">Subtitle</div>
 						<div class="description">This sample description is being used as a placeholder for real text.</div>
 						<div class="button-group">							
-							<a class="primary-button">Primary button</a>
+							${divPrimaryButton}
 						</div>            
 					</div>
 					<div class="img-content">
