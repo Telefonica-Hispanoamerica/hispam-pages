@@ -7,6 +7,9 @@
         align-items: center;
         grid-gap: 16px;
         margin-bottom: 16px;
+        .capitalize {
+            font-size: 12px;
+        }
     }
     .MuiPaper-root {
         box-shadow: none;

@@ -133,7 +133,12 @@ export const StyleValuePrepLeft = `
 export const DivValuePrepLeft = `
 	<div class="card-vp-icon-left-light">					
 		<div class="box-img">
-			<img src="images/template-telefonica/icon-light-blue.svg" alt="" />
+			<img 
+				src="images/template-telefonica/icon-light-blue.svg"
+				srcset-desktop="images/template-telefonica/icon-light-blue.svg" 
+				srcset-mobile="images/template-telefonica/icon-light-blue.svg" 
+				alt="" 
+			/>
 		</div>
 		<div class="box-content">
 			<div class="title roboto-regular">Block Title</div>

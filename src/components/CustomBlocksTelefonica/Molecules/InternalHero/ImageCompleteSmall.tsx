@@ -1,15 +1,15 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
+import { divLinkButton, styleLinkButton } from '../Buttons/LinkButton';
+import { divPrimaryButton, stylePrimaryButton } from '../Buttons/PrimaryButton';
+import { divDescription, styleDescription } from '../Content/Description';
 import { divTag, styleTag } from '../Content/Tag';
+import { divTitle, styleTitle } from '../Content/Title';
 
 export const StyleiHeroImageCompleteSmall = `
 	<style>
 	.image-hero-small{
 		width: 100%;
 		min-height: 348px;
-		//aspect-ratio: 16 / 9;
-		// object-fit: cover;
-		//transform: translate(0, -16%);
-		//margin-top: -14%;
 	}
 	@media (max-width: 767px) {
 		.image-hero-small {
@@ -60,61 +60,7 @@ export const StyleiHeroImageCompleteSmall = `
 		.hero-image-complete-small .content {
 			order: 2
 		}
-	}
-	.hero-image-complete-small .content .pretitle {
-		font-family: Roboto;
-		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
-		color: #fff;
-		margin-bottom: 8px;
-	}
-	.hero-image-complete-small .content .title {
-		font-family: 'Telefonica-Regular', sans-serif;
-		font-size: 3rem;
-		line-height: 56px;
-		color: #fff;
-		margin-bottom: 8px;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-small .content .title {
-			font-size: 1.5rem;
-			line-height: 32px;
-		}
-	}
-	.hero-image-complete-small .content .subtitle {
-		font-family: Roboto;
-		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
-		color: #fff;
-		margin-bottom: 8px;
-	}
-	.hero-image-complete-small .content .description {
-		font-family: Roboto;
-		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
-		color: #fff;
-		margin: 24px 0 0;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-small .content .description {
-			font-size: 1rem;
-			line-height: 24px;
-		}
-	}
-	.hero-image-complete-small .content ul li {
-		font-size: 1.125rem;
-		line-height: 26px;
-		color: #737578;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-small .content ul li {
-			font-size: 1rem;
-			line-height: 24px;
-		}
-	}
+	}	
 	.hero-image-complete-small .content .button-group {
 		display: flex;
 		flex-direction: row;
@@ -133,46 +79,6 @@ export const StyleiHeroImageCompleteSmall = `
 	}
 	.hero-image-complete-small .img-content img {
 		width: 100%;
-	}
-	.hero-image-complete-small .button-group .link-button {
-		font-family: Roboto;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
-		color: #737578;
-		margin: 32px 0 0;
-		color: #019BEF;
-		text-decoration: underline;
-		text-underline-offset: 4px;
-		text-align: center;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-small .button-group .link-button {
-			margin: 16px 0 0;
-			font-size: 0.875rem;
-		}
-	}
-	.hero-image-complete-small .button-group .primary-button {
-		font-family: Roboto;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
-		background-color: #019BEF;
-		color: #fff;
-		margin: 32px 0 0;
-		padding: 12px 16px 11px 16px;
-		border-radius: 60px;
-		-webkit-border-radius: 60px;
-		-moz-border-radius: 60px;
-		-ms-border-radius: 60px;
-		-o-border-radius: 60px;
-		text-align: center;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete-small .button-group .primary-button {
-			padding: 12px 8px;
-			margin: 16px 0 0;			
-		}
 	}
 	.brand-low {
 		background-color: #E6F5FD;
@@ -199,21 +105,31 @@ export const StyleiHeroImageCompleteSmall = `
 		}
 	}
 	${styleTag}
+	${styleTitle}
+	${styleDescription}
+	${stylePrimaryButton}
+	${styleLinkButton}
 	</style>`
 	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
-		<img class='image-hero-small' src="images/template-telefonica/hero.webp" alt=''/>
+		<img 
+			class='image-hero-small' 
+			src="images/template-telefonica/hero.webp"
+			srcset-desktop="images/template-telefonica/hero.webp" 
+			srcset-mobile="images/template-telefonica/hero.webp" 
+			alt=''
+		/>
 		<div class='gjs-row-kenos p-absolute-hero'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-small">
 					<div class="content">
 						${divTag}
-						<div class="title">Fullbody Card title</div>
-						<div class="description">This sample description is being used as a placeholder for real text.</div>
-						<div class="button-group">							
-							<a class="primary-button">Primary button</a>
-							<a class="link-button">Link button</a>
+						${divTitle}
+						${divDescription}
+						<div class="button-group">
+							${divPrimaryButton}
+							${divLinkButton}
 						</div>            
 					</div>
 					<div class="img-content">

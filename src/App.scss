@@ -73,6 +73,7 @@ body {
 }
 .gjs-editor-cont {
 	background-color: #f7f7f7;
+	//background-color: #fff;
 	height: 100%!important;
 	// height: 100%!important;
 	.gjs-mdl-container {		
@@ -133,9 +134,12 @@ body {
 	min-height: auto;
   }
 
-// [data-gjs-type="wrapper"] {
-// 	min-height: initial!important;
-// }
+[data-gjs-type="wrapper"] {
+	min-height: 90vh;
+}
+.gjs-frame-wrapper {
+	height: 90%!important;
+}
 
 .gjs-editor-column {	//height: 100vh;
 	

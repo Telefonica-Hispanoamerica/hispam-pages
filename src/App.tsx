@@ -67,6 +67,8 @@ import { Height } from '@mui/icons-material';
 import primaryButton from './components/CustomBlocksTelefonica/Molecules/Buttons/PrimaryButton';
 import HeroCard from './components/CustomBlocksTelefonica/Organisms/Hero/HeroCard';
 import TabsHero from './components/CustomBlocksTelefonica/Organisms/Tabs/TabsHero';
+import RibbonGray from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
+import IconAndText from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -128,7 +130,8 @@ function App() {
 	} = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
 	const currentPageIdRef = useRef('');
-	const [ device, setDevice ] = useState<string>('')
+	const [ device, setDevice ] = useState<string>('');
+	const [ imageSelected, setImageSelected ] = useState<any>('')
 
 	currentPageIdRef.current = pageIdSelected;
 
@@ -258,51 +261,6 @@ function App() {
 		},
 		cssComposer: {
 			// options
-		},
-		styleManager: {
-			sectors: [
-			  {
-				name: 'General',
-				open: true,
-				buildProps: ['float', 'display', 'position', 'top', 'right', 'left', 'bottom'],
-				properties: [
-				  {
-					name: 'Display',
-					property: 'display',
-					type: 'select',
-					defaults: 'block',
-					list: [
-					  { value: 'block', name: 'Block' },
-					  { value: 'inline', name: 'Inline' },
-					  { value: 'flex', name: 'Flex' },
-					  { value: 'grid', name: 'Grid' },
-					  { value: 'inline-block', name: 'Inline Block' },
-					  { value: 'none', name: 'None' },
-					  { value: 'inline-flex', name: 'Inline Flex' },
-					],
-				  },
-				],
-			  },
-			  // Puedes añadir más sectores si necesitas más propiedades
-			],
-		  },
-		  deviceManager: {
-			devices: [
-				{
-					name: 'Desktop',
-					width: '', // un valor vacío significa no tener restricciones de ancho
-				},
-				{
-					name: 'Tablet',
-					width: '768px', // Cambia el valor del ancho según el tamaño del dispositivo
-					widthMedia: '768px' // Media query para el dispositivo Tablet
-				},
-				{
-					name: 'Mobile',
-					width: '320px',
-					widthMedia: '757px' // Media query para el dispositivo Móvil
-				}
-			]
 		}
 	};	
 
@@ -353,171 +311,15 @@ function App() {
 		// 	let jsRegex = new RegExp(`[\\s\\S]*?// Component: ${componentId}[\\s\\S]*?// End Component: ${componentId}`, 'g');
 		// 	js = js.replace(jsRegex, '');
 		// });
+		
+		let updating = false;
 
 		editor.on('component:update', function(component) {
-            console.log("Component UPDATE", component)
-		});	
-
-		editor.on('component:selected', (model) => {
-			const selected = editor.getSelected();
-			if (selected) {
-			  	const styleManager = editor.StyleManager;
-			  	styleManager.addSector('responsive', {
-					name: 'Responsive',
-					open: true,
-					buildProps: ['display', 'padding'],
-					properties: [
-						{
-							property: 'width',
-							type: 'number',
-							units: ['px', '%'],
-							defaults: 'auto',
-							min: 0,
-						},
-						{
-							property: 'margin',
-							type: 'composite',
-							properties: [
-								{ name: 'Top', property: 'margin-top' },
-								{ name: 'Right', property: 'margin-right' },
-								{ name: 'Bottom', property: 'margin-bottom' },
-								{ name: 'Left', property: 'margin-left' },
-							],
-						},
-						{
-							name: 'Display',  // Título de la propiedad en el panel de estilos
-							property: 'display',  // Propiedad CSS
-							type: 'select',  // Tipo de input (en este caso, un select)
-							defaults: 'block',  // Valor por defecto
-							list: [
-								{ value: 'block', name: 'Block' },
-								{ value: 'inline', name: 'Inline' },
-								{ value: 'flex', name: 'Flex' },
-								{ value: 'grid', name: 'Grid' },
-								{ value: 'inline-block', name: 'Inline Block' },
-								{ value: 'none', name: 'None' },
-								{ value: 'inline-flex', name: 'Inline Flex' },
-							  // Añadir más opciones si es necesario
-							],
-						  },
-						{
-							name: 'Flex Direction',
-							property: 'flex-direction',
-							type: 'select',
-							defaults: 'row',
-							list: [
-								{ value: 'row', name: 'Row' },
-								{ value: 'row-reverse', name: 'Row Reverse' },
-								{ value: 'column', name: 'Column' },
-								{ value: 'column-reverse', name: 'Column Reverse' },
-							],
-						},
-						{
-							name: 'Align Items',
-							property: 'align-items',
-							type: 'select',
-							defaults: 'center',
-							list: [
-								{ value: 'flex-start', name: 'Start' },
-								{ value: 'center', name: 'Center' },
-								{ value: 'flex-end', name: 'End' },
-								{ value: 'stretch', name: 'Stretch' },
-								{ value: 'baseline', name: 'Baseline' },
-							],
-						},
-						{
-							name: 'Justify Content',
-							property: 'justify-content',
-							type: 'select',
-							defaults: 'center',
-							list: [
-								{ value: 'flex-start', name: 'Start' },
-								{ value: 'center', name: 'Center' },
-								{ value: 'flex-end', name: 'End' },
-								{ value: 'space-between', name: 'Space Between' },
-								{ value: 'space-around', name: 'Space Around' },
-								{ value: 'space-evenly', name: 'Space Evenly' },
-							],
-						},
-						{
-							name: 'Flex Wrap',
-							property: 'flex-wrap',
-							type: 'select',
-							defaults: 'nowrap',
-							list: [
-								{ value: 'nowrap', name: 'No Wrap' },
-								{ value: 'wrap', name: 'Wrap' },
-								{ value: 'wrap-reverse', name: 'Wrap Reverse' },
-							],
-						},
-						{
-							name: 'Align Content',
-							property: 'align-content',
-							type: 'select',
-							defaults: 'stretch',
-							list: [
-								{ value: 'flex-start', name: 'Start' },
-								{ value: 'center', name: 'Center' },
-								{ value: 'flex-end', name: 'End' },
-								{ value: 'space-between', name: 'Space Between' },
-								{ value: 'space-around', name: 'Space Around' },
-								{ value: 'stretch', name: 'Stretch' },
-							],
-						},
-						{
-							name: 'Padding',  // Nombre que aparecerá en el panel de estilos
-							property: 'padding',  // Propiedad CSS
-							type: 'composite',  // Tipo de control compuesto
-							properties: [  // Define sub-propiedades para cada lado del padding
-								{
-									name: 'Top',
-									property: 'padding-top',
-									type: 'number',  // Tipo de input (número)
-									units: ['px', 'em', '%'],  // Unidades disponibles
-									defaults: '0',  // Valor por defecto
-									min: 0,  // Valor mínimo
-								},
-								{
-									name: 'Right',
-									property: 'padding-right',
-									type: 'number',
-									units: ['px', 'em', '%'],
-									defaults: '0',
-									min: 0,
-								},
-								{
-									name: 'Bottom',
-									property: 'padding-bottom',
-									type: 'number',
-									units: ['px', 'em', '%'],
-									defaults: '0',
-									min: 0,
-								},
-								{
-									name: 'Left',
-									property: 'padding-left',
-									type: 'number',
-									units: ['px', 'em', '%'],
-									defaults: '0',
-									min: 0,
-								},
-							],
-						},
-					],
-			  	});
+			const imageUpload = document.getElementById('url-image');
+			if(imageUpload){
+				imageUpload.innerHTML = component.changed.src;
 			}
 		});
-
-		editor.CssComposer.setRule('@media (max-width: 767px)', {
-			'.gjs-cell-kenos': {
-			  	'font-size': '12px',
-			 	'width': '100%',
-				'display': 'block',
-				'height': '100%',
-				'margin': '0 0 16px',
-				'vertical-align': 'top'
-			},
-		 });
 	
 		editor.Components.addType('image', {
 			isComponent: el => el.tagName === 'IMG',
@@ -769,6 +571,38 @@ function App() {
 			}
 		});
 
+		editor.on('asset:add', (asset) => { 
+			const imageUpload = document.getElementById('url-image');
+			if(imageUpload)	imageUpload.innerHTML = asset.id;
+		});
+
+		// Escuchar cuando se abre el Asset Manager
+		editor.on('run:open-assets', () => {
+			const assetManager = editor.AssetManager;
+			const modal = editor.Modal;
+		
+			// Agregar contenido personalizado al modal
+			const originalContent = modal.getContent();
+			const customContent = document.createElement('div');
+			
+			customContent.innerHTML = `
+			<div style="padding: 10px;">
+				<div id='url-image'></div>
+			</div>
+			`;
+		
+			// Combinar el contenido original del Asset Manager con el personalizado
+			const combinedContent = document.createElement('div');
+			combinedContent.appendChild(customContent);
+			if(originalContent) combinedContent.appendChild(originalContent);
+		
+			// Establecer el contenido combinado en el modal
+			modal.setContent(combinedContent);
+		
+			// Muestra el modal con el contenido combinado
+			modal.open();
+		});	
+		
 
 		editor.DomComponents.addType('text', {
 			model: {
@@ -783,11 +617,33 @@ function App() {
 							changeProp: true,
 							placeholder: 'Inserte el texto aqui'
 						},
+						{
+							type: 'select',
+							label: 'Color texto',
+							name: 'color',
+							placeholder: 'Elige color de texto',
+							options: [  // Opciones de colores para el select
+								{ value: '#313235', name: 'Texto primario' },
+								{ value: '#737578', name: 'Texto secundario' },
+								{ value: '#019BEF', name: 'Texto link' },
+								{ value: '#ffffff', name: 'Texto primario invertido'},
+							],
+							changeProp: true,
+						}
 					],
+					attributes: {
+						content: '',
+						colorText: '',
+					},
+					// style: {
+					// 	'color': '#313235',  // Color de fondo inicial
+					// },
 					content: '',
 				},
 				init() {
-					this.on('change:content', this.handleContentChange); // Observa cambios en 'content'
+					this.on('change:content', this.handleContentChange);
+					this.listenTo(this, 'change:color', this.handleBackgroundColorChange);
+					this.on('change:traits', this.updateStyles);
 				  },
 				handleContentChange() {
 					const newText = this.get('content');
@@ -796,7 +652,10 @@ function App() {
 						this.view.updateContent();
 					}
 				},
-				
+				handleBackgroundColorChange(){
+					const color = this.get('color'); // Obtener el valor del trait
+      				this.addStyle({ 'color': color });
+				}				
 			},
 			view: {
 				updateContent() {
@@ -807,50 +666,47 @@ function App() {
 				}
 			}
 		});
+
 
 		editor.Components.addType('tag-component-comp', {
 			isComponent: el => el.tagName === 'tag-component-comp',
 			model: {
 				defaults: {
+					tagName: 'div',
 					editable: true,
 					traits: [
 						{
 							type: 'text',
-							label: 'Contenido 22222',
+							label: 'Contenido 222222',
 							name: 'content',
 							changeProp: true,
-							placeholder: 'Inserte el texto aqui 2222'
-						}
+							placeholder: 'Inserte el texto aqui'
+						},
+						{
+							type: 'select',
+							label: 'Color texto 222',
+							name: 'color',
+							options: [  // Opciones de colores para el select
+								{ value: '#313235', name: 'Texto primario' },
+								{ value: '#737578', name: 'Texto secundario' },
+								{ value: '#019BEF', name: 'Texto link' },
+								{ value: '#ffffff', name: 'Texto primario invertido'},
+							],
+							changeProp: true,
+						}						
 					],
+					attributes: {
+						content: '',
+						colorText: '',
+					},
+					// style: {
+					// 	'color': '#313235',  // Color de fondo inicial
+					// },
 					content: '',
-				},
-				init() {
-					this.on('change:content', this.handleContentChange); // Observa cambios en 'content'
-				  },
-				handleContentChange() {
-					const newText = this.get('content');
-					this.components(newText);
-					if(this.view) {						
-						this.view.updateContent();
-					}
-				},
-				
-			},
-			view: {
-				updateContent() {
-					const newText = this.model.get('content'); // Obtiene el texto actualizado del modelo
-					if (typeof newText === 'string') {
-						this.el.textContent = newText; // Actualiza el texto del componente en la vista
-					}
-				}
+				},				
 			}
 		});
-	
 
-		  
-
-
-		// editor.Components.addType('image', {
 		// 	isComponent: el => el.tagName === 'image',
 		// 	model: {
 		// 	  defaults: {
@@ -1026,8 +882,9 @@ function App() {
 						TabsCardPlan,
 						CardHeroRightLight,
 						primaryButton,
+						IconAndText,
 						//Organism
-						HeroCard,						
+						HeroCard,
 						//Template
 						ValuePrep4xLeft,
 						ValuePrep4xCenter,

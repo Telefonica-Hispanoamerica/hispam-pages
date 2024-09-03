@@ -2,6 +2,10 @@ import { iconsSvg } from '../../IconsSvgBlocks';
 import { fontsTelefonica } from '../../../common';
 import { divPrimaryButton, stylePrimaryButton } from '../Buttons/PrimaryButton';
 import { divTag, styleTag } from '../Content/Tag';
+import { divPretitle, stylePretitle } from '../Content/Pretitle';
+import { divTitle, styleTitle } from '../Content/Title';
+import { divSubTitle, styleSubTitle } from '../Content/Subtitle';
+import { divDescription, styleDescription } from '../Content/Description';
 
 export const StyleImageCompleteBigCenter = `
 	<style>
@@ -142,20 +146,30 @@ export const StyleImageCompleteBigCenter = `
 	}
 	${stylePrimaryButton}
 	${styleTag}
+	${stylePretitle}
+	${styleTitle}
+	${styleSubTitle}
+	${styleDescription}
 	</style>`
 
 	export const DivImageCompleteBigCenter = `
 	<section class='p-relative-hero-center'>
-		<img class='image-hero-big-center' src="images/template-telefonica/hero.webp" alt=''/>
+		<img 
+			class='image-hero-big-center' 
+			src="images/template-telefonica/hero.webp" 
+			srcset-desktop="images/template-telefonica/hero.webp" 
+			srcset-mobile="images/template-telefonica/hero.webp" 
+			alt=''
+		/>
 		<div class='gjs-row-kenos p-absolute-hero-center'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete-center">
 					<div class="content">
 						${divTag}
-						<div class="pretitle">Pre-title</div>
-						<div class="title">Fullbody Card title</div>
-						<div class="subtitle">Subtitle</div>
-						<div class="description">This sample description is being used as a placeholder for real text.</div>
+						${divPretitle}
+						${divTitle}
+						${divSubTitle}
+						${divDescription}
 						<div class="button-group">							
 							${divPrimaryButton}
 						</div>            

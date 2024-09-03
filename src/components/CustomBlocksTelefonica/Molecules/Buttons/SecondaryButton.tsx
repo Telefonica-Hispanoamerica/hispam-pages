@@ -1,13 +1,14 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 
-export const stylePrimaryButton = `
-    .primary-button-glp {
+export const styleSecondaryButton = `
+    .secondary-button-glp {
 		font-family: Roboto;
 		font-weight: 500;
 		font-size: 1rem;
 		line-height: 26px;
-		background-color: #019BEF;
-		color: #fff;
+		background-color: transparent;
+		border: 1px #019BEF solid;
+		color: #019BEF;
 		margin: 24px 0;
 		padding: 12px 16px 11px 16px;
 		border-radius: 60px;
@@ -20,21 +21,21 @@ export const stylePrimaryButton = `
 		display: block;
 	}
 	@media (max-width: 767px) {
-		.primary-button-glp {
+		.secondary-button-glp {
 			padding: 12px 8px;
 			margin: 16px 0 0;			
 		}
 	}
 `
 
-export const divPrimaryButton = `<a class="primary-button-glp w-100-glp">Primary button</a>`
+export const divSecondaryButton = `<a class="secondary-button-glp w-100-glp">Secondary button</a>`
 
-function primaryButton(editor: any) {		
-	editor.Blocks.add('primaryButton', {
-		id: 'primaryButton',
-		label: 'Botón primario',
+function SecondaryButton(editor: any) {		
+	editor.Blocks.add('seondaryButton', {
+		id: 'seondaryButton',
+		label: 'Botón Secundario',
 		activate: true,
-		content: stylePrimaryButton+divPrimaryButton,
+		content: styleSecondaryButton+divSecondaryButton,
 		category: 'Moleculas',
 		media: iconsSvg.primaryButton,
 		attributes: { class: 'custom-block' },
@@ -42,4 +43,4 @@ function primaryButton(editor: any) {
 	
 }
   
-export default primaryButton;
+export default SecondaryButton;

@@ -1,6 +1,7 @@
 const div = `
 	<style>  
 		h2 {
+		    font-family: Telefonica-Regular, sans-serif;
 			font-size: 26px;
 			line-height: 34px;
 			text-align: center;

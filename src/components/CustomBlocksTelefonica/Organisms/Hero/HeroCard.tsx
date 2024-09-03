@@ -65,7 +65,7 @@ export const StyleHeroCardContent = `
 			object-fit: fill;
 		}
 	}
-		.hero-card-right-l .content .button-group {
+	.hero-card-right-l .content .button-group {
 		display: flex;
 		flex-direction: row;
 		align-items: center;

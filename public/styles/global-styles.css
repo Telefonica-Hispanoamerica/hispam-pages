@@ -11,19 +11,30 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
     vertical-align: baseline;
 }
 .gjs-row-kenos {
-    width: 100%;
+    /* width: 100%;
     display: flex;
     flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
     padding: 16px;
-    grid-gap: 16px
+    grid-gap: 16px */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px;
+    display: table;
+    width: 100%;
+    border-spacing: 16px;
 }
 
 .gjs-cell-kenos {
-    width: 100%;
+    /* width: 100%;
     display: flex;
-    min-height: 75px;
+    flex-direction: column;
+    min-height: 25px; */
+    width: 8%;
+    display: table-cell;
+    height: 75px;
+    vertical-align: top;
 }
 @media (max-width: 767px) {
     .gjs-row-kenos {
@@ -33,8 +44,8 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
         padding: 16px;
     }
     .gjs-cell-kenos {
-        display: flex;
         width: 100%;
+        height: initial;
     }
 }	
 
@@ -79,4 +90,27 @@ p {
     width: 100%;
 }
 
+@font-face {
+    font-family: 'Telefonica-Regular';
+    src: url('fonts/telefonica-regular-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Light';
+    src: url('fonts/telefonica-light-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Bold';
+    src: url('fonts/telefonica-bold-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Tabs */

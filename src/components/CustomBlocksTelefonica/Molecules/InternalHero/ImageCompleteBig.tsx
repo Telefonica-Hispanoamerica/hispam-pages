@@ -1,7 +1,11 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 import { divLinkButton, styleLinkButton } from '../Buttons/LinkButton';
 import { divPrimaryButton, stylePrimaryButton } from '../Buttons/PrimaryButton';
+import { divDescription } from '../Content/Description';
+import { divPretitle, stylePretitle } from '../Content/Pretitle';
+import { divSubTitle, styleSubTitle } from '../Content/Subtitle';
 import { divTag, styleTag } from '../Content/Tag';
+import { divTitle, styleTitle } from '../Content/Title';
 
 export const StyleHeroImageCompleteBig = `
 	<style>
@@ -30,8 +34,7 @@ export const StyleHeroImageCompleteBig = `
 	}*/
 	@media (max-width: 767px) {
 		.image-hero {
-			width: 100%;
-			object-fit: fill;
+			width: initial;
 		}
 	}
 	.gradient-hero {
@@ -59,6 +62,7 @@ export const StyleHeroImageCompleteBig = `
 		grid-template-columns: 60% 40%;
 		grid-gap: 24px;
 		align-items: center;
+		width: 100%;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete {
@@ -121,22 +125,18 @@ export const StyleHeroImageCompleteBig = `
 			line-height: 24px;
 		}
 	}
-	.hero-image-complete .content ul li {
-		font-size: 1.125rem;
-		line-height: 26px;
-		color: #737578;
-	}
-	@media (max-width: 767px) {
-		.hero-image-complete .content ul li {
-			font-size: 1rem;
-			line-height: 24px;
-		}
-	}
 	.hero-image-complete .content .button-group {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		grid-gap: 16px;
+		width: 70%;
+	}
+	@media (max-width: 767px) {
+		.hero-image-complete .content .button-group {
+			flex-direction: column;
+			width: 100%;
+		}
 	}
 	.hero-image-complete .img-content {
 		overflow: hidden;
@@ -154,20 +154,30 @@ export const StyleHeroImageCompleteBig = `
 	${stylePrimaryButton}
 	${styleLinkButton}
 	${styleTag}
+	${stylePretitle}
+	${styleTitle}
+	${styleSubTitle}
+	${divDescription}
 	</style>`
 export const DivHeroImageCompleteBig = `
 	<section class='p-relative-hero section-hero' >
 		<div class='gradient-hero'></div>
-		<img class='image-hero' src="images/template-telefonica/hero.webp" alt=''/>
+		<img 
+			class='image-hero' 
+			src="images/template-telefonica/hero.webp"
+			srcset-desktop="images/template-telefonica/hero.webp" 
+			srcset-mobile="images/template-telefonica/hero.webp" 
+			alt=''
+		/>
 		<div class='gjs-row-kenos p-absolute-hero'>
 			<div class='gjs-cell-kenos'>
 				<div class="hero-image-complete">
 					<div class="content">
 						${divTag}
-						<div class="pretitle">Pre-title</div>
-						<div class="title">Fullbody Card title</div>
-						<div class="subtitle">Subtitle</div>
-						<div class="description">This sample description is being used as a placeholder for real text.</div>
+						${divPretitle}
+						${divTitle}
+						${divSubTitle}
+						${divDescription}
 						<div class="button-group">							
 							${divPrimaryButton}
 							${divLinkButton}

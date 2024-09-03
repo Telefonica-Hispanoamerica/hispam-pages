@@ -1,4 +1,6 @@
 import { iconsSvg } from "../../IconsSvgBlocks";
+import { divPrimaryButton, stylePrimaryButton } from "../Buttons/PrimaryButton";
+import { divSecondaryButton, styleSecondaryButton } from "../Buttons/SecondaryButton";
 
 const id = crypto.randomUUID();
 export const StylePlanCardFeatContent = `
@@ -469,23 +471,40 @@ export const StylePlanCardFeatContent = `
 			font-size: 0.875rem;
 			font-weight: 500;
 			line-height: 20px;
-		}	
+		}
+		${stylePrimaryButton}
+		${styleSecondaryButton}	
 	</style>`
 	export const DivPlanCardFeatContent = `
 	<div class='card-feat'>
 		<div class="feature-tag">
-			<img src="images/template-telefonica/icon-light-white.svg" alt="" />
+			<img 
+				src="images/template-telefonica/icon-light-white.svg"
+				srcset-desktop="images/template-telefonica/icon-light-white.svg" 
+				srcset-mobile="images/template-telefonica/icon-light-white.svg" 
+				alt="" 
+			/>
 			Featured tag
 		</div>
 		<div class='header-plan'>
 			<div class='plan-name'>
 				Plan name
-				<img src="images/template-telefonica/question-regular.svg" alt="" />
+				<img 
+					src="images/template-telefonica/question-regular.svg" 
+					srcset-desktop="images/template-telefonica/question-regular.svg" 
+					srcset-mobile="images/template-telefonica/question-regular.svg" 
+					alt="" 
+				/>
 			</div>
 			<span class='capacity'>12 GB</span>
 			<div class='offer-description'><span>x12 month </span>Offer description</div>
 			<div class='tag'>
-				<img src="images/template-telefonica/offer-percent-filled.svg" alt="offer" />
+				<img 
+					src="images/template-telefonica/offer-percent-filled.svg"
+					srcset-desktop="images/template-telefonica/offer-percent-filled.svg" 
+					srcset-mobile="images/template-telefonica/offer-percent-filled.svg" 
+					alt="offer" 
+				/>
 				<p>Tag label</p>
 			</div>
 		</div>
@@ -498,15 +517,20 @@ export const StylePlanCardFeatContent = `
 			<div class='offer-per-month'><span>x12 month.</span> Offer description</div>
 		</div>
 		<div class='btn-main-content'>
-			<a class='btn-primary'>Primary button</a>
-			<a class='btn-second'>Secondary button</a>
+			${divPrimaryButton}
+			${divSecondaryButton}
 		</div>
 
 		<input type="checkbox" class="toggle" id="toggle${id}">
 		<div class="card-collapse">
 			<div class="card-content" id="content">
 				<div class='switch-options'>
-					<img src="images/template-telefonica/Image.jpg" class='icon-circle' />
+					<img 
+						src="images/template-telefonica/Image.jpg"
+						srcset-desktop="images/template-telefonica/Image.jpg" 
+						srcset-mobile="images/template-telefonica/Image.jpg" 
+						class='icon-circle' 
+					/>
 					<div class='streaming'>
 						<span class='add-streaming'>Add Streaming</span>
 						<span class='description'>Description</span>
@@ -517,7 +541,12 @@ export const StylePlanCardFeatContent = `
 					</label>
 				</div>
 				<div class='switch-options'>
-					<img src="images/template-telefonica/Image.jpg" class='icon-circle' />
+					<img 
+						src="images/template-telefonica/Image.jpg"
+						srcset-desktop="images/template-telefonica/Image.jpg" 
+						srcset-mobile="images/template-telefonica/Image.jpg" 
+						class='icon-circle'
+					/>
 					<div class='streaming'>
 						<span class='add-streaming'>Add Streaming</span>
 						<span class='description'>Description</span>
@@ -537,7 +566,12 @@ export const StylePlanCardFeatContent = `
 					<span class='txt'>Long offer description</span>
 				</div>
 				<div class='long-offer-row-streaming'>
-					<img src="images/template-telefonica/Image2.jpg" class='streaming-app' />
+					<img 
+						src="images/template-telefonica/Image2.jpg"
+						srcset-desktop="images/template-telefonica/Image2.jpg" 
+						srcset-mobile="images/template-telefonica/Image2.jpg" 
+						class='streaming-app' 
+					/>
 					<span class='txt'>Long offer description</span>
 				</div>
 				<div class='long-offer-list'>

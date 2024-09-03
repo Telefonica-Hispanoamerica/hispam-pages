@@ -17,8 +17,8 @@ export const styleTag = `
 export const divTag = `<div class="tag-label brand-low">Tag label</div>`
 
 function Tag(editor: any) {		
-	editor.Blocks.add('tag-comp', {
-		id: 'tag-comp',
+	editor.Blocks.add('tag-component-comp', {
+		id: 'tag-component-comp',
 		label: 'Tag',
 		activate: true,
 		// content: styleTag+divTag,

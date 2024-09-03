@@ -31,12 +31,12 @@ const Topbar: React.FC<TopbarProps> = ({editorParamaters}) => {
 			const zip = new JSZip();
 
 			const fontPaths = [
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-light-webfont.woff',
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-light-webfont.woff2',
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-regular-webfont.woff',
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-regular-webfont.woff2',
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-bold-webfont.woff',
-				'/hispam-pages/fonts/Telefonica-Fonts/telefonica-bold-webfont.woff2'
+				'/fonts/telefonica-light-webfont.woff',
+				'/fonts/telefonica-light-webfont.woff2',
+				'/fonts/telefonica-regular-webfont.woff',
+				'/fonts/telefonica-regular-webfont.woff2',
+				'/fonts/telefonica-bold-webfont.woff',
+				'/fonts/telefonica-bold-webfont.woff2'
 			];
 
 			const fontFiles = await Promise.all(
