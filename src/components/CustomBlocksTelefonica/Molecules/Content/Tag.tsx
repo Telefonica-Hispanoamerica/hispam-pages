@@ -7,7 +7,7 @@ export const styleTag = `
 		padding: 4px 4px 3px 4px;
 		margin-bottom: 8px;
 		color: #019BEF;
-		font-size: 0.875rem;
+		font-size: 14px;
 		width: fit-content;
 	}
 	.brand-low {
@@ -21,11 +21,10 @@ function Tag(editor: any) {
 		id: 'tag-component-comp',
 		label: 'Tag',
 		activate: true,
-		// content: styleTag+divTag,
 		content: {
-			type: 'tag-component-comp', // Usa el tipo de componente personalizado definido arriba
-			style: { 'background-color': 'white' }, // Estilo inicial
-			content: styleTag + divTag, // Contenido HTML o texto del bloque
+			type: 'tag-component-comp',
+			style: { 'background-color': 'white' },
+			content: `<style>${styleTag}</style>${divTag}`,
 		},
 		category: 'Moleculas',
 		media: iconsSvg.column1,

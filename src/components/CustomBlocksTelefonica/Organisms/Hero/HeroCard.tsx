@@ -7,7 +7,6 @@ import { divTitle, styleTitle } from '../../Molecules/Content/Title';
 import { divSubTitle, styleSubTitle } from '../../Molecules/Content/Subtitle';
 import { divDescription } from '../../Molecules/Content/Description';
 export const StyleHeroCardContent = `
-	<style>
 	.hero-right-image {
 		background-color: #fff;
 	}
@@ -105,7 +104,6 @@ export const StyleHeroCardContent = `
 	${stylePretitle}
 	${styleTitle}
 	${styleSubTitle}
-	</style>
 	`	
 	export const DivHeroCardContent = `
 	<section class='hero-right-image'>
@@ -137,7 +135,7 @@ function HeroCard(editor: any) {
 		id: 'HeroCardRight',
 		label: 'Hero Der.',
 		activate: true,
-		content: StyleHeroCardContent+DivHeroCardContent,
+		content: `<style>${StyleHeroCardContent}</style>${DivHeroCardContent}`,
 		category: 'Organismos',
 		media: iconsSvg.iheroCardRight,
 		attributes: { class: 'custom-block' },

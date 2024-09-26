@@ -1,7 +1,7 @@
 const div = `
 	<style>  
 		p {
-			font-size: 18px;
+			font-size: 16px;
 			line-height: 24px;
 			color: #86888C;
 		}

@@ -3,8 +3,8 @@ export const stylePretitle = `
 	.pretitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #313235;
 		margin-bottom: 8px;
 	}
@@ -16,7 +16,7 @@ function Pretitle(editor: any) {
 		id: 'pretitle',
 		label: 'Pretitle',
 		activate: true,
-		content: stylePretitle+divPretitle,
+		content: `<style>${stylePretitle}</style>${divPretitle}`,
 		category: 'Moleculas',
 		media: iconsSvg.column1,
 		attributes: { class: 'custom-block' },

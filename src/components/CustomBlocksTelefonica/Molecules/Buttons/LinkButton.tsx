@@ -1,13 +1,20 @@
+import React from 'react';
 import { iconsSvg } from '../../IconsSvgBlocks';
 
-export const styleLinkButton = `
-    .link-button-glp {
+// HTML template
+export const divLinkButton = `
+	<a href="#" class="link-button-glp">
+		Link button
+	</a>
+`;
+
+// CSS styles
+export const styleLinkButton = `	
+	.link-button-glp {
 		font-family: Roboto;
 		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
-		color: #737578;
-		margin: 0;
+		font-size: 16px;
+		line-height: 24px;
 		color: #019BEF;
 		text-decoration: underline;
 		text-underline-offset: 4px;
@@ -18,19 +25,17 @@ export const styleLinkButton = `
 	@media (max-width: 767px) {
 		.link-button-glp {
 			margin: 0;
-			font-size: 0.875rem;
+			font-size: 14px;
 			order: 2;
 		}
 	}
-`
-export const divLinkButton = `<a class="link-button-glp w-100-glp">Link button</a>`
-
-function linkButton(editor: any) {		
+`;
+function LinkButton(editor: any) {		
 	editor.Blocks.add('linkButton', {
 		id: 'linkButton',
-		label: 'Botón primario',
+		label: 'Botón enlace',
 		activate: true,
-		content: styleLinkButton+divLinkButton,
+		content: `<style>${styleLinkButton}</style>${divLinkButton}`,
 		category: 'Moleculas',
 		media: iconsSvg.primaryButton,
 		attributes: { class: 'custom-block' },
@@ -38,4 +43,4 @@ function linkButton(editor: any) {
 	
 }
   
-export default linkButton;
+export default LinkButton;

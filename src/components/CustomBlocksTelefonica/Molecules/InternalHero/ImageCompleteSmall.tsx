@@ -6,7 +6,6 @@ import { divTag, styleTag } from '../Content/Tag';
 import { divTitle, styleTitle } from '../Content/Title';
 
 export const StyleiHeroImageCompleteSmall = `
-	<style>
 	.image-hero-small{
 		width: 100%;
 		min-height: 348px;
@@ -109,7 +108,7 @@ export const StyleiHeroImageCompleteSmall = `
 	${styleDescription}
 	${stylePrimaryButton}
 	${styleLinkButton}
-	</style>`
+	`
 	export const DiviHeroImageCompleteSmall = `
 	<section class='p-relative-hero'>
 		<div class='gradient-hero'></div>
@@ -146,7 +145,7 @@ function iHeroImageCompleteSmall(editor: any) {
 		id: 'heroImageCompleteSmall',
 		label: 'Hero pequeño',
 		activate: false,
-		content: StyleiHeroImageCompleteSmall+DiviHeroImageCompleteSmall,
+		content: `<style>${StyleiHeroImageCompleteSmall}</style>${DiviHeroImageCompleteSmall}`,
 		category: 'Moleculas',
 		media: iconsSvg.iHeroImageComplete,
 		attributes: { class: 'custom-block' },

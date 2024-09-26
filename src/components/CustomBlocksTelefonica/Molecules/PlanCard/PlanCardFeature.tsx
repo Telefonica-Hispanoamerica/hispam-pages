@@ -4,7 +4,6 @@ import { divSecondaryButton, styleSecondaryButton } from "../Buttons/SecondaryBu
 
 const id = crypto.randomUUID();
 export const StylePlanCardFeatContent = `
-	<style>
 		input.toggle {
 			display: none;
 		}
@@ -19,7 +18,7 @@ export const StylePlanCardFeatContent = `
 			max-height: 500px;
 			transition: max-height 0.5s ease-out;
 			overflow: hidden;
-			margin-top: 1rem;
+			margin-top: 16px;
 		}
 
 		.card-header {
@@ -38,7 +37,7 @@ export const StylePlanCardFeatContent = `
 		.card-collapse .card-header {
 			font-family: 'Roboto';
 			transform: translateY(0);
-			font-size: 1rem;
+			font-size: 16px;
 			color: #019BEF;
 			text-decoration: underline;
 			text-underline-offset: 4px;
@@ -61,7 +60,7 @@ export const StylePlanCardFeatContent = `
 
 		.toggle:checked+.card-collapse .card-header {
 			transform: translateY(0);
-			margin-top: 1rem;
+			margin-top: 16px;
 		}
 
 		.toggle:checked+.card-collapse .card-header img {
@@ -74,14 +73,14 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat {
 			background-color: #fff;
-			border-radius: 1.5rem 1.5rem 1rem 1rem;
+			border-radius: 1.5rem 1.5rem 1rem 16px;
 			position: relative;
 			border: 1px solid #dddddd;
 			padding: 0 0 24px;
-			-webkit-border-radius: 1.5rem 1.5rem 1rem 1rem;
-			-moz-border-radius: 1.5rem 1.5rem 1rem 1rem;
-			-ms-border-radius: 1.5rem 1.5rem 1rem 1rem;
-			-o-border-radius: 1.5rem 1.5rem 1rem 1rem;
+			-webkit-border-radius: 1.5rem 1.5rem 1rem 16px;
+			-moz-border-radius: 1.5rem 1.5rem 1rem 16px;
+			-ms-border-radius: 1.5rem 1.5rem 1rem 16px;
+			-o-border-radius: 1.5rem 1.5rem 1rem 16px;
 			border: 2px solid #019BEF;
 		}
 
@@ -98,7 +97,7 @@ export const StylePlanCardFeatContent = `
 			justify-content: center;
 			align-items: center;
 			color: #fff;
-			font-size: 0.875rem;
+			font-size: 14px;
 			padding: 4px, 16px, 4px, 16px;
 			border-radius: 1rem 1rem 0 0;
 			-webkit-border-radius: 1rem 1rem 0 0;
@@ -115,7 +114,7 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .header-plan {
 			background-color: #0B2739;
-			padding: 1rem 1rem 2rem;
+			padding: 1rem 1rem 32px;
 			color: #fff;
 			display: flex;
 			flex-direction: column;
@@ -126,9 +125,9 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .header-plan .tag {
 			background-color: #e63780;
-			padding: 4px 1rem;
+			padding: 4px 16px;
 			color: #fff;
-			font-size: 0.875rem;
+			font-size: 14px;
 			border-radius: 4px;
 			position: absolute;
 			bottom: -12px;
@@ -149,7 +148,7 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .header-plan .plan-name {
 			font-family: 'Roboto';
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 			color: #fff;
 			margin: 0;
@@ -165,7 +164,7 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .header-plan .capacity {
 			font-family: Telefonica-Regular;
-			font-size: 2rem;
+			font-size: 32px;
 			line-height: 40px;
 			color: #fff;
 			margin: 0;
@@ -174,7 +173,7 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .header-plan .offer-description {
 			font-family: 'Roboto';
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 			color: #fff;
 			margin: 0;
@@ -194,14 +193,14 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .price-table .offer-description-price {
 			font-family: 'Roboto';
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
 		}
 
 		.card-feat .price-table .price {
 			font-family: Telefonica-Regular;
-			font-size: 2rem;
+			font-size: 32px;
 			line-height: 40px;
 			color: #313235;
 		}
@@ -218,7 +217,7 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .price-table .offer-per-month p {
 			font-family: 'Roboto';
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 			color: #737578;
 		}
@@ -229,12 +228,12 @@ export const StylePlanCardFeatContent = `
 		}
 
 		.card-feat .btn-main-content {
-			padding: 0 1rem;
+			padding: 0 16px;
 		}
 
 		.card-feat .btn-main-content .btn-primary {
 			font-family: 'Roboto';
-			font-size: 1.125rem;
+			font-size: 18px;
 			font-weight: 600;
 			padding: 1rem 12px;
 			display: block;
@@ -242,14 +241,14 @@ export const StylePlanCardFeatContent = `
 			color: #fff;
 			border-radius: 50px;
 			border: 0;
-			margin: 1rem auto 1rem;
+			margin: 1rem auto 16px;
 			cursor: pointer;
 			text-align: center;
 		}
 
 		.card-feat .btn-main-content .btn-second {
 			font-family: 'Roboto';
-			font-size: 1.125rem;
+			font-size: 18px;
 			font-weight: 600;
 			padding: 1rem 12px;
 			display: block;
@@ -257,7 +256,7 @@ export const StylePlanCardFeatContent = `
 			color: #019df4;
 			border-radius: 50px;
 			border: 1.5px solid #019df4;
-			margin: 1rem auto 1rem;
+			margin: 1rem auto 16px;
 			cursor: pointer;
 			text-align: center;
 		}
@@ -269,7 +268,7 @@ export const StylePlanCardFeatContent = `
 			border-radius: 12px;
 			border: 1px solid #DDD;
 			background: #FFF;
-			margin: 0 1rem 1rem;
+			margin: 0 1rem 16px;
 			align-items: center;
 			justify-content: space-between;
 		}
@@ -292,7 +291,7 @@ export const StylePlanCardFeatContent = `
 			font-family: 'Roboto';
 			align-self: stretch;
 			color: #313235;
-			font-size: 1rem;
+			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 24px;
@@ -301,7 +300,7 @@ export const StylePlanCardFeatContent = `
 		.card-feat .switch-options .streaming .description {
 			font-family: 'Roboto';
 			color: #737578;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
@@ -369,12 +368,12 @@ export const StylePlanCardFeatContent = `
 		.card-feat .long-offer-row {
 			display: flex;
 			height: 40px;
-			padding: 4px 8px 4px 1rem;
+			padding: 4px 8px 4px 16px;
 			align-items: center;
-			gap: 1rem;
+			gap: 16px;
 			border-radius: 8px;
 			background: #F6F6F6;
-			margin: 0 1rem 1rem;
+			margin: 0 1rem 16px;
 		}
 
 		.card-feat .long-offer-row .icon {
@@ -390,7 +389,7 @@ export const StylePlanCardFeatContent = `
 			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
@@ -399,12 +398,12 @@ export const StylePlanCardFeatContent = `
 		.card-feat .long-offer-row-streaming {
 			display: flex;
 			height: auto;
-			padding: 8px 8px 8px 1rem;
+			padding: 8px 8px 8px 16px;
 			align-items: center;
-			gap: 1rem;
+			gap: 16px;
 			border-radius: 8px;
 			background: #F6F6F6;
-			margin: 0 1rem 1rem;
+			margin: 0 1rem 16px;
 		}
 
 		.card-feat .long-offer-row-streaming .streaming-app {
@@ -415,7 +414,7 @@ export const StylePlanCardFeatContent = `
 			font-family: 'Roboto';
 			flex: 1 0 0;
 			color: #737578;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 20px;
@@ -428,10 +427,10 @@ export const StylePlanCardFeatContent = `
 
 		.card-feat .long-offer-list {
 			display: flex;
-			padding-top: 1rem;
-			padding-bottom: 1rem;
+			padding-top: 16px;
+			padding-bottom: 16px;
 			flex-direction: row;
-			gap: 1rem;
+			gap: 16px;
 			align-items: center;
 			margin: 0 1rem 0;
 			border-top: 1px solid #EEE;
@@ -451,7 +450,7 @@ export const StylePlanCardFeatContent = `
 		.card-feat .long-offer-list .content .title {
 			font-family: 'Roboto';
 			color: #313235;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-weight: 700;
 			line-height: 20px;
 		}
@@ -459,7 +458,7 @@ export const StylePlanCardFeatContent = `
 		.card-feat .long-offer-list .content .description {
 			font-family: 'Roboto';
 			color: #737578;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-weight: 400;
 			line-height: 20px;
 		}
@@ -468,13 +467,13 @@ export const StylePlanCardFeatContent = `
 			font-family: 'Roboto';
 			color: #019BEF;
 			text-align: center;
-			font-size: 0.875rem;
+			font-size: 14px;
 			font-weight: 500;
 			line-height: 20px;
 		}
 		${stylePrimaryButton}
 		${styleSecondaryButton}	
-	</style>`
+	`
 	export const DivPlanCardFeatContent = `
 	<div class='card-feat'>
 		<div class="feature-tag">
@@ -645,7 +644,7 @@ function PlanCardFeature(editor: any) {
 		activate: true,
 		content: [
 			{ type: 'comp-with-js' },
-			StylePlanCardFeatContent+DivPlanCardFeatContent
+			`<style>${StylePlanCardFeatContent}</style>${DivPlanCardFeatContent}`
 		],
 		category: 'Moleculas',
 		media: iconsSvg.card,

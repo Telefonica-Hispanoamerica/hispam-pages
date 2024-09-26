@@ -8,7 +8,6 @@ import { divTag, styleTag } from '../Content/Tag';
 import { divTitle, styleTitle } from '../Content/Title';
 
 export const StyleHeroImageCompleteBig = `
-	<style>
 	.section-hero {
 		background-color: #fff;
 	}
@@ -85,43 +84,43 @@ export const StyleHeroImageCompleteBig = `
 	.hero-image-complete .content .pretitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	.hero-image-complete .content .title {
 		font-family: 'Telefonica-Regular', sans-serif;
-		font-size: 3rem;
+		font-size:48px;
 		line-height: 56px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete .content .title {
-			font-size: 1.5rem;
+			font-size: 24px;
 			line-height: 32px;
 		}
 	}
 	.hero-image-complete .content .subtitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	.hero-image-complete .content .description {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin: 24px 0;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete .content .description {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
@@ -158,7 +157,7 @@ export const StyleHeroImageCompleteBig = `
 	${styleTitle}
 	${styleSubTitle}
 	${divDescription}
-	</style>`
+	`
 export const DivHeroImageCompleteBig = `
 	<section class='p-relative-hero section-hero' >
 		<div class='gradient-hero'></div>
@@ -194,7 +193,7 @@ function HeroImageCompleteBig(editor: any) {
 		id: 'heroImageCompleteBig',
 		label: 'Hero grande',
 		activate: true,
-		content: StyleHeroImageCompleteBig+DivHeroImageCompleteBig,
+		content: `<style>${StyleHeroImageCompleteBig}</style>${DivHeroImageCompleteBig}`,
 		category: 'Moleculas',
 		media: iconsSvg.iHeroImageComplete,
 		attributes: { class: 'custom-block' },

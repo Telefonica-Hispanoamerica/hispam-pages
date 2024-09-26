@@ -29,31 +29,31 @@ const div = `
 			flex-direction: row;
 			background-color: #F6ECF6;
 			color: #712B71;
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			border-radius: 50px;
 		}
 		.media-card .box-content .content .pretitle{
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			color: #0B2739;
 			margin-top: 8px;
 		}
 		.media-card .box-content .content .title{
-			font-size: 1.125rem;
-			line-height: 1.500rem;
+			font-size: 18px;
+			line-height: 24px;
 			color: #0B2739;
 			margin-top: 4px;
 		}
 		.media-card .box-content .content .subtitle{
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			color: #0B2739;
 			margin-top: 4px;
 		}
 		.media-card .box-content .content .description{
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			color: #86888C;
 			margin-top: 8px;
 		}
@@ -71,8 +71,8 @@ const div = `
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			color: #fff;
 			border-radius: 4px;
 			word-break: break-all;
@@ -87,8 +87,8 @@ const div = `
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			font-size: 0.875rem;
-			line-height: 1.250rem;
+			font-size: 14px;
+			line-height: 20px;
 			background-color: #fff;
 			text-decoration: underline;
 			text-underline-offset: 5px;

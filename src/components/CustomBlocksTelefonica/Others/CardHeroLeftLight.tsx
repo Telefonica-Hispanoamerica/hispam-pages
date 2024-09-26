@@ -33,28 +33,28 @@ const div = `
 	.card-hero-left-l .content .pretitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 26px;
 		color: #313235;
 		margin-bottom: 8px;
 	}
 	.card-hero-left-l .content .title {
 		font-family: 'Telefonica-Regular', sans-serif;
-		font-size: 2.5rem;
+		font-size: 40px;
 		line-height: 48px;
 		color: #313235;
 		margin-bottom: 8px;
 	}
 	@media (max-width: 767px) {
 		.card-hero-left-l .content .title {
-			font-size: 1.5rem;
+			font-size: 24px;
 			line-height: 32px;
 		}
 	}
 	.card-hero-left-l .content .subtitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 26px;
 		color: #313235;
 		margin-bottom: 8px;
@@ -62,25 +62,25 @@ const div = `
 	.card-hero-left-l .content .description {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 26px;
 		color: #737578;
 		margin: 24px 0;
 	}
 	@media (max-width: 767px) {
 		.card-hero-left-l .content .description {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
 	.card-hero-left-l .content ul li {
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 26px;
 		color: #737578;
 	}
 	@media (max-width: 767px) {
 		.card-hero-left-l .content ul li {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
@@ -118,7 +118,7 @@ const div = `
 	.card-hero-left-l .button-group .link-button {
 		font-family: Roboto;
 		font-weight: 500;
-		font-size: 1rem;
+		font-size: 16px;
 		line-height: 26px;
 		color: #737578;
 		margin: 24px 0;
@@ -130,13 +130,13 @@ const div = `
 	@media (max-width: 767px) {
 		.card-hero-left-l .button-group .link-button {
 			margin: 16px 0 0;
-			font-size: 0.875rem;
+			font-size: 14px;
 		}
 	}
 	.card-hero-left-l .button-group .primary-button {
 		font-family: Roboto;
 		font-weight: 500;
-		font-size: 1rem;
+		font-size: 16px;
 		line-height: 26px;
 		background-color: #019BEF;
 		color: #fff;

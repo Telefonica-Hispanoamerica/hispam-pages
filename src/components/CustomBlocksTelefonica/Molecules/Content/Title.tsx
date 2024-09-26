@@ -2,7 +2,7 @@ import { iconsSvg } from '../../IconsSvgBlocks';
 export const styleTitle = `
 	.title {
 		font-family: 'Telefonica-Regular', sans-serif;
-		font-size: 2.5rem;
+		font-size: 40px;
 		line-height: 48px;
 		color: #313235;
 		margin-bottom: 8px;
@@ -10,7 +10,7 @@ export const styleTitle = `
 
 	@media (max-width: 767px) {
 		.title {
-			font-size: 1.5rem;
+			font-size: 24px;
 			line-height: 32px;
 		}
 	}
@@ -22,7 +22,7 @@ function Title(editor: any) {
 		id: 'pretitle',
 		label: 'Title',
 		activate: true,
-		content: styleTitle+divTitle,
+		content: `<style>${styleTitle}</style>${divTitle}`,
 		category: 'Moleculas',
 		media: iconsSvg.column1,
 		attributes: { class: 'custom-block' },

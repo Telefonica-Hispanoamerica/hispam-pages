@@ -25,31 +25,11 @@ import H2 from './components/CustomBlocksTelefonica/Atoms/Text/H2';
 import paragraphKenos from './components/CustomBlocksTelefonica/Atoms/Text/P';
 import OrderedListKenos from './components/CustomBlocksTelefonica/Atoms/Text/OrderedList';
 import NumberListKenos from './components/CustomBlocksTelefonica/Atoms/Text/NumberList';
-// import PlanCardTelefonica2 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica2';
-// import PlanCardTelefonica3 from './components/CustomBlocksTelefonica/Cards/PlanCardTelefonica3';
-// import CardHeroTLPG from './components/CustomBlocksTelefonica/Cards/CardHeroLeftLight';
-// import ValuePrepositionImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDark4Col';
-// import ValuePrepositionImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionImageDarkLeft3Col';
-// import ValuePrepositionIconDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDark4Col';
-// import ValuePrepositionIconDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeft3Col';
-// import ValuePrepositionNoImageDark4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDark4Col';
-// import ValuePrepositionNoImageDarkLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionNoImageDarkLeft3Col';
-// import ValuePrepositionIconLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLight4Col';
-// import ValuePrepositionIconLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionIconLightLeft3Col';
-// import ValuePrepositionImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageLight4Col';
-// import ValuePrepositionImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionImageDarkLeft3Col';
-// import ValuePrepositionNoImageLight4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLight4Col';
-// import ValuePrepositionNoImageLightLeft4Col from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsLight/ValuePrepositionNoImageLightLeft3Col';
 import ValuePrep4xCenter from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xCenter';
-// import ValuePrepositionIconLightLeftDivider2ColContent from './components/CustomBlocksTelefonica/Templates/ValuePreposition/ValuePrep4xCenter';
-// import ValuePrepositionIconDarkLeftDivider2ColContent from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider2ColContent';
-// import ValuePrepositionIconDarkLeftDivider from './components/CustomBlocksTelefonica/Cards/ValuePrepositionsDark/ValuePrepositionIconDarkLeftDivider';
 import iHeroImageCompleteSmall from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteSmall';
 import ImageCompleteBigCenter from './components/CustomBlocksTelefonica/Molecules/InternalHero/ImageCompleteBigCenter';
-// import CardDark4Col from './components/CustomBlocksTelefonica/Cards/Card/CardDark4Col';
 
 import CardHeroRightLight from './components/CustomBlocksTelefonica/Others/CardHeroRightLight';
-// import CardHeroSectionDark from './components/CustomBlocksTelefonica/Cards/CardHeroSectionDark';
 
 /* Hooks */
 import { PageContext } from './hooks/pageSlice';
@@ -65,10 +45,17 @@ import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/Pla
 import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xLeft';
 import { Height } from '@mui/icons-material';
 import primaryButton from './components/CustomBlocksTelefonica/Molecules/Buttons/PrimaryButton';
+import LinkButton from './components/CustomBlocksTelefonica/Molecules/Buttons/LinkButton';
 import HeroCard from './components/CustomBlocksTelefonica/Organisms/Hero/HeroCard';
 import TabsHero from './components/CustomBlocksTelefonica/Organisms/Tabs/TabsHero';
 import RibbonGray from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
 import IconAndText from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
+import Columns2_3_7Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns2_3_7';
+import H3 from './components/CustomBlocksTelefonica/Atoms/Text/H3';
+import H4 from './components/CustomBlocksTelefonica/Atoms/Text/H4';
+import H5 from './components/CustomBlocksTelefonica/Atoms/Text/H5';
+import H6 from './components/CustomBlocksTelefonica/Atoms/Text/H6';
+import Columns2_7_3Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns2_7_3';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -259,9 +246,6 @@ function App() {
 				}
 			},
 		},
-		cssComposer: {
-			// options
-		}
 	};	
 
 	const onEditor = (editor: Editor) => {		
@@ -290,6 +274,24 @@ function App() {
 
 		editor.on('load', function() {
 			editor.runCommand('core:component-outline');			
+		});
+
+		editor.on('component:remove', (component) => {
+			const cssRules = editor.CssComposer.getAll();
+			console.log('CSS actualizado 11:', cssRules);
+			const componentStyles = component.getSelectors().getFullString();
+			console.log('CSS actualizado 22:', componentStyles);
+	  
+			cssRules.forEach((rule) => {
+			  if (rule.selectorsToString() === componentStyles) {
+				editor.CssComposer.remove(rule);
+			  }
+			});
+	  
+			// Actualizar el CSS exportado
+			const updatedCss = editor.getCss();
+			// Aquí puedes guardar o actualizar el CSS como necesites
+			console.log('CSS actualizado 33:', updatedCss);
 		});
 		
 
@@ -578,6 +580,7 @@ function App() {
 
 		// Escuchar cuando se abre el Asset Manager
 		editor.on('run:open-assets', () => {
+			
 			const assetManager = editor.AssetManager;
 			const modal = editor.Modal;
 		
@@ -862,10 +865,16 @@ function App() {
 						Columns4Kenos,
 						Columns5Kenos,
 						Columns6Kenos,
+						Columns2_3_7Kenos,
+						Columns2_7_3Kenos,
 						// Atoms,
 						SectionBlank,
 						H1,
 						H2,
+						H3,
+						H4,
+						H5,
+						H6,
 						paragraphKenos,
 						OrderedListKenos,
 						NumberListKenos,
@@ -882,6 +891,7 @@ function App() {
 						TabsCardPlan,
 						CardHeroRightLight,
 						primaryButton,
+						LinkButton,
 						IconAndText,
 						//Organism
 						HeroCard,

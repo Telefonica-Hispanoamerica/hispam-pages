@@ -37,20 +37,20 @@ const div = `
 	.card-vp-img-no-link .title {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.25rem;
+		font-size: 20px;
 		line-height: 28px;
 		color: #fff;
 	}
 	@media (max-width: 767px) {
 		.card-vp-img-no-link .title {
-			font-size: 1.125rem;
+			font-size: 18px;
 			line-height: 24px;
 		}
 	}
 	.card-vp-img-no-link .description {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1rem;
+		font-size: 16px;
 		line-height: 24px;
 		color: #fff;
 		margin-top: 8px;
@@ -61,7 +61,7 @@ const div = `
 	}
 	@media (max-width: 767px) {
 		.card-vp-img-no-link .description {
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 		}
 	}

@@ -1,28 +1,22 @@
 const div = `
 	<style>  
-		h2 {
+		h5 {
 		    font-family: Telefonica-Regular, sans-serif;
-			font-size: 30px;
-			line-height: 38px;
+			font-size: 18px;
+			line-height: 24px;
 			text-align: center;
 			font-weight: 400;
 			margin: 16px 0;
 		}
-		@media (max-width: 767px) {
-			h2 {
-				font-size: 24px;
-				line-height: 32px;
-			}
-		}
 	</style>
-	<h2>Text H2</h2>
+	<h5>Text H5</h5>
 	`
 
-function H2Kenos(editor: any) {
+function H5Kenos(editor: any) {
 
-	editor.Blocks.add('h2', {
-		id: 'h2',
-		label: 'H2',
+	editor.Blocks.add('h5', {
+		id: 'h5',
+		label: 'H5',
 		activate: true,
 		content: div,
 		category: 'Átomos',		
@@ -30,4 +24,4 @@ function H2Kenos(editor: any) {
 	});
 }
   
-export default H2Kenos;
+export default H5Kenos;

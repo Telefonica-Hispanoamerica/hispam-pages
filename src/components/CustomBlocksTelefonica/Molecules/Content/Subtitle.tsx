@@ -1,10 +1,10 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 export const styleSubTitle = `
-	.hero-card-right-l .content .subtitle {
+	.subtitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #313235;
 		margin-bottom: 8px;
 	}
@@ -16,7 +16,7 @@ function SubTitle(editor: any) {
 		id: 'subTitle',
 		label: 'SubTitle',
 		activate: true,
-		content: styleSubTitle+divSubTitle,
+		content: `<style>${styleSubTitle}</style>${divSubTitle}`,
 		category: 'Moleculas',
 		media: iconsSvg.column1,
 		attributes: { class: 'custom-block' },

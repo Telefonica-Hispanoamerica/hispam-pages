@@ -10,7 +10,7 @@ export const styles = `
 }
 .title-section-vp{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:2.5rem;
+   font-size:40px;
    line-height:48px;
    color:rgb(255, 255, 255);
    margin-top:0px;
@@ -22,7 +22,7 @@ export const styles = `
 .description-vp{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:24px;
    color:rgb(255, 255, 255);
    margin-top:0px;
@@ -85,28 +85,28 @@ export const styles = `
 }
 .card-dark-left .txt-content .pretitle{
    font-family:Roboto;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:20px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
 }
 .card-dark-left .txt-content .title{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:1.5rem;
+   font-size:24px;
    line-height:32px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
 }
 .card-dark-left .txt-content .subtitle{
    font-family:Roboto;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:20px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
 }
 .card-dark-left .txt-content .description{
    font-family:Roboto;
-   font-size:1rem;
+   font-size:16px;
    line-height:24px;
    color:rgb(255, 255, 255);
    overflow-x:hidden;
@@ -130,7 +130,7 @@ export const styles = `
 .card-dark-left .button-group .link-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:26px;
    color:rgb(1, 155, 239);
    text-decoration-line:underline;
@@ -143,7 +143,7 @@ export const styles = `
 .card-dark-left .button-group .primary-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:26px;
    background-color:rgb(1, 155, 239);
    color:rgb(255, 255, 255);
@@ -190,14 +190,14 @@ export const styles = `
 .card-hero-left-d .content .pretitle{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
 }
 .card-hero-left-d .content .title{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:2.5rem;
+   font-size:40px;
    line-height:48px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
@@ -205,7 +205,7 @@ export const styles = `
 .card-hero-left-d .content .subtitle{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
@@ -213,7 +213,7 @@ export const styles = `
 .card-hero-left-d .content .description{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-top:24px;
@@ -222,7 +222,7 @@ export const styles = `
    margin-left:0px;
 }
 .card-hero-left-d .content ul li{
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(115, 117, 120);
 }
@@ -249,7 +249,7 @@ export const styles = `
 .card-hero-left-d .button-group .link-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:1rem;
+   font-size:16px;
    line-height:26px;
    margin-top:24px;
    margin-right:0px;
@@ -267,7 +267,7 @@ export const styles = `
 .card-hero-left-d .button-group .primary-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:1rem;
+   font-size:16px;
    line-height:26px;
    background-color:rgb(1, 155, 239);
    color:rgb(255, 255, 255);
@@ -309,14 +309,14 @@ export const styles = `
 .card-hero-right-d .content .pretitle{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
 }
 .card-hero-right-d .content .title{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:2.5rem;
+   font-size:40px;
    line-height:48px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
@@ -324,7 +324,7 @@ export const styles = `
 .card-hero-right-d .content .subtitle{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-bottom:8px;
@@ -332,7 +332,7 @@ export const styles = `
 .card-hero-right-d .content .description{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
    margin-top:24px;
@@ -341,7 +341,7 @@ export const styles = `
    margin-left:0px;
 }
 .card-hero-right-d .content ul li{
-   font-size:1.125rem;
+   font-size:18px;
    line-height:26px;
    color:rgb(255, 255, 255);
 }
@@ -368,7 +368,7 @@ export const styles = `
 .card-hero-right-d .button-group .link-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:1rem;
+   font-size:16px;
    line-height:26px;
    margin-top:24px;
    margin-right:0px;
@@ -386,7 +386,7 @@ export const styles = `
 .card-hero-right-d .button-group .primary-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:1rem;
+   font-size:16px;
    line-height:26px;
    background-color:rgb(1, 155, 239);
    color:rgb(255, 255, 255);
@@ -422,7 +422,7 @@ export const styles = `
 }
 .title-section-light3col{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:2.5rem;
+   font-size:40px;
    line-height:48px;
    color:rgb(49, 50, 53);
    margin-top:0px;
@@ -434,7 +434,7 @@ export const styles = `
 .description-light3col{
    font-family:Roboto;
    font-weight:400;
-   font-size:1.125rem;
+   font-size:18px;
    line-height:24px;
    color:rgb(115, 117, 120);
    margin-top:0px;
@@ -516,28 +516,28 @@ export const styles = `
 }
 .card-light-3col .txt-content .pretitle{
    font-family:Roboto;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:20px;
    color:rgb(49, 50, 53);
    margin-bottom:8px;
 }
 .card-light-3col .txt-content .title{
    font-family:Telefonica-Regular, sans-serif;
-   font-size:1.5rem;
+   font-size:24px;
    line-height:32px;
    color:rgb(49, 50, 53);
    margin-bottom:8px;
 }
 .card-light-3col .txt-content .subtitle{
    font-family:Roboto;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:20px;
    color:rgb(49, 50, 53);
    margin-bottom:8px;
 }
 .card-light-3col .txt-content .description{
    font-family:Roboto;
-   font-size:1rem;
+   font-size:16px;
    line-height:24px;
    color:rgb(115, 117, 120);
    overflow-x:hidden;
@@ -561,7 +561,7 @@ export const styles = `
 .card-light-3col .button-group .link-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:26px;
    color:rgb(1, 155, 239);
    text-decoration-line:underline;
@@ -574,7 +574,7 @@ export const styles = `
 .card-light-3col .button-group .primary-button{
    font-family:Roboto;
    font-weight:500;
-   font-size:0.875rem;
+   font-size:014px;
    line-height:26px;
    background-color:rgb(1, 155, 239);
    color:rgb(255, 255, 255);
@@ -680,36 +680,36 @@ export const styles = `
       margin-right:auto;
       margin-bottom:16px;
       margin-left:auto;
-      font-size:1.75rem;
+      font-size:28px;
       line-height:36px;
    }
    .description-vp{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
       margin-bottom:32px;
    }
    .card-dark-left .txt-content .pretitle{
-      font-size:0.75rem;
+      font-size:12px;
       line-height:20px;
    }
    .card-dark-left .txt-content .title{
-      font-size:1.25rem;
+      font-size:20px;
       line-height:28px;
    }
    .card-dark-left .txt-content .subtitle{
-      font-size:0.75rem;
+      font-size:12px;
       line-height:20px;
    }
    .card-dark-left .txt-content .description{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
    .card-dark-left .button-group .link-button{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
    .card-dark-left .button-group .primary-button{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
    .card-hero-left-d{
@@ -746,15 +746,15 @@ export const styles = `
       order:2;
    }
    .card-hero-left-d .content .title{
-      font-size:1.5rem;
+      font-size:24px;
       line-height:32px;
    }
    .card-hero-left-d .content .description{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
    }
    .card-hero-left-d .content ul li{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
    }
    .card-hero-left-d .img-content{
@@ -774,7 +774,7 @@ export const styles = `
       margin-right:0px;
       margin-bottom:0px;
       margin-left:0px;
-      font-size:0.875rem;
+      font-size:014px;
    }
    .card-hero-left-d .button-group .primary-button{
       padding-top:12px;
@@ -820,15 +820,15 @@ export const styles = `
       order:2;
    }
    .card-hero-right-d .content .title{
-      font-size:1.5rem;
+      font-size:24px;
       line-height:32px;
    }
    .card-hero-right-d .content .description{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
    }
    .card-hero-right-d .content ul li{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
    }
    .card-hero-right-d .img-content{
@@ -849,7 +849,7 @@ export const styles = `
       margin-right:0px;
       margin-bottom:0px;
       margin-left:0px;
-      font-size:0.875rem;
+      font-size:014px;
    }
    .card-hero-right-d .button-group .primary-button{
       padding-top:12px;
@@ -866,36 +866,36 @@ export const styles = `
       margin-right:auto;
       margin-bottom:16px;
       margin-left:auto;
-      font-size:1.75rem;
+      font-size:28px;
       line-height:36px;
    }
    .description-light3col{
-      font-size:1rem;
+      font-size:16px;
       line-height:24px;
       margin-bottom:32px;
    }
    .card-light-3col .txt-content .pretitle{
-      font-size:0.75rem;
+      font-size:12px;
       line-height:20px;
    }
    .card-light-3col .txt-content .title{
-      font-size:1.25rem;
+      font-size:20px;
       line-height:28px;
    }
    .card-light-3col .txt-content .subtitle{
-      font-size:0.75rem;
+      font-size:12px;
       line-height:20px;
    }
    .card-light-3col .txt-content .description{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
    .card-light-3col .button-group .link-button{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
    .card-light-3col .button-group .primary-button{
-      font-size:0.875rem;
+      font-size:014px;
       line-height:20px;
    }
 }

@@ -5,7 +5,7 @@ const div = `
 			padding-inline-start: 40px;
 		}
 		ul li {
-			font-size: 18px;
+			font-size: 16px;
 			line-height: 24px;
 			color: #86888C;
 			/*-webkit-user-modify: read-write;*/

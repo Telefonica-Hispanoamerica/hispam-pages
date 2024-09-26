@@ -4,8 +4,8 @@ export const stylePrimaryButton = `
     .primary-button-glp {
 		font-family: Roboto;
 		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
+		font-size: 16px;
+		line-height: 24px;
 		background-color: #019BEF;
 		color: #fff;
 		margin: 24px 0;
@@ -34,7 +34,7 @@ function primaryButton(editor: any) {
 		id: 'primaryButton',
 		label: 'Botón primario',
 		activate: true,
-		content: stylePrimaryButton+divPrimaryButton,
+		content: `<style>${stylePrimaryButton}</style>${divPrimaryButton}`,
 		category: 'Moleculas',
 		media: iconsSvg.primaryButton,
 		attributes: { class: 'custom-block' },

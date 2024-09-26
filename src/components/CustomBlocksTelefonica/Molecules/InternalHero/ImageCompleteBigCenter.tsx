@@ -8,7 +8,6 @@ import { divSubTitle, styleSubTitle } from '../Content/Subtitle';
 import { divDescription, styleDescription } from '../Content/Description';
 
 export const StyleImageCompleteBigCenter = `
-	<style>
 	${fontsTelefonica}
 	.image-hero-big-center{
 		width: 100%;
@@ -51,54 +50,54 @@ export const StyleImageCompleteBigCenter = `
 	.hero-image-complete-center .content .pretitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	.hero-image-complete-center .content .title {
 		font-family: Telefonica-Regular;
-		font-size: 3rem;
+		font-size: 48px;
 		line-height: 56px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete-center .content .title {
-			font-size: 1.5rem;
+			font-size: 24px;
 			line-height: 32px;
 		}
 	}
 	.hero-image-complete-center .content .subtitle {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin-bottom: 8px;
 	}
 	.hero-image-complete-center .content .description {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #fff;
 		margin: 24px 0;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete-center .content .description {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
 	.hero-image-complete-center .content ul li {
-		font-size: 1.125rem;
-		line-height: 26px;
+		font-size: 18px;
+		line-height: 24px;
 		color: #737578;
 	}
 	@media (max-width: 767px) {
 		.hero-image-complete-center .content ul li {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
@@ -150,7 +149,7 @@ export const StyleImageCompleteBigCenter = `
 	${styleTitle}
 	${styleSubTitle}
 	${styleDescription}
-	</style>`
+`
 
 	export const DivImageCompleteBigCenter = `
 	<section class='p-relative-hero-center'>
@@ -188,7 +187,7 @@ function ImageCompleteBigCenter(editor: any) {
 		id: 'heroImageCompleteBigCenter',
 		label: 'Hero centrado',
 		activate: true,
-		content: StyleImageCompleteBigCenter+DivImageCompleteBigCenter,
+		content: `<style>${StyleImageCompleteBigCenter}</style>${DivImageCompleteBigCenter}`,
 		category: 'Moleculas',
 		media: iconsSvg.iHeroCenter,
 		attributes: { class: 'custom-block' },

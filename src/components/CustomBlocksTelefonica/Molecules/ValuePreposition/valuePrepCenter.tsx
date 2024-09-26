@@ -1,10 +1,9 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 export const StyleValuePrepCenter = `
-	<style>
 	.pretitle-vp-light {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.25rem;
+		font-size: 20px;
 		line-height: 28px;
 		color: #313235;
 		margin: 0 auto 8px;
@@ -12,13 +11,13 @@ export const StyleValuePrepCenter = `
 	}
 	@media (max-width: 767px) {
 		.pretitle-vp-light {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 		}
 	}
 	.title-section-vp-light {
 		font-family: Telefonica-Regular, sans-serif;
-		font-size: 2.5rem;
+		font-size: 40px;
 		line-height: 48px;
 		color:#313235;
 		margin: 0 auto 16px;
@@ -27,14 +26,14 @@ export const StyleValuePrepCenter = `
 	@media (max-width: 767px) {
 		.title-section-vp-light {
 			margin: 0 auto 16px;
-			font-size: 1.75rem;
+			font-size: 28px;
 			line-height: 36px;
 		}
 	}
 	.description-vp-light {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 24px;
 		color: #737578;
 		margin: 0 auto;
@@ -42,7 +41,7 @@ export const StyleValuePrepCenter = `
 	}
 	@media (max-width: 767px) {
 		.description-vp-light {
-			font-size: 1rem;
+			font-size: 16px;
 			line-height: 24px;
 			margin-bottom: 32px;
 		}
@@ -84,20 +83,20 @@ export const StyleValuePrepCenter = `
 	.card-vp-img-light .title {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1.25rem;
+		font-size: 20px;
 		line-height: 28px;
 		color: #313235;
 	}
 	@media (max-width: 767px) {
 		.card-vp-img .title {
-			font-size: 1.125rem;
+			font-size: 18px;
 			line-height: 24px;
 		}
 	}
 	.card-vp-img-light .description {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1rem;
+		font-size: 16px;
 		line-height: 24px;
 		color: #313235;
 		margin-top: 8px;
@@ -109,25 +108,25 @@ export const StyleValuePrepCenter = `
 	}
 	@media (max-width: 767px) {
 		.card-vp-img-light .description {
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 		}
 	}
 	.card-vp-img-light .text-link {
 		font-family: Roboto;
 		font-weight: 400;
-		font-size: 1rem;
+		font-size: 16px;
 		line-height: 24px;
 		color: #019BEF;
 		margin: 24px auto 0;		
 	}
 	@media (max-width: 767px) {
 		.card-vp-img-light .text-link {
-			font-size: 0.875rem;
+			font-size: 14px;
 			line-height: 20px;
 		}
 	}	
-	</style>`
+`
 export const DivValuePrepCenter = `
 	<div class="card-vp-img-light">
 		<div class="box-img">
@@ -149,7 +148,7 @@ function ValuePrepCenter(editor: any) {
 		id: 'valuePrepCenter',
 		label: 'Img centrado',
 		activate: true,
-		content: StyleValuePrepCenter+DivValuePrepCenter,
+		content: `<style>${StyleValuePrepCenter}</style>${DivValuePrepCenter}`,
 		category: 'Moleculas',
 		media: iconsSvg.valuePrepositionCenter,
 		attributes: { class: 'custom-block' },

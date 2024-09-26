@@ -4,8 +4,8 @@ export const styleSecondaryButton = `
     .secondary-button-glp {
 		font-family: Roboto;
 		font-weight: 500;
-		font-size: 1rem;
-		line-height: 26px;
+		font-size: 16px;
+		line-height: 24px;
 		background-color: transparent;
 		border: 1px #019BEF solid;
 		color: #019BEF;
@@ -35,7 +35,7 @@ function SecondaryButton(editor: any) {
 		id: 'seondaryButton',
 		label: 'Botón Secundario',
 		activate: true,
-		content: styleSecondaryButton+divSecondaryButton,
+		content: `<style>${styleSecondaryButton}</style>${divSecondaryButton}`,
 		category: 'Moleculas',
 		media: iconsSvg.primaryButton,
 		attributes: { class: 'custom-block' },

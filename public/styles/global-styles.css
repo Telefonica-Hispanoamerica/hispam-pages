@@ -11,26 +11,21 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
     vertical-align: baseline;
 }
 .gjs-row-kenos {
-    /* width: 100%;
-    display: flex;
-    flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px;
-    grid-gap: 16px */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 8px;
+    padding: 8px 0;
     display: table;
     width: 100%;
     border-spacing: 16px;
 }
+.gjs-row-kenos .gjs-cell-kenos:first-child{
+    margin-left: -10px;
+}
+.gjs-row-kenos .gjs-cell-kenos:last-child{
+    margin-right: -10px;
+}
 
 .gjs-cell-kenos {
-    /* width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 25px; */
     width: 8%;
     display: table-cell;
     height: 75px;
