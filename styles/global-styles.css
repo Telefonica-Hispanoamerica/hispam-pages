@@ -13,25 +13,17 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
 .gjs-row-kenos {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 8px;
+    padding: 8px 0;
     display: table;
     width: 100%;
-    border-spacing: 16px;			
+    border-spacing: 16px;
 }
-
-@media (max-width: 768px) {
-    .gjs-row-kenos {
-        width: 100%;
-        padding: 0;
-    }
-    .gjs-cell-kenos {
-        width: 100%;
-        display: block;
-        height: 100%;
-        margin: 0 0 16px;
-        vertical-align: top;
-    }
-}	
+.gjs-row-kenos .gjs-cell-kenos:first-child{
+    margin-left: -10px;
+}
+.gjs-row-kenos .gjs-cell-kenos:last-child{
+    margin-right: -10px;
+}
 
 .gjs-cell-kenos {
     width: 8%;
@@ -39,6 +31,19 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
     height: 75px;
     vertical-align: top;
 }
+@media (max-width: 767px) {
+    .gjs-row-kenos {
+        display: flex;
+        flex-direction: column;        
+        max-width: initial;        
+        padding: 16px;
+    }
+    .gjs-cell-kenos {
+        width: 100%;
+        height: initial;
+    }
+}	
+
 p {
     margin: 0;
 }
@@ -59,7 +64,7 @@ p {
     display: flex;
     align-items: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .p-relative-hero {
         height: 400px
     }
@@ -76,4 +81,31 @@ p {
     }
 }
 
+.w-100-glp {
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'Telefonica-Regular';
+    src: url('fonts/telefonica-regular-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Light';
+    src: url('fonts/telefonica-light-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Bold';
+    src: url('fonts/telefonica-bold-webfont.woff2') format('woff2'),
+         url('fonts/telefonica-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Tabs */

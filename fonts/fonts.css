@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Telefonica-Regular';
+    src: url('Telefonica-Fonts/telefonica-regular-webfont.woff2') format('woff2'),
+         url('Telefonica-Fonts/telefonica-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Light';
+    src: url('Telefonica-Fonts/telefonica-light-webfont.woff2') format('woff2'),
+         url('Telefonica-Fonts/telefonica-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telefonica-Bold';
+    src: url('Telefonica-Fonts/telefonica-bold-webfont.woff2') format('woff2'),
+         url('Telefonica-Fonts/telefonica-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
