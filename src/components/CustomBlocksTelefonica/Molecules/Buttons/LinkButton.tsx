@@ -1,4 +1,3 @@
-import React from 'react';
 import { iconsSvg } from '../../IconsSvgBlocks';
 
 // HTML template

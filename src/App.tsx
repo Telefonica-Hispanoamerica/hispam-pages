@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react'
-import grapesjs, { Editor, EditorConfig, PluginOptions, Component } from 'grapesjs';
+import grapesjs, { Editor, EditorConfig, PluginOptions } from 'grapesjs';
 import GjsEditor, { Canvas } from '@grapesjs/react';
 import Topbar from './components/Topbar';
 import RightSidebar from './components/RightSidebar';
@@ -43,12 +43,10 @@ import SectionBlank from './components/CustomBlocksTelefonica/Atoms/Section';
 import PlanCardFeature from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCardFeature';
 import PlanCard from './components/CustomBlocksTelefonica/Molecules/PlanCard/PlanCard';
 import ValuePrep4xLeft from './components/CustomBlocksTelefonica/Organisms/ValuePreposition/ValuePrep4xLeft';
-import { Height } from '@mui/icons-material';
 import primaryButton from './components/CustomBlocksTelefonica/Molecules/Buttons/PrimaryButton';
 import LinkButton from './components/CustomBlocksTelefonica/Molecules/Buttons/LinkButton';
 import HeroCard from './components/CustomBlocksTelefonica/Organisms/Hero/HeroCard';
 import TabsHero from './components/CustomBlocksTelefonica/Organisms/Tabs/TabsHero';
-import RibbonGray from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
 import IconAndText from './components/CustomBlocksTelefonica/Molecules/Content/IconAndText';
 import Columns2_3_7Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns2_3_7';
 import H3 from './components/CustomBlocksTelefonica/Atoms/Text/H3';
@@ -66,15 +64,12 @@ import Columns2_7_3Kenos from './components/CustomBlocksTelefonica/Molecules/Col
 //     component: string;
 // }
 
-interface CustomComponent extends Component {
-	updateImage: () => void;
-  }
-  
-  interface Device {
+
+interface Device {
 	name?: string;
 	type?: string;
 	widthMedia?: number;
-  }
+}
 
 declare var google: {
 	accounts: {
@@ -117,8 +112,6 @@ function App() {
 	} = useContext(PageContext);
 	const [ isOpen, setIsOpen ] = useState<boolean>(false);
 	const currentPageIdRef = useRef('');
-	const [ device, setDevice ] = useState<string>('');
-	const [ imageSelected, setImageSelected ] = useState<any>('')
 
 	currentPageIdRef.current = pageIdSelected;
 
@@ -314,8 +307,6 @@ function App() {
 		// 	js = js.replace(jsRegex, '');
 		// });
 		
-		let updating = false;
-
 		editor.on('component:update', function(component) {
 			const imageUpload = document.getElementById('url-image');
 			if(imageUpload){
@@ -581,11 +572,10 @@ function App() {
 		// Escuchar cuando se abre el Asset Manager
 		editor.on('run:open-assets', () => {
 			
-			const assetManager = editor.AssetManager;
 			const modal = editor.Modal;
 		
 			// Agregar contenido personalizado al modal
-			const originalContent = modal.getContent();
+			const originalContent: any = modal.getContent();
 			const customContent = document.createElement('div');
 			
 			customContent.innerHTML = `

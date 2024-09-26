@@ -1,4 +1,3 @@
-import { useEditor } from '@grapesjs/react';
 import { useContext, useState } from "react";
 import { PagesResultProps } from '@grapesjs/react';
 import "./CustomPageManager.scss";
@@ -31,7 +30,6 @@ export default function CustomPageManager({
     select,
     remove,
 }: PagesResultProps) {
-    const editor = useEditor();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const { getPageIdSelected, removeItem } = useContext(PageContext);
     const [ open, setOpen ] = useState(true);
