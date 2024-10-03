@@ -18,12 +18,12 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, ul, ol, li, blockquote, figure, figcapt
     width: 100%;
     border-spacing: 16px;
 }
-.gjs-row-kenos .gjs-cell-kenos:first-child{
+/* .gjs-row-kenos .gjs-cell-kenos:first-child{
     margin-left: -10px;
 }
 .gjs-row-kenos .gjs-cell-kenos:last-child{
     margin-right: -10px;
-}
+} */
 
 .gjs-cell-kenos {
     width: 8%;
