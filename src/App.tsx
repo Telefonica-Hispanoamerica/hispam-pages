@@ -54,6 +54,9 @@ import H4 from './components/CustomBlocksTelefonica/Atoms/Text/H4';
 import H5 from './components/CustomBlocksTelefonica/Atoms/Text/H5';
 import H6 from './components/CustomBlocksTelefonica/Atoms/Text/H6';
 import Columns2_7_3Kenos from './components/CustomBlocksTelefonica/Molecules/Columns/Columns2_7_3';
+import ReasonsPurchase from './components/CustomBlocksTelefonica/BlocksContent/ReasonsPurchase';
+import Feauture2ColumnsLeft from './components/CustomBlocksTelefonica/BlocksContent/Feature2ColumnsLeft';
+import Feauture2ColumnsRight from './components/CustomBlocksTelefonica/BlocksContent/Feature2ColumnsRight';
 // import TabsCardPlan2 from './components/CustomBlocksTelefonica/Tabs/TabsCardPlan2';
 
 
@@ -890,6 +893,10 @@ function App() {
 						ValuePrep4xCenter,
 						TabsCardPlan,
 						TabsHero,
+						//Block Content
+						ReasonsPurchase,
+						Feauture2ColumnsLeft,
+						Feauture2ColumnsRight,
 						{
 							id: 'gjs-blocks-basic',
 							src: 'https://unpkg.com/grapesjs-blocks-basic',

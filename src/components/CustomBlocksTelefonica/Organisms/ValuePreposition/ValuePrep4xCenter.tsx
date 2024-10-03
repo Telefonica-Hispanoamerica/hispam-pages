@@ -1,6 +1,6 @@
 import { iconsSvg } from '../../IconsSvgBlocks';
 
-const div = `
+export const stylePrep4xCenter = `
 	<style>
 	.header-light-vp-2col {
 		display: grid;
@@ -160,7 +160,8 @@ const div = `
 			padding: 32px 16px;
 		}
 	}
-	</style>
+	</style>`
+export const divValuePrep4xCenter = `
 	<section class='bg-light ptb-80'>
 		<div class="header-light-vp-2col">
 			<div>
@@ -257,7 +258,7 @@ function ValuePrep4xCenter(editor: any) {
 		id: 'valuePrep4xCenter',
 		label: 'Template VP Center',
 		activate: true,
-		content: div,
+		content: `<style>${stylePrep4xCenter}</style>${divValuePrep4xCenter}`,
 		category: 'Organismos',
 		media: iconsSvg.headerLeftAnd2ColValueP,
 		attributes: { class: 'custom-block' },

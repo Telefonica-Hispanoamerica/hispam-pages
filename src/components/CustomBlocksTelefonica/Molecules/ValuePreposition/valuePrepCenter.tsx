@@ -60,8 +60,6 @@ export const StyleValuePrepCenter = `
 		}
 	}	
 	.card-vp-img-light .box-img {
-		width: 48px;
-		height: 48px;
 		border-radius: 8px;
 		-webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
